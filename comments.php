@@ -21,12 +21,12 @@ if ( post_password_required() ) {
 }
 ?>
 
-<?php if ( comments_open() && !indieweb_publisher_hide_comments() ) : ?>
+<?php if ( comments_open() && ! indieweb_publisher_hide_comments() ) : ?>
 	<div id="commentform-top"></div> <!-- do not remove; used by jQuery to move the comment reply form here -->
 	<?php comment_form( indieweb_publisher_comment_form_args() ); ?>
 <?php endif; ?>
 
-<?php if ( !indieweb_publisher_hide_comments() ) : ?>
+<?php if ( ! indieweb_publisher_hide_comments() ) : ?>
 
 	<div id="comments" class="comments-area">
 		<?php // You can start editing here -- including this comment! ?>
@@ -38,7 +38,8 @@ if ( post_password_required() ) {
 					<?php
 					printf(
 						_n( '1 Comment', '%1$s Comments', get_comments_number(), 'independent-publisher' ),
-						number_format_i18n( get_comments_number() ), '<span>' . get_the_title() . '</span>'
+						number_format_i18n( get_comments_number() ),
+						'<span>' . get_the_title() . '</span>'
 					);
 					?>
 				</h2>
@@ -55,13 +56,19 @@ if ( post_password_required() ) {
 
 			<ol class="commentlist">
 				<?php
-				/* Loop through and list the comments. Tell wp_list_comments()
+				/*
+				 Loop through and list the comments. Tell wp_list_comments()
 				 * to use indieweb_publisher_comment() to format the comments.
 				 * If you want to overload this in a child theme then you can
 				 * define indieweb_publisher_comment() and that will be used instead.
 				 * See indieweb_publisher_comment() in inc/template-tags.php for more.
 				 */
-				wp_list_comments( array( 'type' => 'comment', 'callback' => 'indieweb_publisher_comment' ) );
+				wp_list_comments(
+					array(
+						'type'     => 'comment',
+						'callback' => 'indieweb_publisher_comment',
+					)
+				);
 				?>
 			</ol><!-- .commentlist -->
 
@@ -78,7 +85,7 @@ if ( post_password_required() ) {
 
 		<?php
 		// If comments are closed and there are comments, let's leave a little note, shall we?
-		if ( !comments_open() && '0' != get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
+		if ( ! comments_open() && '0' != get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
 			?>
 			<p class="nocomments"><?php _e( 'Comments are closed.', 'independent-publisher' ); ?></p>
 		<?php endif; ?>
@@ -89,7 +96,7 @@ if ( post_password_required() ) {
 
 			<div id="share-comment-button-bottom">
 				<button>
-					<i class="share-comment-icon"></i><?php echo indieweb_publisher_comments_call_to_action_text() ?>
+					<i class="share-comment-icon"></i><?php echo indieweb_publisher_comments_call_to_action_text(); ?>
 				</button>
 			</div>
 			<div id="commentform-bottom"></div> <!-- do not remove; used by jQuery to move the comment reply form here -->
@@ -100,7 +107,7 @@ if ( post_password_required() ) {
 				<h3><?php echo apply_filters( 'indieweb_publisher_webmentions_title', __( 'Webmentions', 'independent-publisher' ) ); ?></h3>
 				<?php indieweb_publisher_mentions(); ?>
 			</div>
-		<?php } // end if ( indieweb_publisher_comment_count_mentions() )?>
+		<?php } // end if ( indieweb_publisher_comment_count_mentions() ) ?>
 
 		<?php if ( comments_open() && have_comments() && get_comments_number() > 0 ) : ?>
 			<?php indieweb_publisher_replytocom(); // Handles Reply to Comment links properly when JavaScript is enabled ?>

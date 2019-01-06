@@ -8,7 +8,7 @@
  * @since   Independent Publisher 1.0
  */
 
-if ( !function_exists( 'indieweb_publisher_content_nav' ) ) :
+if ( ! function_exists( 'indieweb_publisher_content_nav' ) ) :
 	/**
 	 * Display navigation to next/previous pages when applicable
 	 *
@@ -22,7 +22,7 @@ if ( !function_exists( 'indieweb_publisher_content_nav' ) ) :
 			$previous = ( is_attachment() ) ? get_post( $post->post_parent ) : get_adjacent_post( false, '', true );
 			$next     = get_adjacent_post( false, '', false );
 
-			if ( !$next && !$previous ) {
+			if ( ! $next && ! $previous ) {
 				return;
 			}
 		}
@@ -50,7 +50,7 @@ if ( !function_exists( 'indieweb_publisher_content_nav' ) ) :
 
 			<?php elseif ( $wp_query->max_num_pages > 1 && ( is_home() || is_archive() || is_search() ) ) : // navigation links for home, archive, and search pages ?>
 
-				<?php if (function_exists('wp_pagenavi')) : // WP-PageNavi support ?>
+				<?php if ( function_exists( 'wp_pagenavi' ) ) : // WP-PageNavi support ?>
 
 					<?php wp_pagenavi(); ?>
 
@@ -73,7 +73,7 @@ if ( !function_exists( 'indieweb_publisher_content_nav' ) ) :
 	}
 endif; // indieweb_publisher_content_nav
 
-if ( !function_exists( 'indieweb_publisher_comment' ) ) :
+if ( ! function_exists( 'indieweb_publisher_comment' ) ) :
 	/**
 	 * Template for comments and pingbacks.
 	 *
@@ -92,7 +92,7 @@ if ( !function_exists( 'indieweb_publisher_comment' ) ) :
 					<?php echo get_avatar( $comment, 48 ); ?>
 					<?php printf( '<cite class="fn">%s</cite>', get_comment_author_link() ); ?>
 					<?php if ( $comment->comment_approved == '0' ) : ?>
-						<?php $comment_content_class = "unapproved"; ?>
+						<?php $comment_content_class = 'unapproved'; ?>
 						<em><?php _e( ' - Your comment is awaiting moderation.', 'independent-publisher' ); ?></em>
 					<?php endif; ?>
 				</div>
@@ -102,10 +102,12 @@ if ( !function_exists( 'indieweb_publisher_comment' ) ) :
 						<time pubdate datetime="<?php comment_time( 'c' ); ?>">
 							<?php
 							/* translators: 1: date */
-							printf( '%1$s', get_comment_date() ); ?>
+							printf( '%1$s', get_comment_date() );
+							?>
 						</time>
 					</a>
-					<?php edit_comment_link( __( '(Edit)', 'independent-publisher' ), ' ' );
+					<?php
+					edit_comment_link( __( '(Edit)', 'independent-publisher' ), ' ' );
 					?>
 				</div>
 				<!-- .comment-meta .commentmetadata -->
@@ -114,14 +116,17 @@ if ( !function_exists( 'indieweb_publisher_comment' ) ) :
 			<div class="comment-content <?php echo $comment_content_class; ?>"><?php comment_text(); ?></div>
 
 			<div class="reply">
-				<?php comment_reply_link(
+				<?php
+				comment_reply_link(
 					array_merge(
-						$args, array(
+						$args,
+						array(
 							'depth'     => $depth,
-							'max_depth' => $args['max_depth']
+							'max_depth' => $args['max_depth'],
 						)
 					)
-				); ?>
+				);
+				?>
 			</div>
 			<!-- .reply -->
 		</article><!-- #comment-## -->
@@ -129,7 +134,7 @@ if ( !function_exists( 'indieweb_publisher_comment' ) ) :
 	}
 endif; // ends check for indieweb_publisher_comment()
 
-if ( !function_exists( 'indieweb_publisher_pings' ) ) :
+if ( ! function_exists( 'indieweb_publisher_pings' ) ) :
 	/**
 	 * Creates a custom query for pingbacks/trackbacks (i.e., 'pings')
 	 * and displays them. Using this custom query instead of
@@ -142,20 +147,20 @@ if ( !function_exists( 'indieweb_publisher_pings' ) ) :
 	 * @see indieweb_publisher_mentions()
 	 */
 	function indieweb_publisher_pings() {
-		$args = array(
+		$args        = array(
 			'post_id' => get_the_ID(),
 			'type'    => 'pings',
-			'status'  => 'approve'
+			'status'  => 'approve',
 		);
-		$pings_query = new WP_Comment_Query;
+		$pings_query = new WP_Comment_Query();
 		$pings       = $pings_query->query( $args );
 
 		if ( $pings ) {
 			foreach ( $pings as $ping ) {
 				?>
-				<li <?php comment_class( '', $ping->comment_ID ); ?> id="li-comment-<?php echo $ping->comment_ID ?>">
-					<?php printf( '<cite class="fn">%s</cite>', get_comment_author_link( $ping->comment_ID ) ) ?>
-					<span> <?php edit_comment_link( __( '(Edit)', 'independent-publisher' ), '  ', '' ) ?></span>
+				<li <?php comment_class( '', $ping->comment_ID ); ?> id="li-comment-<?php echo $ping->comment_ID; ?>">
+					<?php printf( '<cite class="fn">%s</cite>', get_comment_author_link( $ping->comment_ID ) ); ?>
+					<span> <?php edit_comment_link( __( '(Edit)', 'independent-publisher' ), '  ', '' ); ?></span>
 				</li>
 				<?php
 			}
@@ -163,7 +168,7 @@ if ( !function_exists( 'indieweb_publisher_pings' ) ) :
 	}
 endif; // ends check for indieweb_publisher_pings()
 
-if ( !function_exists( 'indieweb_publisher_mentions' ) ) :
+if ( ! function_exists( 'indieweb_publisher_mentions' ) ) :
 	/**
 	 * Creates a custom query for webmentions, pings, and trackbacks
 	 * and displays them using this custom query instead of
@@ -173,23 +178,23 @@ if ( !function_exists( 'indieweb_publisher_mentions' ) ) :
 	 * @since Independent Publisher 1.7
 	 */
 	function indieweb_publisher_mentions() {
-		$args = array(
+		$args          = array(
 			'post_id'  => get_the_ID(),
 			'type__in' => array( 'pings', 'webmention' ),
-			'status'   => 'approve'
+			'status'   => 'approve',
 		);
-		$mention_query = new WP_Comment_Query;
-		$mentions = $mention_query->query( $args );
+		$mention_query = new WP_Comment_Query();
+		$mentions      = $mention_query->query( $args );
 
 		if ( $mentions ) {
 			foreach ( $mentions as $mention ) {
 				?>
-				<li <?php comment_class( '', $mention->comment_ID ); ?> id="li-comment-<?php echo $mention->comment_ID ?>">
-					<?php if ($mention->comment_type !== 'webmention') : // Webmentions already include author in the comment text ?>
-						<?php printf( '<cite class="fn">%s</cite>', get_comment_author_link( $mention->comment_ID ) ) ?>
+				<li <?php comment_class( '', $mention->comment_ID ); ?> id="li-comment-<?php echo $mention->comment_ID; ?>">
+					<?php if ( $mention->comment_type !== 'webmention' ) : // Webmentions already include author in the comment text ?>
+						<?php printf( '<cite class="fn">%s</cite>', get_comment_author_link( $mention->comment_ID ) ); ?>
 						<small><?php printf( '%1$s', get_comment_date() ); ?></small>
 					<?php endif; ?>
-					<?php comment_text($mention->comment_ID); ?>
+					<?php comment_text( $mention->comment_ID ); ?>
 				</li>
 				<?php
 			}
@@ -197,7 +202,7 @@ if ( !function_exists( 'indieweb_publisher_mentions' ) ) :
 	}
 endif; // ends check for indieweb_publisher_mentions()
 
-if ( !function_exists( 'indieweb_publisher_posted_author' ) ) :
+if ( ! function_exists( 'indieweb_publisher_posted_author' ) ) :
 	/**
 	 * Prints HTML with meta information for the current author.
 	 *
@@ -221,7 +226,7 @@ if ( !function_exists( 'indieweb_publisher_posted_author' ) ) :
 	}
 endif;
 
-if ( !function_exists( 'indieweb_publisher_posted_author_cats' ) ) :
+if ( ! function_exists( 'indieweb_publisher_posted_author_cats' ) ) :
 	/**
 	 * Prints HTML with meta information for the current author and post categories.
 	 *
@@ -234,7 +239,7 @@ if ( !function_exists( 'indieweb_publisher_posted_author_cats' ) ) :
 		/* translators: used between list items, there is a space after the comma */
 		$categories_list = get_the_category_list( __( ', ', 'independent-publisher' ) );
 
-		if ( ( !post_password_required() && comments_open() && !indieweb_publisher_hide_comments() ) || ( !post_password_required() && indieweb_publisher_show_post_word_count() && !get_post_format() ) || indieweb_publisher_show_date_entry_meta() ) {
+		if ( ( ! post_password_required() && comments_open() && ! indieweb_publisher_hide_comments() ) || ( ! post_password_required() && indieweb_publisher_show_post_word_count() && ! get_post_format() ) || indieweb_publisher_show_date_entry_meta() ) {
 			$separator = apply_filters( 'indieweb_publisher_entry_meta_separator', '|' );
 		} else {
 			$separator = '';
@@ -280,7 +285,7 @@ if ( !function_exists( 'indieweb_publisher_posted_author_cats' ) ) :
 	}
 endif;
 
-if ( !function_exists( 'indieweb_publisher_posted_on_date' ) ) :
+if ( ! function_exists( 'indieweb_publisher_posted_on_date' ) ) :
 	/**
 	 * Prints HTML with meta information for the current post-date/time.
 	 *
@@ -297,7 +302,7 @@ if ( !function_exists( 'indieweb_publisher_posted_on_date' ) ) :
 	}
 endif;
 
-if ( !function_exists( 'indieweb_publisher_post_updated_date' ) ) :
+if ( ! function_exists( 'indieweb_publisher_post_updated_date' ) ) :
 	/**
 	 * Prints HTML with meta information for the current post's last updated date/time.
 	 *
@@ -314,7 +319,7 @@ if ( !function_exists( 'indieweb_publisher_post_updated_date' ) ) :
 	}
 endif;
 
-if ( !function_exists( 'indieweb_publisher_continue_reading_link' ) ) :
+if ( ! function_exists( 'indieweb_publisher_continue_reading_link' ) ) :
 	/**
 	 * Prints HTML with Continue Reading link
 	 *
@@ -331,7 +336,7 @@ if ( !function_exists( 'indieweb_publisher_continue_reading_link' ) ) :
 	}
 endif;
 
-if ( !function_exists( 'indieweb_publisher_continue_reading_text' ) ) :
+if ( ! function_exists( 'indieweb_publisher_continue_reading_text' ) ) :
 	/**
 	 * Returns Continue Reading text for usage in the_content()
 	 *
@@ -342,7 +347,7 @@ if ( !function_exists( 'indieweb_publisher_continue_reading_text' ) ) :
 	}
 endif;
 
-if ( !function_exists( 'indieweb_publisher_categorized_blog' ) ) :
+if ( ! function_exists( 'indieweb_publisher_categorized_blog' ) ) :
 	/**
 	 * Returns true if a blog has more than 1 category
 	 *
@@ -386,7 +391,7 @@ function indieweb_publisher_category_transient_flusher() {
 add_action( 'edit_category', 'indieweb_publisher_category_transient_flusher' );
 add_action( 'save_post', 'indieweb_publisher_category_transient_flusher' );
 
-if ( !function_exists( 'indieweb_publisher_wp_title' ) ) :
+if ( ! function_exists( 'indieweb_publisher_wp_title' ) ) :
 	/**
 	 * Filters wp_title to print a neat <title> tag based on what is being viewed.
 	 *
@@ -419,7 +424,7 @@ endif;
 
 add_filter( 'wp_title', 'indieweb_publisher_wp_title', 10, 2 );
 
-if ( !function_exists( 'indieweb_publisher_post_categories' ) ) :
+if ( ! function_exists( 'indieweb_publisher_post_categories' ) ) :
 	/**
 	 * Returns categories for current post with separator.
 	 * Optionally returns only a single category.
@@ -438,7 +443,7 @@ if ( !function_exists( 'indieweb_publisher_post_categories' ) ) :
 			$output     = '';
 			if ( $categories ) {
 				foreach ( $categories as $category ) {
-					$output .= '<a href="' . get_category_link( $category->term_id ) . '" title="' . esc_attr( sprintf( __( "View all posts in %s", 'independent-publisher' ), $category->name ) ) . '">' . $category->cat_name . '</a>';
+					$output .= '<a href="' . get_category_link( $category->term_id ) . '" title="' . esc_attr( sprintf( __( 'View all posts in %s', 'independent-publisher' ), $category->name ) ) . '">' . $category->cat_name . '</a>';
 					if ( $single ) {
 						break;
 					}
@@ -450,7 +455,7 @@ if ( !function_exists( 'indieweb_publisher_post_categories' ) ) :
 	}
 endif;
 
-if ( !function_exists( 'indieweb_publisher_site_info' ) ) :
+if ( ! function_exists( 'indieweb_publisher_site_info' ) ) :
 	/**
 	 * Outputs site info for display on non-single pages
 	 *
@@ -472,7 +477,7 @@ if ( !function_exists( 'indieweb_publisher_site_info' ) ) :
 	}
 endif;
 
-if ( !function_exists( 'indieweb_publisher_posted_author_card' ) ) :
+if ( ! function_exists( 'indieweb_publisher_posted_author_card' ) ) :
 	/**
 	 * Outputs post author info for display on single posts
 	 *
@@ -488,31 +493,36 @@ if ( !function_exists( 'indieweb_publisher_posted_author_card' ) ) :
 		$show_avatars   = get_option( 'show_avatars' );
 		?>
 
-		<?php if ( ( !$show_avatars || $show_avatars === 0 ) && !indieweb_publisher_is_multi_author_mode() && get_header_image() ) : ?>
+		<?php if ( ( ! $show_avatars || $show_avatars === 0 ) && ! indieweb_publisher_is_multi_author_mode() && get_header_image() ) : ?>
 			<a class="site-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
 				<img class="no-grav" src="<?php echo esc_url( get_header_image() ); ?>" height="<?php echo absint( get_custom_header()->height ); ?>" width="<?php echo absint( get_custom_header()->width ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" />
 			</a>
-		<?php else: ?>
+		<?php else : ?>
 			<a class="site-logo" href="<?php echo get_author_posts_url( get_the_author_meta( 'ID', $post_author_id ) ); ?>">
 				<?php echo get_avatar( get_the_author_meta( 'ID', $post_author_id ), 100 ); ?>
 			</a>
 		<?php endif; ?>
 
 		<div class="site-title"><?php indieweb_publisher_posted_author(); ?></div>
-		<div class="site-description"><?php the_author_meta( 'description', $post_author_id ) ?></div>
+		<div class="site-description"><?php the_author_meta( 'description', $post_author_id ); ?></div>
 
 		<?php get_template_part( 'menu', 'social' ); ?>
 
 		<div class="site-published-separator"></div>
 		<h2 class="site-published"><?php _e( 'Published', 'independent-publisher' ); ?></h2>
 		<h2 class="site-published-date"><?php indieweb_publisher_posted_on_date(); ?></h2>
-		<?php /* Show last updated date if the post was modified AND
+		<?php
+		/*
+		Show last updated date if the post was modified AND
 					Show Updated Date on Single Posts option is enabled AND
-						'indieweb_publisher_hide_updated_date' Custom Field is not present on this post */ ?>
-		<?php if ( get_the_modified_date() !== get_the_date() &&
+						'indieweb_publisher_hide_updated_date' Custom Field is not present on this post */
+		?>
+		<?php
+		if ( get_the_modified_date() !== get_the_date() &&
 			indieweb_publisher_show_updated_date_on_single() &&
-			!get_post_meta( get_the_ID(), 'indieweb_publisher_hide_updated_date', true )
-		) : ?>
+			! get_post_meta( get_the_ID(), 'indieweb_publisher_hide_updated_date', true )
+		) :
+			?>
 			<h2 class="site-published"><?php _e( 'Updated', 'independent-publisher' ); ?></h2>
 			<h2 class="site-published-date"><?php indieweb_publisher_post_updated_date(); ?></h2>
 		<?php endif; ?>
@@ -522,14 +532,14 @@ if ( !function_exists( 'indieweb_publisher_posted_author_card' ) ) :
 	}
 endif;
 
-if ( !function_exists( 'indieweb_publisher_posted_author_bottom_card' ) ) :
+if ( ! function_exists( 'indieweb_publisher_posted_author_bottom_card' ) ) :
 	/**
 	 * Outputs post author info for display on bottom of single posts
 	 *
 	 * @since Independent Publisher 1.0
 	 */
 	function indieweb_publisher_posted_author_bottom_card() {
-		if ( !indieweb_publisher_show_author_card() ) {
+		if ( ! indieweb_publisher_show_author_card() ) {
 			return; // This option has been disabled
 		}
 
@@ -546,18 +556,23 @@ if ( !function_exists( 'indieweb_publisher_posted_author_bottom_card' ) ) :
 						<?php indieweb_publisher_posted_author(); ?>
 					</div>
 
-					<div class="site-description"><?php the_author_meta( 'description' ) ?></div>
+					<div class="site-description"><?php the_author_meta( 'description' ); ?></div>
 				</div>
 				<div class="post-published-date">
 					<h2 class="site-published"><?php _e( 'Published', 'independent-publisher' ); ?></h2>
 					<h2 class="site-published-date"><?php indieweb_publisher_posted_on_date(); ?></h2>
-					<?php /* Show last updated date if the post was modified AND
+					<?php
+					/*
+					Show last updated date if the post was modified AND
 							Show Updated Date on Single Posts option is enabled AND
-								'indieweb_publisher_hide_updated_date' Custom Field is not present on this post */ ?>
-					<?php if ( get_the_modified_date() !== get_the_date() &&
+								'indieweb_publisher_hide_updated_date' Custom Field is not present on this post */
+					?>
+					<?php
+					if ( get_the_modified_date() !== get_the_date() &&
 						indieweb_publisher_show_updated_date_on_single() &&
-						!get_post_meta( get_the_ID(), 'indieweb_publisher_hide_updated_date', true )
-					) : ?>
+						! get_post_meta( get_the_ID(), 'indieweb_publisher_hide_updated_date', true )
+					) :
+						?>
 						<h2 class="site-published"><?php _e( 'Updated', 'independent-publisher' ); ?></h2>
 						<h2 class="site-published-date"><?php indieweb_publisher_post_updated_date(); ?></h2>
 					<?php endif; ?>
@@ -573,13 +588,14 @@ if ( !function_exists( 'indieweb_publisher_posted_author_bottom_card' ) ) :
 	}
 endif;
 
-if ( !function_exists( 'indieweb_publisher_get_post_word_count' ) ) :
+if ( ! function_exists( 'indieweb_publisher_get_post_word_count' ) ) :
 	/**
 	 * Returns number of words in a post formatted for display in theme
+	 *
 	 * @return string
 	 */
 	function indieweb_publisher_get_post_word_count() {
-		if ( !post_password_required() && comments_open() && !indieweb_publisher_hide_comments() ) {
+		if ( ! post_password_required() && comments_open() && ! indieweb_publisher_hide_comments() ) {
 			$separator = ' <span class="sep"> ' . apply_filters( 'indieweb_publisher_entry_meta_separator', '|' ) . ' </span>';
 		} else {
 			$separator = '';
@@ -589,13 +605,14 @@ if ( !function_exists( 'indieweb_publisher_get_post_word_count' ) ) :
 	}
 endif;
 
-if ( !function_exists( 'indieweb_publisher_get_post_date' ) ) :
+if ( ! function_exists( 'indieweb_publisher_get_post_date' ) ) :
 	/**
 	 * Returns post date formatted for display in theme
+	 *
 	 * @return string
 	 */
 	function indieweb_publisher_get_post_date() {
-		if ( ( comments_open() && !indieweb_publisher_hide_comments() ) || ( indieweb_publisher_show_post_word_count() && !get_post_format() ) ) {
+		if ( ( comments_open() && ! indieweb_publisher_hide_comments() ) || ( indieweb_publisher_show_post_word_count() && ! get_post_format() ) ) {
 			$separator = ' <span class="sep"> ' . apply_filters( 'indieweb_publisher_entry_meta_separator', '|' ) . ' </span>';
 		} else {
 			$separator = '';
@@ -605,16 +622,17 @@ if ( !function_exists( 'indieweb_publisher_get_post_date' ) ) :
 	}
 endif;
 
-if ( !function_exists( 'indieweb_publisher_full_width_featured_image' ) ):
+if ( ! function_exists( 'indieweb_publisher_full_width_featured_image' ) ) :
 	/**
 	 * Show Full Width Featured Image on single pages if post has full width featured image selected
 	 * or if Auto-Set Featured Image as Post Cover option is enabled
 	 */
 	function indieweb_publisher_full_width_featured_image() {
 		if ( indieweb_publisher_has_full_width_featured_image() ) {
-			while ( have_posts() ) : the_post();
+			while ( have_posts() ) :
+				the_post();
 				if ( has_post_thumbnail() ) :
-					if ( indieweb_publisher_post_has_post_cover_title() ):
+					if ( indieweb_publisher_post_has_post_cover_title() ) :
 						$featured_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), apply_filters( 'indieweb_publisher_full_width_featured_image_size', 'indieweb_publisher_post_thumbnail' ) );
 						$featured_image_url = $featured_image_url[0];
 						?>
@@ -626,30 +644,32 @@ if ( !function_exists( 'indieweb_publisher_full_width_featured_image' ) ):
 										<?php echo get_the_title(); ?>
 									</h1>
 									<?php $subtitle = get_post_meta( get_the_id(), 'indieweb_publisher_post_cover_subtitle', true ); ?>
-									<?php if ( $subtitle ): ?>
+									<?php if ( $subtitle ) : ?>
 										<h2 class="entry-subtitle">
 											<?php echo $subtitle; ?>
 										</h2>
 									<?php endif; ?>
-									<?php if ( !is_page() ) : ?>
+									<?php if ( ! is_page() ) : ?>
 										<h3 class="entry-title-meta">
 												<span class="entry-title-meta-author">
 													<a class="author-avatar" href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>">
 														<?php echo get_avatar( get_the_author_meta( 'ID' ), 32 ); ?>
 													</a>
 													<?php
-													if ( !indieweb_publisher_categorized_blog() ) {
+													if ( ! indieweb_publisher_categorized_blog() ) {
 														echo indieweb_publisher_entry_meta_author_prefix() . ' ';
 													}
 													indieweb_publisher_posted_author();
 													?>
 												</span>
-											<?php if ( indieweb_publisher_categorized_blog() ) {
+											<?php
+											if ( indieweb_publisher_categorized_blog() ) {
 												echo indieweb_publisher_entry_meta_category_prefix() . ' ' . indieweb_publisher_post_categories();
-											} ?>
+											}
+											?>
 											<span class="entry-title-meta-post-date">
 													<span class="sep"> <?php echo apply_filters( 'indieweb_publisher_entry_meta_separator', '|' ); ?> </span>
-												<?php indieweb_publisher_posted_on_date() ?>
+												<?php indieweb_publisher_posted_on_date(); ?>
 												</span>
 											<?php do_action( 'indieweb_publisher_entry_title_meta', $separator = ' | ' ); ?>
 										</h3>
@@ -658,7 +678,7 @@ if ( !function_exists( 'indieweb_publisher_full_width_featured_image' ) ):
 							</div>
 						</div>
 						<?php
-					else:
+					else :
 						the_post_thumbnail( apply_filters( 'indieweb_publisher_full_width_featured_image_size', 'indieweb_publisher_post_thumbnail' ), array( 'class' => 'full-width-featured-image' ) );
 					endif;
 				endif;
@@ -667,7 +687,7 @@ if ( !function_exists( 'indieweb_publisher_full_width_featured_image' ) ):
 	}
 endif;
 
-if ( !function_exists( 'indieweb_publisher_search_stats' ) ):
+if ( ! function_exists( 'indieweb_publisher_search_stats' ) ) :
 	/**
 	 * Returns stats for search results
 	 */
@@ -679,13 +699,13 @@ if ( !function_exists( 'indieweb_publisher_search_stats' ) ):
 		$pagination_info  = '';
 
 		$pagination_info = sprintf( __( 'this is page <strong>%1$s</strong> of <strong>%2$s</strong>', 'independent-publisher' ), number_format_i18n( $current_page_num ), number_format_i18n( $total_pages ) );
-		$stats_text = sprintf( _n( 'Found one search result for <strong>%2$s</strong>.', 'Found %1$s search results for <strong>%2$s</strong> (%3$s).', $total, 'independent-publisher' ), number_format_i18n( $total ), get_search_query(), $pagination_info );
+		$stats_text      = sprintf( _n( 'Found one search result for <strong>%2$s</strong>.', 'Found %1$s search results for <strong>%2$s</strong> (%3$s).', $total, 'independent-publisher' ), number_format_i18n( $total ), get_search_query(), $pagination_info );
 
 		return wpautop( $stats_text );
 	}
 endif;
 
-if ( !function_exists( 'indieweb_publisher_taxonomy_archive_stats' ) ):
+if ( ! function_exists( 'indieweb_publisher_taxonomy_archive_stats' ) ) :
 	/**
 	 * Returns taxonomy archive stats and current page info for use in taxonomy archive descriptions
 	 */
@@ -715,7 +735,7 @@ if ( !function_exists( 'indieweb_publisher_taxonomy_archive_stats' ) ):
 	}
 endif;
 
-if ( !function_exists( 'indieweb_publisher_date_archive_description' ) ):
+if ( ! function_exists( 'indieweb_publisher_date_archive_description' ) ) :
 	/**
 	 * Returns the Date Archive description
 	 */
@@ -735,24 +755,31 @@ if ( !function_exists( 'indieweb_publisher_date_archive_description' ) ):
 		if ( trim( $date_archive_meta ) === '' ) {
 			if ( is_year() && ( get_the_date( 'Y' ) != date( 'Y' ) ) ) {
 				$date_archive_meta = sprintf( _n( 'There was one post published in %2$s.', 'There were %1$s posts published in %2$s (%3$s).', $total, 'independent-publisher' ), number_format_i18n( $total ), get_the_date( 'Y' ), $pagination_info );
-			} else if ( is_year() && ( get_the_date( 'Y' ) == date( 'Y' ) ) ) {
+			} elseif ( is_year() && ( get_the_date( 'Y' ) == date( 'Y' ) ) ) {
 				$date_archive_meta = sprintf( _n( 'There is one post published in %2$s.', 'There are %1$s posts published in %2$s (%3$s).', $total, 'independent-publisher' ), number_format_i18n( $total ), get_the_date( 'Y' ), $pagination_info );
-			} else if ( is_day() ) {
+			} elseif ( is_day() ) {
 				$date_archive_meta = sprintf(
 					_n( 'There was one post published on %2$s.', 'There were %1$s posts published on %2$s (%3$s).', $total, 'independent-publisher' ),
-					number_format_i18n( $total ), get_the_date(), $pagination_info
+					number_format_i18n( $total ),
+					get_the_date(),
+					$pagination_info
 				);
-			} else if ( is_month() ) {
+			} elseif ( is_month() ) {
 				$year = get_query_var( 'year' );
 				if ( empty( $year ) ) {
 					$date_archive_meta = sprintf(
 						_n( 'There was one post published in the month of %2$s.', 'There were %1$s posts published in %2$s (%3$s).', $total, 'independent-publisher' ),
-						number_format_i18n( $total ), get_the_date( 'F' ), $pagination_info
+						number_format_i18n( $total ),
+						get_the_date( 'F' ),
+						$pagination_info
 					);
 				} else {
 					$date_archive_meta = sprintf(
 						_n( 'There was one post published in %2$s %3$s.', 'There were %1$s posts published in %2$s %3$s (%4$s).', $total, 'independent-publisher' ),
-						number_format_i18n( $total ), get_the_date( 'F' ), get_the_date( 'Y' ), $pagination_info
+						number_format_i18n( $total ),
+						get_the_date( 'F' ),
+						get_the_date( 'Y' ),
+						$pagination_info
 					);
 				}
 			}
@@ -763,7 +790,7 @@ if ( !function_exists( 'indieweb_publisher_date_archive_description' ) ):
 	}
 endif;
 
-if ( !function_exists( 'indieweb_publisher_min_comments_bottom_comment_button' ) ):
+if ( ! function_exists( 'indieweb_publisher_min_comments_bottom_comment_button' ) ) :
 	/**
 	 * Returns the minimum number of comments that must exist for the bottom 'Write a Comment' button to appear
 	 */
@@ -772,7 +799,7 @@ if ( !function_exists( 'indieweb_publisher_min_comments_bottom_comment_button' )
 	}
 endif;
 
-if ( !function_exists( 'indieweb_publisher_min_comments_comment_title' ) ):
+if ( ! function_exists( 'indieweb_publisher_min_comments_comment_title' ) ) :
 	/**
 	 * Returns the minimum number of comments that must exist for the comments title to appear
 	 */
@@ -781,7 +808,7 @@ if ( !function_exists( 'indieweb_publisher_min_comments_comment_title' ) ):
 	}
 endif;
 
-if ( !function_exists( 'indieweb_publisher_hide_comments' ) ):
+if ( ! function_exists( 'indieweb_publisher_hide_comments' ) ) :
 	/**
 	 * Determines if the comments and comment form should be hidden altogether.
 	 * This differs from disabling the comments by also hiding the
@@ -793,7 +820,7 @@ if ( !function_exists( 'indieweb_publisher_hide_comments' ) ):
 	}
 endif;
 
-if ( !function_exists( 'indieweb_publisher_footer_credits' ) ):
+if ( ! function_exists( 'indieweb_publisher_footer_credits' ) ) :
 	/**
 	 * Echoes the theme footer credits. Overriding this function in a Child Theme also
 	 * applies the changes to Jetpack's Infinite Scroll footer.
@@ -803,7 +830,7 @@ if ( !function_exists( 'indieweb_publisher_footer_credits' ) ):
 	}
 endif;
 
-if ( !function_exists( '_wp_render_title_tag' ) ) :
+if ( ! function_exists( '_wp_render_title_tag' ) ) :
 	/*
 	 * Backwards compatibility for <= WP v4.0.
 	 * See https://make.wordpress.org/core/2015/10/20/document-title-in-4-4/
@@ -817,24 +844,25 @@ if ( !function_exists( '_wp_render_title_tag' ) ) :
 	add_action( 'wp_head', 'indieweb_publisher_render_title' );
 endif;
 
-if ( !function_exists( 'indieweb_publisher_show_excerpt' ) ):
+if ( ! function_exists( 'indieweb_publisher_show_excerpt' ) ) :
 	/*
 	 * Determines if an excerpt should be shown for a given post. Used in the loop.
 	 */
 	function indieweb_publisher_show_excerpt() {
-		/* Only show excerpts for Standard post format OR Chat format,
+		/*
+		 Only show excerpts for Standard post format OR Chat format,
 		 * when this is not both the very first standard post and also a Sticky post AND
 		 * when excerpts enabled or One-Sentence Excerpts enabled AND
 		 * this is not the very first standard post when Show Full Content First Post enabled
 		 */
-		if ( ( !get_post_format() || 'chat' === get_post_format() ) &&
-			( !( indieweb_publisher_is_very_first_standard_post() && is_sticky() ) ) &&
+		if ( ( ! get_post_format() || 'chat' === get_post_format() ) &&
+			( ! ( indieweb_publisher_is_very_first_standard_post() && is_sticky() ) ) &&
 			( indieweb_publisher_use_post_excerpts() || indieweb_publisher_generate_one_sentence_excerpts() ) &&
-			( !( indieweb_publisher_show_full_content_first_post() && indieweb_publisher_is_very_first_standard_post() && is_home() ) )
+			( ! ( indieweb_publisher_show_full_content_first_post() && indieweb_publisher_is_very_first_standard_post() && is_home() ) )
 		) {
-			return TRUE;
+			return true;
 		} else {
-			return FALSE;
+			return false;
 		}
 	}
 endif;
@@ -847,7 +875,7 @@ if ( ! function_exists( 'indieweb_publisher_show_related_tags' ) ) :
 		if ( get_the_tag_list() ) :
 
 			$tag_list_title = apply_filters( 'indieweb_publisher_tag_list_title', __( 'Related Content by Tag', 'independent-publisher' ) );
-			$tag_list = (string) get_the_tag_list( '<ul class="taglist"><li class="taglist-title">' . $tag_list_title . '</li><li>', '</li><li>', '</li></ul>' );
+			$tag_list       = (string) get_the_tag_list( '<ul class="taglist"><li class="taglist-title">' . $tag_list_title . '</li><li>', '</li><li>', '</li></ul>' );
 
 			printf( '<div id="taglist">%s</div>', $tag_list );
 

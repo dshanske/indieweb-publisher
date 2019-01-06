@@ -30,24 +30,22 @@ if ( ! function_exists( 'indieweb_publisher_setup' ) ) :
 		/**
 		 * Custom template tags for this theme.
 		 */
-		require( get_template_directory() . '/inc/template-tags.php' );
+		require get_template_directory() . '/inc/template-tags.php';
 
 		/**
 		 * Customizer additions.
 		 */
-		require( get_template_directory() . '/inc/customizer.php' );
+		require get_template_directory() . '/inc/customizer.php';
 
 		/**
 		 * Template Functions
-		 *
 		 */
-		require( get_template_directory() . '/inc/template-functions.php' );
+		require get_template_directory() . '/inc/template-functions.php';
 
 		/**
 		 * MF2 Compatibility Functions
-		 *
 		 */
-		require( get_template_directory() . '/inc/mf2.php' );
+		require get_template_directory() . '/inc/mf2.php';
 
 		/**
 		 * Make theme available for translation
@@ -64,8 +62,10 @@ if ( ! function_exists( 'indieweb_publisher_setup' ) ) :
 		 * Enable Custom Backgrounds
 		 */
 		add_theme_support(
-			'custom-background', apply_filters(
-				'indieweb_publisher_custom_background_args', array(
+			'custom-background',
+			apply_filters(
+				'indieweb_publisher_custom_background_args',
+				array(
 					'default-color' => 'ffffff',
 					'default-image' => '',
 				)
@@ -74,7 +74,8 @@ if ( ! function_exists( 'indieweb_publisher_setup' ) ) :
 
 		// Enable support for HTML5 markup.
 		add_theme_support(
-			'html5', array(
+			'html5',
+			array(
 				'comment-list',
 				'search-form',
 				'comment-form',
@@ -125,7 +126,7 @@ if ( ! function_exists( 'indieweb_publisher_setup' ) ) :
 			array(
 				'primary' => __( 'Primary Menu', 'independent-publisher' ),
 				'single'  => __( 'Single Posts Menu', 'independent-publisher' ),
-				'social'  => __( 'Social', 'independent-publisher' )
+				'social'  => __( 'Social', 'independent-publisher' ),
 			)
 		);
 
@@ -134,7 +135,8 @@ if ( ! function_exists( 'indieweb_publisher_setup' ) ) :
 		 */
 		if ( ! class_exists( 'Kind_Taxonomy' ) ) {
 			add_theme_support(
-				'post-formats', array(
+				'post-formats',
+				array(
 					'aside',
 					'link',
 					'gallery',
@@ -143,7 +145,7 @@ if ( ! function_exists( 'indieweb_publisher_setup' ) ) :
 					'chat',
 					'image',
 					'video',
-					'audio'
+					'audio',
 				)
 			);
 		}
@@ -164,12 +166,12 @@ add_action( 'after_setup_theme', 'indieweb_publisher_theme_slug_setup' );
 /**
  * Include additional plugin support routines
  */
-require( get_template_directory() . '/inc/plugin-support.php' );
+require get_template_directory() . '/inc/plugin-support.php';
 
 /**
  * Load Jetpack compatibility file.
  */
-require( get_template_directory() . '/inc/jetpack.php' );
+require get_template_directory() . '/inc/jetpack.php';
 
 /**
  * Register widgetized areas and update sidebar with default widgets
@@ -217,7 +219,7 @@ function indieweb_publisher_scripts() {
 		wp_enqueue_script( 'nprogress', get_template_directory_uri() . '/js/nprogress.js', array(), '0.1.3' );
 	}
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) && !indieweb_publisher_hide_comments() ) {
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) && ! indieweb_publisher_hide_comments() ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 
@@ -289,7 +291,7 @@ endif;
  * Loads the PHP file that generates the Customizer CSS for the front-end
  */
 function indieweb_publisher_customizer_css() {
-	require( get_template_directory() . '/css/customizer.css.php' );
+	require get_template_directory() . '/css/customizer.css.php';
 	wp_die();
 }
 
@@ -309,7 +311,7 @@ add_action( 'wp_ajax_nopriv_indieweb_publisher_customizer_css', 'indieweb_publis
  * IMPORTANT: Customizer CSS *must* be called _after_ the main stylesheet,
  * to ensure that customizer-modified styles override the defaults.
  */
-if( is_rtl() ) {
+if ( is_rtl() ) {
 	add_action( 'init', 'indieweb_publisher_remove_locale_stylesheet' );
 	add_action( 'wp_enqueue_scripts', 'indieweb_publisher_stylesheet_rtl' );
 } else {
@@ -352,7 +354,7 @@ endif;
 /**
  * Implement the Custom Header feature
  */
-require( get_template_directory() . '/inc/custom-header.php' );
+require get_template_directory() . '/inc/custom-header.php';
 
 /**
  * Fix comment count so that it doesn't include pings/trackbacks
@@ -370,7 +372,7 @@ function indieweb_publisher_comment_count( $count ) {
 	}
 }
 
-if ( ! function_exists( 'indieweb_publisher_show_full_name_comment_reply_to' ) ):
+if ( ! function_exists( 'indieweb_publisher_show_full_name_comment_reply_to' ) ) :
 	function indieweb_publisher_show_full_name_comment_reply_to() {
 		$indieweb_publisher_general_options = get_option( 'indieweb_publisher_general_options' );
 		if ( isset( $indieweb_publisher_general_options['show_full_name_comment_reply_to'] ) && $indieweb_publisher_general_options['show_full_name_comment_reply_to'] ) {
@@ -389,7 +391,7 @@ if ( ! function_exists( 'indieweb_publisher_author_comment_reply_link' ) ) :
 
 		// If no comment author is blank, use 'Anonymous'
 		if ( empty( $comment->comment_author ) ) {
-			if ( !empty( $comment->user_id ) ) {
+			if ( ! empty( $comment->user_id ) ) {
 				$user   = get_userdata( $comment->user_id );
 				$author = $user->user_login;
 			} else {
@@ -400,7 +402,7 @@ if ( ! function_exists( 'indieweb_publisher_author_comment_reply_link' ) ) :
 		}
 
 		// If the user provided more than a first name, use only first name if the theme is configured to do so
-		if ( strpos( $author, ' ' ) && !indieweb_publisher_show_full_name_comment_reply_to() ) {
+		if ( strpos( $author, ' ' ) && ! indieweb_publisher_show_full_name_comment_reply_to() ) {
 			$author = substr( $author, 0, strpos( $author, ' ' ) );
 		}
 
@@ -421,7 +423,7 @@ if ( ! function_exists( 'indieweb_publisher_comment_form_args' ) ) :
 	 */
 	function indieweb_publisher_comment_form_args() {
 
-		if ( !is_user_logged_in() ) {
+		if ( ! is_user_logged_in() ) {
 			$comment_notes_before = '';
 			$comment_notes_after  = '';
 		} else {
@@ -456,7 +458,8 @@ if ( ! function_exists( 'indieweb_publisher_comment_form_args' ) ) :
 			'comment_notes_before' => $comment_notes_before,
 			'comment_notes_after'  => $comment_notes_after,
 			'fields'               => apply_filters(
-				'comment_form_default_fields', array(
+				'comment_form_default_fields',
+				array(
 					'author' =>
 						'<p class="comment-form-author"><label for="author">' . __( 'Name', 'independent-publisher' ) . '</label>' .
 						( $req ? '' : '' ) .
@@ -525,7 +528,7 @@ if ( ! function_exists( 'indieweb_publisher_site_logo_icon_js' ) ) :
 endif;
 add_action( 'wp_enqueue_scripts', 'indieweb_publisher_site_logo_icon_js' );
 
-if ( ! function_exists( 'indieweb_publisher_is_multi_author_mode' ) ):
+if ( ! function_exists( 'indieweb_publisher_is_multi_author_mode' ) ) :
 	/**
 	 * Returns true if Multi-Author Mode is enabled
 	 */
@@ -550,7 +553,7 @@ if ( ! function_exists( 'indieweb_publisher_show_author_card' ) ) :
 	function indieweb_publisher_show_author_card() {
 		$indieweb_publisher_general_options = get_option( 'indieweb_publisher_general_options' );
 
-		if ( !isset( $indieweb_publisher_general_options['show_author_card'] ) || $indieweb_publisher_general_options['show_author_card'] ) {
+		if ( ! isset( $indieweb_publisher_general_options['show_author_card'] ) || $indieweb_publisher_general_options['show_author_card'] ) {
 			return true;
 		} else {
 			return false;
@@ -698,12 +701,12 @@ function indieweb_publisher_has_full_width_featured_image() {
 		return false;
 	}
 
-	$full_width_featured_image             = get_post_meta( get_the_ID(), 'full_width_featured_image' );
-	$full_width_featured_image_disabled    = get_post_meta( get_the_ID(), 'full_width_featured_image_disabled' );
+	$full_width_featured_image          = get_post_meta( get_the_ID(), 'full_width_featured_image' );
+	$full_width_featured_image_disabled = get_post_meta( get_the_ID(), 'full_width_featured_image_disabled' );
 	$indieweb_publisher_general_options = get_option( 'indieweb_publisher_general_options' );
 
 	// If Auto-Set Featured Image as Post Cover is enabled and it hasn't been disabled for this post, return true.
-	if ( isset( $indieweb_publisher_general_options['auto_featured_image_post_cover'] ) && $indieweb_publisher_general_options['auto_featured_image_post_cover'] && !$full_width_featured_image_disabled ) {
+	if ( isset( $indieweb_publisher_general_options['auto_featured_image_post_cover'] ) && $indieweb_publisher_general_options['auto_featured_image_post_cover'] && ! $full_width_featured_image_disabled ) {
 		return true;
 	}
 
@@ -725,11 +728,10 @@ function indieweb_publisher_post_has_post_cover_title() {
 
 	$indieweb_publisher_general_options = get_option( 'indieweb_publisher_general_options' );
 
-
 	// Allow site owner to set this option on a per-post basis using a Custom Field
 	if ( ( $post_has_cover_title === '1' || $post_has_cover_title === 'true' ) && $has_full_width_featured_image ) {
 		return true;
-	} else if ( ( $post_has_cover_title === '0' || $post_has_cover_title === 'false' ) && $has_full_width_featured_image ) {
+	} elseif ( ( $post_has_cover_title === '0' || $post_has_cover_title === 'false' ) && $has_full_width_featured_image ) {
 		return false;
 	}
 
@@ -899,6 +901,7 @@ add_filter( 'body_class', 'indieweb_publisher_post_excerpts_body_class' );
 if ( ! function_exists( 'indieweb_publisher_post_word_count' ) ) :
 	/**
 	 * Returns number of words in a post
+	 *
 	 * @return string
 	 */
 	function indieweb_publisher_post_word_count() {
@@ -919,7 +922,7 @@ if ( ! function_exists( 'indieweb_publisher_first_sentence_excerpt' ) ) :
 		$content_post = get_post( $post->ID );
 
 		// Only generate a one-sentence excerpt if there is no excerpt set and One Sentence Excerpts is enabled
-		if ( !$content_post->post_excerpt && indieweb_publisher_generate_one_sentence_excerpts() ) {
+		if ( ! $content_post->post_excerpt && indieweb_publisher_generate_one_sentence_excerpts() ) {
 
 			// The following mimics the functionality of wp_trim_excerpt() in wp-includes/formatting.php
 			// and ensures that no shortcodes or embed URLs are included in our generated excerpt.
@@ -936,7 +939,7 @@ if ( ! function_exists( 'indieweb_publisher_first_sentence_excerpt' ) ) :
 			$strings = preg_split( '/(\.|!|\?)\s/', strip_tags( $text ), 2, PREG_SPLIT_DELIM_CAPTURE );
 
 			// $strings[0] is the first sentence and $strings[1] is the punctuation character at the end
-			if ( !empty( $strings[0] ) && !empty( $strings[1] ) ) {
+			if ( ! empty( $strings[0] ) && ! empty( $strings[1] ) ) {
 				$text = $strings[0] . $strings[1];
 			}
 
@@ -965,25 +968,26 @@ function indieweb_publisher_featured_image_meta( $content ) {
 	$meta_key = 'full_width_featured_image';
 
 	// Text for checkbox
-	$text = __( "Use as post cover (full-width)", 'independent-publisher' );
+	$text = __( 'Use as post cover (full-width)', 'independent-publisher' );
 
 	// Option type (for use when saving post data in indieweb_publisher_save_featured_image_meta()
-	$option_type = "enable";
+	$option_type = 'enable';
 
-	/* If Auto-Set Featured Image as Post Cover enabled, this checkbox's functionality should reverse and
+	/*
+	 If Auto-Set Featured Image as Post Cover enabled, this checkbox's functionality should reverse and
 	 * allow for disabling Post Covers on a post-by-post basis.
 	 */
 	if ( indieweb_publisher_auto_featured_image_post_cover() ) {
 		$meta_key    = 'full_width_featured_image_disabled';
-		$text        = __( "Disable post cover (full-width)", 'independent-publisher' );
-		$option_type = "disable";
+		$text        = __( 'Disable post cover (full-width)', 'independent-publisher' );
+		$option_type = 'disable';
 	}
 
 	// Get the current setting
 	$value = esc_attr( get_post_meta( $post->ID, $meta_key, true ) );
 
 	// Output the checkbox HTML
-	$label = '<label for="' . $meta_key . '" class="selectit"><input name="' . $meta_key . '" type="checkbox" id="' . $meta_key . '" value="1" ' . checked( $value, 1, false ) . '> ' . $text . '</label>';
+	$label  = '<label for="' . $meta_key . '" class="selectit"><input name="' . $meta_key . '" type="checkbox" id="' . $meta_key . '" value="1" ' . checked( $value, 1, false ) . '> ' . $text . '</label>';
 	$label .= '<input type="hidden" name="full_width_featured_image_enable_disable" value="' . $option_type . '">';
 
 	$label = wp_nonce_field( basename( __FILE__ ), 'indieweb_publisher_full_width_featured_image_meta_nonce' ) . $label;
@@ -1036,7 +1040,6 @@ function indieweb_publisher_save_featured_image_meta( $post_id, $post ) {
 		$meta_key = 'full_width_featured_image'; // Default
 	}
 
-
 	/* Get the meta value of the custom field key. */
 	$meta_value = get_post_meta( $post_id, $meta_key, true );
 
@@ -1062,7 +1065,7 @@ add_action( 'save_post', 'indieweb_publisher_save_featured_image_meta', 10, 2 );
  */
 function indieweb_publisher_is_very_first_standard_post() {
 	global $wp_query;
-	if ( in_the_loop() && $wp_query->current_post == 0 && !is_paged() && false === get_post_format() && get_query_var( 'paged' ) === 0 ) {
+	if ( in_the_loop() && $wp_query->current_post == 0 && ! is_paged() && false === get_post_format() && get_query_var( 'paged' ) === 0 ) {
 		return true;
 	} else {
 		return false;
@@ -1188,12 +1191,12 @@ function indieweb_publisher_replytocom() {
  * Returns the number of approved webmentions, pings/trackbacks the current post has
  */
 function indieweb_publisher_comment_count_mentions() {
-	$args = array(
+	$args   = array(
 		'post_id'  => get_the_ID(),
 		'type__in' => array( 'pings', 'webmention' ),
-		'status'   => 'approve'
+		'status'   => 'approve',
 	);
-	$_query = new WP_Comment_Query;
+	$_query = new WP_Comment_Query();
 	return count( $_query->query( $args ) );
 }
 
@@ -1240,7 +1243,7 @@ if ( ! function_exists( 'indieweb_publisher_maybe_linkify_the_excerpt' ) ) :
 	 * Returns the excerpt with the excerpt linked to the permalink, for display on non-Single pages
 	 */
 	function indieweb_publisher_maybe_linkify_the_excerpt( $content ) {
-		if ( !is_single() ) {
+		if ( ! is_single() ) {
 			$content = '<a href="' . get_permalink() . '" rel="bookmark" title="' . indieweb_publisher_post_link_title() . '">' . $content . '</a>';
 		}
 
@@ -1270,7 +1273,7 @@ if ( ! function_exists( 'indieweb_publisher_html_tag_schema' ) ) :
 
 		// Is single post
 		if ( is_single() ) {
-			$type = "Article";
+			$type = 'Article';
 		} // Contact form page ID
 		else {
 			if ( is_page( 1 ) ) {
@@ -1300,7 +1303,8 @@ if ( ! function_exists( 'indieweb_publisher_show_page_load_progress_bar' ) ) :
 	/**
 	 * Echos the HTML and JavScript necessary to enable page load progress bar
 	 */
-	function indieweb_publisher_show_page_load_progress_bar() { ?>
+	function indieweb_publisher_show_page_load_progress_bar() {
+		?>
 		<!-- Progress Bar - https://github.com/rstacruz/nprogress -->
 
 		<div class="bar" role="bar"></div>

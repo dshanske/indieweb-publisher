@@ -16,7 +16,7 @@ if ( function_exists( 'subscribe_reloaded_show' ) ) {
 	}
 }
 
-if ( !function_exists( 'indieweb_publisher_jetpack_dark_overlay_fix_css' ) ) :
+if ( ! function_exists( 'indieweb_publisher_jetpack_dark_overlay_fix_css' ) ) :
 	/**
 	 * Fixes an issue with a dark overlay that appears < 800px when the Jetpack Infinite Scroll
 	 * module is enabled. See https://github.com/raamdev/independent-publisher/issues/72
@@ -31,7 +31,7 @@ endif;
 /**
  * When the Disqus Commenting System is active and enabled, don't load our comment form enhancements
  */
-include_once( ABSPATH . 'wp-admin/includes/plugin.php' ); // Required to use is_plugin_active() here
+require_once ABSPATH . 'wp-admin/includes/plugin.php'; // Required to use is_plugin_active() here
 if (
 	is_plugin_active( 'disqus-comment-system/disqus.php' )
 	&& ! function_exists( 'indieweb_publisher_enhanced_comment_form' )
@@ -56,12 +56,12 @@ if (
 	}
 }
 
-if ( !function_exists( 'indieweb_publisher_wp_pagenavi_css' ) ) :
+if ( ! function_exists( 'indieweb_publisher_wp_pagenavi_css' ) ) :
 	/**
 	 * Improves the style of WP-PageNavi when used with this theme
 	 */
 	function indieweb_publisher_wp_pagenavi_css() {
-		if ( function_exists('wp_pagenavi') ) {
+		if ( function_exists( 'wp_pagenavi' ) ) {
 			wp_enqueue_style( 'independent-publisher-wp-pagenavi-css', get_template_directory_uri() . '/css/wp-pagenavi.css', array(), '1.7' );
 		}
 	}

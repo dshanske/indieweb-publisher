@@ -56,13 +56,14 @@ function indieweb_publisher_get_default_header_image() {
 		$default = '';
 	}
 
-	$url = ( is_ssl() ) ? 'https://secure.gravatar.com' : 'http://gravatar.com';
+	$url  = ( is_ssl() ) ? 'https://secure.gravatar.com' : 'http://gravatar.com';
 	$url .= sprintf( '/avatar/%s/', md5( get_option( 'admin_email' ) ) );
-	$url = add_query_arg(
+	$url  = add_query_arg(
 		array(
 			's' => 100,
 			'd' => urlencode( $default ),
-		), $url
+		),
+		$url
 	);
 
 	return esc_url_raw( $url );

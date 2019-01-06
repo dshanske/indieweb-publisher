@@ -19,7 +19,10 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<div id="content" class="site-content" role="main">
 
-			<?php while ( have_posts() ) : the_post(); ?>
+			<?php
+			while ( have_posts() ) :
+				the_post();
+				?>
 
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 					<?php if ( has_post_thumbnail() ) : ?>
@@ -33,27 +36,31 @@ get_header(); ?>
 					<div class="entry-content">
 						<?php the_content(); ?>
 
-						<?php if (function_exists('wp_pagenavi')) : // WP-PageNavi support ?>
+						<?php if ( function_exists( 'wp_pagenavi' ) ) : // WP-PageNavi support ?>
 
 							<?php wp_pagenavi( array( 'type' => 'multipart' ) ); ?>
 
-						<?php else: ?>
+						<?php else : ?>
 
-							<?php wp_link_pages(
+							<?php
+							wp_link_pages(
 								array(
 									'before'           => '<div class="page-links-next-prev">',
 									'after'            => '</div>',
 									'nextpagelink'     => '<button class="next-page-nav">' . __( 'Next page &rarr;', 'independent-publisher' ) . '</button>',
 									'previouspagelink' => '<button class="previous-page-nav">' . __( '&larr; Previous page', 'independent-publisher' ) . '</button>',
-									'next_or_number'   => 'next'
+									'next_or_number'   => 'next',
 								)
-							); ?>
-							<?php wp_link_pages(
+							);
+							?>
+							<?php
+							wp_link_pages(
 								array(
 									'before' => '<div class="page-links">' . __( 'Pages:', 'independent-publisher' ),
-									'after'  => '</div>'
+									'after'  => '</div>',
 								)
-							); ?>
+							);
+							?>
 
 						<?php endif; ?>
 					</div>

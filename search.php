@@ -22,7 +22,10 @@ get_header(); ?>
 				</header><!-- .page-header -->
 
 				<?php /* Start the Loop */ ?>
-				<?php while ( have_posts() ) : the_post(); ?>
+				<?php
+				while ( have_posts() ) :
+					the_post();
+					?>
 
 					<?php get_template_part( 'content', 'search' ); ?>
 

@@ -13,34 +13,37 @@
 class IndiewebPublisher_Customize {
 
 	private static $default_colors = array(
-			'text_color' => '#000000',
-			'background_color' => '#ffffff',
-			'comment_form_background_color' => '#F1F1F1',
-			'comment_form_text_color' => '#000000',
-			'link_color' => '#57ad68',
-			'header_text_color' => '#333332',
-			'primary_meta_text_color' => '#929292',
-			'secondary_meta_text_color' => '#b3b3b1'
+		'text_color'                    => '#000000',
+		'background_color'              => '#ffffff',
+		'comment_form_background_color' => '#F1F1F1',
+		'comment_form_text_color'       => '#000000',
+		'link_color'                    => '#57ad68',
+		'header_text_color'             => '#333332',
+		'primary_meta_text_color'       => '#929292',
+		'secondary_meta_text_color'     => '#b3b3b1',
 	);
 
 	public static function register( $wp_customize ) {
 
 		$wp_customize->add_section(
-			'indieweb_publisher_layout_options', array(
+			'indieweb_publisher_layout_options',
+			array(
 				'title'    => __( 'Layout Options', 'independent-publisher' ),
 				'priority' => 124,
 			)
 		);
 
 		$wp_customize->add_section(
-			'indieweb_publisher_excerpt_options', array(
+			'indieweb_publisher_excerpt_options',
+			array(
 				'title'    => __( 'Excerpt Options', 'independent-publisher' ),
 				'priority' => 125,
 			)
 		);
 
 		$wp_customize->add_section(
-			'indieweb_publisher_general_options', array(
+			'indieweb_publisher_general_options',
+			array(
 				'title'    => __( 'General Options', 'independent-publisher' ),
 				'priority' => 130,
 			)
@@ -48,7 +51,8 @@ class IndiewebPublisher_Customize {
 
 		// Excerpt Options
 		$wp_customize->add_setting(
-			'indieweb_publisher_excerpt_options[excerpts]', array(
+			'indieweb_publisher_excerpt_options[excerpts]',
+			array(
 				'default'           => '0',
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
@@ -56,21 +60,23 @@ class IndiewebPublisher_Customize {
 			)
 		);
 		$wp_customize->add_control(
-			'excerpts', array(
+			'excerpts',
+			array(
 				'label'    => __( 'Post Excerpts', 'independent-publisher' ),
 				'settings' => 'indieweb_publisher_excerpt_options[excerpts]',
 				'section'  => 'indieweb_publisher_excerpt_options',
 				'type'     => 'select',
 				'choices'  => array(
 					'0' => __( 'Disabled', 'independent-publisher' ),
-					'1' => __( 'Enabled', 'independent-publisher' )
+					'1' => __( 'Enabled', 'independent-publisher' ),
 				),
 			)
 		);
 
 		// Generate One-Sentence Excerpts
 		$wp_customize->add_setting(
-			'indieweb_publisher_excerpt_options[generate_one_sentence_excerpts]', array(
+			'indieweb_publisher_excerpt_options[generate_one_sentence_excerpts]',
+			array(
 				'default'           => false,
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
@@ -78,7 +84,8 @@ class IndiewebPublisher_Customize {
 			)
 		);
 		$wp_customize->add_control(
-			'generate_one_sentence_excerpts', array(
+			'generate_one_sentence_excerpts',
+			array(
 				'settings' => 'indieweb_publisher_excerpt_options[generate_one_sentence_excerpts]',
 				'label'    => __( 'Generate One-Sentence Excerpts', 'independent-publisher' ),
 				'section'  => 'indieweb_publisher_excerpt_options',
@@ -88,7 +95,8 @@ class IndiewebPublisher_Customize {
 
 		// Show Full Content for First Post
 		$wp_customize->add_setting(
-			'indieweb_publisher_excerpt_options[show_full_content_first_post]', array(
+			'indieweb_publisher_excerpt_options[show_full_content_first_post]',
+			array(
 				'default'           => false,
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
@@ -96,7 +104,8 @@ class IndiewebPublisher_Customize {
 			)
 		);
 		$wp_customize->add_control(
-			'show_full_content_first_post', array(
+			'show_full_content_first_post',
+			array(
 				'settings' => 'indieweb_publisher_excerpt_options[show_full_content_first_post]',
 				'label'    => __( 'Always Show Full Content for First Post', 'independent-publisher' ),
 				'section'  => 'indieweb_publisher_excerpt_options',
@@ -106,7 +115,8 @@ class IndiewebPublisher_Customize {
 
 		// Show Post Thumbnails
 		$wp_customize->add_setting(
-			'indieweb_publisher_excerpt_options[show_post_thumbnails]', array(
+			'indieweb_publisher_excerpt_options[show_post_thumbnails]',
+			array(
 				'default'           => false,
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
@@ -114,7 +124,8 @@ class IndiewebPublisher_Customize {
 			)
 		);
 		$wp_customize->add_control(
-			'show_post_thumbnails', array(
+			'show_post_thumbnails',
+			array(
 				'settings' => 'indieweb_publisher_excerpt_options[show_post_thumbnails]',
 				'label'    => __( 'Show Post Thumbnails', 'independent-publisher' ),
 				'section'  => 'indieweb_publisher_excerpt_options',
@@ -124,7 +135,8 @@ class IndiewebPublisher_Customize {
 
 		// Show Post Word Count
 		$wp_customize->add_setting(
-			'indieweb_publisher_general_options[show_post_word_count]', array(
+			'indieweb_publisher_general_options[show_post_word_count]',
+			array(
 				'default'           => false,
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
@@ -132,7 +144,8 @@ class IndiewebPublisher_Customize {
 			)
 		);
 		$wp_customize->add_control(
-			'show_post_word_count', array(
+			'show_post_word_count',
+			array(
 				'settings' => 'indieweb_publisher_general_options[show_post_word_count]',
 				'label'    => __( 'Show Post Word Count in Entry Meta', 'independent-publisher' ),
 				'section'  => 'indieweb_publisher_general_options',
@@ -142,7 +155,8 @@ class IndiewebPublisher_Customize {
 
 		// Show Date in Entry Meta
 		$wp_customize->add_setting(
-			'indieweb_publisher_general_options[show_date_entry_meta]', array(
+			'indieweb_publisher_general_options[show_date_entry_meta]',
+			array(
 				'default'           => false,
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
@@ -150,7 +164,8 @@ class IndiewebPublisher_Customize {
 			)
 		);
 		$wp_customize->add_control(
-			'show_date_entry_meta', array(
+			'show_date_entry_meta',
+			array(
 				'settings' => 'indieweb_publisher_general_options[show_date_entry_meta]',
 				'label'    => __( 'Show Post Date in Entry Meta', 'independent-publisher' ),
 				'section'  => 'indieweb_publisher_general_options',
@@ -160,7 +175,8 @@ class IndiewebPublisher_Customize {
 
 		// Show Widgets on Single Posts
 		$wp_customize->add_setting(
-			'indieweb_publisher_general_options[show_widgets_on_single]', array(
+			'indieweb_publisher_general_options[show_widgets_on_single]',
+			array(
 				'default'           => false,
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
@@ -168,7 +184,8 @@ class IndiewebPublisher_Customize {
 			)
 		);
 		$wp_customize->add_control(
-			'show_widgets_on_single', array(
+			'show_widgets_on_single',
+			array(
 				'settings' => 'indieweb_publisher_general_options[show_widgets_on_single]',
 				'label'    => __( 'Show Widgets on Single Posts', 'independent-publisher' ),
 				'section'  => 'indieweb_publisher_general_options',
@@ -178,7 +195,8 @@ class IndiewebPublisher_Customize {
 
 		// Show Nav Menu on Single Posts
 		$wp_customize->add_setting(
-			'indieweb_publisher_general_options[show_nav_menu_on_single]', array(
+			'indieweb_publisher_general_options[show_nav_menu_on_single]',
+			array(
 				'default'           => false,
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
@@ -186,7 +204,8 @@ class IndiewebPublisher_Customize {
 			)
 		);
 		$wp_customize->add_control(
-			'show_nav_menu_on_single', array(
+			'show_nav_menu_on_single',
+			array(
 				'settings' => 'indieweb_publisher_general_options[show_nav_menu_on_single]',
 				'label'    => __( 'Show Nav Menu on Single Posts', 'independent-publisher' ),
 				'section'  => 'indieweb_publisher_general_options',
@@ -196,7 +215,8 @@ class IndiewebPublisher_Customize {
 
 		// Show Updated Date on Single Posts
 		$wp_customize->add_setting(
-			'indieweb_publisher_general_options[show_updated_date_on_single]', array(
+			'indieweb_publisher_general_options[show_updated_date_on_single]',
+			array(
 				'default'           => false,
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
@@ -204,7 +224,8 @@ class IndiewebPublisher_Customize {
 			)
 		);
 		$wp_customize->add_control(
-			'show_updated_date_on_single', array(
+			'show_updated_date_on_single',
+			array(
 				'settings' => 'indieweb_publisher_general_options[show_updated_date_on_single]',
 				'label'    => __( 'Show Updated Date on Single Posts', 'independent-publisher' ),
 				'section'  => 'indieweb_publisher_general_options',
@@ -214,7 +235,8 @@ class IndiewebPublisher_Customize {
 
 		// Show Author Card on Single Posts
 		$wp_customize->add_setting(
-			'indieweb_publisher_general_options[show_author_card]', array(
+			'indieweb_publisher_general_options[show_author_card]',
+			array(
 				'default'           => true,
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
@@ -222,7 +244,8 @@ class IndiewebPublisher_Customize {
 			)
 		);
 		$wp_customize->add_control(
-			'show_author_card', array(
+			'show_author_card',
+			array(
 				'settings' => 'indieweb_publisher_general_options[show_author_card]',
 				'label'    => __( 'Show Author Card on Single Posts', 'independent-publisher' ),
 				'section'  => 'indieweb_publisher_general_options',
@@ -232,7 +255,8 @@ class IndiewebPublisher_Customize {
 
 		// Single-Column Layout
 		$wp_customize->add_setting(
-			'indieweb_publisher_layout_options[single_column_layout]', array(
+			'indieweb_publisher_layout_options[single_column_layout]',
+			array(
 				'default'           => false,
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
@@ -240,7 +264,8 @@ class IndiewebPublisher_Customize {
 			)
 		);
 		$wp_customize->add_control(
-			'single_column_layout', array(
+			'single_column_layout',
+			array(
 				'settings' => 'indieweb_publisher_layout_options[single_column_layout]',
 				'label'    => __( 'Single-Column Layout', 'independent-publisher' ),
 				'section'  => 'indieweb_publisher_layout_options',
@@ -250,7 +275,8 @@ class IndiewebPublisher_Customize {
 
 		// Multi-Author Mode
 		$wp_customize->add_setting(
-			'indieweb_publisher_general_options[multi_author_mode]', array(
+			'indieweb_publisher_general_options[multi_author_mode]',
+			array(
 				'default'           => false,
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
@@ -258,7 +284,8 @@ class IndiewebPublisher_Customize {
 			)
 		);
 		$wp_customize->add_control(
-			'multi_author_mode', array(
+			'multi_author_mode',
+			array(
 				'settings' => 'indieweb_publisher_general_options[multi_author_mode]',
 				'label'    => __( 'Enable Multi-Author Mode', 'independent-publisher' ),
 				'section'  => 'indieweb_publisher_general_options',
@@ -268,7 +295,8 @@ class IndiewebPublisher_Customize {
 
 		// Show Page Load Progress Bar
 		$wp_customize->add_setting(
-			'indieweb_publisher_general_options[show_page_load_progress_bar]', array(
+			'indieweb_publisher_general_options[show_page_load_progress_bar]',
+			array(
 				'default'           => false,
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
@@ -276,7 +304,8 @@ class IndiewebPublisher_Customize {
 			)
 		);
 		$wp_customize->add_control(
-			'show_page_load_progress_bar', array(
+			'show_page_load_progress_bar',
+			array(
 				'settings' => 'indieweb_publisher_general_options[show_page_load_progress_bar]',
 				'label'    => __( 'Show Page Load Progress Bar', 'independent-publisher' ),
 				'section'  => 'indieweb_publisher_general_options',
@@ -286,7 +315,8 @@ class IndiewebPublisher_Customize {
 
 		// Auto-Set Featured Image as Post Cover
 		$wp_customize->add_setting(
-			'indieweb_publisher_general_options[auto_featured_image_post_cover]', array(
+			'indieweb_publisher_general_options[auto_featured_image_post_cover]',
+			array(
 				'default'           => false,
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
@@ -294,7 +324,8 @@ class IndiewebPublisher_Customize {
 			)
 		);
 		$wp_customize->add_control(
-			'auto_featured_image_post_cover', array(
+			'auto_featured_image_post_cover',
+			array(
 				'settings' => 'indieweb_publisher_general_options[auto_featured_image_post_cover]',
 				'label'    => __( 'Auto-Set Featured Image as Post Cover', 'independent-publisher' ),
 				'section'  => 'indieweb_publisher_general_options',
@@ -304,7 +335,8 @@ class IndiewebPublisher_Customize {
 
 		// Overlay Post Title on Post Cover
 		$wp_customize->add_setting(
-			'indieweb_publisher_general_options[post_cover_overlay_post_title]', array(
+			'indieweb_publisher_general_options[post_cover_overlay_post_title]',
+			array(
 				'default'           => false,
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
@@ -312,7 +344,8 @@ class IndiewebPublisher_Customize {
 			)
 		);
 		$wp_customize->add_control(
-			'post_cover_overlay_post_title', array(
+			'post_cover_overlay_post_title',
+			array(
 				'settings' => 'indieweb_publisher_general_options[post_cover_overlay_post_title]',
 				'label'    => __( 'Overlay Post Title on Post Cover', 'independent-publisher' ),
 				'section'  => 'indieweb_publisher_general_options',
@@ -322,7 +355,8 @@ class IndiewebPublisher_Customize {
 
 		// Show comment author's full name in reply-link
 		$wp_customize->add_setting(
-			'indieweb_publisher_general_options[show_full_name_comment_reply_to]', array(
+			'indieweb_publisher_general_options[show_full_name_comment_reply_to]',
+			array(
 				'default'           => false,
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
@@ -330,7 +364,8 @@ class IndiewebPublisher_Customize {
 			)
 		);
 		$wp_customize->add_control(
-			'show_full_name_comment_reply_to', array(
+			'show_full_name_comment_reply_to',
+			array(
 				'settings' => 'indieweb_publisher_general_options[show_full_name_comment_reply_to]',
 				'label'    => __( 'Show Full Name in Comment Reply-to', 'independent-publisher' ),
 				'section'  => 'indieweb_publisher_general_options',
@@ -340,7 +375,8 @@ class IndiewebPublisher_Customize {
 
 		// Comments Call to Action text
 		$wp_customize->add_setting(
-			'comments_call_to_action', array(
+			'comments_call_to_action',
+			array(
 				'default'           => 'Write a Comment',
 				'type'              => 'theme_mod',
 				'capability'        => 'edit_theme_options',
@@ -348,7 +384,8 @@ class IndiewebPublisher_Customize {
 			)
 		);
 		$wp_customize->add_control(
-			'comments_call_to_action', array(
+			'comments_call_to_action',
+			array(
 				'settings' => 'comments_call_to_action',
 				'label'    => __( 'Comments Call to Action', 'independent-publisher' ),
 				'section'  => 'indieweb_publisher_general_options',
@@ -357,53 +394,53 @@ class IndiewebPublisher_Customize {
 		);
 
 		// Color options
-
 		$colors = array();
 
 		$colors[] = array(
 			'slug'    => 'text_color',
 			'default' => self::$default_colors['text_color'],
-			'label'   => __( 'Text Color', 'independent-publisher' )
+			'label'   => __( 'Text Color', 'independent-publisher' ),
 		);
 		$colors[] = array(
 			'slug'    => 'comment_form_background_color',
 			'default' => self::$default_colors['comment_form_background_color'],
-			'label'   => __( 'Comment Form Background Color', 'independent-publisher' )
+			'label'   => __( 'Comment Form Background Color', 'independent-publisher' ),
 		);
 		$colors[] = array(
 			'slug'    => 'comment_form_text_color',
 			'default' => self::$default_colors['comment_form_text_color'],
-			'label'   => __( 'Comment Form Text Color', 'independent-publisher' )
+			'label'   => __( 'Comment Form Text Color', 'independent-publisher' ),
 		);
 		$colors[] = array(
 			'slug'    => 'link_color',
 			'default' => self::$default_colors['link_color'],
-			'label'   => __( 'Link Color', 'independent-publisher' )
+			'label'   => __( 'Link Color', 'independent-publisher' ),
 		);
 		$colors[] = array(
 			'slug'    => 'header_text_color',
 			'default' => self::$default_colors['header_text_color'],
-			'label'   => __( 'Title and Header Text Color', 'independent-publisher' )
+			'label'   => __( 'Title and Header Text Color', 'independent-publisher' ),
 		);
 		$colors[] = array(
 			'slug'    => 'primary_meta_text_color',
 			'default' => self::$default_colors['primary_meta_text_color'],
-			'label'   => __( 'Primary Meta Text Color', 'independent-publisher' )
+			'label'   => __( 'Primary Meta Text Color', 'independent-publisher' ),
 		);
 		$colors[] = array(
 			'slug'    => 'secondary_meta_text_color',
 			'default' => self::$default_colors['secondary_meta_text_color'],
-			'label'   => __( 'Secondary Meta Text Color', 'independent-publisher' )
+			'label'   => __( 'Secondary Meta Text Color', 'independent-publisher' ),
 		);
 		foreach ( $colors as $color ) {
 			// SETTINGS
 			$wp_customize->add_setting(
-				$color['slug'], array(
+				$color['slug'],
+				array(
 					'default'           => $color['default'],
 					'type'              => 'theme_mod',
 					'capability'        =>
 						'edit_theme_options',
-					'sanitize_callback' => 'sanitize_hex_color'
+					'sanitize_callback' => 'sanitize_hex_color',
 				)
 			);
 			// CONTROLS
@@ -414,7 +451,7 @@ class IndiewebPublisher_Customize {
 					array(
 						'label'    => $color['label'],
 						'section'  => 'colors',
-						'settings' => $color['slug']
+						'settings' => $color['slug'],
 					)
 				)
 			);
@@ -560,9 +597,9 @@ class IndiewebPublisher_Customize {
 	 * @since Independent Publisher 1.0
 	 */
 	public static function generate_css( $selector, $style, $mod_name, $prefix = '', $postfix = '', $echo = true, $format = '%1$s { %2$s:%3$s; }' ) {
-		$return            = '';
-		$mod               = get_theme_mod( $mod_name, self::$default_colors[$mod_name] );
-		if ( !empty( $mod ) ) {
+		$return = '';
+		$mod    = get_theme_mod( $mod_name, self::$default_colors[ $mod_name ] );
+		if ( ! empty( $mod ) ) {
 			$return = sprintf(
 				$format . "\n",
 				$selector,

@@ -12,7 +12,10 @@ get_header();
 	<div id="primary" class="content-area image-attachment">
 		<div id="content" class="site-content" role="main">
 
-			<?php while ( have_posts() ) : the_post(); ?>
+			<?php
+			while ( have_posts() ) :
+				the_post();
+				?>
 
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 					<header class="entry-header">
@@ -44,20 +47,20 @@ get_header();
 							<div class="attachment">
 								<?php
 								/*
-								 * Grab the IDs of all the image attachments in a gallery 
+								 * Grab the IDs of all the image attachments in a gallery
 								 * so we can get the URL of the next adjacent image in a gallery,
-								 * or the first image (if we're looking at the last image in a gallery), 
+								 * or the first image (if we're looking at the last image in a gallery),
 								 * or, in a gallery of one, just the link to that image file
 								 */
 								$attachments = array_values(
 									get_children(
 										array(
-											'post_parent'    => $post->post_parent,
-											'post_status'    => 'inherit',
-											'post_type'      => 'attachment',
+											'post_parent' => $post->post_parent,
+											'post_status' => 'inherit',
+											'post_type'   => 'attachment',
 											'post_mime_type' => 'image',
-											'order'          => 'ASC',
-											'orderby'        => 'menu_order ID'
+											'order'       => 'ASC',
+											'orderby'     => 'menu_order ID',
 										)
 									)
 								);
@@ -69,9 +72,8 @@ get_header();
 								$k ++;
 								// If there is more than 1 attachment in a gallery
 								if ( count( $attachments ) > 1 ) {
-									if ( isset( $attachments[$k] ) ) // get the URL of the next image attachment
-									{
-										$next_attachment_url = get_attachment_link( $attachments[$k]->ID );
+									if ( isset( $attachments[ $k ] ) ) {
+										$next_attachment_url = get_attachment_link( $attachments[ $k ]->ID );
 									} else // or get the URL of the first image attachment
 									{
 										$next_attachment_url = get_attachment_link( $attachments[0]->ID );
@@ -82,19 +84,22 @@ get_header();
 								}
 								?>
 
-								<a href="<?php echo $next_attachment_url; ?>" title="<?php echo esc_attr( get_the_title() ); ?>" rel="attachment"><?php
-									$attachment_size = apply_filters(
-										'indieweb_publisher_attachment_size', array(
-											1200,
-											1200
-										)
-									); // Filterable image size.
-									echo wp_get_attachment_image( $post->ID, $attachment_size );
-									?></a>
+								<a href="<?php echo $next_attachment_url; ?>" title="<?php echo esc_attr( get_the_title() ); ?>" rel="attachment">
+													<?php
+													$attachment_size = apply_filters(
+														'indieweb_publisher_attachment_size',
+														array(
+															1200,
+															1200,
+														)
+													); // Filterable image size.
+																																				  echo wp_get_attachment_image( $post->ID, $attachment_size );
+													?>
+									</a>
 							</div>
 							<!-- .attachment -->
 
-							<?php if ( !empty( $post->post_excerpt ) ) : ?>
+							<?php if ( ! empty( $post->post_excerpt ) ) : ?>
 								<div class="entry-caption">
 									<?php the_excerpt(); ?>
 								</div><!-- .entry-caption -->
@@ -113,15 +118,15 @@ get_header();
 					</div>
 					<!-- .entry-content -->
 
-					<?php indieweb_publisher_posted_author_bottom_card() ?>
+					<?php indieweb_publisher_posted_author_bottom_card(); ?>
 
 					<footer class="entry-meta">
 						<?php do_action( 'indieweb_publisher_entry_meta_top' ); ?>
 
-						<?php if ( comments_open() && !indieweb_publisher_hide_comments() ) : ?>
+						<?php if ( comments_open() && ! indieweb_publisher_hide_comments() ) : ?>
 							<div id="share-comment-button">
 								<button>
-									<i class="share-comment-icon"></i><?php echo indieweb_publisher_comments_call_to_action_text() ?>
+									<i class="share-comment-icon"></i><?php echo indieweb_publisher_comments_call_to_action_text(); ?>
 								</button>
 							</div>
 						<?php endif; ?>
