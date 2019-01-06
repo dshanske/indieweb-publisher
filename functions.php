@@ -130,21 +130,23 @@ if ( ! function_exists( 'indieweb_publisher_setup' ) ) :
 		);
 
 		/**
-		 * Add support for the Aside Post Formats
+		 * Add support for Post Formats if Post Kinds are not loaded
 		 */
-		add_theme_support(
-			'post-formats', array(
-				'aside',
-				'link',
-				'gallery',
-				'status',
-				'quote',
-				'chat',
-				'image',
-				'video',
-				'audio'
-			)
-		);
+		if ( ! class_exists( 'Kind_Taxonomy' ) ) {
+			add_theme_support(
+				'post-formats', array(
+					'aside',
+					'link',
+					'gallery',
+					'status',
+					'quote',
+					'chat',
+					'image',
+					'video',
+					'audio'
+				)
+			);
+		}
 	}
 endif; // indieweb_publisher_setup
 add_action( 'after_setup_theme', 'indieweb_publisher_setup' );
