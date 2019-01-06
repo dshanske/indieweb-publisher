@@ -1,0 +1,36 @@
+{
+  "name": "iw26",
+  "version": "1.0.0",
+  "description": "Indieweb Fork of WordPress TwentySixteen Theme",
+  "main": "index.php",
+  "dependencies": {},
+  "devDependencies": {
+    "genericons-neue": "^4.0.5",
+    "grunt": "^1.0.3",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-stylelint": "^0.10.1",
+    "grunt-wp-i18n": "^1.0.3",
+    "grunt-wp-readme-to-markdown": "^2.0.1",
+    "stylelint": "^9.9.0",
+    "stylelint-config-wordpress": "^13.1.0",
+    "stylelint-scss": "^3.4.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dshanske/iw26.git"
+  },
+  "keywords": [
+    "wordpress",
+    "indieweb"
+  ],
+  "author": "David Shanske",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/dshanske/iw26/issues"
+  },
+  "homepage": "https://github.com/dshanske/iw26"
+}
