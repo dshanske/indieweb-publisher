@@ -40,7 +40,7 @@
 		 Multiple valid text domains can be provided as a comma-delimited list. -->
 	<rule ref="WordPress.WP.I18n">
 		<properties>
-			<property name="text_domain" type="array" value="iw26"/>
+			<property name="text_domain" type="array" value="indieweb-publisher"/>
 		</properties>
 	</rule>
 

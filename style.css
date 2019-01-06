@@ -791,7 +791,7 @@ Accessibility
 }
 
 .format-link .entry-title a:after {
-	font-family: "Genericons";
+	font-family: "Genericons-Neue";
 	content: '\f107';
 	font-size: 24px;
 	height: 24px;
@@ -1471,7 +1471,7 @@ ul.taglist {
 	padding-right: 8px;
 	margin-top: -2px;
 	font-style: normal;
-	font-family: 'Genericons';
+	font-family: 'Genericons-Neue';
 	font-size: 20px;
 	vertical-align: top;
 	-webkit-font-smoothing: antialiased;
@@ -1483,7 +1483,7 @@ ul.taglist {
 	display: inline-block;
 	margin-top: -2px;
 	font-style: normal;
-	font-family: 'Genericons';
+	font-family: 'Genericons-Neue';
 	font-size: 20px;
 	vertical-align: top;
 	-webkit-font-smoothing: antialiased;

@@ -1,7 +1,7 @@
 {
-  "name": "iw26",
+  "name": "indieweb-publisher",
   "version": "1.0.0",
-  "description": "Indieweb Fork of WordPress TwentySixteen Theme",
+  "description": "Indieweb Feb of Independent Publisher Theme",
   "main": "index.php",
   "dependencies": {},
   "devDependencies": {
@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dshanske/iw26.git"
+    "url": "git+https://github.com/dshanske/indieweb-publisher.git"
   },
   "keywords": [
     "wordpress",
@@ -30,7 +30,7 @@
   "author": "David Shanske",
   "license": "GPL-2.0",
   "bugs": {
-    "url": "https://github.com/dshanske/iw26/issues"
+    "url": "https://github.com/dshanske/indieweb-publisher/issues"
   },
-  "homepage": "https://github.com/dshanske/iw26"
+  "homepage": "https://github.com/dshanske/indieweb-publisher"
 }
