@@ -924,6 +924,9 @@ if ( ! function_exists( 'indieweb_publisher_first_sentence_excerpt' ) ) :
 	 * Return the post excerpt. If no excerpt set, generates an excerpt using the first sentence.
 	 */
 	function indieweb_publisher_first_sentence_excerpt( $text = '' ) {
+		if ( is_admin() ) {
+			return $text;
+		}
 		global $post;
 		$content_post = get_post( $post->ID );
 
@@ -1071,7 +1074,7 @@ add_action( 'save_post', 'indieweb_publisher_save_featured_image_meta', 10, 2 );
  */
 function indieweb_publisher_is_very_first_standard_post() {
 	global $wp_query;
-	if ( in_the_loop() && $wp_query->current_post == 0 && ! is_paged() && false === get_post_format() && get_query_var( 'paged' ) === 0 ) {
+	if ( in_the_loop() && $wp_query->current_post == 0 && ! is_paged() && get_query_var( 'paged' ) === 0 ) {
 		return true;
 	} else {
 		return false;
@@ -1229,7 +1232,7 @@ if ( ! function_exists( 'indieweb_publisher_maybe_linkify_the_content' ) ) :
 	 * Returns the post content for Asides and Quotes with the content linked to the permalink, for display on non-Single pages
 	 */
 	function indieweb_publisher_maybe_linkify_the_content( $content ) {
-		if ( ! is_single() && ( 'aside' === get_post_format() || 'quote' === get_post_format() ) ) {
+		if ( ! is_admin() && ! is_single() && ( 'aside' === get_post_format() || 'quote' === get_post_format() ) ) {
 
 			// Asides and Quotes might have footnotes with anchor tags, or just anchor tags, both of which would screw things up when linking the content to itself (anchors cannot have anchors inside them), so let's clean things up
 			$content = indieweb_publisher_clean_content( $content );
@@ -1249,7 +1252,7 @@ if ( ! function_exists( 'indieweb_publisher_maybe_linkify_the_excerpt' ) ) :
 	 * Returns the excerpt with the excerpt linked to the permalink, for display on non-Single pages
 	 */
 	function indieweb_publisher_maybe_linkify_the_excerpt( $content ) {
-		if ( ! is_single() ) {
+		if ( ! is_single() || ! is_admin() ) {
 			$content = '<a href="' . get_permalink() . '" rel="bookmark" title="' . indieweb_publisher_post_link_title() . '">' . $content . '</a>';
 		}
 
