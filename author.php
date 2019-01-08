@@ -39,20 +39,22 @@ get_header(); ?>
 				rewind_posts();
 				?>
 
-				<?php get_template_part( 'author-bio' ); ?>
+				<?php get_template_part( 'template-parts/author-bio' ); ?>
 
 				<?php /* The loop */ ?>
 				<?php
 				while ( have_posts() ) :
 					the_post();
 					?>
-					<?php get_template_part( 'content', get_post_format() ); ?>
+					<?php 
+						get_template_part( 'template-parts/content', indieweb_publisher_get_post_kind() );
+					?>
 				<?php endwhile; ?>
 
 				<?php indieweb_publisher_content_nav( 'nav-below' ); ?>
 
 			<?php else : ?>
-				<?php get_template_part( 'content', 'none' ); ?>
+				<?php get_template_part( 'template-parts/content', 'none' ); ?>
 			<?php endif; ?>
 
 		</div>
