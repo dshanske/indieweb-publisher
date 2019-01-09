@@ -1,22 +1,22 @@
 ![screenshot](https://cloud.githubusercontent.com/assets/53005/3689770/d0d6eb0e-1342-11e4-901d-392ed565905f.png)
 
-Independent Publisher
+Indieweb Publisher
 =====================
 
-Independent Publisher is a WordPress Theme. This README contains documentation for theme options and features, along with a list of known issues and frequently asked questions. It also contains a list of theme filters and action hooks that can be used to modify and hook into various areas of the theme, as well as a list of functions that can be overidden in a Child Theme.
+Indieweb Publisher is a WordPress Theme. This README contains documentation for theme options and features, along with a list of known issues and frequently asked questions. It also contains a list of theme filters and action hooks that can be used to modify and hook into various areas of the theme, as well as a list of functions that can be overidden in a Child Theme.
 
  The main site for this project, along with a demo of this theme, is located at [http://independentpublisher.me](http://independentpublisher.me).
  
 **Note:** There are two versions of this theme: the primary version, which is being developed _here_ on GitHub, is also on [WordPress.org](https://wordpress.org/themes/independent-publisher/), and the secondary (forked) version is on [WordPress.com](https://wordpress.com/themes/independent-publisher). 
 
-WordPress.com took the original Independent Publisher theme from WordPress.org and changed it a bit to make it work on WordPress.com. I have no control over the WordPress.com version, as that's a closed-system, so if you have issues with that version, please post your support related questions [there](https://en.support.wordpress.com/). You can read more about the WordPress.com [version here](http://independentpublisher.me/2015/independent-publisher-announced-on-wordpress-com/).
+WordPress.com took the original Indieweb Publisher theme from WordPress.org and changed it a bit to make it work on WordPress.com. I have no control over the WordPress.com version, as that's a closed-system, so if you have issues with that version, please post your support related questions [there](https://en.support.wordpress.com/). You can read more about the WordPress.com [version here](http://independentpublisher.me/2015/independent-publisher-announced-on-wordpress-com/).
 
 ## Table of Contents
 
 * [Theme Options](https://github.com/raamdev/independent-publisher#theme-options)
 * [Post Covers (Full-Width Featured Images)](https://github.com/raamdev/independent-publisher#post-covers-full-width-featured-images)
 * [Post Subtitles](https://github.com/raamdev/independent-publisher#post-subtitles)
-* [Using a Child Theme to Customize Independent Publisher](https://github.com/raamdev/independent-publisher#using-a-child-theme-to-customize-independent-publisher)
+* [Using a Child Theme to Customize Indieweb Publisher](https://github.com/raamdev/independent-publisher#using-a-child-theme-to-customize-independent-publisher)
 * [Known Issues](https://github.com/raamdev/independent-publisher#known-issues)
 * [Frequently Asked Questions](https://github.com/raamdev/independent-publisher#frequently-asked-questions)
     * [Why is my Header Image not showing on Single posts?](https://github.com/raamdev/independent-publisher#why-is-my-header-image-not-showing-on-single-posts)
@@ -110,17 +110,17 @@ The `subtitle` class will style it like so:
 
 ![screen shot 2013-10-24 at 4 17 57 pm](https://f.cloud.github.com/assets/53005/1416672/d3f96c40-3f61-11e3-88eb-47428b696af4.png)
 
-## Using a Child Theme to Customize Independent Publisher
+## Using a Child Theme to Customize Indieweb Publisher
 
-If there are things you want to tweak in the Independent Publisher theme, a [Child Theme](http://codex.wordpress.org/Child_Themes) is the recommended method for doing so. By using a Child Theme, you can make changes without worrying about those changes being overwritten by a future update to the parent theme.
+If there are things you want to tweak in the Indieweb Publisher theme, a [Child Theme](http://codex.wordpress.org/Child_Themes) is the recommended method for doing so. By using a Child Theme, you can make changes without worrying about those changes being overwritten by a future update to the parent theme.
 
-After you've installed the Independent Publisher theme, download the [Independent Publisher Child Theme](https://github.com/raamdev/independent-publisher-child-theme/) and install and activate it. You can then start making changes to the Child Theme's files to override the parent theme. The Independent Publisher Child Theme comes with a few examples to help you get started.
+After you've installed the Indieweb Publisher theme, download the [Indieweb Publisher Child Theme](https://github.com/raamdev/independent-publisher-child-theme/) and install and activate it. You can then start making changes to the Child Theme's files to override the parent theme. The Indieweb Publisher Child Theme comes with a few examples to help you get started.
 
 For more information on using Child Themes, see the [WordPress Codex](http://codex.wordpress.org/Child_Themes).
 
 ## Known Issues
 
-* If you're using the [W3 Total Cache](http://wordpress.org/plugins/w3-total-cache/) plugin, you must disable the JS/CSS Minify option, as that [doesn't play well with jQuery](http://wordpress.org/support/topic/plugin-w3-total-cache-jquery-conflicts-when-added-to-minify?replies=6), which Independent Publisher makes use of. See also [Issue 46](https://github.com/raamdev/independent-publisher/issues/46#issuecomment-31478382).
+* If you're using the [W3 Total Cache](http://wordpress.org/plugins/w3-total-cache/) plugin, you must disable the JS/CSS Minify option, as that [doesn't play well with jQuery](http://wordpress.org/support/topic/plugin-w3-total-cache-jquery-conflicts-when-added-to-minify?replies=6), which Indieweb Publisher makes use of. See also [Issue 46](https://github.com/raamdev/independent-publisher/issues/46#issuecomment-31478382).
 
 ## Frequently Asked Questions
 
@@ -143,7 +143,7 @@ First you need to enable **Multi-Author Mode** in *Dashboard → Appearance → 
 
 ### Why is my Author Bio and picture at the top of my home page (or below a blog post) and not on the side?
 
-Independent Publisher is a *responsive* theme, which fits the size of your browser depending on the size of your screen.  If you are on a computer, making your browser window wider will automatically move the Author Bio and picture to the side instead of at the top on your homepage or at the bottom of a blog post.
+Indieweb Publisher is a *responsive* theme, which fits the size of your browser depending on the size of your screen.  If you are on a computer, making your browser window wider will automatically move the Author Bio and picture to the side instead of at the top on your homepage or at the bottom of a blog post.
 
 ### How do I add Social Media Buttons below the Logo?
 
@@ -169,7 +169,7 @@ Note that double-quotes are not allowed in that field and that you *must* use si
 
 ### How do I make MailChimp Signup Forms look better?
 
-MailChimp includes its own CSS in the HTML embed code that, by default, doesn't look quite right with Independent Publisher. To fix the MailChimp CSS, you can add the following to the `style.css` file of a [Child Theme](https://github.com/raamdev/independent-publisher-child-theme/) (or if you're using Jetpack, simply go to *Appearance → Edit CSS* and insert the following):
+MailChimp includes its own CSS in the HTML embed code that, by default, doesn't look quite right with Indieweb Publisher. To fix the MailChimp CSS, you can add the following to the `style.css` file of a [Child Theme](https://github.com/raamdev/independent-publisher-child-theme/) (or if you're using Jetpack, simply go to *Appearance → Edit CSS* and insert the following):
 
 ```
 #mc_signup .button {
@@ -214,7 +214,7 @@ MailChimp includes its own CSS in the HTML embed code that, by default, doesn't 
 
 ### How do I add an Archive page?
 
-The Independent Publisher theme includes a Page Template called "Archive Page" that you can use to create an Archive page. Simply create a new Page (*Pages -> Add New*), give it a title (e.g., "Archives"), then select the "Archive Page" template from the Template section in the Page Attributes meta box:
+The Indieweb Publisher theme includes a Page Template called "Archive Page" that you can use to create an Archive page. Simply create a new Page (*Pages -> Add New*), give it a title (e.g., "Archives"), then select the "Archive Page" template from the Template section in the Page Attributes meta box:
 
 ![screen shot 2014-04-28 at 3 51 36 pm](https://cloud.githubusercontent.com/assets/53005/2822091/a3c75ba8-cf0e-11e3-9ba4-62f2e81f6c04.png)
 
@@ -243,7 +243,7 @@ If you want your Single Posts menu to be differnet than your Primary Navigation 
 
 You can change the footer credits by overriding the function that displays them (`independent_publisher_footer_credits()`) and making that function return something else (or return blank to remove footer content entirely).
 
-Before making such a change, you'll want make sure you're using a [Child Theme](https://github.com/raamdev/independent-publisher#using-a-child-theme-to-customize-independent-publisher) so that future theme updates don't override your modifications. The `functions.php` file that comes with the [Independent Publisher Child Theme](https://github.com/raamdev/independent-publisher-child-theme/) includes [an example](https://github.com/raamdev/independent-publisher-child-theme/blob/master/functions.php#L36) for overriding the footer credits function.
+Before making such a change, you'll want make sure you're using a [Child Theme](https://github.com/raamdev/independent-publisher#using-a-child-theme-to-customize-independent-publisher) so that future theme updates don't override your modifications. The `functions.php` file that comes with the [Indieweb Publisher Child Theme](https://github.com/raamdev/independent-publisher-child-theme/) includes [an example](https://github.com/raamdev/independent-publisher-child-theme/blob/master/functions.php#L36) for overriding the footer credits function.
 
 ### How do I add my own Social Icons to the Social Menu?
 

@@ -362,4 +362,4 @@ endif;
  */
 require get_template_directory() . '/inc/custom-header.php';
 
-?>
+

@@ -46,7 +46,7 @@ get_header(); ?>
 				while ( have_posts() ) :
 					the_post();
 					?>
-					<?php 
+					<?php
 						get_template_part( 'template-parts/content', indieweb_publisher_get_post_kind() );
 					?>
 				<?php endwhile; ?>

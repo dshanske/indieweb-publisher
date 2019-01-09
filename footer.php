@@ -14,9 +14,11 @@
 <footer id="colophon" class="site-footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter" role="contentinfo">
 	<div class="site-info">
 		<?php echo indieweb_publisher_footer_credits(); ?>
-		<?php if ( function_exists( 'the_privacy_policy_link' ) ) {
+		<?php
+		if ( function_exists( 'the_privacy_policy_link' ) ) {
 			the_privacy_policy_link( ' | ', '<span role="separator" aria-hidden="true"></span>' );
-		} ?>
+		}
+		?>
 	</div>
 	<!-- .site-info -->
 </footer><!-- #colophon .site-footer -->
