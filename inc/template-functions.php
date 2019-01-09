@@ -127,7 +127,7 @@ if ( ! function_exists( 'indieweb_publisher_author_comment_reply_link' ) ) :
 				$user   = get_userdata( $comment->user_id );
 				$author = $user->user_login;
 			} else {
-				$author = __( 'Anonymous', 'independent-publisher' );
+				$author = __( 'Anonymous', 'indieweb-publisher' );
 			}
 		} else {
 			$author = $comment->comment_author;
@@ -139,7 +139,7 @@ if ( ! function_exists( 'indieweb_publisher_author_comment_reply_link' ) ) :
 		}
 
 		// Replace Reply Text with "Reply to <Author Name>"
-		$args['reply_text'] = __( 'Reply to', 'independent-publisher' ) . ' ' . $author;
+		$args['reply_text'] = __( 'Reply to', 'indieweb-publisher' ) . ' ' . $author;
 
 		return $args;
 	}
@@ -172,17 +172,17 @@ if ( ! function_exists( 'indieweb_publisher_comment_form_args' ) ) :
 			'id_form'              => 'commentform',
 			'id_submit'            => 'submit',
 			'title_reply'          => '',
-			'title_reply_to'       => __( 'Leave a Reply for %s', 'independent-publisher' ),
-			'cancel_reply_link'    => __( 'Cancel Reply', 'independent-publisher' ),
-			'label_submit'         => __( 'Submit Comment', 'independent-publisher' ),
+			'title_reply_to'       => __( 'Leave a Reply for %s', 'indieweb-publisher' ),
+			'cancel_reply_link'    => __( 'Cancel Reply', 'indieweb-publisher' ),
+			'label_submit'         => __( 'Submit Comment', 'indieweb-publisher' ),
 			'must_log_in'          => '<p class="must-log-in">' .
 				sprintf(
-					__( 'You must be <a href="%s">logged in</a> to post a comment.', 'independent-publisher' ),
+					__( 'You must be <a href="%s">logged in</a> to post a comment.', 'indieweb-publisher' ),
 					wp_login_url( apply_filters( 'the_permalink', get_permalink() ) )
 				) . '</p>',
 			'logged_in_as'         => '<p class="logged-in-as">' .
 				sprintf(
-					__( 'Logged in as <a href="%1$s">%2$s</a>. <a href="%3$s" title="Log out of this account">Log out?</a>', 'independent-publisher' ),
+					__( 'Logged in as <a href="%1$s">%2$s</a>. <a href="%3$s" title="Log out of this account">Log out?</a>', 'indieweb-publisher' ),
 					admin_url( 'profile.php' ),
 					$user->display_name,
 					wp_logout_url( apply_filters( 'the_permalink', get_permalink() ) )
@@ -193,17 +193,17 @@ if ( ! function_exists( 'indieweb_publisher_comment_form_args' ) ) :
 				'comment_form_default_fields',
 				array(
 					'author' =>
-						'<p class="comment-form-author"><label for="author">' . __( 'Name', 'independent-publisher' ) . '</label>' .
+						'<p class="comment-form-author"><label for="author">' . __( 'Name', 'indieweb-publisher' ) . '</label>' .
 						( $req ? '' : '' ) .
 						'<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) .
 						'"' . $aria_req . ' /></p>',
 					'email'  =>
-						'<p class="comment-form-email"><label for="email">' . __( 'Email', 'independent-publisher' ) . '</label>' .
+						'<p class="comment-form-email"><label for="email">' . __( 'Email', 'indieweb-publisher' ) . '</label>' .
 						( $req ? '' : '' ) .
 						'<input id="email" name="email" type="text" value="' . esc_attr( $commenter['comment_author_email'] ) .
 						'"' . $aria_req . ' /></p>',
 					'url'    =>
-						'<p class="comment-form-url"><label for="url">' . __( 'Website', 'independent-publisher' ) . '</label>' .
+						'<p class="comment-form-url"><label for="url">' . __( 'Website', 'indieweb-publisher' ) . '</label>' .
 						'<input id="url" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) .
 						'" /></p>',
 				)
@@ -232,7 +232,7 @@ if ( ! function_exists( 'indieweb_publisher_add_textarea' ) ) :
 	 */
 	function indieweb_publisher_add_textarea() {
 		echo '<div id="main-reply-title"><h3>' . indieweb_publisher_comments_call_to_action_text() . '</h3></div>';
-		echo '<div class="comment-form-reply-title"><p>' . __( 'Comment', 'independent-publisher' ) . '</p></div>';
+		echo '<div class="comment-form-reply-title"><p>' . __( 'Comment', 'indieweb-publisher' ) . '</p></div>';
 		echo '<p class="comment-form-comment" id="comment-form-field"><textarea id="comment" name="comment" cols="60" rows="6" aria-required="true"></textarea></p>';
 	}
 endif;
@@ -278,7 +278,7 @@ if ( ! function_exists( 'indieweb_publisher_show_author_card' ) ) :
 	/*
 	 * Returns true if Show Author Card is enabled
 	 *
-	 * @since Independent Publisher 1.7
+	 * @since Indieweb Publisher 1.7
 	 *
 	 * @note This defaults to true if the option does not exist because that was the original behavior
 	 */
@@ -413,7 +413,7 @@ function indieweb_publisher_comments_call_to_action_text() {
 	if ( isset( $comments_call_to_action ) && trim( $comments_call_to_action ) !== '' ) {
 		return esc_attr( $comments_call_to_action );
 	} else {
-		return __( 'Write a Comment', 'independent-publisher' );
+		return __( 'Write a Comment', 'indieweb-publisher' );
 	}
 }
 
@@ -703,7 +703,7 @@ function indieweb_publisher_featured_image_meta( $content ) {
 	$meta_key = 'full_width_featured_image';
 
 	// Text for checkbox
-	$text = __( 'Use as post cover (full-width)', 'independent-publisher' );
+	$text = __( 'Use as post cover (full-width)', 'indieweb-publisher' );
 
 	// Option type (for use when saving post data in indieweb_publisher_save_featured_image_meta()
 	$option_type = 'enable';
@@ -714,7 +714,7 @@ function indieweb_publisher_featured_image_meta( $content ) {
 	 */
 	if ( indieweb_publisher_auto_featured_image_post_cover() ) {
 		$meta_key    = 'full_width_featured_image_disabled';
-		$text        = __( 'Disable post cover (full-width)', 'independent-publisher' );
+		$text        = __( 'Disable post cover (full-width)', 'indieweb-publisher' );
 		$option_type = 'disable';
 	}
 
@@ -939,7 +939,7 @@ function indieweb_publisher_comment_count_mentions() {
  * Returns the entry title meta category prefix (e.g., "<author name> in <category name>"; 'in' is the portion this function returns)
  */
 function indieweb_publisher_entry_meta_category_prefix() {
-	$prefix = __( 'in', 'independent-publisher' );
+	$prefix = __( 'in', 'indieweb-publisher' );
 
 	return apply_filters( 'indieweb_publisher_entry_meta_category_prefix', $prefix );
 }
@@ -948,7 +948,7 @@ function indieweb_publisher_entry_meta_category_prefix() {
  * Returns the entry meta author prefix (e.g., "by <author name>"; 'by' is the portion this function returns)
  */
 function indieweb_publisher_entry_meta_author_prefix() {
-	$prefix = __( 'by', 'independent-publisher' );
+	$prefix = __( 'by', 'indieweb-publisher' );
 
 	return apply_filters( 'indieweb_publisher_entry_meta_author_prefix', $prefix );
 }
@@ -1088,7 +1088,7 @@ endif;
 
 if ( ! function_exists( 'indieweb_publisher_post_link_title_common' ) ) :
 	function indieweb_publisher_post_link_title_common() {
-		return esc_attr( sprintf( __( 'Permalink to %s', 'independent-publisher' ), the_title_attribute( 'echo=0' ) ) );
+		return esc_attr( sprintf( __( 'Permalink to %s', 'indieweb-publisher' ), the_title_attribute( 'echo=0' ) ) );
 	}
 endif;
 

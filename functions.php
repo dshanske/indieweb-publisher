@@ -1,15 +1,15 @@
 <?php
 /**
- * Independent Publisher functions and definitions
+ * Indieweb Publisher functions and definitions
  *
- * @package Independent Publisher
- * @since   Independent Publisher 1.0
+ * @package Indieweb Publisher
+ * @since   Indieweb Publisher 1.0
  */
 
 /**
  * Set the content width based on the theme's design and stylesheet.
  *
- * @since Independent Publisher 1.0
+ * @since Indieweb Publisher 1.0
  */
 if ( ! isset( $content_width ) ) {
 	$content_width = 700;
@@ -23,7 +23,7 @@ if ( ! function_exists( 'indieweb_publisher_setup' ) ) :
 	 * before the init hook. The init hook is too late for some features, such as indicating
 	 * support post thumbnails.
 	 *
-	 * @since Independent Publisher 1.0
+	 * @since Indieweb Publisher 1.0
 	 */
 	function indieweb_publisher_setup() {
 
@@ -51,7 +51,7 @@ if ( ! function_exists( 'indieweb_publisher_setup' ) ) :
 		 * Make theme available for translation
 		 * Translations can be filed in the /languages/ directory
 		 */
-		load_theme_textdomain( 'independent-publisher', get_template_directory() . '/languages' );
+		load_theme_textdomain( 'indieweb-publisher', get_template_directory() . '/languages' );
 
 		/**
 		 * Add default posts and comments RSS feed links to head
@@ -129,9 +129,9 @@ if ( ! function_exists( 'indieweb_publisher_setup' ) ) :
 		 */
 		register_nav_menus(
 			array(
-				'primary' => __( 'Primary Menu', 'independent-publisher' ),
-				'single'  => __( 'Single Posts Menu', 'independent-publisher' ),
-				'social'  => __( 'Social', 'independent-publisher' ),
+				'primary' => __( 'Primary Menu', 'indieweb-publisher' ),
+				'single'  => __( 'Single Posts Menu', 'indieweb-publisher' ),
+				'social'  => __( 'Social', 'indieweb-publisher' ),
 			)
 		);
 
@@ -181,12 +181,12 @@ require get_template_directory() . '/inc/jetpack.php';
 /**
  * Register widgetized areas and update sidebar with default widgets
  *
- * @since Independent Publisher 1.0
+ * @since Indieweb Publisher 1.0
  */
 function indieweb_publisher_widgets_init() {
 	register_sidebar(
 		array(
-			'name'          => __( 'Sidebar', 'independent-publisher' ),
+			'name'          => __( 'Sidebar', 'indieweb-publisher' ),
 			'id'            => 'sidebar-1',
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</aside>',
@@ -197,7 +197,7 @@ function indieweb_publisher_widgets_init() {
 
 	register_sidebar(
 		array(
-			'name'          => __( 'Archive Page', 'independent-publisher' ),
+			'name'          => __( 'Archive Page', 'indieweb-publisher' ),
 			'id'            => 'archive-page',
 			'before_widget' => '<div class="widget">',
 			'after_widget'  => '</div>',
@@ -218,7 +218,7 @@ function indieweb_publisher_scripts() {
 	// wp_enqueue_style( 'genericons', get_template_directory_uri() . '/fonts/genericons/genericons.css', array(), '3.1' );
 	wp_enqueue_style( 'genericons-neue', get_template_directory_uri() . '/fonts/genericons-neue/Genericons-Neue.min.css', array(), '4.0.5' );
 
-	wp_enqueue_script( 'independent-publisher-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
+	wp_enqueue_script( 'indieweb-publisher-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 
 	if ( indieweb_publisher_page_load_progress_bar_enabled() ) {
 		wp_enqueue_style( 'nprogress', get_template_directory_uri() . '/css/nprogress.css', array(), '0.1.3' );
@@ -268,7 +268,7 @@ if ( ! function_exists( 'indieweb_publisher_remove_locale_stylesheet' ) ) :
 	 * automatically loading rtl.css. We need to load this manually
 	 * so that we can load it before loading CSS from Customizer.
 	 *
-	 * @see https://github.com/raamdev/independent-publisher/issues/230
+	 * @see https://github.com/raamdev/indieweb-publisher/issues/230
 	 */
 	function indieweb_publisher_remove_locale_stylesheet() {
 		remove_action( 'wp_head', 'locale_stylesheet' );
@@ -280,7 +280,7 @@ if ( ! function_exists( 'indieweb_publisher_stylesheet_rtl' ) ) :
 	 * Enqueue RTL stylesheet
 	 */
 	function indieweb_publisher_stylesheet_rtl() {
-		wp_enqueue_style( 'independent-publisher-style', get_template_directory_uri() . '/css/rtl-style.css' );
+		wp_enqueue_style( 'indieweb-publisher-style', get_template_directory_uri() . '/css/rtl-style.css' );
 	}
 endif;
 
@@ -289,7 +289,7 @@ if ( ! function_exists( 'indieweb_publisher_stylesheet' ) ) :
 	 * Enqueue main stylesheet
 	 */
 	function indieweb_publisher_stylesheet() {
-		wp_enqueue_style( 'independent-publisher-style', get_stylesheet_uri() );
+		wp_enqueue_style( 'indieweb-publisher-style', get_stylesheet_uri() );
 	}
 endif;
 
@@ -334,7 +334,7 @@ if ( ! function_exists( 'indieweb_publisher_wp_fullscreen_title_editor_style' ) 
 	 */
 	function indieweb_publisher_wp_fullscreen_title_editor_style() {
 		if ( 'post' === get_current_screen()->base ) {
-			wp_enqueue_style( 'independent-publisher-wp-fullscreen-title', get_template_directory_uri() . '/css/wp-fullscreen-title.css', array(), '1.0' );
+			wp_enqueue_style( 'indieweb-publisher-wp-fullscreen-title', get_template_directory_uri() . '/css/wp-fullscreen-title.css', array(), '1.0' );
 		}
 	}
 endif;
@@ -347,12 +347,12 @@ if ( ! function_exists( 'indieweb_publisher_get_footer_credits' ) ) :
 	 *
 	 * @return string
 	 *
-	 * @since Independent Publisher 1.0
+	 * @since Indieweb Publisher 1.0
 	 */
 	function indieweb_publisher_get_footer_credits() {
 		return sprintf(
 			'%1$s',
-			sprintf( __( '%1$s empowered by %2$s', 'independent-publisher' ), '<a href="' . esc_url( 'http://independentpublisher.me' ) . '" rel="designer" title="Independent Publisher: A beautiful reader-focused WordPress theme, for you.">Independent Publisher</a>', '<a href="http://wordpress.org/" rel="generator" title="WordPress: A free open-source publishing platform">WordPress</a>' )
+			sprintf( __( '%1$s empowered by %2$s', 'indieweb-publisher' ), '<a href="' . esc_url( 'http://independentpublisher.me' ) . '" rel="designer" title="Indieweb Publisher: A beautiful reader-focused WordPress theme, for you.">Indieweb Publisher</a>', '<a href="http://wordpress.org/" rel="generator" title="WordPress: A free open-source publishing platform">WordPress</a>' )
 		);
 	}
 endif;

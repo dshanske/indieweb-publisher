@@ -4,15 +4,15 @@
  *
  * Eventually, some of the functionality here could be replaced by core features
  *
- * @package Independent Publisher
- * @since   Independent Publisher 1.0
+ * @package Indieweb Publisher
+ * @since   Indieweb Publisher 1.0
  */
 
 if ( ! function_exists( 'indieweb_publisher_content_nav' ) ) :
 	/**
 	 * Display navigation to next/previous pages when applicable
 	 *
-	 * @since Independent Publisher 1.0
+	 * @since Indieweb Publisher 1.0
 	 */
 	function indieweb_publisher_content_nav( $nav_id ) {
 		global $wp_query, $post;
@@ -39,14 +39,14 @@ if ( ! function_exists( 'indieweb_publisher_content_nav' ) ) :
 
 		?>
 		<nav role="navigation" id="<?php echo $nav_id; ?>" class="<?php echo $nav_class; ?>">
-			<h1 class="screen-reader-text"><?php _e( 'Post navigation', 'independent-publisher' ); ?></h1>
+			<h1 class="screen-reader-text"><?php _e( 'Post navigation', 'indieweb-publisher' ); ?></h1>
 
 			<?php if ( is_single() ) : // navigation links for single posts ?>
 
 				<?php wp_pagenavi(); ?>
 
-				<?php previous_post_link( '<div class="nav-previous"><button>%link</button></div>', '<span class="meta-nav">' . _x( '&larr;', 'Previous post link', 'independent-publisher' ) . '</span> %title' ); ?>
-				<?php next_post_link( '<div class="nav-next"><button>%link</button></div>', '%title <span class="meta-nav">' . _x( '&rarr;', 'Next post link', 'independent-publisher' ) . '</span>' ); ?>
+				<?php previous_post_link( '<div class="nav-previous"><button>%link</button></div>', '<span class="meta-nav">' . _x( '&larr;', 'Previous post link', 'indieweb-publisher' ) . '</span> %title' ); ?>
+				<?php next_post_link( '<div class="nav-next"><button>%link</button></div>', '%title <span class="meta-nav">' . _x( '&rarr;', 'Next post link', 'indieweb-publisher' ) . '</span>' ); ?>
 
 			<?php elseif ( $wp_query->max_num_pages > 1 && ( is_home() || is_archive() || is_search() ) ) : // navigation links for home, archive, and search pages ?>
 
@@ -57,11 +57,11 @@ if ( ! function_exists( 'indieweb_publisher_content_nav' ) ) :
 				<?php else : ?>
 
 					<?php if ( get_next_posts_link() ) : ?>
-						<div class="nav-previous"><?php next_posts_link( '<button>' . __( '<span class="meta-nav">&larr;</span> Older posts', 'independent-publisher' ) . '</button>' ); ?></div>
+						<div class="nav-previous"><?php next_posts_link( '<button>' . __( '<span class="meta-nav">&larr;</span> Older posts', 'indieweb-publisher' ) . '</button>' ); ?></div>
 					<?php endif; ?>
 
 					<?php if ( get_previous_posts_link() ) : ?>
-						<div class="nav-next"><?php previous_posts_link( '<button>' . __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'independent-publisher' ) . '</button>' ); ?></div>
+						<div class="nav-next"><?php previous_posts_link( '<button>' . __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'indieweb-publisher' ) . '</button>' ); ?></div>
 					<?php endif; ?>
 
 				<?php endif; ?>
@@ -79,7 +79,7 @@ if ( ! function_exists( 'indieweb_publisher_comment' ) ) :
 	 *
 	 * Used as a callback by wp_list_comments() for displaying the comments.
 	 *
-	 * @since Independent Publisher 1.0
+	 * @since Indieweb Publisher 1.0
 	 */
 	function indieweb_publisher_comment( $comment, $args, $depth ) {
 		$GLOBALS['comment']    = $comment;
@@ -93,7 +93,7 @@ if ( ! function_exists( 'indieweb_publisher_comment' ) ) :
 					<?php printf( '<cite class="fn">%s</cite>', get_comment_author_link() ); ?>
 					<?php if ( $comment->comment_approved == '0' ) : ?>
 						<?php $comment_content_class = 'unapproved'; ?>
-						<em><?php _e( ' - Your comment is awaiting moderation.', 'independent-publisher' ); ?></em>
+						<em><?php _e( ' - Your comment is awaiting moderation.', 'indieweb-publisher' ); ?></em>
 					<?php endif; ?>
 				</div>
 				<!-- .comment-author .vcard -->
@@ -107,7 +107,7 @@ if ( ! function_exists( 'indieweb_publisher_comment' ) ) :
 						</time>
 					</a>
 					<?php
-					edit_comment_link( __( '(Edit)', 'independent-publisher' ), ' ' );
+					edit_comment_link( __( '(Edit)', 'indieweb-publisher' ), ' ' );
 					?>
 				</div>
 				<!-- .comment-meta .commentmetadata -->
@@ -141,7 +141,7 @@ if ( ! function_exists( 'indieweb_publisher_pings' ) ) :
 	 * wp_list_comments() allows us to always show all pings,
 	 * even when we're showing paginated comments.
 	 *
-	 * @since Independent Publisher 1.0
+	 * @since Indieweb Publisher 1.0
 	 *
 	 * @deprecated 1.7 No longer used in code; replaced by indieweb_publisher_mentions()
 	 * @see indieweb_publisher_mentions()
@@ -160,7 +160,7 @@ if ( ! function_exists( 'indieweb_publisher_pings' ) ) :
 				?>
 				<li <?php comment_class( '', $ping->comment_ID ); ?> id="li-comment-<?php echo $ping->comment_ID; ?>">
 					<?php printf( '<cite class="fn">%s</cite>', get_comment_author_link( $ping->comment_ID ) ); ?>
-					<span> <?php edit_comment_link( __( '(Edit)', 'independent-publisher' ), '  ', '' ); ?></span>
+					<span> <?php edit_comment_link( __( '(Edit)', 'indieweb-publisher' ), '  ', '' ); ?></span>
 				</li>
 				<?php
 			}
@@ -175,7 +175,7 @@ if ( ! function_exists( 'indieweb_publisher_mentions' ) ) :
 	 * wp_list_comments() allows us to always show all webmentions,
 	 * even when we're showing paginated comments.
 	 *
-	 * @since Independent Publisher 1.7
+	 * @since Indieweb Publisher 1.7
 	 */
 	function indieweb_publisher_mentions() {
 		$args          = array(
@@ -206,7 +206,7 @@ if ( ! function_exists( 'indieweb_publisher_posted_author' ) ) :
 	/**
 	 * Prints HTML with meta information for the current author.
 	 *
-	 * @since Independent Publisher 1.0
+	 * @since Indieweb Publisher 1.0
 	 */
 	function indieweb_publisher_posted_author() {
 		/**
@@ -220,7 +220,7 @@ if ( ! function_exists( 'indieweb_publisher_posted_author' ) ) :
 		printf(
 			'<span class="byline"><span class="author p-author vcard h-card"><a class="u-url url fn n" href="%1$s" title="%2$s" rel="author">%3$s</a></span></span>',
 			esc_url( get_author_posts_url( get_the_author_meta( 'ID', $post_author_id ) ) ),
-			esc_attr( sprintf( __( 'View all posts by %s', 'independent-publisher' ), $post_author_nice_name ) ),
+			esc_attr( sprintf( __( 'View all posts by %s', 'indieweb-publisher' ), $post_author_nice_name ) ),
 			esc_html( $post_author_nice_name )
 		);
 	}
@@ -232,12 +232,12 @@ if ( ! function_exists( 'indieweb_publisher_posted_author_cats' ) ) :
 	 *
 	 * Only prints author name when Multi-Author Mode is enabled.
 	 *
-	 * @since Independent Publisher 1.0
+	 * @since Indieweb Publisher 1.0
 	 */
 	function indieweb_publisher_posted_author_cats() {
 
 		/* translators: used between list items, there is a space after the comma */
-		$categories_list = get_the_category_list( __( ', ', 'independent-publisher' ) );
+		$categories_list = get_the_category_list( __( ', ', 'indieweb-publisher' ) );
 
 		if ( ( ! post_password_required() && comments_open() && ! indieweb_publisher_hide_comments() ) || ( ! post_password_required() && indieweb_publisher_show_post_word_count() && ! get_post_format() ) || indieweb_publisher_show_date_entry_meta() ) {
 			$separator = apply_filters( 'indieweb_publisher_entry_meta_separator', '|' );
@@ -251,7 +251,7 @@ if ( ! function_exists( 'indieweb_publisher_posted_author_cats' ) ) :
 				printf(
 					'<a href="%1$s" title="%2$s">%3$s</a> %4$s %5$s',
 					esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
-					esc_attr( sprintf( __( 'View all posts by %s', 'independent-publisher' ), get_the_author() ) ),
+					esc_attr( sprintf( __( 'View all posts by %s', 'indieweb-publisher' ), get_the_author() ) ),
 					esc_html( get_the_author() ),
 					indieweb_publisher_entry_meta_category_prefix(),
 					$categories_list
@@ -263,7 +263,7 @@ if ( ! function_exists( 'indieweb_publisher_posted_author_cats' ) ) :
 					'%1$s <a href="%2$s" title="%3$s">%4$s</a>',
 					indieweb_publisher_entry_meta_author_prefix(),
 					esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
-					esc_attr( sprintf( __( 'View all posts by %s', 'independent-publisher' ), get_the_author() ) ),
+					esc_attr( sprintf( __( 'View all posts by %s', 'indieweb-publisher' ), get_the_author() ) ),
 					esc_html( get_the_author() )
 				);
 				echo '</span>';
@@ -289,7 +289,7 @@ if ( ! function_exists( 'indieweb_publisher_posted_on_date' ) ) :
 	/**
 	 * Prints HTML with meta information for the current post-date/time.
 	 *
-	 * @since Independent Publisher 1.0
+	 * @since Indieweb Publisher 1.0
 	 */
 	function indieweb_publisher_posted_on_date() {
 		printf(
@@ -306,7 +306,7 @@ if ( ! function_exists( 'indieweb_publisher_post_updated_date' ) ) :
 	/**
 	 * Prints HTML with meta information for the current post's last updated date/time.
 	 *
-	 * @since Independent Publisher 1.4
+	 * @since Indieweb Publisher 1.4
 	 */
 	function indieweb_publisher_post_updated_date() {
 		printf(
@@ -323,10 +323,10 @@ if ( ! function_exists( 'indieweb_publisher_continue_reading_link' ) ) :
 	/**
 	 * Prints HTML with Continue Reading link
 	 *
-	 * @since Independent Publisher 1.0
+	 * @since Indieweb Publisher 1.0
 	 */
 	function indieweb_publisher_continue_reading_link() {
-		$text = apply_filters( 'indieweb_publisher_continue_reading_link_text', ' ' . __( 'Continue Reading &rarr;', 'independent-publisher' ) );
+		$text = apply_filters( 'indieweb_publisher_continue_reading_link_text', ' ' . __( 'Continue Reading &rarr;', 'indieweb-publisher' ) );
 
 		printf(
 			'<div class="enhanced-excerpt-read-more"><a class="read-more" href="%1$s">%2$s</a></div>',
@@ -340,10 +340,10 @@ if ( ! function_exists( 'indieweb_publisher_continue_reading_text' ) ) :
 	/**
 	 * Returns Continue Reading text for usage in the_content()
 	 *
-	 * @since Independent Publisher 1.0
+	 * @since Indieweb Publisher 1.0
 	 */
 	function indieweb_publisher_continue_reading_text() {
-		return apply_filters( 'indieweb_publisher_continue_reading_text', __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'independent-publisher' ) );
+		return apply_filters( 'indieweb_publisher_continue_reading_text', __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'indieweb-publisher' ) );
 	}
 endif;
 
@@ -351,7 +351,7 @@ if ( ! function_exists( 'indieweb_publisher_categorized_blog' ) ) :
 	/**
 	 * Returns true if a blog has more than 1 category
 	 *
-	 * @since Independent Publisher 1.0
+	 * @since Indieweb Publisher 1.0
 	 */
 	function indieweb_publisher_categorized_blog() {
 		if ( false === ( $all_the_cool_cats = get_transient( 'all_the_cool_cats' ) ) ) {
@@ -381,7 +381,7 @@ endif;
 /**
  * Flush out the transients used in indieweb_publisher_categorized_blog
  *
- * @since Independent Publisher 1.0
+ * @since Indieweb Publisher 1.0
  */
 function indieweb_publisher_category_transient_flusher() {
 	// Like, beat it. Dig?
@@ -396,7 +396,7 @@ if ( ! function_exists( 'indieweb_publisher_post_categories' ) ) :
 	 * Returns categories for current post with separator.
 	 * Optionally returns only a single category.
 	 *
-	 * @since Independent Publisher 1.0
+	 * @since Indieweb Publisher 1.0
 	 */
 	function indieweb_publisher_post_categories( $separator = ', ', $single = false ) {
 		$separator = apply_filters( 'indieweb_publisher_post_categories_separator', $separator );
@@ -410,7 +410,7 @@ if ( ! function_exists( 'indieweb_publisher_post_categories' ) ) :
 			$output     = '';
 			if ( $categories ) {
 				foreach ( $categories as $category ) {
-					$output .= '<a href="' . get_category_link( $category->term_id ) . '" title="' . esc_attr( sprintf( __( 'View all posts in %s', 'independent-publisher' ), $category->name ) ) . '">' . $category->cat_name . '</a>';
+					$output .= '<a href="' . get_category_link( $category->term_id ) . '" title="' . esc_attr( sprintf( __( 'View all posts in %s', 'indieweb-publisher' ), $category->name ) ) . '">' . $category->cat_name . '</a>';
 					if ( $single ) {
 						break;
 					}
@@ -426,7 +426,7 @@ if ( ! function_exists( 'indieweb_publisher_site_info' ) ) :
 	/**
 	 * Outputs site info for display on non-single pages
 	 *
-	 * @since Independent Publisher 1.0
+	 * @since Indieweb Publisher 1.0
 	 */
 	function indieweb_publisher_site_info() {
 		?>
@@ -448,7 +448,7 @@ if ( ! function_exists( 'indieweb_publisher_posted_author_card' ) ) :
 	/**
 	 * Outputs post author info for display on single posts
 	 *
-	 * @since Independent Publisher 1.0
+	 * @since Indieweb Publisher 1.0
 	 */
 	function indieweb_publisher_posted_author_card() {
 		/**
@@ -476,7 +476,7 @@ if ( ! function_exists( 'indieweb_publisher_posted_author_card' ) ) :
 		<?php get_template_part( 'menu', 'social' ); ?>
 
 		<div class="site-published-separator"></div>
-		<h2 class="site-published"><?php _e( 'Published', 'independent-publisher' ); ?></h2>
+		<h2 class="site-published"><?php _e( 'Published', 'indieweb-publisher' ); ?></h2>
 		<h2 class="site-published-date"><?php indieweb_publisher_posted_on_date(); ?></h2>
 		<?php
 		/*
@@ -490,7 +490,7 @@ if ( ! function_exists( 'indieweb_publisher_posted_author_card' ) ) :
 			! get_post_meta( get_the_ID(), 'indieweb_publisher_hide_updated_date', true )
 		) :
 			?>
-			<h2 class="site-published"><?php _e( 'Updated', 'independent-publisher' ); ?></h2>
+			<h2 class="site-published"><?php _e( 'Updated', 'indieweb-publisher' ); ?></h2>
 			<h2 class="site-published-date"><?php indieweb_publisher_post_updated_date(); ?></h2>
 		<?php endif; ?>
 
@@ -503,7 +503,7 @@ if ( ! function_exists( 'indieweb_publisher_posted_author_bottom_card' ) ) :
 	/**
 	 * Outputs post author info for display on bottom of single posts
 	 *
-	 * @since Independent Publisher 1.0
+	 * @since Indieweb Publisher 1.0
 	 */
 	function indieweb_publisher_posted_author_bottom_card() {
 		if ( ! indieweb_publisher_show_author_card() ) {
@@ -526,7 +526,7 @@ if ( ! function_exists( 'indieweb_publisher_posted_author_bottom_card' ) ) :
 					<div class="site-description"><?php the_author_meta( 'description' ); ?></div>
 				</div>
 				<div class="post-published-date">
-					<h2 class="site-published"><?php _e( 'Published', 'independent-publisher' ); ?></h2>
+					<h2 class="site-published"><?php _e( 'Published', 'indieweb-publisher' ); ?></h2>
 					<h2 class="site-published-date"><?php indieweb_publisher_posted_on_date(); ?></h2>
 					<?php
 					/*
@@ -540,7 +540,7 @@ if ( ! function_exists( 'indieweb_publisher_posted_author_bottom_card' ) ) :
 						! get_post_meta( get_the_ID(), 'indieweb_publisher_hide_updated_date', true )
 					) :
 						?>
-						<h2 class="site-published"><?php _e( 'Updated', 'independent-publisher' ); ?></h2>
+						<h2 class="site-published"><?php _e( 'Updated', 'indieweb-publisher' ); ?></h2>
 						<h2 class="site-published-date"><?php indieweb_publisher_post_updated_date(); ?></h2>
 					<?php endif; ?>
 
@@ -568,7 +568,7 @@ if ( ! function_exists( 'indieweb_publisher_get_post_word_count' ) ) :
 			$separator = '';
 		}
 
-		return sprintf( '<span>' . __( '%1$s Words', 'independent-publisher' ) . '</span>%2$s', indieweb_publisher_post_word_count(), $separator );
+		return sprintf( '<span>' . __( '%1$s Words', 'indieweb-publisher' ) . '</span>%2$s', indieweb_publisher_post_word_count(), $separator );
 	}
 endif;
 
@@ -665,8 +665,8 @@ if ( ! function_exists( 'indieweb_publisher_search_stats' ) ) :
 		$current_page_num = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 		$pagination_info  = '';
 
-		$pagination_info = sprintf( __( 'this is page <strong>%1$s</strong> of <strong>%2$s</strong>', 'independent-publisher' ), number_format_i18n( $current_page_num ), number_format_i18n( $total_pages ) );
-		$stats_text      = sprintf( _n( 'Found one search result for <strong>%2$s</strong>.', 'Found %1$s search results for <strong>%2$s</strong> (%3$s).', $total, 'independent-publisher' ), number_format_i18n( $total ), get_search_query(), $pagination_info );
+		$pagination_info = sprintf( __( 'this is page <strong>%1$s</strong> of <strong>%2$s</strong>', 'indieweb-publisher' ), number_format_i18n( $current_page_num ), number_format_i18n( $total_pages ) );
+		$stats_text      = sprintf( _n( 'Found one search result for <strong>%2$s</strong>.', 'Found %1$s search results for <strong>%2$s</strong> (%3$s).', $total, 'indieweb-publisher' ), number_format_i18n( $total ), get_search_query(), $pagination_info );
 
 		return wpautop( $stats_text );
 	}
@@ -690,12 +690,12 @@ if ( ! function_exists( 'indieweb_publisher_taxonomy_archive_stats' ) ) :
 		$pagination_info  = '';
 		$stats_text       = '';
 
-		$pagination_info = sprintf( __( 'this is page <strong>%1$s</strong> of <strong>%2$s</strong>', 'independent-publisher' ), number_format_i18n( $current_page_num ), number_format_i18n( $total_pages ) );
+		$pagination_info = sprintf( __( 'this is page <strong>%1$s</strong> of <strong>%2$s</strong>', 'indieweb-publisher' ), number_format_i18n( $current_page_num ), number_format_i18n( $total_pages ) );
 
 		if ( $taxonomy === 'category' ) {
-			$stats_text = sprintf( _n( 'There is one post filed in <strong>%2$s</strong>.', 'There are %1$s posts filed in <strong>%2$s</strong> (%3$s).', $total, 'independent-publisher' ), number_format_i18n( $total ), single_term_title( '', false ), $pagination_info );
+			$stats_text = sprintf( _n( 'There is one post filed in <strong>%2$s</strong>.', 'There are %1$s posts filed in <strong>%2$s</strong> (%3$s).', $total, 'indieweb-publisher' ), number_format_i18n( $total ), single_term_title( '', false ), $pagination_info );
 		} elseif ( $taxonomy === 'post_tag' ) {
-			$stats_text = sprintf( _n( 'There is one post tagged <strong>%2$s</strong>.', 'There are %1$s posts tagged <strong>%2$s</strong> (%3$s).', $total, 'independent-publisher' ), number_format_i18n( $total ), single_term_title( '', false ), $pagination_info );
+			$stats_text = sprintf( _n( 'There is one post tagged <strong>%2$s</strong>.', 'There are %1$s posts tagged <strong>%2$s</strong> (%3$s).', $total, 'indieweb-publisher' ), number_format_i18n( $total ), single_term_title( '', false ), $pagination_info );
 		}
 
 		return wpautop( $stats_text );
@@ -714,19 +714,19 @@ if ( ! function_exists( 'indieweb_publisher_date_archive_description' ) ) :
 		$pagination_info   = '';
 		$date_archive_meta = '';
 
-		$pagination_info = sprintf( __( 'this is page <strong>%1$s</strong> of <strong>%2$s</strong>', 'independent-publisher' ), number_format_i18n( $current_page_num ), number_format_i18n( $total_pages ) );
+		$pagination_info = sprintf( __( 'this is page <strong>%1$s</strong> of <strong>%2$s</strong>', 'indieweb-publisher' ), number_format_i18n( $current_page_num ), number_format_i18n( $total_pages ) );
 
 		/**
 		 * Only proceed if we're on the first page and the description has not been overridden via indieweb_publisher_custom_date_archive_meta
 		 */
 		if ( trim( $date_archive_meta ) === '' ) {
 			if ( is_year() && ( get_the_date( 'Y' ) != date( 'Y' ) ) ) {
-				$date_archive_meta = sprintf( _n( 'There was one post published in %2$s.', 'There were %1$s posts published in %2$s (%3$s).', $total, 'independent-publisher' ), number_format_i18n( $total ), get_the_date( 'Y' ), $pagination_info );
+				$date_archive_meta = sprintf( _n( 'There was one post published in %2$s.', 'There were %1$s posts published in %2$s (%3$s).', $total, 'indieweb-publisher' ), number_format_i18n( $total ), get_the_date( 'Y' ), $pagination_info );
 			} elseif ( is_year() && ( get_the_date( 'Y' ) == date( 'Y' ) ) ) {
-				$date_archive_meta = sprintf( _n( 'There is one post published in %2$s.', 'There are %1$s posts published in %2$s (%3$s).', $total, 'independent-publisher' ), number_format_i18n( $total ), get_the_date( 'Y' ), $pagination_info );
+				$date_archive_meta = sprintf( _n( 'There is one post published in %2$s.', 'There are %1$s posts published in %2$s (%3$s).', $total, 'indieweb-publisher' ), number_format_i18n( $total ), get_the_date( 'Y' ), $pagination_info );
 			} elseif ( is_day() ) {
 				$date_archive_meta = sprintf(
-					_n( 'There was one post published on %2$s.', 'There were %1$s posts published on %2$s (%3$s).', $total, 'independent-publisher' ),
+					_n( 'There was one post published on %2$s.', 'There were %1$s posts published on %2$s (%3$s).', $total, 'indieweb-publisher' ),
 					number_format_i18n( $total ),
 					get_the_date(),
 					$pagination_info
@@ -735,14 +735,14 @@ if ( ! function_exists( 'indieweb_publisher_date_archive_description' ) ) :
 				$year = get_query_var( 'year' );
 				if ( empty( $year ) ) {
 					$date_archive_meta = sprintf(
-						_n( 'There was one post published in the month of %2$s.', 'There were %1$s posts published in %2$s (%3$s).', $total, 'independent-publisher' ),
+						_n( 'There was one post published in the month of %2$s.', 'There were %1$s posts published in %2$s (%3$s).', $total, 'indieweb-publisher' ),
 						number_format_i18n( $total ),
 						get_the_date( 'F' ),
 						$pagination_info
 					);
 				} else {
 					$date_archive_meta = sprintf(
-						_n( 'There was one post published in %2$s %3$s.', 'There were %1$s posts published in %2$s %3$s (%4$s).', $total, 'independent-publisher' ),
+						_n( 'There was one post published in %2$s %3$s.', 'There were %1$s posts published in %2$s %3$s (%4$s).', $total, 'indieweb-publisher' ),
 						number_format_i18n( $total ),
 						get_the_date( 'F' ),
 						get_the_date( 'Y' ),
@@ -841,7 +841,7 @@ if ( ! function_exists( 'indieweb_publisher_show_related_tags' ) ) :
 	function indieweb_publisher_show_related_tags() {
 		if ( get_the_tag_list() ) :
 
-			$tag_list_title = apply_filters( 'indieweb_publisher_tag_list_title', __( 'Related Content by Tag', 'independent-publisher' ) );
+			$tag_list_title = apply_filters( 'indieweb_publisher_tag_list_title', __( 'Related Content by Tag', 'indieweb-publisher' ) );
 			$tag_list       = (string) get_the_tag_list( '<ul class="taglist"><li class="taglist-title">' . $tag_list_title . '</li><li>', '</li><li>', '</li></ul>' );
 
 			printf( '<div id="taglist">%s</div>', $tag_list );

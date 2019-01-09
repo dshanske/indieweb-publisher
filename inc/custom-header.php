@@ -3,8 +3,8 @@
  * Implements the Custom Header feature
  * http://codex.wordpress.org/Custom_Headers
  *
- * @package Independent Publisher
- * @since   Independent Publisher 1.0
+ * @package Indieweb Publisher
+ * @since   Indieweb Publisher 1.0
  */
 
 /**
@@ -44,7 +44,7 @@ add_action( 'after_setup_theme', 'indieweb_publisher_custom_header_setup' );
  *
  * Use the admin email's gravatar as the default header image.
  *
- * @since Independent Publisher 1.0
+ * @since Indieweb Publisher 1.0
  */
 function indieweb_publisher_get_default_header_image() {
 

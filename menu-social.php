@@ -6,8 +6,8 @@
  * http://kovshenin.com/2014/social-menus-in-wordpress-themes/
  * http://justintadlock.com/archives/2013/08/14/social-nav-menus-part-2
  *
- * @package Independent Publisher
- * @since   Independent Publisher 1.0
+ * @package Indieweb Publisher
+ * @since   Indieweb Publisher 1.0
  */
 
 if ( has_nav_menu( 'social' ) ) {

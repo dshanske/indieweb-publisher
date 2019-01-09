@@ -7,8 +7,8 @@
  *
  * @link    http://codex.wordpress.org/Theme_Customization_API
  *
- * @package Independent Publisher
- * @since   Independent Publisher 1.0
+ * @package Indieweb Publisher
+ * @since   Indieweb Publisher 1.0
  */
 class IndiewebPublisher_Customize {
 
@@ -28,7 +28,7 @@ class IndiewebPublisher_Customize {
 		$wp_customize->add_section(
 			'indieweb_publisher_layout_options',
 			array(
-				'title'    => __( 'Layout Options', 'independent-publisher' ),
+				'title'    => __( 'Layout Options', 'indieweb-publisher' ),
 				'priority' => 124,
 			)
 		);
@@ -36,7 +36,7 @@ class IndiewebPublisher_Customize {
 		$wp_customize->add_section(
 			'indieweb_publisher_excerpt_options',
 			array(
-				'title'    => __( 'Excerpt Options', 'independent-publisher' ),
+				'title'    => __( 'Excerpt Options', 'indieweb-publisher' ),
 				'priority' => 125,
 			)
 		);
@@ -44,7 +44,7 @@ class IndiewebPublisher_Customize {
 		$wp_customize->add_section(
 			'indieweb_publisher_general_options',
 			array(
-				'title'    => __( 'General Options', 'independent-publisher' ),
+				'title'    => __( 'General Options', 'indieweb-publisher' ),
 				'priority' => 130,
 			)
 		);
@@ -62,13 +62,13 @@ class IndiewebPublisher_Customize {
 		$wp_customize->add_control(
 			'excerpts',
 			array(
-				'label'    => __( 'Post Excerpts', 'independent-publisher' ),
+				'label'    => __( 'Post Excerpts', 'indieweb-publisher' ),
 				'settings' => 'indieweb_publisher_excerpt_options[excerpts]',
 				'section'  => 'indieweb_publisher_excerpt_options',
 				'type'     => 'select',
 				'choices'  => array(
-					'0' => __( 'Disabled', 'independent-publisher' ),
-					'1' => __( 'Enabled', 'independent-publisher' ),
+					'0' => __( 'Disabled', 'indieweb-publisher' ),
+					'1' => __( 'Enabled', 'indieweb-publisher' ),
 				),
 			)
 		);
@@ -87,7 +87,7 @@ class IndiewebPublisher_Customize {
 			'generate_one_sentence_excerpts',
 			array(
 				'settings' => 'indieweb_publisher_excerpt_options[generate_one_sentence_excerpts]',
-				'label'    => __( 'Generate One-Sentence Excerpts', 'independent-publisher' ),
+				'label'    => __( 'Generate One-Sentence Excerpts', 'indieweb-publisher' ),
 				'section'  => 'indieweb_publisher_excerpt_options',
 				'type'     => 'checkbox',
 			)
@@ -107,7 +107,7 @@ class IndiewebPublisher_Customize {
 			'show_full_content_first_post',
 			array(
 				'settings' => 'indieweb_publisher_excerpt_options[show_full_content_first_post]',
-				'label'    => __( 'Always Show Full Content for First Post', 'independent-publisher' ),
+				'label'    => __( 'Always Show Full Content for First Post', 'indieweb-publisher' ),
 				'section'  => 'indieweb_publisher_excerpt_options',
 				'type'     => 'checkbox',
 			)
@@ -127,7 +127,7 @@ class IndiewebPublisher_Customize {
 			'show_post_thumbnails',
 			array(
 				'settings' => 'indieweb_publisher_excerpt_options[show_post_thumbnails]',
-				'label'    => __( 'Show Post Thumbnails', 'independent-publisher' ),
+				'label'    => __( 'Show Post Thumbnails', 'indieweb-publisher' ),
 				'section'  => 'indieweb_publisher_excerpt_options',
 				'type'     => 'checkbox',
 			)
@@ -147,7 +147,7 @@ class IndiewebPublisher_Customize {
 			'show_post_word_count',
 			array(
 				'settings' => 'indieweb_publisher_general_options[show_post_word_count]',
-				'label'    => __( 'Show Post Word Count in Entry Meta', 'independent-publisher' ),
+				'label'    => __( 'Show Post Word Count in Entry Meta', 'indieweb-publisher' ),
 				'section'  => 'indieweb_publisher_general_options',
 				'type'     => 'checkbox',
 			)
@@ -167,7 +167,7 @@ class IndiewebPublisher_Customize {
 			'show_date_entry_meta',
 			array(
 				'settings' => 'indieweb_publisher_general_options[show_date_entry_meta]',
-				'label'    => __( 'Show Post Date in Entry Meta', 'independent-publisher' ),
+				'label'    => __( 'Show Post Date in Entry Meta', 'indieweb-publisher' ),
 				'section'  => 'indieweb_publisher_general_options',
 				'type'     => 'checkbox',
 			)
@@ -187,7 +187,7 @@ class IndiewebPublisher_Customize {
 			'show_widgets_on_single',
 			array(
 				'settings' => 'indieweb_publisher_general_options[show_widgets_on_single]',
-				'label'    => __( 'Show Widgets on Single Posts', 'independent-publisher' ),
+				'label'    => __( 'Show Widgets on Single Posts', 'indieweb-publisher' ),
 				'section'  => 'indieweb_publisher_general_options',
 				'type'     => 'checkbox',
 			)
@@ -207,7 +207,7 @@ class IndiewebPublisher_Customize {
 			'show_nav_menu_on_single',
 			array(
 				'settings' => 'indieweb_publisher_general_options[show_nav_menu_on_single]',
-				'label'    => __( 'Show Nav Menu on Single Posts', 'independent-publisher' ),
+				'label'    => __( 'Show Nav Menu on Single Posts', 'indieweb-publisher' ),
 				'section'  => 'indieweb_publisher_general_options',
 				'type'     => 'checkbox',
 			)
@@ -227,7 +227,7 @@ class IndiewebPublisher_Customize {
 			'show_updated_date_on_single',
 			array(
 				'settings' => 'indieweb_publisher_general_options[show_updated_date_on_single]',
-				'label'    => __( 'Show Updated Date on Single Posts', 'independent-publisher' ),
+				'label'    => __( 'Show Updated Date on Single Posts', 'indieweb-publisher' ),
 				'section'  => 'indieweb_publisher_general_options',
 				'type'     => 'checkbox',
 			)
@@ -247,7 +247,7 @@ class IndiewebPublisher_Customize {
 			'show_author_card',
 			array(
 				'settings' => 'indieweb_publisher_general_options[show_author_card]',
-				'label'    => __( 'Show Author Card on Single Posts', 'independent-publisher' ),
+				'label'    => __( 'Show Author Card on Single Posts', 'indieweb-publisher' ),
 				'section'  => 'indieweb_publisher_general_options',
 				'type'     => 'checkbox',
 			)
@@ -267,7 +267,7 @@ class IndiewebPublisher_Customize {
 			'single_column_layout',
 			array(
 				'settings' => 'indieweb_publisher_layout_options[single_column_layout]',
-				'label'    => __( 'Single-Column Layout', 'independent-publisher' ),
+				'label'    => __( 'Single-Column Layout', 'indieweb-publisher' ),
 				'section'  => 'indieweb_publisher_layout_options',
 				'type'     => 'checkbox',
 			)
@@ -287,7 +287,7 @@ class IndiewebPublisher_Customize {
 			'multi_author_mode',
 			array(
 				'settings' => 'indieweb_publisher_general_options[multi_author_mode]',
-				'label'    => __( 'Enable Multi-Author Mode', 'independent-publisher' ),
+				'label'    => __( 'Enable Multi-Author Mode', 'indieweb-publisher' ),
 				'section'  => 'indieweb_publisher_general_options',
 				'type'     => 'checkbox',
 			)
@@ -307,7 +307,7 @@ class IndiewebPublisher_Customize {
 			'show_page_load_progress_bar',
 			array(
 				'settings' => 'indieweb_publisher_general_options[show_page_load_progress_bar]',
-				'label'    => __( 'Show Page Load Progress Bar', 'independent-publisher' ),
+				'label'    => __( 'Show Page Load Progress Bar', 'indieweb-publisher' ),
 				'section'  => 'indieweb_publisher_general_options',
 				'type'     => 'checkbox',
 			)
@@ -327,7 +327,7 @@ class IndiewebPublisher_Customize {
 			'auto_featured_image_post_cover',
 			array(
 				'settings' => 'indieweb_publisher_general_options[auto_featured_image_post_cover]',
-				'label'    => __( 'Auto-Set Featured Image as Post Cover', 'independent-publisher' ),
+				'label'    => __( 'Auto-Set Featured Image as Post Cover', 'indieweb-publisher' ),
 				'section'  => 'indieweb_publisher_general_options',
 				'type'     => 'checkbox',
 			)
@@ -347,7 +347,7 @@ class IndiewebPublisher_Customize {
 			'post_cover_overlay_post_title',
 			array(
 				'settings' => 'indieweb_publisher_general_options[post_cover_overlay_post_title]',
-				'label'    => __( 'Overlay Post Title on Post Cover', 'independent-publisher' ),
+				'label'    => __( 'Overlay Post Title on Post Cover', 'indieweb-publisher' ),
 				'section'  => 'indieweb_publisher_general_options',
 				'type'     => 'checkbox',
 			)
@@ -367,7 +367,7 @@ class IndiewebPublisher_Customize {
 			'show_full_name_comment_reply_to',
 			array(
 				'settings' => 'indieweb_publisher_general_options[show_full_name_comment_reply_to]',
-				'label'    => __( 'Show Full Name in Comment Reply-to', 'independent-publisher' ),
+				'label'    => __( 'Show Full Name in Comment Reply-to', 'indieweb-publisher' ),
 				'section'  => 'indieweb_publisher_general_options',
 				'type'     => 'checkbox',
 			)
@@ -387,7 +387,7 @@ class IndiewebPublisher_Customize {
 			'comments_call_to_action',
 			array(
 				'settings' => 'comments_call_to_action',
-				'label'    => __( 'Comments Call to Action', 'independent-publisher' ),
+				'label'    => __( 'Comments Call to Action', 'indieweb-publisher' ),
 				'section'  => 'indieweb_publisher_general_options',
 				'type'     => 'text',
 			)
@@ -399,37 +399,37 @@ class IndiewebPublisher_Customize {
 		$colors[] = array(
 			'slug'    => 'text_color',
 			'default' => self::$default_colors['text_color'],
-			'label'   => __( 'Text Color', 'independent-publisher' ),
+			'label'   => __( 'Text Color', 'indieweb-publisher' ),
 		);
 		$colors[] = array(
 			'slug'    => 'comment_form_background_color',
 			'default' => self::$default_colors['comment_form_background_color'],
-			'label'   => __( 'Comment Form Background Color', 'independent-publisher' ),
+			'label'   => __( 'Comment Form Background Color', 'indieweb-publisher' ),
 		);
 		$colors[] = array(
 			'slug'    => 'comment_form_text_color',
 			'default' => self::$default_colors['comment_form_text_color'],
-			'label'   => __( 'Comment Form Text Color', 'independent-publisher' ),
+			'label'   => __( 'Comment Form Text Color', 'indieweb-publisher' ),
 		);
 		$colors[] = array(
 			'slug'    => 'link_color',
 			'default' => self::$default_colors['link_color'],
-			'label'   => __( 'Link Color', 'independent-publisher' ),
+			'label'   => __( 'Link Color', 'indieweb-publisher' ),
 		);
 		$colors[] = array(
 			'slug'    => 'header_text_color',
 			'default' => self::$default_colors['header_text_color'],
-			'label'   => __( 'Title and Header Text Color', 'independent-publisher' ),
+			'label'   => __( 'Title and Header Text Color', 'indieweb-publisher' ),
 		);
 		$colors[] = array(
 			'slug'    => 'primary_meta_text_color',
 			'default' => self::$default_colors['primary_meta_text_color'],
-			'label'   => __( 'Primary Meta Text Color', 'independent-publisher' ),
+			'label'   => __( 'Primary Meta Text Color', 'indieweb-publisher' ),
 		);
 		$colors[] = array(
 			'slug'    => 'secondary_meta_text_color',
 			'default' => self::$default_colors['secondary_meta_text_color'],
-			'label'   => __( 'Secondary Meta Text Color', 'independent-publisher' ),
+			'label'   => __( 'Secondary Meta Text Color', 'indieweb-publisher' ),
 		);
 		foreach ( $colors as $color ) {
 			// SETTINGS
@@ -476,7 +476,7 @@ class IndiewebPublisher_Customize {
 	 *
 	 * This is used by css/customizer.css.php
 	 *
-	 * @since Independent Publisher 1.0
+	 * @since Indieweb Publisher 1.0
 	 */
 	public static function header_output() {
 		/* Background Color */
@@ -567,11 +567,11 @@ class IndiewebPublisher_Customize {
 	 * Used by hook: 'customize_preview_init'
 	 *
 	 * @see   add_action('customize_preview_init',$func)
-	 * @since Independent Publisher 1.0
+	 * @since Indieweb Publisher 1.0
 	 */
 	public static function live_preview() {
 		wp_enqueue_script(
-			'independent-publisher-themecustomizer', // Give the script a unique ID
+			'indieweb-publisher-themecustomizer', // Give the script a unique ID
 			get_template_directory_uri() . '/js/theme-customizer.js', // Define the path to the JS file
 			array( 'jquery', 'customize-preview' ), // Define dependencies
 			'', // Define a version (optional)
@@ -594,7 +594,7 @@ class IndiewebPublisher_Customize {
 	 * @param string $format   A sprintf() format to use when printing the style
 	 *
 	 * @return string Returns a single line of CSS with selectors and a property.
-	 * @since Independent Publisher 1.0
+	 * @since Indieweb Publisher 1.0
 	 */
 	public static function generate_css( $selector, $style, $mod_name, $prefix = '', $postfix = '', $echo = true, $format = '%1$s { %2$s:%3$s; }' ) {
 		$return = '';
@@ -618,7 +618,7 @@ class IndiewebPublisher_Customize {
 /**
  * Callback function for sanitizing checkbox settings.
  *
- * Used by IndependentPublisher_Customize
+ * Used by IndiewebPublisher_Customize
  *
  * @param $input
  *
@@ -635,7 +635,7 @@ function indieweb_publisher_sanitize_checkbox( $input ) {
 /**
  * Callback function for sanitizing select menu for Excerpt Options.
  *
- * Used by IndependentPublisher_Customize
+ * Used by IndiewebPublisher_Customize
  *
  * @param $input
  *

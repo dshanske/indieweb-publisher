@@ -2,8 +2,8 @@
 /**
  * Code that Adds Support for Microformats 2
  *
- * @package Independent Publisher
- * @since   Independent Publisher 1.7
+ * @package Indieweb Publisher
+ * @since   Indieweb Publisher 1.7
  */
 
 function indieweb_publisher_mf2_body_class( $classes ) {

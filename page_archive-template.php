@@ -4,8 +4,8 @@
  *
  * Template Name: Archive Page
  *
- * @package Independent Publisher
- * @since   Independent Publisher 1.0
+ * @package Indieweb Publisher
+ * @since   Indieweb Publisher 1.0
  */
 
 get_header(); ?>
@@ -33,7 +33,7 @@ get_header(); ?>
 
 						<?php if ( indieweb_publisher_categorized_blog() ) : // Only show the widget if site has multiple categories. ?>
 						<div class="widget">
-							<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'independent-publisher' ); ?></h2>
+							<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'indieweb-publisher' ); ?></h2>
 							<ul>
 								<?php
 								wp_list_categories(
@@ -51,9 +51,9 @@ get_header(); ?>
 						<?php endif; ?>
 
 						<div class="widget">
-							<h2 class="widget-title"><?php esc_html_e( 'Yearly Archives', 'independent-publisher' ); ?></h2>
+							<h2 class="widget-title"><?php esc_html_e( 'Yearly Archives', 'indieweb-publisher' ); ?></h2>
 							<select name="archive-dropdown" onchange="document.location.href=this.options[this.selectedIndex].value;">
-								<option value=""><?php esc_html_e( 'Select Year', 'independent-publisher' ); ?></option>
+								<option value=""><?php esc_html_e( 'Select Year', 'indieweb-publisher' ); ?></option>
 								<?php
 								wp_get_archives(
 									array(
@@ -66,9 +66,9 @@ get_header(); ?>
 						</div>
 
 						<div class="widget">
-							<h2 class="widget-title"><?php echo __( 'Monthly Archives', 'independent-publisher' ); ?></h2>
+							<h2 class="widget-title"><?php echo __( 'Monthly Archives', 'indieweb-publisher' ); ?></h2>
 							<select name="archive-dropdown" onchange="document.location.href=this.options[this.selectedIndex].value;">
-								<option value=""><?php esc_html_e( 'Select Month', 'independent-publisher' ); ?></option>
+								<option value=""><?php esc_html_e( 'Select Month', 'indieweb-publisher' ); ?></option>
 								<?php
 								wp_get_archives(
 									array(
@@ -81,18 +81,18 @@ get_header(); ?>
 						</div>
 
 						<div class="widget">
-							<h2 class="widget-title"><?php esc_html_e( 'Search', 'independent-publisher' ); ?></h2>
+							<h2 class="widget-title"><?php esc_html_e( 'Search', 'indieweb-publisher' ); ?></h2>
 							<?php get_search_form(); ?>
 						</div>
 
-						<?php the_widget( 'WP_Widget_Tag_Cloud', array( 'title' => __( 'Explore by Tag', 'independent-publisher' ) ) ); ?>
+						<?php the_widget( 'WP_Widget_Tag_Cloud', array( 'title' => __( 'Explore by Tag', 'indieweb-publisher' ) ) ); ?>
 
 					<?php endif; ?>
 
 				</div>
 				<!-- .entry-content -->
 
-				<?php edit_post_link( __( 'Edit', 'independent-publisher' ), '<footer class="entry-meta"><span class="edit-link">', '</span></footer>' ); ?>
+				<?php edit_post_link( __( 'Edit', 'indieweb-publisher' ), '<footer class="entry-meta"><span class="edit-link">', '</span></footer>' ); ?>
 			</article><!-- #post-<?php the_ID(); ?> -->
 
 		<?php endwhile; // end of the loop. ?>

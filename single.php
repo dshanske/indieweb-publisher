@@ -2,8 +2,8 @@
 /**
  * The Template for displaying all single posts.
  *
- * @package Independent Publisher
- * @since   Independent Publisher 1.0
+ * @package Indieweb Publisher
+ * @since   Indieweb Publisher 1.0
  */
 
 get_header(); ?>

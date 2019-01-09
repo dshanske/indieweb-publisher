@@ -2,8 +2,8 @@
 /**
  * Code that improves theme support for various plugins
  *
- * @package Independent Publisher
- * @since   Independent Publisher 1.0
+ * @package Indieweb Publisher
+ * @since   Indieweb Publisher 1.0
  */
 
 /*
@@ -19,11 +19,11 @@ if ( function_exists( 'subscribe_reloaded_show' ) ) {
 if ( ! function_exists( 'indieweb_publisher_jetpack_dark_overlay_fix_css' ) ) :
 	/**
 	 * Fixes an issue with a dark overlay that appears < 800px when the Jetpack Infinite Scroll
-	 * module is enabled. See https://github.com/raamdev/independent-publisher/issues/72
+	 * module is enabled. See https://github.com/raamdev/indieweb-publisher/issues/72
 	 */
 	function indieweb_publisher_jetpack_dark_overlay_fix_css() {
 		if ( class_exists( 'Jetpack' ) && Jetpack::is_module_active( 'infinite-scroll' ) ) {
-			wp_enqueue_style( 'independent-publisher-jetpack-infinite-scroll-dark-overlay-fix', get_template_directory_uri() . '/css/jetpack-infinite-scroll-dark-overlay-fix.css', array(), '1.0' );
+			wp_enqueue_style( 'indieweb-publisher-jetpack-infinite-scroll-dark-overlay-fix', get_template_directory_uri() . '/css/jetpack-infinite-scroll-dark-overlay-fix.css', array(), '1.0' );
 		}
 	}
 endif;
@@ -62,7 +62,7 @@ if ( ! function_exists( 'indieweb_publisher_wp_pagenavi_css' ) ) :
 	 */
 	function indieweb_publisher_wp_pagenavi_css() {
 		if ( function_exists( 'wp_pagenavi' ) ) {
-			wp_enqueue_style( 'independent-publisher-wp-pagenavi-css', get_template_directory_uri() . '/css/wp-pagenavi.css', array(), '1.7' );
+			wp_enqueue_style( 'indieweb-publisher-wp-pagenavi-css', get_template_directory_uri() . '/css/wp-pagenavi.css', array(), '1.7' );
 		}
 	}
 endif;

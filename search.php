@@ -2,8 +2,8 @@
 /**
  * The template for displaying Search Results pages.
  *
- * @package Independent Publisher
- * @since   Independent Publisher 1.0
+ * @package Indieweb Publisher
+ * @since   Indieweb Publisher 1.0
  */
 
 get_header(); ?>
@@ -16,7 +16,7 @@ get_header(); ?>
 				<?php $search_stats = apply_filters( 'indieweb_publisher_search_stats', indieweb_publisher_search_stats() ); ?>
 
 				<header class="page-header">
-					<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'independent-publisher' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+					<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'indieweb-publisher' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
 					<?php echo apply_filters( 'search_meta', '<div class="search-stats-description">' . $search_stats . '</div>' ); ?>
 					<?php indieweb_publisher_content_nav( 'nav-above' ); ?>
 				</header><!-- .page-header -->
