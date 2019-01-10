@@ -16,6 +16,7 @@ get_header(); ?>
 			<?php if ( have_posts() ) : ?>
 
 				<header class="page-header">
+					<?php the_archive_thumbnail(); ?>
 					<?php the_archive_title( '<h1 class="page-title p-name">', '</h1>' ); ?>
 					<?php the_archive_description( '<div class="archive-description p-summary">', '</div>' ); ?>
 					<?php indieweb_publisher_content_nav( 'nav-above' ); ?>

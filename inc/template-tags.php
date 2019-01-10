@@ -860,3 +860,87 @@ if ( ! function_exists( 'indieweb_publisher_show_related_tags' ) ) :
 		endif;
 	}
 endif;
+
+if ( ! function_exists( 'indieweb_publisher_archive_description' ) ) :
+	/**
+	 * Filters the archive description.
+	 */
+	function indieweb_publisher_archive_description( $description ) {
+		if ( is_category() ) {
+			$taxonomy_stats = apply_filters( 'indieweb_publisher_taxonomy_category_stats', indieweb_publisher_taxonomy_archive_stats( 'category' ) );
+			if ( ! empty( $description ) ) { // show the description + the taxonomy stats
+				return apply_filters( 'category_archive_meta', '<div class="taxonomy-description">' . $description . $taxonomy_stats . '</div>' );
+			} else { // there was no description set, so let's just show some stats
+				return apply_filters( 'category_archive_meta', '<div class="taxonomy-description">' . $taxonomy_stats . '</div>' );
+			}
+		} elseif ( is_tag() ) {
+			// Get some stats about this taxonomy to include in the description
+			$taxonomy_stats = apply_filters( 'indieweb_publisher_taxonomy_tag_stats', indieweb_publisher_taxonomy_archive_stats( 'post_tag' ) );
+			if ( ! empty( $description ) ) { // show the description + the taxonomy stats
+				return apply_filters( 'tag_archive_meta', '<div class="taxonomy-description">' . $description . $taxonomy_stats . '</div>' );
+			} else { // there was description set, so let's just show some stats
+				return apply_filters( 'tag_archive_meta', '<div class="taxonomy-description">' . $taxonomy_stats . '</div>' );
+			}
+		} elseif ( is_day() || is_month() || is_year() ) {
+			return indieweb_publisher_date_archive_description();
+		}
+		return $description;
+	}
+endif;
+
+add_filter( 'get_the_archive_description', 'indieweb_publisher_archive_description' );
+
+if ( ! function_exists( 'indieweb_publisher_archive_title' ) ) :
+	/**
+	 * Filters the archive title.
+	 */
+	function indieweb_publisher_archive_title( $title ) {
+		if ( is_category() ) {
+			return sprintf( '%s', '<span>' . single_cat_title( '', false ) . '</span>' );
+		} elseif ( is_tag() ) {
+			return sprintf( '%s', '<span>' . single_tag_title( '', false ) . '</span>' );
+		} elseif ( is_author() ) {
+			/*
+			 Queue the first post, that way we know
+			* what author we're dealing with (if that is the case).
+			*/
+			the_post();
+			$title = sprintf( '%s', '<span class="vcard h-card"><a class="url fn n u-url" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '" title="' . esc_attr( get_the_author() ) . '" rel="me">' . get_the_author() . '</a></span>' );
+			/* Since we called the_post() above, we need to
+			* rewind the loop back to the beginning that way
+			* we can run the loop properly, in full.
+			*/
+			rewind_posts();
+			return $title;
+		} elseif ( is_day() ) {
+			return sprintf( '%s', '<span>' . get_the_date() . '</span>' );
+		} elseif ( is_month() ) {
+			return sprintf( '%s', '<span>' . get_the_date( 'F Y' ) . '</span>' );
+		} elseif ( is_year() ) {
+			return sprintf( '%s', '<span>' . get_the_date( 'Y' ) . '</span>' );
+		} elseif ( is_tax( 'post_format', 'post-format-aside' ) ) {
+			return __( 'Asides', 'indieweb-publisher' );
+		} elseif ( is_tax( 'post_format', 'post-format-gallery' ) ) {
+			return __( 'Galleries', 'indieweb-publisher' );
+		} elseif ( is_tax( 'post_format', 'post-format-image' ) ) {
+			return __( 'Images', 'indieweb-publisher' );
+		} elseif ( is_tax( 'post_format', 'post-format-video' ) ) {
+			return __( 'Videos', 'indieweb-publisher' );
+		} elseif ( is_tax( 'post_format', 'post-format-quote' ) ) {
+			return __( 'Quotes', 'indieweb-publisher' );
+		} elseif ( is_tax( 'post_format', 'post-format-link' ) ) {
+			return __( 'Links', 'indieweb-publisher' );
+		} elseif ( is_tax( 'post_format', 'post-format-status' ) ) {
+			return __( 'Statuses', 'indieweb-publisher' );
+		} elseif ( is_tax( 'post_format', 'post-format-audio' ) ) {
+			return __( 'Audios', 'indieweb-publisher' );
+		} elseif ( is_tax( 'post_format', 'post-format-chat' ) ) {
+			return __( 'Chats', 'indieweb-publisher' );
+		} else {
+			return __( 'Archives', 'indieweb-publisher' );
+		}
+		return $title;
+	}
+endif;
+
+add_filter( 'get_the_archive_title', 'indieweb_publisher_archive_title' );

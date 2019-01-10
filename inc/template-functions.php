@@ -15,7 +15,7 @@ add_action( 'wp_head', 'indieweb_publisher_pingback_header' );
  */
 function indieweb_publisher_feed_header() {
 	if ( is_front_page() && 0 !== (int) get_option( 'page_for_posts', 0 ) ) {
-		printf( '<link rel="feed" type="text/html" href="%1$s" title="%2$s" />' . PHP_EOL, esc_url( get_post_type_archive_link( 'post' ) ), __( 'All Posts Feed', 'iw26' ) );
+		printf( '<link rel="feed" type="text/html" href="%1$s" title="%2$s" />' . PHP_EOL, esc_url( get_post_type_archive_link( 'post' ) ), __( 'All Posts Feed', 'indieweb-publisher' ) );
 	}
 }
 add_action( 'wp_head', 'indieweb_publisher_feed_header' );
@@ -31,35 +31,45 @@ function indieweb_publisher_get_post_kind() {
 	return get_post_format();
 }
 
-function get_the_archive_thumbnail_url() {
-	$image_id = null;
-	if ( is_tax() || is_category() || is_tag() ) {
-		$term     = get_queried_object();
-		$image_id = get_term_meta( $term->term_id, 'image', true );
-	}
-	if ( $image_id ) {
-		return wp_get_attachment_imagE_url( $image_id, 'thumbnail', true );
+if ( ! function_exists( 'get_the_archive_thumbnail_url' ) ) {
+
+
+	function get_the_archive_thumbnail_url() {
+		$image_id = null;
+		if ( is_tax() || is_category() || is_tag() ) {
+			$term     = get_queried_object();
+			$image_id = get_term_meta( $term->term_id, 'image', true );
+		}
+		if ( $image_id ) {
+			return wp_get_attachment_image_url( $image_id, 'thumbnail', true );
+		}
 	}
 }
 
-function get_the_archive_thumbnail() {
-	$image_id = null;
-	if ( is_tax() || is_category() || is_tag() ) {
-		$term     = get_queried_object();
-		$image_id = get_term_meta( $term->term_id, 'image', true );
-	}
+if ( ! function_exists( 'get_the_archive_thumbnail' ) ) {
 
-	if ( $image_id ) {
-		return wp_get_attachment_image( $image_id, 'thumbnail', true );
-	}
-	if ( is_tax( 'kind' ) ) {
-		$term = get_queried_object();
-		return Kind_Taxonomy::get_icon( $term->slug );
+	function get_the_archive_thumbnail() {
+		$image_id = null;
+		if ( is_tax() || is_category() || is_tag() ) {
+			$term     = get_queried_object();
+			$image_id = get_term_meta( $term->term_id, 'image', true );
+		}
+
+		if ( $image_id ) {
+			return wp_get_attachment_image( $image_id, 'thumbnail', true );
+		}
+		if ( is_tax( 'kind' ) ) {
+			$term = get_queried_object();
+			return Kind_Taxonomy::get_icon( $term->slug );
+		}
 	}
 }
 
-function the_archive_thumbnail() {
-	echo get_the_archive_thumbnail();
+if ( ! function_exists( 'the_archive_thumbnail' ) ) {
+
+	function the_archive_thumbnail() {
+		echo get_the_archive_thumbnail();
+	}
 }
 
 function indieweb_publisher_image_rss() {
