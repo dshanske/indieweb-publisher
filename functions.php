@@ -131,7 +131,6 @@ if ( ! function_exists( 'indieweb_publisher_setup' ) ) :
 			array(
 				'primary' => __( 'Primary Menu', 'indieweb-publisher' ),
 				'single'  => __( 'Single Posts Menu', 'indieweb-publisher' ),
-				'social'  => __( 'Social', 'indieweb-publisher' ),
 			)
 		);
 
