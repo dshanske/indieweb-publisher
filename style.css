@@ -763,14 +763,18 @@ Accessibility
 .blog .format-aside .entry-title,
 .archive .format-aside .entry-title,
 .search .format-aside .entry-title,
+.originalofsearch .format-aside .entry-title,
 .blog .format-status .entry-title,
 .archive .format-status .entry-title,
 .search .format-status .entry-title,
+.originalofsearch .format-aside .entry-title,
 .blog .format-image .entry-title,
 .archive .format-image .entry-title,
 .search .format-image .entry-title,
+.originalofsearch .format-image .entry-title,
 .blog .format-quote .entry-title,
 .archive .format-quote .entry-title,
+.originalofsearch .format-image .entry-title,
 .search .format-quote .entry-title {
 	display: none;
 }
@@ -1513,7 +1517,8 @@ ul.taglist {
 }
 
 /* Search widget */
-.widget_search .submit {
+.widget_search .submit,
+.original_of_widget .submit {
 	display: none;
 }
 
@@ -1975,7 +1980,8 @@ article.first-post {
 	word-wrap: break-word;
 }
 
-.widget_search input[type="text"] {
+.widget_search input[type="text"],
+.original_of_widget input[type="text" ] {
 	/* fixes overflow issue */
 	width: 90%;
 }

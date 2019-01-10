@@ -22,6 +22,8 @@ get_header(); ?>
 
 					<?php get_search_form(); ?>
 
+					<?php if ( function_exists( 'get_original_of_form' ) ) { get_original_of_form(); } ?>
+
 					<?php the_widget( 'WP_Widget_Recent_Posts' ); ?>
 
 					<?php if ( indieweb_publisher_categorized_blog() ) : // Only show the widget if site has multiple categories. ?>
