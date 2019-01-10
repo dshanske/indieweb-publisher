@@ -173,6 +173,27 @@ class IndiewebPublisher_Customize {
 			)
 		);
 
+		// Show Time in Entry Meta
+		$wp_customize->add_setting(
+			'indieweb_publisher_general_options[show_time_entry_meta]',
+			array(
+				'default'           => false,
+				'type'              => 'option',
+				'capability'        => 'edit_theme_options',
+				'sanitize_callback' => 'indieweb_publisher_sanitize_checkbox',
+			)
+		);
+
+		$wp_customize->add_control(
+			'show_time_entry_meta',
+			array(
+				'settings' => 'indieweb_publisher_general_options[show_time_entry_meta]',
+				'label'    => __( 'If Date is Shown Display Time in Entry Meta', 'indieweb-publisher' ),
+				'section'  => 'indieweb_publisher_general_options',
+				'type'     => 'checkbox',
+			)
+		);
+
 		// Show Widgets on Single Posts
 		$wp_customize->add_setting(
 			'indieweb_publisher_general_options[show_widgets_on_single]',

@@ -382,6 +382,19 @@ function indieweb_publisher_show_date_entry_meta() {
 }
 
 /**
+ * Returns true if Show Post Time in Entry Meta option is enabled
+ */
+function indieweb_publisher_show_time_entry_meta() {
+	$indieweb_publisher_general_options = get_option( 'indieweb_publisher_general_options' );
+	if ( isset( $indieweb_publisher_general_options['show_time_entry_meta'] ) && $indieweb_publisher_general_options['show_time_entry_meta'] ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+
+/**
  * Returns true if Show Widgets on Single Pages option is enabled
  */
 function indieweb_publisher_show_widgets_on_single_pages() {

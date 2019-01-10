@@ -292,12 +292,23 @@ if ( ! function_exists( 'indieweb_publisher_posted_on_date' ) ) :
 	 * @since Indieweb Publisher 1.0
 	 */
 	function indieweb_publisher_posted_on_date() {
+		if ( indieweb_publisher_show_time_entry_meta() ) {
+			$time_string = '<time class="entry-date dt-published" itemprop="datePublished" pubdate="pubdate" datetime="%1$s">%2$s %3$s</time>';
+		} else {
+			$time_string = '<time class="entry-date dt-published" itemprop="datePublished" pubdate="pubdate" datetime="%1$s">%2$s</time>';
+		}
+		$time_string = sprintf(
+			$time_string,
+			esc_attr( get_the_date( DATE_W3C ) ),
+			get_the_date(),
+			get_the_time()
+		);
+
 		printf(
-			'<a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date dt-published" datetime="%3$s" itemprop="datePublished" pubdate="pubdate">%4$s</time></a>',
+			'<a href="%1$s" title="%2$s" rel="bookmark">%3$s</a>',
 			esc_url( get_permalink() ),
 			esc_attr( get_the_title() ),
-			esc_attr( get_the_date( DATE_ISO8601 ) ),
-			esc_html( get_the_date() )
+			$time_string
 		);
 	}
 endif;
@@ -313,7 +324,7 @@ if ( ! function_exists( 'indieweb_publisher_post_updated_date' ) ) :
 			'<a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date-modified dt-updated" datetime="%3$s" moddate="moddate">%4$s</time></a>',
 			esc_url( get_permalink() ),
 			esc_attr( get_the_title() ),
-			esc_attr( get_the_modified_date( DATE_ISO8601 ) ),
+			esc_attr( get_the_modified_date( DATE_W3C ) ),
 			esc_html( get_the_modified_date() )
 		);
 	}
