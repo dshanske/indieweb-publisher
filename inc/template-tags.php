@@ -421,7 +421,7 @@ if ( ! function_exists( 'indieweb_publisher_post_categories' ) ) :
 			$output     = '';
 			if ( $categories ) {
 				foreach ( $categories as $category ) {
-					$output .= '<a href="' . get_category_link( $category->term_id ) . '" title="' . esc_attr( sprintf( __( 'View all posts in %s', 'indieweb-publisher' ), $category->name ) ) . '">' . $category->cat_name . '</a>';
+					$output .= '<a class="p-category" href="' . get_category_link( $category->term_id ) . '" title="' . esc_attr( sprintf( __( 'View all posts in %s', 'indieweb-publisher' ), $category->name ) ) . '">' . $category->cat_name . '</a>';
 					if ( $single ) {
 						break;
 					}
