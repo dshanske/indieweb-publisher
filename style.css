@@ -611,10 +611,6 @@ Accessibility
 	-moz-border-radius: 10px;
 }
 
-.hentry {
-	/* margin: 0 0 1.5em; */
-}
-
 .entry-meta {
 	clear: both;
 }
@@ -1618,7 +1614,9 @@ body {
 	float: right;
 }
 
-.site-published {
+.site-published,
+.site-location,
+.syn-text {
 	margin: 10px 0 0 0;
 	color: #333332;
 	font-size: 14px;
@@ -1628,7 +1626,8 @@ body {
 	letter-spacing: inherit;
 }
 
-.site-published-date {
+.site-published-date,
+.site-location-detail {
 	margin: 5px 0 0 0;
 	color: #929292;
 	font-size: 12px;

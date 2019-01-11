@@ -7,6 +7,55 @@
  */
 
 /*
+ * Wrapper function for a possible custom display of Syndication Links output
+ */
+function indieweb_publisher_syndication_links( $separator ) {
+	$args = array(
+		'text'             => false,
+		'icons'            => true,
+		'show_text_before' => false,
+	);
+	printf( '<h3 class="syn-text">%1$s</h3>', get_option( 'syndication-links_text_before' ) );
+	echo get_syndication_links( get_the_ID(), $args );
+}
+
+/*
+ * Wrapper function for a possible custom display of Simple Location output
+  */
+function indieweb_publisher_simple_location( $separator ) {
+	printf( '<h3 class="site-location">%1$s</h3>', __( 'Location', 'indieweb-publisher' ) );
+	printf(
+		'<h3 class="site-location-detail">%1$s</h3>',
+		Loc_View::get_location(
+			get_post(),
+			array(
+				'icon' => false,
+			)
+		)
+	);
+}
+
+function indieweb_publisher_indieweb_plugin_support() {
+	/*
+	 * Adds support for Syndication Links
+	 */
+	if ( class_exists( 'Syn_Meta' ) ) {
+		remove_filter( 'the_content', array( 'Syn_Config', 'the_content' ), 30 );
+		add_action( 'indieweb_publisher_after_post_published_date', 'indieweb_publisher_syndication_links', 11 );
+	}
+
+	/*
+	 * Adds support for Simple Location
+						  */
+	if ( class_exists( 'Loc_View' ) ) {
+		remove_filter( 'the_content', array( 'Loc_View', 'location_content' ), 12 );
+		add_action( 'indieweb_publisher_after_post_published_date', 'indieweb_publisher_simple_location' );
+	}
+}
+add_action( 'init', 'indieweb_publisher_indieweb_plugin_support', 11 );
+
+
+/*
  * Adds support for showing Subscribe to Comments Reloaded options after comment form fields
  */
 if ( function_exists( 'subscribe_reloaded_show' ) ) {

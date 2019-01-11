@@ -21,6 +21,11 @@
 	<div class="entry-content e-content">
 		<?php the_content(); ?>
 
+	</div>
+	<!-- .entry-content -->
+
+	<footer class="entry-meta">
+
 		<?php if ( function_exists( 'wp_pagenavi' ) ) : // WP-PageNavi support ?>
 
 			<?php wp_pagenavi( array( 'type' => 'multipart' ) ); ?>
@@ -32,8 +37,8 @@
 				array(
 					'before'           => '<div class="page-links-next-prev">',
 					'after'            => '</div>',
-					'nextpagelink'     => '<button class="next-page-nav">' . __( 'Next page &rarr;', 'independent-publisher' ) . '</button>',
-					'previouspagelink' => '<button class="previous-page-nav">' . __( '&larr; Previous page', 'independent-publisher' ) . '</button>',
+					'nextpagelink'     => '<button class="next-page-nav">' . __( 'Next page &rarr;', 'indieweb-publisher' ) . '</button>',
+					'previouspagelink' => '<button class="previous-page-nav">' . __( '&larr; Previous page', 'indieweb-publisher' ) . '</button>',
 					'next_or_number'   => 'next',
 				)
 			);
@@ -41,16 +46,12 @@
 			<?php
 			wp_link_pages(
 				array(
-					'before' => '<div class="page-links">' . __( 'Pages:', 'independent-publisher' ),
+					'before' => '<div class="page-links">' . __( 'Pages:', 'indieweb-publisher' ),
 					'after'  => '</div>',
 				)
 			);
 			?>
 		<?php endif; ?>
-	</div>
-	<!-- .entry-content -->
-
-	<footer class="entry-meta">
 		<?php do_action( 'indieweb_publisher_entry_meta_top' ); ?>
 
 		<?php if ( comments_open() && ! indieweb_publisher_hide_comments() ) : ?>

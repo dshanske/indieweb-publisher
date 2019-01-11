@@ -4,7 +4,6 @@
  * @since   Independent Publisher 1.0
  */
 ?>
-
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?> itemscope="itemscope" itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
 	<?php if ( has_post_thumbnail() && ! indieweb_publisher_has_full_width_featured_image() ) : ?>
 		<?php the_post_thumbnail( 'indieweb_publisher_post_thumbnail', array( 'itemprop' => 'image' ) ); ?>
@@ -18,7 +17,8 @@
 				echo indieweb_publisher_entry_meta_author_prefix() . ' ';
 			}
 			indieweb_publisher_posted_author()
-			?>
+?>
+dddd
 		</span>
 				<?php
 				if ( get_post_meta( get_the_ID(), 'indieweb_publisher_primary_category', true ) ) { // check for a custom field named 'indieweb_publisher_primary_category'
@@ -61,6 +61,13 @@
 	<div class="entry-content e-content" itemprop="mainContentOfPage">
 		<?php the_content(); ?>
 
+	</div>
+	<!-- .entry-content -->
+
+	<?php indieweb_publisher_posted_author_bottom_card(); ?>
+
+	<footer class="entry-meta">
+
 		<?php if ( function_exists( 'wp_pagenavi' ) ) : // WP-PageNavi support ?>
 
 			<?php wp_pagenavi( array( 'type' => 'multipart' ) ); ?>
@@ -72,8 +79,8 @@
 				array(
 					'before'           => '<div class="page-links-next-prev">',
 					'after'            => '</div>',
-					'nextpagelink'     => '<button class="next-page-nav">' . __( 'Next page &rarr;', 'independent-publisher' ) . '</button>',
-					'previouspagelink' => '<button class="previous-page-nav">' . __( '&larr; Previous page', 'independent-publisher' ) . '</button>',
+					'nextpagelink'     => '<button class="next-page-nav">' . __( 'Next page &rarr;', 'indieweb-publisher' ) . '</button>',
+					'previouspagelink' => '<button class="previous-page-nav">' . __( '&larr; Previous page', 'indieweb-publisher' ) . '</button>',
 					'next_or_number'   => 'next',
 				)
 			);
@@ -87,12 +94,6 @@
 			);
 			?>
 		<?php endif; ?>
-	</div>
-	<!-- .entry-content -->
-
-	<?php indieweb_publisher_posted_author_bottom_card(); ?>
-
-	<footer class="entry-meta">
 		<?php do_action( 'indieweb_publisher_entry_meta_top' ); ?>
 
 		<?php if ( comments_open() && ! indieweb_publisher_hide_comments() ) : ?>
