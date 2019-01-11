@@ -853,7 +853,7 @@ if ( ! function_exists( 'indieweb_publisher_show_related_tags' ) ) :
 		if ( get_the_tag_list() ) :
 
 			$tag_list_title = apply_filters( 'indieweb_publisher_tag_list_title', __( 'Related Content by Tag', 'indieweb-publisher' ) );
-			$tag_list       = (string) get_the_tag_list( '<ul class="taglist"><li class="taglist-title">' . $tag_list_title . '</li><li>', '</li><li>', '</li></ul>' );
+			$tag_list       = (string) get_the_tag_list( '<ul class="taglist"><li class="taglist-title">' . $tag_list_title . '</li><li class="p-category">', '</li><li class="p-category">', '</li></ul>' );
 
 			printf( '<div id="taglist">%s</div>', $tag_list );
 
