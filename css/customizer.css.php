@@ -5,4 +5,4 @@
  * See inc/customizer.php
  */
 header( 'Content-type: text/css; charset: UTF-8' );
-IndependentPublisher_Customize::header_output();
+IndiewebPublisher_Customize::header_output();

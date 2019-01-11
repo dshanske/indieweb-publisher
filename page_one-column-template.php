@@ -35,6 +35,8 @@ get_header(); ?>
 
 					<div class="entry-content">
 						<?php the_content(); ?>
+					</div> <!-- .entry-content -->
+					<footer class="entry-meta">>
 
 						<?php if ( function_exists( 'wp_pagenavi' ) ) : // WP-PageNavi support ?>
 
@@ -63,10 +65,9 @@ get_header(); ?>
 							?>
 
 						<?php endif; ?>
-					</div>
-					<!-- .entry-content -->
 
-					<?php edit_post_link( __( 'Edit', 'indieweb-publisher' ), '<footer class="entry-meta"><span class="edit-link">', '</span></footer>' ); ?>
+					<?php edit_post_link( __( 'Edit', 'indieweb-publisher' ), '<span class="edit-link">', '</span>' ); ?>
+					</footer> <!-- .entry-meta --!>
 				</article><!-- #post-<?php the_ID(); ?> -->
 
 				<?php comments_template( '', true ); ?>
