@@ -10,29 +10,34 @@
  * Wrapper function for a possible custom display of Syndication Links output
  */
 function indieweb_publisher_syndication_links( $separator ) {
-	$args = array(
+	$args  = array(
 		'text'             => false,
 		'icons'            => true,
 		'show_text_before' => false,
 	);
+	$links = get_syndication_links( get_the_ID(), $args );
+	if ( empty( $links ) ) {
+		return;
+	}
 	printf( '<h3 class="syn-text">%1$s</h3>', get_option( 'syndication-links_text_before' ) );
-	echo get_syndication_links( get_the_ID(), $args );
+	echo $links;
 }
 
 /*
  * Wrapper function for a possible custom display of Simple Location output
   */
 function indieweb_publisher_simple_location( $separator ) {
-	printf( '<h3 class="site-location">%1$s</h3>', __( 'Location', 'indieweb-publisher' ) );
-	printf(
-		'<h3 class="site-location-detail">%1$s</h3>',
-		Loc_View::get_location(
-			get_post(),
-			array(
-				'icon' => false,
-			)
+	$location = Loc_View::get_location(
+		get_post(),
+		array(
+			'icon' => false,
 		)
 	);
+	if ( empty( $location ) ) {
+		return;
+	}
+	printf( '<h3 class="site-location">%1$s</h3>', __( 'Location', 'indieweb-publisher' ) );
+	printf( '<h3 class="site-location-detail">%1$s</h3>', $location );
 }
 
 function indieweb_publisher_indieweb_plugin_support() {
