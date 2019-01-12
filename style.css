@@ -1560,7 +1560,7 @@ body {
 	opacity: 1;
 }
 
-.site-logo img {
+.custom-logo-link img {
 	margin-bottom: 10px;
 	border-radius: 50%;
 	-webkit-border-radius: 50%;
@@ -2043,7 +2043,7 @@ table th {
 	min-height: 100px;
 }
 
-.post-author-bottom .site-logo img {
+.post-author-bottom .custom-logo img {
 	float: left;
 	height: auto;
 }
@@ -2588,13 +2588,13 @@ table th {
 		font-size: 24px;
 	}
 
-	#masthead .site-logo {
+	#masthead .custom-logo-link {
 		float: right;
 		margin-right: 0;
 	}
 
-	#masthead .site-logo img,
-	.single-column-layout #masthead .site-logo img {
+	#masthead .custom-logo-link img,
+	.single-column-layout #masthead .custom-logo-link img {
 		max-width: 70px;
 		margin-right: 0;
 	}
@@ -2745,7 +2745,7 @@ table th {
 		line-height: 2.2;
 	}
 
-	.post-author-bottom .site-logo, .post-author-bottom .site-logo img {
+	.post-author-bottom .custom-logo-link, .post-author-bottom .custom-logo-link img {
 		float: none;
 		max-width: 100px;
 	}

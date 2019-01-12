@@ -357,8 +357,8 @@ if ( ! function_exists( 'indieweb_publisher_get_footer_credits' ) ) :
 endif;
 
 /**
- * Implement the Custom Header feature
+ * Implement the Custom Logo feature
  */
-require get_template_directory() . '/inc/custom-header.php';
+require get_template_directory() . '/inc/custom-logo.php';
 
 

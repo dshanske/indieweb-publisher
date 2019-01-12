@@ -440,17 +440,14 @@ if ( ! function_exists( 'indieweb_publisher_site_info' ) ) :
 	 * @since Indieweb Publisher 1.0
 	 */
 	function indieweb_publisher_site_info() {
-		?>
-		<?php if ( get_header_image() ) : ?>
-			<a class="site-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-				<img class="no-grav" src="<?php echo esc_url( get_header_image() ); ?>" height="<?php echo absint( get_custom_header()->height ); ?>" width="<?php echo absint( get_custom_header()->width ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" />
-			</a>
+?>
+		<?php if ( has_custom_logo() ) : ?>
+			<?php the_custom_logo(); ?>
 		<?php endif; ?>
 		<div class="site-title">
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
 		</div>
 		<div class="site-description"><?php bloginfo( 'description' ); ?></div>
-		<?php get_template_part( 'menu', 'social' ); ?>
 		<?php
 	}
 endif;
@@ -469,7 +466,7 @@ if ( ! function_exists( 'indieweb_publisher_posted_author_card' ) ) :
 		global $wp_query;
 		$post_author_id = $wp_query->post->post_author;
 		$show_avatars   = get_option( 'show_avatars' );
-		?>
+?>
 
 		<?php if ( ( ! $show_avatars || $show_avatars === 0 ) && ! indieweb_publisher_is_multi_author_mode() && get_header_image() ) : ?>
 			<a class="site-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
