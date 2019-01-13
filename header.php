@@ -27,11 +27,9 @@
 <?php // Makes the Header Image a small icon floating in the top left corner when Multi Author Mode is enabled ?>
 <?php if ( indieweb_publisher_is_multi_author_mode() && is_single() ) : ?>
 	<div class="site-master-logo">
-		<?php if ( get_header_image() ) : ?>
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-				<img class="no-grav" src="<?php echo esc_url( get_header_image() ); ?>" height="<?php echo absint( get_custom_header()->height ); ?>" width="<?php echo absint( get_custom_header()->width ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" />
-			</a>
-		<?php endif; ?>
+		<?php if ( has_custom_logo() ) :
+			the_custom_logo();
+		endif; ?>
 	</div>
 <?php endif; ?>
 
