@@ -578,8 +578,12 @@ if ( ! function_exists( 'indieweb_publisher_get_post_word_count' ) ) :
 		} else {
 			$separator = '';
 		}
+		$count = indieweb_publisher_post_word_count();
+		if ( '0' === $count ) {
+			return '';
+		}
 
-		return sprintf( '<span>' . __( '%1$s Words', 'indieweb-publisher' ) . '</span>%2$s', indieweb_publisher_post_word_count(), $separator );
+		return sprintf( '<span>' . __( '%1$s Words', 'indieweb-publisher' ) . '</span>%2$s', $count, $separator );
 	}
 endif;
 
