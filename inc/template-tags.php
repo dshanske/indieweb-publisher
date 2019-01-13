@@ -365,6 +365,9 @@ if ( ! function_exists( 'indieweb_publisher_categorized_blog' ) ) :
 	 * @since Indieweb Publisher 1.0
 	 */
 	function indieweb_publisher_categorized_blog() {
+		if ( indieweb_publisher_hide_category_entry_meta() ) {
+			return false;
+		}
 		if ( false === ( $all_the_cool_cats = get_transient( 'all_the_cool_cats' ) ) ) {
 			// Create an array of all the categories that are attached to posts
 			$all_the_cool_cats = get_categories(
@@ -440,7 +443,7 @@ if ( ! function_exists( 'indieweb_publisher_site_info' ) ) :
 	 * @since Indieweb Publisher 1.0
 	 */
 	function indieweb_publisher_site_info() {
-?>
+		?>
 		<?php if ( has_custom_logo() ) : ?>
 			<?php the_custom_logo(); ?>
 		<?php endif; ?>
@@ -466,7 +469,7 @@ if ( ! function_exists( 'indieweb_publisher_posted_author_card' ) ) :
 		global $wp_query;
 		$post_author_id = $wp_query->post->post_author;
 		$show_avatars   = get_option( 'show_avatars' );
-?>
+		?>
 
 		<?php if ( ( ! $show_avatars || $show_avatars === 0 ) && ! indieweb_publisher_is_multi_author_mode() && get_header_image() ) : ?>
 			<a class="site-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
@@ -903,7 +906,8 @@ if ( ! function_exists( 'indieweb_publisher_archive_title' ) ) :
 			*/
 			the_post();
 			$title = sprintf( '%s', '<span class="vcard h-card"><a class="url fn n u-url" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '" title="' . esc_attr( get_the_author() ) . '" rel="me">' . get_the_author() . '</a></span>' );
-			/* Since we called the_post() above, we need to
+			/*
+			 Since we called the_post() above, we need to
 			* rewind the loop back to the beginning that way
 			* we can run the loop properly, in full.
 			*/

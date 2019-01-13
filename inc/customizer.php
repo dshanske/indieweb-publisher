@@ -153,6 +153,26 @@ class IndiewebPublisher_Customize {
 			)
 		);
 
+		// Hide Category in Entry Meta
+		$wp_customize->add_setting(
+			'indieweb_publisher_general_options[hide_category_entry_meta]',
+			array(
+				'default'           => false,
+				'type'              => 'option',
+				'capability'        => 'edit_theme_options',
+				'sanitize_callback' => 'indieweb_publisher_sanitize_checkbox',
+			)
+		);
+		$wp_customize->add_control(
+			'hide_category_entry_meta',
+			array(
+				'settings' => 'indieweb_publisher_general_options[hide_category_entry_meta]',
+				'label'    => __( 'Hide Category in Entry Meta', 'indieweb-publisher' ),
+				'section'  => 'indieweb_publisher_general_options',
+				'type'     => 'checkbox',
+			)
+		);
+
 		// Show Date in Entry Meta
 		$wp_customize->add_setting(
 			'indieweb_publisher_general_options[show_date_entry_meta]',

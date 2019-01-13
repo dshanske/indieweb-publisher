@@ -379,6 +379,19 @@ function indieweb_publisher_show_post_word_count() {
 	}
 }
 
+
+/**
+ * Returns true if Hide Post Categories in Entry Meta option is enabled
+ */
+function indieweb_publisher_hide_category_entry_meta() {
+	$indieweb_publisher_general_options = get_option( 'indieweb_publisher_general_options' );
+	if ( isset( $indieweb_publisher_general_options['hide_category_entry_meta'] ) && $indieweb_publisher_general_options['hide_category_entry_meta'] ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
 /**
  * Returns true if Show Post Date in Entry Meta option is enabled
  */
