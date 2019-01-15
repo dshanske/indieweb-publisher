@@ -1,0 +1,35 @@
+.site-content .site-navigation {
+	overflow: hidden;
+	/* margin: 0 0 1.5em; */
+}
+
+.site-content .nav-previous,
+.site-navigation .previous-image {
+	float: left;
+}
+
+.site-content .nav-next,
+.site-navigation .next-image {
+	float: right;
+	text-align: right;
+}
+
+.single .site-navigation {
+	margin-top: 40px;
+}
+
+#nav-below {
+	margin-top: 3em;
+}
+
+#nav-above {
+	padding-bottom: 1em;
+	padding-top: 1em;
+	margin-top: 0;
+	border-bottom: none;
+}
+
+#image-navigation {
+	margin-bottom: 20px;
+}
+

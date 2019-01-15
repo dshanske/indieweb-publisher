@@ -1,0 +1,176 @@
+.site,
+.entry-content,
+.entry-summary {
+	*zoom: 1;
+}
+
+.site:before,
+.site:after,
+.entry-content:before,
+.entry-content:after,
+.entry-summary:before,
+.entry-summary:after {
+	display: table;
+	content: "";
+	line-height: 0;
+}
+
+.site:after,
+.entry-content:after,
+.entry-summary:after {
+	clear: both;
+}
+
+.site-main article.sticky {
+	margin-bottom: 1px;
+	padding-right: 40px;
+	padding-left: 40px;
+	padding-top: 20px;
+	background: #F5F5F5;
+	border: none;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+}
+
+.entry-meta {
+	clear: both;
+}
+
+.byline {
+	display: none;
+}
+
+.single .byline,
+.group-blog .byline {
+	display: inline;
+}
+
+.entry-content,
+.entry-summary {
+	margin: 0 0 0;
+}
+
+.entry-content > .sharedaddy,
+.entry-summary > .sharedaddy {
+	margin: 1.5em 0;
+}
+
+.page-links {
+	clear: both;
+	margin: 0 0 1em;
+	text-align: center;
+	padding-top: 2em;
+}
+
+.page-links-next-prev {
+	margin-top: 4em;
+	clear: both;
+}
+
+.page-links-next-prev .next-page-nav {
+	float: right;
+}
+
+.page-links-next-prev .previous-page-nav {
+	float: left;
+}
+
+.entry-content .twitter-tweet-rendered,
+.entry-summary .twitter-tweet-rendered {
+	max-width: 100% !important;
+}
+
+.single .entry-content,
+.single .entry-summary {
+	padding-bottom: 20px;
+	margin-top: 0;
+}
+
+.single article.post, .single article.page {
+	margin-bottom: 40px;
+}
+
+.single .wp-post-image,
+.page .wp-post-image,
+.blog .wp-post-image,
+.archive .wp-post-image {
+	width: 100%;
+	height: auto;
+}
+
+.single .full-width-featured-image {
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+
+.single .wp-post-image,
+.page .wp-post-image,
+.blog .wp-post-image,
+.archive .wp-post-image {
+	margin-bottom: 20px;
+}
+
+.single-attachment .entry-title-meta {
+	margin-bottom: 20px;
+}
+
+.single-attachment .entry-caption {
+	margin-top: 1.2em;
+}
+
+.post-excerpts h1.entry-title,
+.enhanced-excerpts h1.entry-title {
+	font-size: 1.8em;
+	margin-bottom: 0;
+}
+
+.post-excerpts .sticky h1.entry-title,
+.enhanced-excerpts .sticky h1.entry-title {
+	font-size: 2.5em;
+	margin-bottom: 20px;
+}
+
+.post-excerpts .entry-content,
+.enhanced-excerpts .entry-content,
+.post-excerpts .entry-content a,
+.enhanced-excerpts .entry-content a,
+.post-excerpts .entry-summary,
+.enhanced-excerpts .entry-summary,
+.post-excerpts .entry-summary a,
+.enhanced-excerpts .entry-summary a {
+	margin-top: 10px;
+	text-decoration: none;
+}
+
+.enhanced-excerpts .enhanced-excerpt-read-more a {
+	text-align: right;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 1.4em;
+	color: #57ad68;
+}
+
+.enhanced-excerpt-read-more {
+	margin-bottom: 1em;
+	font-size: 13px;
+	text-align: right;
+}
+
+.show-full-content-first-post h1.entry-title,
+.show-full-content-first-post-sticky h1.entry-title {
+	font-size: 2.5em;
+	margin-bottom: 20px;
+}
+
+.entry-content .subtitle,
+.entry-summary .subtitle {
+	font-style: italic;
+	font-weight: normal;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 1.3em;
+	line-height: 1.2em;
+	margin-top: -5px;
+	margin-bottom: 1em;
+	letter-spacing: 0;
+}

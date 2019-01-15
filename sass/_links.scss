@@ -1,0 +1,47 @@
+a {
+	color: #57ad68;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #57ad68;
+	text-decoration: none;
+}
+
+a:hover,
+a:focus,
+a:active {
+	color: #57ad68;
+	text-decoration: underline;
+}
+
+/* Alignment */
+.alignleft {
+	display: inline;
+	float: left;
+	margin-right: 1.5em;
+}
+
+.alignright {
+	display: inline;
+	float: right;
+	margin-left: 1.5em;
+}
+
+.aligncenter {
+	display: block;
+	clear: both;
+	margin: 0 auto;
+}
+
+img.alignleft {
+	margin: 5px 20px 10px 0;
+}
+
+img.alignright {
+	margin: 5px 0 10px 20px;
+}
+
+img.aligncenter {
+	margin: 5px auto 10px;
+}

@@ -1,0 +1,118 @@
+/*
+Theme Name: Indieweb Publisher
+Theme URI: https://github.com/dshanske/indieweb-publisher
+Author: David Shanske
+Author URI: https://david.shanske.com
+Description: Indieweb Publisher is an Indieweb fork of Independent Publisher by Raam Dev
+Version: 1.0
+License: GNU GPLv3
+License URI: http://www.gnu.org/copyleft/gpl.html
+Tags: one-column, two-columns, left-sidebar, featured-images, full-width-template, custom-menu, custom-background, custom-colors, custom-menu, editor-style, post-formats, rtl-language-support, sticky-post, threaded-comments, translation-ready, theme-options
+Text Domain: indieweb-publisher
+GitHub Theme URI: dshanske/indieweb-publisher
+
+Indieweb Publisher is a fork of the excellent Independent Publisher theme, by Raam Dev. The theme had not been updated since 2017 and the developer has not been active.
+This not only updates the theme with new features, it adds support for Indieweb plugins, adjusts the Microformats 2 markup, and more.
+
+Genericons Neue icon font (http://genericons.com/) is bundled.
+Genericons is distributed under the terms of the GNU GPL.
+
+NProgress (https://github.com/rstacruz/nprogress) is bundled for use in the progress bar feature.
+NProgress (c) 2013, Rico Sta. Cruz. Released under the MIT License.
+
+Based on _s http://underscores.me
+and inspired by the Publish theme by Konstantin Kovshenin http://kovshenin.com/themes/publish
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Variables
+# Reset
+# Global
+# Links
+# Accessibility
+# Content
+# Post Formats
+# Media
+# Galleries
+# Navigation
+# Comments
+# Widgets
+# Layout
+# Media Queries
+
+/*--------------------------------------------------------------
+# Variables
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Reset
+--------------------------------------------------------------*/
+@import "reset";
+
+/*--------------------------------------------------------------
+# Global
+--------------------------------------------------------------*/
+@import "global";
+
+
+/*--------------------------------------------------------------
+# Links
+--------------------------------------------------------------*/
+@import "links";
+
+
+/*--------------------------------------------------------------
+# Menu
+--------------------------------------------------------------*/
+@import "menu";
+
+/*--------------------------------------------------------------
+# Accessibility
+--------------------------------------------------------------*/
+@import "accessibility";
+
+/*--------------------------------------------------------------
+# Content
+--------------------------------------------------------------*/
+@import "content";
+
+/*--------------------------------------------------------------
+# Post Formats
+--------------------------------------------------------------*/
+@import "post-formats";
+
+/*--------------------------------------------------------------
+# Media
+--------------------------------------------------------------*/
+@import "media";
+
+/*--------------------------------------------------------------
+# Galleries
+--------------------------------------------------------------*/
+@import "galleries";
+
+/*--------------------------------------------------------------
+# Navigation
+--------------------------------------------------------------*/
+@import "navigation";
+
+/*--------------------------------------------------------------
+# Comments
+--------------------------------------------------------------*/
+@import "comments";
+
+/*--------------------------------------------------------------
+# Widgets
+--------------------------------------------------------------*/
+@import "widgets";
+
+/*--------------------------------------------------------------
+# Layout
+--------------------------------------------------------------*/
+@import "layout";
+
+/*--------------------------------------------------------------
+# Media Queries
+--------------------------------------------------------------*/
+@import "queries";

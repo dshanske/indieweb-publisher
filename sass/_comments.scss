@@ -1,0 +1,407 @@
+.bypostauthor > .comment-body .fn:before {
+	content: "\f408";
+	vertical-align: text-top;
+}
+
+#comments {
+	margin-bottom: 100px;
+}
+
+.comments-title {
+	text-align: center;
+	color: rgb(213, 213, 213);
+	text-transform: uppercase;
+	font-size: 18px;
+	font-weight: normal;
+	letter-spacing: 1px;
+}
+
+.comment-content.unapproved {
+	color: #b3b3b1;
+}
+
+.site-main .commentlist article {
+	padding-bottom: 1em;
+	padding-top: 1em;
+	border-bottom: none;
+	margin-bottom: 1em;
+}
+
+.commentlist #respond {
+	border-left: 1px solid #F0F0F0;
+	padding-left: 20px;
+}
+
+#comments-template div.navigation {
+	height: 50px;
+}
+
+#comment-nav-below {
+	margin-bottom: 50px;
+}
+
+ol.commentlist {
+	margin-left: 0px;
+	font-size: 90%;
+}
+
+ol.commentlist,
+ol.commentlist ul.children {
+	list-style: none;
+}
+
+ol.commentlist {
+	margin-bottom: 100px;
+}
+
+ul.children {
+	margin-left: 15px;
+}
+
+.commentlist .thread-even, .commentlist .thread-odd {
+	padding-left: 20px;
+	margin-bottom: 30px;
+	margin-top: 3.5em;
+	border-left: 1px solid #F0F0F0;
+	border-top: 1px solid #F0F0F0;
+}
+
+.commentlist .children .odd,
+.commentlist .children .even {
+	border-left: none;
+}
+
+.commentlist ul.children {
+	margin-left: 0;
+	padding-left: 20px;
+}
+
+.commentlist .thread-even ul.children,
+.commentlist .thread-odd ul.children {
+	border-left: 1px solid #F0F0F0;
+	border-top: 1px solid #F0F0F0;
+}
+
+ol.commentlist .avatar {
+	float: left;
+	margin-right: 15px;
+	margin-left: 0px;
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	margin-top: 5px;
+}
+
+.avatar {
+	border-radius: 50%;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+}
+
+.comment-meta,
+.comment-meta a {
+	color: #b3b3b1;
+	text-decoration: none;
+	font-size: 12px;
+}
+
+.comment-meta {
+	margin-top: -12px;
+	margin-bottom: 15px;
+	margin-left: 0px;
+}
+
+.comment .reply {
+	display: block;
+}
+
+.comment .reply a {
+	margin-top: -10px;
+	font-size: 90%;
+}
+
+.comment-body:hover .reply {
+}
+
+.comment .reply a:hover {
+}
+
+.comment-body {
+	margin-bottom: 40px;
+	margin-left: 0px;
+}
+
+.comment-author {
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 48px;
+}
+
+.comment-author cite {
+	font-style: normal;
+}
+
+.comment-author .fn a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.comment-author .says,
+.pingback .says,
+.pingback .comment-meta,
+.pingback .reply {
+	display: none;
+}
+
+#share-comment-button button,
+#share-comment-button-bottom button {
+	padding-left: 15px;
+	padding-right: 15px;
+	height: 3.4em;
+	line-height: 50px;
+}
+
+#pinglist {
+	font-family: "Myriad Pro", Helvetica, Arial, sans-serif;
+	font-weight: 700;
+	text-transform: uppercase;
+	font-size: 12px;
+	border-top: 1px solid #eee;
+	padding-top: 20px;
+	margin-top: 80px;
+
+}
+
+ul.pinglist {
+	margin-left: 0;
+}
+
+.pinglist li {
+	display: inline;
+	margin-right: 5px;
+}
+
+.pinglist li::after {
+	content: '\b7';
+	margin-left: 5px;
+}
+
+.pinglist-title {
+	color: #929292;
+}
+
+.pinglist li.pinglist-title::after {
+	content: '';
+}
+
+.pinglist a {
+	text-decoration: none;
+}
+
+.pinglist a:hover {
+	text-decoration: underline;
+}
+
+.mentions-list {
+	font-size: 80%;
+	margin-top: 80px;
+}
+
+.mentions-list li {
+	list-style: none;
+}
+
+.mentions-list h3 {
+	color: #b3b3b1;
+	text-transform: uppercase;
+	font-weight: 100;
+	font-size: 13px;
+	letter-spacing: 1px;
+	border-top: 1px solid #eee;
+	padding-top: 10px;
+	display: inline-block;
+	font-family: sans-serif;
+}
+
+.taglist {
+	font-family: "Myriad Pro", Helvetica, Arial, sans-serif;
+	font-weight: 700;
+	text-transform: uppercase;
+	font-size: 12px;
+}
+
+ul.taglist {
+	margin-left: 0;
+	margin-top: 30px;
+}
+
+.taglist li {
+	display: inline-block;
+	margin-right: 20px;
+}
+
+.taglist-title {
+	color: #929292;
+}
+
+.taglist a {
+	text-decoration: none;
+}
+
+.taglist a:hover {
+	text-decoration: underline;
+}
+
+.trackback span, .pingback span {
+	font-weight: normal;
+}
+
+.trackback cite, .pingback cite {
+	font-style: normal;
+}
+
+.pingback {
+	position: relative;
+}
+
+.form-allowed-tags {
+	display: none;
+}
+
+/* Styles to Enhance Comment Form */
+
+.comment-form-author label,
+.comment-form-email label,
+.comment-form-url label,
+.comment-form-comment label,
+.comment-form-subscriptions label,
+.comment-form-reply-title {
+	margin-right: 5px;
+	font-family: "Myriad Pro", Helvetica, Arial, sans-serif;
+	color: #b3b3b1;
+	display: block;
+	font-size: 16px;
+	font-weight: 100;
+}
+
+.comment-form-reply-title {
+	display: none;
+}
+
+.comment-form-reply-title p {
+	margin-bottom: 0;
+}
+
+.comment-form-author,
+.comment-form-email,
+.comment-form-url,
+.comment-form-subscriptions {
+	float: left;
+	width: 50%;
+	min-width: 200px;
+}
+
+.comment-form-author input,
+.comment-form-email input,
+.comment-form-url input,
+.comment-form-subscriptions input {
+	width: 80%;
+}
+
+.comment-form-comment {
+	padding-right: 20px;
+}
+
+.comment-form .logged-in-as {
+	font-size: 80%;
+}
+
+.comment-respond {
+	background: #F1F1F1;
+	border-radius: 10px;
+	padding-left: 30px;
+	padding-top: 5px;
+	padding-right: 30px;
+	padding-bottom: 5px;
+}
+
+#commentform-top,
+#commentform-bottom {
+	display: none;
+}
+
+.commentlist .comment-respond {
+	background: #F1F1F1;
+	border-radius: 10px;
+	padding-top: 10px;
+	padding-right: 10px;
+	margin-bottom: 20px;
+}
+
+#commentform input[type="submit"] {
+	width: 98%;
+}
+
+#commentform #main-reply-title h3 {
+	letter-spacing: 0px;
+}
+
+#cancel-comment-reply-link {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-weight: normal;
+	font-size: 80%;
+	letter-spacing: 0px;
+	float: right;
+	margin-right: 10px;
+	margin-top: -20px;
+}
+
+#commentform textarea {
+	padding: 10px;
+	margin: 0px;
+	width: 98%;
+}
+
+.form-submit {
+	clear: both;
+	margin-bottom: 0;
+	padding-bottom: 1.5em;
+	padding-top: 0.5em;
+}
+
+.share-comment-icon::before {
+	display: inline-block;
+	padding-right: 8px;
+	margin-top: -2px;
+	font-style: normal;
+	font-family: 'Genericons-Neue';
+	font-size: 20px;
+	vertical-align: top;
+	-webkit-font-smoothing: antialiased;
+	content: '\f300';
+	color: white;
+}
+
+.comments-title-icon::before {
+	display: inline-block;
+	margin-top: -2px;
+	font-style: normal;
+	font-family: 'Genericons-Neue';
+	font-size: 20px;
+	vertical-align: top;
+	-webkit-font-smoothing: antialiased;
+	content: '\f108';
+}
+
+.entry-meta #share-comment-button {
+	text-align: left;
+}
+
+#respond {
+	text-align: left;
+}
+
+#share-comment-button,
+#share-comment-button-bottom {
+	display: none;
+}

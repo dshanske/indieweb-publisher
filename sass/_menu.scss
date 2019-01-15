@@ -1,0 +1,64 @@
+.main-navigation {
+	display: block;
+	float: left;
+	clear: both;
+	width: 100%;
+}
+
+.main-navigation ul {
+	margin: 0;
+	padding-left: 0;
+	list-style: none;
+}
+
+.main-navigation li {
+	position: relative;
+}
+
+.main-navigation a {
+	text-decoration: none;
+	font-size: 15px;
+	font-family: "Myriad Pro", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+}
+
+.main-navigation ul ul {
+	position: absolute;
+	top: 1.5em;
+	left: 0;
+	z-index: 99999;
+	display: none;
+	float: left;
+	-webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+.main-navigation ul ul ul {
+	top: 0;
+	left: 100%;
+}
+
+.main-navigation ul ul a {
+	width: 200px;
+}
+
+.main-navigation ul ul li {
+}
+
+.main-navigation li:hover > a {
+	text-decoration: underline;
+}
+
+.main-navigation ul ul :hover > a {
+}
+
+.main-navigation ul ul a:hover {
+}
+
+.main-navigation ul li:hover > ul {
+	display: block;
+}
+
+.main-navigation li.current_page_item a,
+.main-navigation li.current-menu-item a {
+}
