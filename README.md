@@ -78,7 +78,7 @@ The following colors can be changed via the Colors section:
 - **Show Post Date in Entry Meta**. Disabled by default. When this option is enabled, the post date will be shown in the entry meta on Blog, Archive, and Search pages. It uses the date format specified in *Dashboard → Settings → General → Date Format*.
 - **Show Post Word Count in Entry Meta**. Disabled by default. Shows the post word count in the entry meta on Blog, Archive, and Search pages. Only shows post word count for posts with the Standard Post Format.
 - **Show Nav Menu on Single Posts**. Disabled by default. When this option is enabled, the primary navigation menu will also be shown on Single Post pages.
-- **Show Updated Date on Single Posts**. Disabled by default. When this option is enabled, the post's last modified date will be shown underneath the published date. If you enable this, you can disable this on a per-post basis by adding a Custom Field to a post with the name `independent_publisher_hide_updated_date` and any value (`yes` or `true` will do).
+- **Show Updated Date on Single Posts**. Disabled by default. When this option is enabled, the post's last modified date will be shown underneath the published date. If you enable this, you can disable this on a per-post basis by adding a Custom Field to a post with the name `indieweb_publisher_hide_updated_date` and any value (`yes` or `true` will do).
 - **Auto-Set Featured Image as Post Cover**. Disabled by default. When this option is enabled, any Featured Image set for a post will automatically be used as a Post Cover (see [Post Covers (Full-Width Featured Images)](https://github.com/raamdev/independent-publisher#post-covers-full-width-featured-images)).
 - **Show Page Load Progress Bar**. Disabled by default. When enabled, a progress bar will appear across the top of the page as the page is loading. The color of the progress bar is determined by the Link Color setting in *Appearance → Customizer → Colors*.
 - **Enable Multi-Author Mode**. Disabled by default. Enabling Multi Author Mode changes the behavior of the site to better support multiple authors. The author name is mentioned in the entry meta and the authors name always links to the author page instead of the home page. The Header Image (*Dashboard → Appearance → Customize → Header Image*) is treated as the site logo and placed as a small icon in top left of the single pages to provide a way of getting back to the home page.
@@ -241,7 +241,7 @@ If you want your Single Posts menu to be differnet than your Primary Navigation 
 
 ### How do I change the footer credits?
 
-You can change the footer credits by overriding the function that displays them (`independent_publisher_footer_credits()`) and making that function return something else (or return blank to remove footer content entirely).
+You can change the footer credits by overriding the function that displays them (`indieweb_publisher_footer_credits()`) and making that function return something else (or return blank to remove footer content entirely).
 
 Before making such a change, you'll want make sure you're using a [Child Theme](https://github.com/raamdev/independent-publisher#using-a-child-theme-to-customize-independent-publisher) so that future theme updates don't override your modifications. The `functions.php` file that comes with the [Indieweb Publisher Child Theme](https://github.com/raamdev/independent-publisher-child-theme/) includes [an example](https://github.com/raamdev/independent-publisher-child-theme/blob/master/functions.php#L36) for overriding the footer credits function.
 
@@ -270,7 +270,7 @@ Add the following code to child theme's `functions.php` file to enable the Singl
 /**
  * Add single-column-layout to body class when on home page
  */
-function __custom_independent_publisher_single_column_layout_body_class( $classes ) {
+function __custom_indieweb_publisher_single_column_layout_body_class( $classes ) {
 	if ( is_home() || is_front_page() ) {
 		$classes[] = 'single-column-layout';
 	}
@@ -278,7 +278,7 @@ function __custom_independent_publisher_single_column_layout_body_class( $classe
 	return $classes;
 }
 
-add_filter( 'body_class', '__custom_independent_publisher_single_column_layout_body_class' );
+add_filter( 'body_class', '__custom_indieweb_publisher_single_column_layout_body_class' );
 ```
 
 ### Why is the Navigation Menu and/or Widgets not appearing on Single Post pages?
@@ -287,63 +287,16 @@ By default, the main navigation menu and all widges are hidden from the Single P
 
 ![2014-09-02_16-00-24](https://cloud.githubusercontent.com/assets/53005/4124836/faeaf062-32db-11e4-8e5b-b4f04be33ffb.png)
 
-### How can I obfuscate my email address in the Social Menu?
-
-The Social Menu uses the WordPress menu system and most email obfuscation plugins don't filter those for email addresses.
-
-I've written a special filter that will tell the [Email Address Encoder plugin](https://wordpress.org/plugins/email-address-encoder/) to encode any navigation menu items in the Social menu that contain `mailto:<email-address>` or `<email-address>`. 
-
-Add the following to a Child Theme `functions.php` file:
-
-```php
-add_filter( 'wp_nav_menu_objects', '__social_menu_eae_encode_emails', 10, 2 );
-/**
- * Filters the Social Menu navigation items looking for email addresses and
- * filters those email addresses through the Email Address Encoder plugin.
- *
- * @since 1.0.0
- *
- * @param object $objects An array of nav menu objects
- * @param object $args    Nav menu object args
- *
- * @return object $objects Amended array of nav menu objects with items containing email addresses filtered through Email Address Encoder plugin
- */
-function __social_menu_eae_encode_emails( $objects, $args ) {
-
-	// Only apply the social navigation menu
-	if ( isset( $args->theme_location ) ) {
-		if ( 'social' !== $args->theme_location || ! function_exists( 'eae_encode_emails' ) ) {
-			return $objects;
-		}
-	}
-
-	// Find any menu items with an email address and run them through the Email Address Encoder plugin
-	foreach ( $objects as $object ) {
-		if ( is_email( $object->url ) ) {
-			$object->url = eae_encode_emails( $object->url );
-		}
-		if ( stristr( $object->url, 'mailto:' ) ) {
-			$email = substr( $object->url, 7 );
-			if ( is_email( $email ) ) {
-				$object->url = 'mailto:' . eae_encode_emails( $email );
-			}
-		}
-	}
-
-	// Return the modified objects
-	return $objects;
-```
-
 ### How can I use a Full Size Image for the Post Cover?
 
 By default, the theme will use a maximum of `700x700` pixels for the Post Cover image. You can override this and use the full image size by adding the following to your Child Theme's `functions.php` file:
 
 ```php
-function __custom_independent_publisher_full_width_featured_image_size() {
+function __custom_indieweb_publisher_full_width_featured_image_size() {
     return "full";
 }
 
-add_filter( 'independent_publisher_full_width_featured_image_size', '__custom_independent_publisher_full_width_featured_image_size' );
+add_filter( 'indieweb_publisher_full_width_featured_image_size', '__custom_indieweb_publisher_full_width_featured_image_size' );
 ```
 
 ### How can I use a Full Size Image for Featured Images?
@@ -364,11 +317,11 @@ First, you'll need to update the CSS. By default, the theme CSS will use a 100% 
 You'll also need to add the following code to a Child Theme's `functions.php` file (instead of `full`, you can use any of the [WordPress thumbnail sizes](http://codex.wordpress.org/Function_Reference/the_post_thumbnail#Thumbnail_Sizes)):
 
 ``` php
-function __custom_independent_publisher_full_width_featured_image_size() {
+function __custom_indieweb_publisher_full_width_featured_image_size() {
     return "full";
 }
 
-add_filter( 'independent_publisher_full_width_featured_image_size', '__custom_independent_publisher_full_width_featured_image_size' );
+add_filter( 'indieweb_publisher_full_width_featured_image_size', '__custom_indieweb_publisher_full_width_featured_image_size' );
 ```
 
 If you add the above PHP code and discover that your post Featured Images are too big, try removing the CSS that you added above so that images get a 100% width.
@@ -396,67 +349,67 @@ WordPress Filters and Actions allow you to modify the theme without actually mod
 
 ### Filters
 
-- `independent_publisher_taxonomy_category_stats` - Allows you to override the Category Archive stats that are appended to the category archive description.
-- `independent_publisher_taxonomy_tag_stats` - Allows you to override the Tag Archive stats that are appended to the Tag Archive description.
-- `independent_publisher_entry_meta_separator` - Allows you to override the default separator character that is used in the Entry Title Meta and Entry Post Meta (default is '|').
-- `independent_publisher_entry_meta_category_prefix` - Allows you to override the default Category prefix (default is 'in'; e.g., "<author name> in <category name>").
-- `independent_publisher_entry_meta_author_prefix` - Allows you to override the default Author prefix (default is 'by'; e.g., "by <author name>").
-- `independent_publisher_search_stats` - Allows you to override the Search stats shown on Search pages.
-- `independent_publisher_tag_list_title` - Allows you to override the default Tag List Title of 'Related Content by Tag' at the bottom of Single posts.
-- `independent_publisher_webmentions_title` - Allows you to override the default Webmentions title of 'Webmentions' at the bottom of Single posts.
+- `indieweb_publisher_taxonomy_category_stats` - Allows you to override the Category Archive stats that are appended to the category archive description.
+- `indieweb_publisher_taxonomy_tag_stats` - Allows you to override the Tag Archive stats that are appended to the Tag Archive description.
+- `indieweb_publisher_entry_meta_separator` - Allows you to override the default separator character that is used in the Entry Title Meta and Entry Post Meta (default is '|').
+- `indieweb_publisher_entry_meta_category_prefix` - Allows you to override the default Category prefix (default is 'in'; e.g., "<author name> in <category name>").
+- `indieweb_publisher_entry_meta_author_prefix` - Allows you to override the default Author prefix (default is 'by'; e.g., "by <author name>").
+- `indieweb_publisher_search_stats` - Allows you to override the Search stats shown on Search pages.
+- `indieweb_publisher_tag_list_title` - Allows you to override the default Tag List Title of 'Related Content by Tag' at the bottom of Single posts.
+- `indieweb_publisher_webmentions_title` - Allows you to override the default Webmentions title of 'Webmentions' at the bottom of Single posts.
 
 ### Action Hooks
 
-- `independent_publisher_entry_meta_top` - Located at the top of post Entry Meta, just before the 'Write a Comment' button.
-- `independent_publisher_before_bottom_comment_button` - Located just before the second 'Write a Comment' button that shows up underneath post comments when there are more than 4 comments visible.
-- `independent_publisher_before_post_bottom_tag_list` - Located before the bottom 'Related Content by Tag' tag list on Single posts.
+- `indieweb_publisher_entry_meta_top` - Located at the top of post Entry Meta, just before the 'Write a Comment' button.
+- `indieweb_publisher_before_bottom_comment_button` - Located just before the second 'Write a Comment' button that shows up underneath post comments when there are more than 4 comments visible.
+- `indieweb_publisher_before_post_bottom_tag_list` - Located before the bottom 'Related Content by Tag' tag list on Single posts.
 
 ## Functions you can Override in a Child Theme
 
 ### Functions in `inc/template-tags.php`:
 
-- `independent_publisher_content_nav()` - Display navigation to next/previous pages when applicable
-- `independent_publisher_comment()` - Template for comments and pingbacks.
-- `independent_publisher_mentions()` - Creates a custom query for webmentions, pings, and trackbacks and displays them. Using this custom query instead of `wp_list_comments()` allows us to always show all mentions, even when we're showing paginated comments.
-- `independent_publisher_posted_author()` - Prints HTML with meta information for the current author.
-- `independent_publisher_posted_author_cats()` - Prints HTML with meta information for the current author and post categories. Only prints author name when Multi-Author Mode is enabled.
-- `independent_publisher_posted_on_date()` - Prints HTML with meta information for the current post-date/time.
-- `independent_publisher_post_updated_date()` - Prints HTML with meta information for the current post's last updated date/time.
-- `independent_publisher_continue_reading_link()` - Prints HTML with Continue Reading link
-- `independent_publisher_continue_reading_text()` - Returns Continue Reading text for usage in `the_content()`
-- `independent_publisher_categorized_blog()` - Returns true if a blog has more than 1 category
-- `independent_publisher_wp_title()` - Filters `wp_title` to print a neat `<title>` tag based on what is being viewed.
-- `independent_publisher_post_categories()` - Returns categories for current post with separator. Optionally returns only a single category.
-- `independent_publisher_site_info()` - Outputs site info for display on non-single pages
-- `independent_publisher_posted_author_card()` - Outputs post author info for display on single posts
-- `independent_publisher_posted_author_bottom_card()` - Outputs post author info for display on bottom of single posts
-- `independent_publisher_get_post_word_count()` - Returns number of words in a post formatted for display in theme
-- `independent_publisher_full_width_featured_image()` - Show Full Width Featured Image on single pages if post has full width featured image selected
-- `independent_publisher_search_stats()` - Returns stats for search results
-- `independent_publisher_taxonomy_archive_stats()` - Returns taxonomy archive stats and current page info for use in taxonomy archive descriptions
-- `independent_publisher_date_archive_description()` - Returns the Date Archive description
-- `independent_publisher_min_comments_bottom_comment_button()` - Returns the minimum number of comments that must exist for the bottom 'Write a Comment' button to appear
-- `independent_publisher_min_comments_comment_title()` - Returns the minimum number of comments that must exist for the comments title to appear
-- `independent_publisher_hide_comments()` - Determines if the comments and comment form should be hidden altogether. This differs from disabling the comments by also hiding the "Comments are closed." message and allows for easily overriding this function in a Child Theme.
-- `independent_publisher_footer_credits()` - Echoes the theme footer credits. Overriding this function in a Child Theme also applies the changes to Jetpack's Infinite Scroll footer.
+- `indieweb_publisher_content_nav()` - Display navigation to next/previous pages when applicable
+- `indieweb_publisher_comment()` - Template for comments and pingbacks.
+- `indieweb_publisher_mentions()` - Creates a custom query for webmentions, pings, and trackbacks and displays them. Using this custom query instead of `wp_list_comments()` allows us to always show all mentions, even when we're showing paginated comments.
+- `indieweb_publisher_posted_author()` - Prints HTML with meta information for the current author.
+- `indieweb_publisher_posted_author_cats()` - Prints HTML with meta information for the current author and post categories. Only prints author name when Multi-Author Mode is enabled.
+- `indieweb_publisher_posted_on_date()` - Prints HTML with meta information for the current post-date/time.
+- `indieweb_publisher_post_updated_date()` - Prints HTML with meta information for the current post's last updated date/time.
+- `indieweb_publisher_continue_reading_link()` - Prints HTML with Continue Reading link
+- `indieweb_publisher_continue_reading_text()` - Returns Continue Reading text for usage in `the_content()`
+- `indieweb_publisher_categorized_blog()` - Returns true if a blog has more than 1 category
+- `indieweb_publisher_wp_title()` - Filters `wp_title` to print a neat `<title>` tag based on what is being viewed.
+- `indieweb_publisher_post_categories()` - Returns categories for current post with separator. Optionally returns only a single category.
+- `indieweb_publisher_site_info()` - Outputs site info for display on non-single pages
+- `indieweb_publisher_posted_author_card()` - Outputs post author info for display on single posts
+- `indieweb_publisher_posted_author_bottom_card()` - Outputs post author info for display on bottom of single posts
+- `indieweb_publisher_get_post_word_count()` - Returns number of words in a post formatted for display in theme
+- `indieweb_publisher_full_width_featured_image()` - Show Full Width Featured Image on single pages if post has full width featured image selected
+- `indieweb_publisher_search_stats()` - Returns stats for search results
+- `indieweb_publisher_taxonomy_archive_stats()` - Returns taxonomy archive stats and current page info for use in taxonomy archive descriptions
+- `indieweb_publisher_date_archive_description()` - Returns the Date Archive description
+- `indieweb_publisher_min_comments_bottom_comment_button()` - Returns the minimum number of comments that must exist for the bottom 'Write a Comment' button to appear
+- `indieweb_publisher_min_comments_comment_title()` - Returns the minimum number of comments that must exist for the comments title to appear
+- `indieweb_publisher_hide_comments()` - Determines if the comments and comment form should be hidden altogether. This differs from disabling the comments by also hiding the "Comments are closed." message and allows for easily overriding this function in a Child Theme.
+- `indieweb_publisher_footer_credits()` - Echoes the theme footer credits. Overriding this function in a Child Theme also applies the changes to Jetpack's Infinite Scroll footer.
 
 ### Functions in `functions.php`:
 
-- `independent_publisher_setup()` - Sets up theme defaults and registers support for various WordPress features.
-- `independent_publisher_stylesheet()` - Enqueue the main stylesheet.
-- `independent_publisher_wp_fullscreen_title_editor_style()` - Enqueue the stylesheet for styling the full-screen visual editor post title so that it closely matches the front-end theme design. To disable, simply override this function in a Child Theme and return nothing.
-- `independent_publisher_author_comment_reply_link()` - Change the comment reply link to use 'Reply to [Author First Name]'
-- `independent_publisher_comment_form_args()` - Arguments for `comment_form()`
-- `independent_publisher_remove_textarea()` - Move the comment form textarea above the comment fields
-- `independent_publisher_add_textarea()` - Recreates the comment form textarea HTML for reinclusion in comment form
-- `independent_publisher_enhanced_comment_form()` - Enqueue enhanced comment form JavaScript
-- `independent_publisher_site_logo_icon_js()` - Enqueue Site Logo Icon JavaScript if Multi-Author Site enabled
-- `independent_publisher_is_multi_author_mode()` - Returns true if Multi-Author Mode is enabled
-- `independent_publisher_single_author_link()` - Returns the author link; defaults to home page when not using multi-author mode
-- `independent_publisher_post_word_count()` - Returns number of words in a post
-- `independent_publisher_first_sentence_excerpt()` - Return the post excerpt. If no excerpt set, generates an excerpt using the first sentence.
-- `independent_publisher_clean_content()` - Cleans the content for display as a Quote or Aside by stripping anything that might screw up formatting
-- `independent_publisher_maybe_linkify_the_content()` - Returns the post content for Asides and Quotes with the content linked to the permalink, for display on non-Single pages
-- `independent_publisher_maybe_linkify_the_excerpt()` - Returns the excerpt with the excerpt linked to the permalink, for display on non-Single pages
-- `independent_publisher_html_tag_schema()` - Returns the proper schema type
-- `independent_publisher_show_page_load_progress_bar()` - Echos the HTML and JavScript necessary to enable page load progress bar
+- `indieweb_publisher_setup()` - Sets up theme defaults and registers support for various WordPress features.
+- `indieweb_publisher_stylesheet()` - Enqueue the main stylesheet.
+- `indieweb_publisher_wp_fullscreen_title_editor_style()` - Enqueue the stylesheet for styling the full-screen visual editor post title so that it closely matches the front-end theme design. To disable, simply override this function in a Child Theme and return nothing.
+- `indieweb_publisher_author_comment_reply_link()` - Change the comment reply link to use 'Reply to [Author First Name]'
+- `indieweb_publisher_comment_form_args()` - Arguments for `comment_form()`
+- `indieweb_publisher_remove_textarea()` - Move the comment form textarea above the comment fields
+- `indieweb_publisher_add_textarea()` - Recreates the comment form textarea HTML for reinclusion in comment form
+- `indieweb_publisher_enhanced_comment_form()` - Enqueue enhanced comment form JavaScript
+- `indieweb_publisher_site_logo_icon_js()` - Enqueue Site Logo Icon JavaScript if Multi-Author Site enabled
+- `indieweb_publisher_is_multi_author_mode()` - Returns true if Multi-Author Mode is enabled
+- `indieweb_publisher_single_author_link()` - Returns the author link; defaults to home page when not using multi-author mode
+- `indieweb_publisher_post_word_count()` - Returns number of words in a post
+- `indieweb_publisher_first_sentence_excerpt()` - Return the post excerpt. If no excerpt set, generates an excerpt using the first sentence.
+- `indieweb_publisher_clean_content()` - Cleans the content for display as a Quote or Aside by stripping anything that might screw up formatting
+- `indieweb_publisher_maybe_linkify_the_content()` - Returns the post content for Asides and Quotes with the content linked to the permalink, for display on non-Single pages
+- `indieweb_publisher_maybe_linkify_the_excerpt()` - Returns the excerpt with the excerpt linked to the permalink, for display on non-Single pages
+- `indieweb_publisher_html_tag_schema()` - Returns the proper schema type
+- `indieweb_publisher_show_page_load_progress_bar()` - Echos the HTML and JavScript necessary to enable page load progress bar

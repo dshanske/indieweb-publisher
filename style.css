@@ -1,18 +1,20 @@
 /*
 Theme Name: Indieweb Publisher
-Theme URI: https://independentpublisher.me/
-Author: Raam Dev
-Author URI: https://raamdev.com/
-Description: Indieweb Publisher is an Indieweb fork of Indieweb Publisher
-Version: 1.8
+Theme URI: https://github.com/dshanske/indieweb-publisher
+Author: David Shanske
+Author URI: https://david.shanske.com
+Description: Indieweb Publisher is an Indieweb fork of Independent Publisher by Raam Dev
+Version: 1.0
 License: GNU GPLv3
 License URI: http://www.gnu.org/copyleft/gpl.html
-Indieweb Publisher, Copyright 2017 Raam Dev
-Indieweb Publisher is distributed under the terms of the GNU GPL
 Tags: one-column, two-columns, left-sidebar, featured-images, full-width-template, custom-menu, custom-background, custom-colors, custom-menu, editor-style, post-formats, rtl-language-support, sticky-post, threaded-comments, translation-ready, theme-options
-Text Domain: independent-publisher
+Text Domain: indieweb-publisher
+GitHub Theme URI: dshanske/indieweb-publisher
 
-Genericons icon font (http://genericons.com/) is bundled for use with the Social Menu feature.
+Indieweb Publisher is a fork of the excellent Independent Publisher theme, by Raam Dev. The theme had not been updated since 2017 and the developer has not been active.
+This not only updates the theme with new features, it adds support for Indieweb plugins, adjusts the Microformats 2 markup, and more.
+
+Genericons Neue icon font (http://genericons.com/) is bundled.
 Genericons is distributed under the terms of the GNU GPL.
 
 NProgress (https://github.com/rstacruz/nprogress) is bundled for use in the progress bar feature.
@@ -21,35 +23,6 @@ NProgress (c) 2013, Rico Sta. Cruz. Released under the MIT License.
 Based on _s http://underscores.me
 and inspired by the Publish theme by Konstantin Kovshenin http://kovshenin.com/themes/publish
 
-Resetting and rebuilding styles have been helped along thanks to the fine work of
-Eric Meyer http://meyerweb.com/eric/tools/css/reset/index.html
-along with Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
-and Blueprint http://www.blueprintcss.org/
-
-Props to Manish Suwal 'Enwil' (http://enwil.com) and Radhika Morabia (http://rmorabia.com) for
-help with testing and contributing to the project during its early stages.
-
-Thanks to the following for their contributions on GitHub:
-@rad96, @peterk, @bitzl, @SpaceK33z, @johlym, @henryk, @FokkeZB,
-@chrisaldrich, @iwillhappy1314, @dshanske, @mkiramu, @johnsaddington,
-@joch, @stevenatwork, @ryanmarkel, @prcutler, @jeherve, @JHillert,
-@rmmartins, @manishsuwal, @EddyLB, @vskjefst, @tlongren.
-
-Thanks to the following contributors for providing translation files:
-- French (contributed by Eddy Lelièvre-Berna; https://github.com/EddyLB)
-- Russian (contributed by Артем Рябков; https://github.com/rad96)
-- Spanish (contributed by Guillermo Dolores; https://github.com/mkiramu)
-- German (contributed by J. Hillert; https://github.com/JHillert)
-- Czech (contributed by Tajdik; https://github.com/Tajdik)
-- Indonesian (contributed by @ekajogja; https://github.com/ekajogja)
-- Dutch (contributd by @raaphorst and @SpaceK33z; https://github.com/raaphorst and https://github.com/spaceK33z)
-- Mongolian (contributed by @uugankhuu; https://github.com/uugankhuu)
-- Portuguese-Brazil (contributed by @rmmartins; https://github.com/rmmartins)
-- Chinese (contributed by @iwillhappy1314; https://github.com/iwillhappy1314)
-- Turkish (contributed by @pekermert; https://github.com/pekermert)
-- Italian (contributed by @kOoLiNuS; https://github.com/kOoLiNuS)
-- Armenian (contributed by @hanumanum; https://github.com/hanumanum)
-*/
 
 /* =Reset
 -------------------------------------------------------------- */
