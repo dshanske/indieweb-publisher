@@ -1,5 +1,5 @@
 .site-header img,
-.entry-content img,
+article > section img,
 .entry-summary img,
 .comment-content img,
 .widget img {
@@ -7,7 +7,7 @@
 }
 
 .site-header img,
-.entry-content img,
+article > section img,
 .entry-summary img,
 .widget img,
 img[class*="align"],
@@ -16,14 +16,14 @@ img[class*="wp-image-"] {
 }
 
 .site-header img,
-.entry-content img,
+article > section img,
 .entry-summary img,
 img.size-full {
 	max-width: 100%;
 	width: auto\9; /* Prevent stretching of full-size images with height and width attributes in IE8 */
 }
 
-.entry-content img.wp-smiley,
+article > section img.wp-smiley,
 .entry-summary img.wp-smiley,
 .comment-content img.wp-smiley {
 	margin-top: 0;

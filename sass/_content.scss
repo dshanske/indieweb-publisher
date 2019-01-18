@@ -1,13 +1,13 @@
 .site,
-.entry-content,
+article > section,
 .entry-summary {
 	*zoom: 1;
 }
 
 .site:before,
 .site:after,
-.entry-content:before,
-.entry-content:after,
+article > section:before,
+article > section:after,
 .entry-summary:before,
 .entry-summary:after {
 	display: table;
@@ -16,7 +16,7 @@
 }
 
 .site:after,
-.entry-content:after,
+article > section:after,
 .entry-summary:after {
 	clear: both;
 }
@@ -46,12 +46,12 @@
 	display: inline;
 }
 
-.entry-content,
+article > section, 
 .entry-summary {
 	margin: 0 0 0;
 }
 
-.entry-content > .sharedaddy,
+article > section > .sharedaddy,
 .entry-summary > .sharedaddy {
 	margin: 1.5em 0;
 }
@@ -76,12 +76,12 @@
 	float: left;
 }
 
-.entry-content .twitter-tweet-rendered,
+article > section .twitter-tweet-rendered,
 .entry-summary .twitter-tweet-rendered {
 	max-width: 100% !important;
 }
 
-.single .entry-content,
+.single article > section,
 .single .entry-summary {
 	padding-bottom: 20px;
 	margin-top: 0;
@@ -132,10 +132,10 @@
 	margin-bottom: 20px;
 }
 
-.post-excerpts .entry-content,
-.enhanced-excerpts .entry-content,
-.post-excerpts .entry-content a,
-.enhanced-excerpts .entry-content a,
+.post-excerpts article > section,
+.enhanced-excerpts article > section,
+.post-excerpts article > section a,
+.enhanced-excerpts article > section a,
 .post-excerpts .entry-summary,
 .enhanced-excerpts .entry-summary,
 .post-excerpts .entry-summary a,
@@ -163,7 +163,7 @@
 	margin-bottom: 20px;
 }
 
-.entry-content .subtitle,
+article > section .subtitle,
 .entry-summary .subtitle {
 	font-style: italic;
 	font-weight: normal;

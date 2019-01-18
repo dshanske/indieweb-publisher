@@ -52,8 +52,8 @@
 	line-height: 1.4;
 }
 
-.format-aside .entry-content,
-.format-quote .entry-content {
+.format-aside article > section,
+.format-quote article > section {
 	margin-top: 1em;
 }
 
@@ -61,10 +61,10 @@
 	margin-bottom: 20px;
 }
 
-.format-aside .entry-content a,
-.format-aside .entry-content a:hover,
-.format-quote .entry-content a,
-.format-quote .entry-content a:hover {
+.format-aside article > section a,
+.format-aside article > section a:hover,
+.format-quote article > section a,
+.format-quote article > section a:hover {
 	color: inherit;
 	text-decoration: none;
 }
@@ -78,7 +78,7 @@
 	width: 90%;
 }
 
-.format-chat .entry-content,
+.format-chat article > section,
 .format-chat .entry-summary {
 	font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
 	background: #eee;
@@ -92,7 +92,7 @@
 ----------------------------------------------- */
 
 .site-header img,
-.entry-content img,
+article > section img,
 .entry-summary img,
 .comment-content img,
 .widget img {
@@ -100,7 +100,7 @@
 }
 
 .site-header img,
-.entry-content img,
+article > section img,
 .entry-summary img,
 .widget img,
 img[class*="align"],
@@ -109,14 +109,14 @@ img[class*="wp-image-"] {
 }
 
 .site-header img,
-.entry-content img,
+article > section img,
 .entry-summary img,
 img.size-full {
 	max-width: 100%;
 	width: auto\9; /* Prevent stretching of full-size images with height and width attributes in IE8 */
 }
 
-.entry-content img.wp-smiley,
+article > section img.wp-smiley,
 .entry-summary img.wp-smiley,
 .comment-content img.wp-smiley {
 	margin-top: 0;

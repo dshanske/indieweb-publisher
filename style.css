@@ -596,15 +596,15 @@ img.aligncenter {
 # Content
 --------------------------------------------------------------*/
 .site,
-.entry-content,
+article > section,
 .entry-summary {
   *zoom: 1;
 }
 
 .site:before,
 .site:after,
-.entry-content:before,
-.entry-content:after,
+article > section:before,
+article > section:after,
 .entry-summary:before,
 .entry-summary:after {
   display: table;
@@ -613,7 +613,7 @@ img.aligncenter {
 }
 
 .site:after,
-.entry-content:after,
+article > section:after,
 .entry-summary:after {
   clear: both;
 }
@@ -643,12 +643,12 @@ img.aligncenter {
   display: inline;
 }
 
-.entry-content,
+article > section,
 .entry-summary {
   margin: 0 0 0;
 }
 
-.entry-content > .sharedaddy,
+article > section > .sharedaddy,
 .entry-summary > .sharedaddy {
   margin: 1.5em 0;
 }
@@ -673,12 +673,12 @@ img.aligncenter {
   float: left;
 }
 
-.entry-content .twitter-tweet-rendered,
+article > section .twitter-tweet-rendered,
 .entry-summary .twitter-tweet-rendered {
   max-width: 100% !important;
 }
 
-.single .entry-content,
+.single article > section,
 .single .entry-summary {
   padding-bottom: 20px;
   margin-top: 0;
@@ -729,10 +729,10 @@ img.aligncenter {
   margin-bottom: 20px;
 }
 
-.post-excerpts .entry-content,
-.enhanced-excerpts .entry-content,
-.post-excerpts .entry-content a,
-.enhanced-excerpts .entry-content a,
+.post-excerpts article > section,
+.enhanced-excerpts article > section,
+.post-excerpts article > section a,
+.enhanced-excerpts article > section a,
 .post-excerpts .entry-summary,
 .enhanced-excerpts .entry-summary,
 .post-excerpts .entry-summary a,
@@ -760,7 +760,7 @@ img.aligncenter {
   margin-bottom: 20px;
 }
 
-.entry-content .subtitle,
+article > section .subtitle,
 .entry-summary .subtitle {
   font-style: italic;
   font-weight: normal;
@@ -829,8 +829,8 @@ img.aligncenter {
   line-height: 1.4;
 }
 
-.format-aside .entry-content,
-.format-quote .entry-content {
+.format-aside article > section,
+.format-quote article > section {
   margin-top: 1em;
 }
 
@@ -838,10 +838,10 @@ img.aligncenter {
   margin-bottom: 20px;
 }
 
-.format-aside .entry-content a,
-.format-aside .entry-content a:hover,
-.format-quote .entry-content a,
-.format-quote .entry-content a:hover {
+.format-aside article > section a,
+.format-aside article > section a:hover,
+.format-quote article > section a,
+.format-quote article > section a:hover {
   color: inherit;
   text-decoration: none;
 }
@@ -855,7 +855,7 @@ img.aligncenter {
   width: 90%;
 }
 
-.format-chat .entry-content,
+.format-chat article > section,
 .format-chat .entry-summary {
   font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
   background: #eee;
@@ -868,7 +868,7 @@ img.aligncenter {
 /* =Media
 ----------------------------------------------- */
 .site-header img,
-.entry-content img,
+article > section img,
 .entry-summary img,
 .comment-content img,
 .widget img {
@@ -877,7 +877,7 @@ img.aligncenter {
 }
 
 .site-header img,
-.entry-content img,
+article > section img,
 .entry-summary img,
 .widget img,
 img[class*="align"],
@@ -887,7 +887,7 @@ img[class*="wp-image-"] {
 }
 
 .site-header img,
-.entry-content img,
+article > section img,
 .entry-summary img,
 img.size-full {
   max-width: 100%;
@@ -895,7 +895,7 @@ img.size-full {
   /* Prevent stretching of full-size images with height and width attributes in IE8 */
 }
 
-.entry-content img.wp-smiley,
+article > section img.wp-smiley,
 .entry-summary img.wp-smiley,
 .comment-content img.wp-smiley {
   margin-top: 0;
@@ -942,7 +942,7 @@ object {
 # Media
 --------------------------------------------------------------*/
 .site-header img,
-.entry-content img,
+article > section img,
 .entry-summary img,
 .comment-content img,
 .widget img {
@@ -951,7 +951,7 @@ object {
 }
 
 .site-header img,
-.entry-content img,
+article > section img,
 .entry-summary img,
 .widget img,
 img[class*="align"],
@@ -961,7 +961,7 @@ img[class*="wp-image-"] {
 }
 
 .site-header img,
-.entry-content img,
+article > section img,
 .entry-summary img,
 img.size-full {
   max-width: 100%;
@@ -969,7 +969,7 @@ img.size-full {
   /* Prevent stretching of full-size images with height and width attributes in IE8 */
 }
 
-.entry-content img.wp-smiley,
+article > section img.wp-smiley,
 .entry-summary img.wp-smiley,
 .comment-content img.wp-smiley {
   margin-top: 0;
@@ -1867,34 +1867,28 @@ h6 {
   font-size: 1.2em;
 }
 
-.entry-content h1,
-.entry-content h2,
-.entry-content h3,
-.entry-content h4,
-.entry-content h5,
-.entry-content h6,
-.entry-summary h1,
-.entry-summary h2,
-.entry-summary h3,
-.entry-summary h4,
-.entry-summary h5,
-.entry-summary h6 {
+article > section h1,
+article > section h2,
+article > section h3,
+article > section h4,
+article > section h5,
+article > section h6 {
   margin-top: 40px;
   margin-bottom: 15px;
 }
 
-.entry-content h1,
+article > section h1,
 .entry-summary h1 {
   font-size: 2.1em;
 }
 
-.entry-content table,
+article > section table,
 .entry-summary table {
   border-left: solid 1px #eee;
   border-top: solid 1px #eee;
 }
 
-.entry-content table td,
+article > section table td,
 .entry-summary table td {
   border-right: solid 1px #eee;
   border-bottom: solid 1px #eee;
@@ -2049,7 +2043,7 @@ article.first-post {
   font-size: 15px;
 }
 
-.entry-content,
+article > section,
 .entry-summary,
 .widget-area .widget,
 .comment {
@@ -2739,7 +2733,7 @@ table th {
     padding-right: 20px;
   }
 
-  .entry-content,
+  article > section,
   .entry-summary,
   #comments {
     font-size: 18px;
@@ -2758,37 +2752,37 @@ table th {
     font-size: 1.9em;
   }
 
-  .entry-content h1,
+  article > section h1,
   .entry-summary h1 {
     font-size: 1.7em;
   }
 
-  .entry-content h2,
+  article > section h2,
   .entry-summary h2 {
     font-size: 1.6em;
   }
 
-  .entry-content h3,
+  article > section h3,
   .entry-summary h3 {
     font-size: 1.5em;
   }
 
-  .entry-content h4,
+  article > section h4,
   .entry-summary h4 {
     font-size: 1.4em;
   }
 
-  .entry-content h5,
+  article > section h5,
   .entry-summary h5 {
     font-size: 1.3em;
   }
 
-  .entry-content h6,
+  article > section h6,
   .entry-summary h6 {
     font-size: 1.2em;
   }
 
-  .entry-content ol,
+  article > section ol,
   .entry-summary ol,
   ul {
     margin-left: 2em;
@@ -2809,8 +2803,8 @@ table th {
     padding-left: 0;
   }
 
-  .format-aside .entry-content,
-  .format-quote .entry-content {
+  .format-aside article > section,
+  .format-quote article > section {
     font-size: 0.9em;
     margin-bottom: 0;
   }
@@ -2854,7 +2848,7 @@ table th {
     width: 100%;
   }
 
-  .entry-header {
+  article > header {
     word-wrap: normal;
     hyphens: none;
     -webkit-hyphens: none;
@@ -2871,7 +2865,7 @@ table th {
     padding-left: 10px;
   }
 
-  .entry-content .subtitle,
+  article > section .subtitle,
   .entry-summary .subtitle {
     font-size: 1.2em;
   }

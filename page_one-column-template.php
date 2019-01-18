@@ -33,9 +33,9 @@ get_header(); ?>
 					</header>
 					<!-- .entry-header -->
 
-					<div class="entry-content">
+					<section>
 						<?php the_content(); ?>
-					</div> <!-- .entry-content -->
+					</section>
 					<footer class="entry-meta">>
 
 						<?php if ( function_exists( 'wp_pagenavi' ) ) : // WP-PageNavi support ?>

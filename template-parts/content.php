@@ -5,7 +5,7 @@
  */
 ?>
 <article id="post-<?php the_ID(); ?>" <?php indieweb_publisher_post_classes(); ?>>
-	<header class="entry-header">
+	<header>
 		<?php
 		/*
 		 Show entry title meta only when
@@ -28,9 +28,8 @@
 			<a href="<?php the_permalink(); ?>" title="<?php echo indieweb_publisher_post_link_title(); ?>" rel="bookmark"><?php the_title(); ?></a>
 		</h1>
 	</header>
-	<!-- .entry-header -->
 
-	<div class="<?php echo indieweb_publisher_show_excerpt() ? 'entry-summary e-summary' : 'entry-content e-content'; ?>">
+	<section class="<?php echo indieweb_publisher_show_excerpt() ? 'entry-summary e-summary' : 'entry-content e-content'; ?>">
 
 		<?php if ( indieweb_publisher_show_excerpt() ) : ?>
 
@@ -71,8 +70,7 @@
 			<?php endif; ?>
 
 		<?php endif; ?>
-	</div>
-	<!-- .entry-content -->
+	</section>
 
 	<?php
 	/*

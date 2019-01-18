@@ -8,7 +8,7 @@
 	<?php if ( has_post_thumbnail() && ! indieweb_publisher_has_full_width_featured_image() ) : ?>
 		<?php the_post_thumbnail( 'indieweb_publisher_post_thumbnail', array( 'itemprop' => 'image' ) ); ?>
 	<?php endif; ?>
-	<header class="entry-header">
+	<header>
 		<?php if ( indieweb_publisher_post_has_post_cover_title() ) : ?>
 			<h2 class="entry-title-meta">
 	  <span class="entry-title-meta-author">
@@ -57,12 +57,11 @@ dddd
 			<h1 class="entry-title p-name" itemprop="name"><?php the_title(); ?></h1>
 		<?php endif; ?>
 	</header>
-	<!-- .entry-header -->
-	<div class="entry-content e-content" itemprop="mainContentOfPage">
+	
+	<section class="entry-content e-content" itemprop="mainContentOfPage">
 		<?php the_content(); ?>
 
-	</div>
-	<!-- .entry-content -->
+	</section>
 
 	<?php indieweb_publisher_posted_author_bottom_card(); ?>
 

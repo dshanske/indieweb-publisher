@@ -11,18 +11,16 @@
 	<?php if ( has_post_thumbnail() && ! indieweb_publisher_has_full_width_featured_image() ) : ?>
 		<?php the_post_thumbnail( 'indieweb_publisher_post_thumbnail', array( 'itemprop' => 'image' ) ); ?>
 	<?php endif; ?>
-	<header class="entry-header">
+	<header>
 		<?php if ( ! indieweb_publisher_post_has_post_cover_title() ) : ?>
 			<h1 class="entry-title p-name"><?php the_title(); ?></h1>
 		<?php endif; ?>
 	</header>
-	<!-- .entry-header -->
 
-	<div class="entry-content e-content">
+	<section class="e-content">
 		<?php the_content(); ?>
 
-	</div>
-	<!-- .entry-content -->
+	</section>
 
 	<footer class="entry-meta">
 

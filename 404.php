@@ -17,7 +17,7 @@ get_header(); ?>
 				</header>
 				<!-- .entry-header -->
 
-				<div class="entry-content">
+				<div>
 					<p><?php _e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'indieweb-publisher' ); ?></p>
 
 					<?php get_search_form(); ?>
@@ -55,8 +55,7 @@ get_header(); ?>
 					<?php the_widget( 'WP_Widget_Tag_Cloud' ); ?>
 
 				</div>
-				<!-- .entry-content -->
-			</section>
+			</div>
 			<!-- .error-404 -->
 
 		</main>

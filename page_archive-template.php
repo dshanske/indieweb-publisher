@@ -24,7 +24,7 @@ get_header(); ?>
 				</header>
 				<!-- .entry-header -->
 
-				<div class="entry-content">
+				<section>
 					<?php the_content(); ?>
 
 					<?php if ( ! dynamic_sidebar( 'archive-page' ) ) : ?>
@@ -89,8 +89,7 @@ get_header(); ?>
 
 					<?php endif; ?>
 
-				</div>
-				<!-- .entry-content -->
+				</section>
 
 				<?php edit_post_link( __( 'Edit', 'indieweb-publisher' ), '<footer class="entry-meta"><span class="edit-link">', '</span></footer>' ); ?>
 			</article><!-- #post-<?php the_ID(); ?> -->

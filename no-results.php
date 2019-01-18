@@ -15,7 +15,7 @@
 	</header>
 	<!-- .entry-header -->
 
-	<div class="entry-content">
+	<section>
 		<?php if ( is_home() && current_user_can( 'publish_posts' ) ) : ?>
 
 			<p><?php printf( __( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'indieweb-publisher' ), admin_url( 'post-new.php' ) ); ?></p>
@@ -33,6 +33,6 @@
 			<?php get_search_form(); ?>
 
 		<?php endif; ?>
-	</div>
+	</section>
 	<!-- .entry-content -->
 </article><!-- #post-0 .post .no-results .not-found -->

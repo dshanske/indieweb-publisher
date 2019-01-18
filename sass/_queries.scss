@@ -243,7 +243,7 @@
 		padding-right: 20px;
 	}
 
-	.entry-content,
+	article > section,
 	.entry-summary,
 	#comments {
 		font-size: 18px;
@@ -262,37 +262,37 @@
 		font-size: 1.9em;
 	}
 
-	.entry-content h1,
+	article > section h1,
 	.entry-summary h1 {
 		font-size: 1.7em;
 	}
 
-	.entry-content h2,
+	article > section h2,
 	.entry-summary h2 {
 		font-size: 1.6em;
 	}
 
-	.entry-content h3,
+	article > section h3,
 	.entry-summary h3 {
 		font-size: 1.5em;
 	}
 
-	.entry-content h4,
+	article > section h4,
 	.entry-summary h4 {
 		font-size: 1.4em;
 	}
 
-	.entry-content h5,
+	article > section h5,
 	.entry-summary h5 {
 		font-size: 1.3em;
 	}
 
-	.entry-content h6,
+	article > section h6,
 	.entry-summary h6 {
 		font-size: 1.2em;
 	}
 
-	.entry-content ol,
+	article > section ol,
 	.entry-summary ol,
 	ul {
 		margin-left: 2em;
@@ -313,8 +313,8 @@
 		padding-left: 0;
 	}
 
-	.format-aside .entry-content,
-	.format-quote .entry-content {
+	.format-aside article > section,
+	.format-quote article > section {
 		font-size: 0.9em;
 		margin-bottom: 0;
 	}
@@ -358,7 +358,7 @@
 		width: 100%;
 	}
 
-	.entry-header {
+	article > header {
 		word-wrap: normal;
 		hyphens: none;
 		-webkit-hyphens: none;
@@ -375,7 +375,7 @@
 		padding-left: 10px;
 	}
 
-	.entry-content .subtitle,
+	article > section .subtitle,
 	.entry-summary .subtitle {
 		font-size: 1.2em;
 	}

@@ -41,7 +41,7 @@ get_header();
 					</header>
 					<!-- .entry-header -->
 
-					<div class="entry-content">
+					<section>
 
 						<div class="entry-attachment">
 							<div class="attachment">
@@ -115,8 +115,7 @@ get_header();
 						</nav>
 						<!-- #image-navigation -->
 
-					</div>
-					<!-- .entry-content -->
+					</section>
 
 					<?php indieweb_publisher_posted_author_bottom_card(); ?>
 
