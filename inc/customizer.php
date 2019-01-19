@@ -314,26 +314,6 @@ class IndiewebPublisher_Customize {
 			)
 		);
 
-		// Multi-Author Mode
-		$wp_customize->add_setting(
-			'indieweb_publisher_general_options[multi_author_mode]',
-			array(
-				'default'           => false,
-				'type'              => 'option',
-				'capability'        => 'edit_theme_options',
-				'sanitize_callback' => 'indieweb_publisher_sanitize_checkbox',
-			)
-		);
-		$wp_customize->add_control(
-			'multi_author_mode',
-			array(
-				'settings' => 'indieweb_publisher_general_options[multi_author_mode]',
-				'label'    => __( 'Enable Multi-Author Mode', 'indieweb-publisher' ),
-				'section'  => 'indieweb_publisher_general_options',
-				'type'     => 'checkbox',
-			)
-		);
-
 		// Show Page Load Progress Bar
 		$wp_customize->add_setting(
 			'indieweb_publisher_general_options[show_page_load_progress_bar]',

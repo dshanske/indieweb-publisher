@@ -24,17 +24,6 @@
 <?php // Displays full-width featured image on Single Posts if applicable ?>
 <?php indieweb_publisher_full_width_featured_image(); ?>
 
-<?php // Makes the Header Image a small icon floating in the top left corner when Multi Author Mode is enabled ?>
-<?php if ( indieweb_publisher_is_multi_author_mode() && is_single() ) : ?>
-	<div class="site-master-logo">
-		<?php
-		if ( has_custom_logo() ) :
-			the_custom_logo();
-		endif;
-		?>
-	</div>
-<?php endif; ?>
-
 <div id="page" class="site">
 	<header id="masthead" class="site-header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
 
@@ -49,7 +38,7 @@
 		</div>
 
 		<?php // Show navigation menu on everything except Single pages, unless Show Primary Nav Menu on Single Pages is enabled ?>
-		<?php if ( ! is_single() || indieweb_publisher_show_nav_on_single() ) : ?>
+		<?php if ( ! is_single() || indieweb_publisher_option( 'show_nav_on_single' ) ) : ?>
 			<nav role="navigation" class="site-navigation main-navigation">
 				<a class="screen-reader-text skip-link" href="#content" title="<?php esc_attr_e( 'Skip to content', 'indieweb-publisher' ); ?>"><?php _e( 'Skip to content', 'indieweb-publisher' ); ?></a>
 

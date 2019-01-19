@@ -9,7 +9,7 @@
  */
 ?>
 <div id="secondary" class="widget-area" role="complementary">
-	<?php if ( ! is_single() || ( is_single() && indieweb_publisher_show_widgets_on_single_pages() ) ) : ?>
+	<?php if ( ! is_single() || ( is_single() && indieweb_publisher_option( 'show_widgets_on_single' ) ) ) : ?>
 		<?php do_action( 'indieweb_publisher_before_sidebar' ); ?>
 		<?php if ( ! dynamic_sidebar( 'sidebar-1' ) ) : ?>
 

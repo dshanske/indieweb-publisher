@@ -219,7 +219,7 @@ function indieweb_publisher_scripts() {
 
 	wp_enqueue_script( 'indieweb-publisher-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 
-	if ( indieweb_publisher_page_load_progress_bar_enabled() ) {
+	if ( indieweb_publisher_option( 'show_page_load_progress_bar' )  ) {
 		wp_enqueue_style( 'nprogress', get_template_directory_uri() . '/css/nprogress.css', array(), '0.1.3' );
 		wp_enqueue_script( 'nprogress', get_template_directory_uri() . '/js/nprogress.js', array(), '0.1.3' );
 	}
@@ -254,7 +254,7 @@ if ( ! function_exists( 'indieweb_publisher_progress_bar_markup' ) ) :
 	 * Insert Page Load Progress Bar markup
 	 */
 	function indieweb_publisher_progress_bar_markup() {
-		if ( indieweb_publisher_page_load_progress_bar_enabled() ) {
+		if ( indieweb_publisher_option( 'show_page_load_progress_bar' ) ) {
 			indieweb_publisher_show_page_load_progress_bar();
 		}
 	}

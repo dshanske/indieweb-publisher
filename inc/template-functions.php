@@ -258,66 +258,21 @@ if ( ! function_exists( 'indieweb_publisher_enhanced_comment_form' ) ) :
 endif;
 add_action( 'wp_enqueue_scripts', 'indieweb_publisher_enhanced_comment_form' );
 
-if ( ! function_exists( 'indieweb_publisher_site_logo_icon_js' ) ) :
-	/**
-	 * Enqueue Site Logo Icon JavaScript if Multi-Author Site enabled
-	 */
-	function indieweb_publisher_site_logo_icon_js() {
-		if ( indieweb_publisher_is_multi_author_mode() ) {
-			wp_enqueue_script( 'site-logo-icon-js', get_template_directory_uri() . '/js/site-logo-icon.js', array( 'jquery' ), '1.0' );
-		}
-	}
-endif;
-add_action( 'wp_enqueue_scripts', 'indieweb_publisher_site_logo_icon_js' );
-
-if ( ! function_exists( 'indieweb_publisher_is_multi_author_mode' ) ) :
-	/**
-	 * Returns true if Multi-Author Mode is enabled
-	 */
-	function indieweb_publisher_is_multi_author_mode() {
-		$indieweb_publisher_general_options = get_option( 'indieweb_publisher_general_options' );
-		if ( isset( $indieweb_publisher_general_options['multi_author_mode'] ) && $indieweb_publisher_general_options['multi_author_mode'] ) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-endif;
-
-if ( ! function_exists( 'indieweb_publisher_show_author_card' ) ) :
+if ( ! function_exists( 'indieweb_publisher_option' ) ) :
 	/*
-	 * Returns true if Show Author Card is enabled
+	 * Returns true if enabled
 	 *
-	 * @since Indieweb Publisher 1.7
-	 *
-	 * @note This defaults to true if the option does not exist because that was the original behavior
 	 */
-	function indieweb_publisher_show_author_card() {
+	function indieweb_publisher_option( $option_name ) {
 		$indieweb_publisher_general_options = get_option( 'indieweb_publisher_general_options' );
 
-		if ( ! isset( $indieweb_publisher_general_options['show_author_card'] ) || $indieweb_publisher_general_options['show_author_card'] ) {
+		if ( isset( $indieweb_publisher_general_options[ $option_name ] ) && $indieweb_publisher_general_options[ $option_name ] ) {
 			return true;
 		} else {
 			return false;
 		}
 	}
 endif;
-
-if ( ! function_exists( 'indieweb_publisher_single_author_link' ) ) :
-	/**
-	 * Returns the author link; defaults to home page when not using multi-author mode
-	 */
-	function indieweb_publisher_single_author_link() {
-		return get_home_url();
-	}
-endif;
-
-/**
- * Changes the link around the authors name to the home page when Multi Author Mode is disabled
- */
-if ( ! indieweb_publisher_is_multi_author_mode() ) {
-	add_filter( 'author_link', 'indieweb_publisher_single_author_link', 10, 3 );
-}
 
 /**
  * Returns true if Post Excerpts option is enabled
@@ -337,104 +292,6 @@ function indieweb_publisher_use_post_excerpts() {
 function indieweb_publisher_generate_one_sentence_excerpts() {
 	$indieweb_publisher_excerpt_options = get_option( 'indieweb_publisher_excerpt_options' );
 	if ( isset( $indieweb_publisher_excerpt_options['generate_one_sentence_excerpts'] ) && $indieweb_publisher_excerpt_options['generate_one_sentence_excerpts'] && indieweb_publisher_use_post_excerpts() ) {
-		return true;
-	} else {
-		return false;
-	}
-}
-
-/**
- * Returns true if Show Full Content for First Post option is enabled
- */
-function indieweb_publisher_show_full_content_first_post() {
-	$indieweb_publisher_excerpt_options = get_option( 'indieweb_publisher_excerpt_options' );
-	if ( isset( $indieweb_publisher_excerpt_options['show_full_content_first_post'] ) && $indieweb_publisher_excerpt_options['show_full_content_first_post'] ) {
-		return true;
-	} else {
-		return false;
-	}
-}
-
-/**
- * Returns true if Show Post Thumbnails option is enabled
- */
-function indieweb_publisher_show_post_thumbnails() {
-	$indieweb_publisher_excerpt_options = get_option( 'indieweb_publisher_excerpt_options' );
-	if ( isset( $indieweb_publisher_excerpt_options['show_post_thumbnails'] ) && $indieweb_publisher_excerpt_options['show_post_thumbnails'] ) {
-		return true;
-	} else {
-		return false;
-	}
-}
-
-/**
- * Returns true if Show Post Word Count option is enabled
- */
-function indieweb_publisher_show_post_word_count() {
-	$indieweb_publisher_general_options = get_option( 'indieweb_publisher_general_options' );
-	if ( isset( $indieweb_publisher_general_options['show_post_word_count'] ) && $indieweb_publisher_general_options['show_post_word_count'] ) {
-		return true;
-	} else {
-		return false;
-	}
-}
-
-
-/**
- * Returns true if Hide Post Categories in Entry Meta option is enabled
- */
-function indieweb_publisher_hide_category_entry_meta() {
-	$indieweb_publisher_general_options = get_option( 'indieweb_publisher_general_options' );
-	if ( isset( $indieweb_publisher_general_options['hide_category_entry_meta'] ) && $indieweb_publisher_general_options['hide_category_entry_meta'] ) {
-		return true;
-	} else {
-		return false;
-	}
-}
-
-/**
- * Returns true if Show Post Date in Entry Meta option is enabled
- */
-function indieweb_publisher_show_date_entry_meta() {
-	$indieweb_publisher_general_options = get_option( 'indieweb_publisher_general_options' );
-	if ( isset( $indieweb_publisher_general_options['show_date_entry_meta'] ) && $indieweb_publisher_general_options['show_date_entry_meta'] ) {
-		return true;
-	} else {
-		return false;
-	}
-}
-
-/**
- * Returns true if Show Post Time in Entry Meta option is enabled
- */
-function indieweb_publisher_show_time_entry_meta() {
-	$indieweb_publisher_general_options = get_option( 'indieweb_publisher_general_options' );
-	if ( isset( $indieweb_publisher_general_options['show_time_entry_meta'] ) && $indieweb_publisher_general_options['show_time_entry_meta'] ) {
-		return true;
-	} else {
-		return false;
-	}
-}
-
-
-/**
- * Returns true if Show Widgets on Single Pages option is enabled
- */
-function indieweb_publisher_show_widgets_on_single_pages() {
-	$indieweb_publisher_general_options = get_option( 'indieweb_publisher_general_options' );
-	if ( isset( $indieweb_publisher_general_options['show_widgets_on_single'] ) && $indieweb_publisher_general_options['show_widgets_on_single'] ) {
-		return true;
-	} else {
-		return false;
-	}
-}
-
-/**
- * Returns true if Use Single Column Layout option is enabled
- */
-function indieweb_publisher_use_single_column_layout() {
-	$indieweb_publisher_layout_options = get_option( 'indieweb_publisher_layout_options' );
-	if ( isset( $indieweb_publisher_layout_options['single_column_layout'] ) && $indieweb_publisher_layout_options['single_column_layout'] ) {
 		return true;
 	} else {
 		return false;
@@ -510,67 +367,6 @@ function indieweb_publisher_post_has_post_cover_title() {
 	return false; // Default
 }
 
-
-/**
- * Returns true if Enable Page Load Progress Bar option is enabled
- */
-function indieweb_publisher_page_load_progress_bar_enabled() {
-	$indieweb_publisher_general_options = get_option( 'indieweb_publisher_general_options' );
-	if ( isset( $indieweb_publisher_general_options['show_page_load_progress_bar'] ) && $indieweb_publisher_general_options['show_page_load_progress_bar'] ) {
-		return true;
-	} else {
-		return false;
-	}
-}
-
-/**
- * Returns true if Show Nav Menu on Single Posts option is enabled
- */
-function indieweb_publisher_show_nav_on_single() {
-	$indieweb_publisher_general_options = get_option( 'indieweb_publisher_general_options' );
-	if ( isset( $indieweb_publisher_general_options['show_nav_menu_on_single'] ) && $indieweb_publisher_general_options['show_nav_menu_on_single'] ) {
-		return true;
-	} else {
-		return false;
-	}
-}
-
-/**
- * Returns true if Show Updated Date on Single Posts option is enabled
- */
-function indieweb_publisher_show_updated_date_on_single() {
-	$indieweb_publisher_general_options = get_option( 'indieweb_publisher_general_options' );
-	if ( isset( $indieweb_publisher_general_options['show_updated_date_on_single'] ) && $indieweb_publisher_general_options['show_updated_date_on_single'] ) {
-		return true;
-	} else {
-		return false;
-	}
-}
-
-/**
- * Returns true if Auto-Set Featured Image as Post Cover option is enabled
- */
-function indieweb_publisher_auto_featured_image_post_cover() {
-	$indieweb_publisher_general_options = get_option( 'indieweb_publisher_general_options' );
-	if ( isset( $indieweb_publisher_general_options['auto_featured_image_post_cover'] ) && $indieweb_publisher_general_options['auto_featured_image_post_cover'] ) {
-		return true;
-	} else {
-		return false;
-	}
-}
-
-/**
- * Returns true if Auto-Set Post with Post Cover Title option is enabled
- */
-function indieweb_publisher_post_cover_overlay_post_title() {
-	$indieweb_publisher_general_options = get_option( 'indieweb_publisher_general_options' );
-	if ( isset( $indieweb_publisher_general_options['post_cover_overlay_post_title'] ) && $indieweb_publisher_general_options['post_cover_overlay_post_title'] ) {
-		return true;
-	} else {
-		return false;
-	}
-}
-
 /**
  * Add full-width-featured-image to body class when displaying a post with Full Width Featured Image enabled
  */
@@ -601,7 +397,7 @@ add_filter( 'body_class', 'indieweb_publisher_post_cover_title_body_class' );
  * Add single-column-layout to body class when Use Single Column Layout option enabled
  */
 function indieweb_publisher_single_column_layout_body_class( $classes ) {
-	if ( indieweb_publisher_use_single_column_layout() ) {
+	if ( indieweb_publisher_option( 'single_column_layout' ) ) {
 		$classes[] = 'single-column-layout';
 	}
 
@@ -609,19 +405,6 @@ function indieweb_publisher_single_column_layout_body_class( $classes ) {
 }
 
 add_filter( 'body_class', 'indieweb_publisher_single_column_layout_body_class' );
-
-/**
- * Add multi-author-mode to body class when Multi-Author Mode enabled
- */
-function indieweb_publisher_multi_author_mode_body_class( $classes ) {
-	if ( indieweb_publisher_is_multi_author_mode() ) {
-		$classes[] = 'multi-author-mode';
-	}
-
-	return $classes;
-}
-
-add_filter( 'body_class', 'indieweb_publisher_multi_author_mode_body_class' );
 
 /**
  * Add no-post-excerpts to body class when Post Excerpts option is disabled
@@ -859,7 +642,7 @@ function indieweb_publisher_is_not_first_post_full_content() {
 	// If Show Full Content First Post option is not enabled,
 	// or if it's enabled by excerpts are disabled, return true
 	if (
-		! indieweb_publisher_show_full_content_first_post()
+		! indieweb_publisher_option( 'show_full_content_first_post' )
 		|| ( ! indieweb_publisher_generate_one_sentence_excerpts() && ! indieweb_publisher_use_post_excerpts() )
 	) {
 		return true;
@@ -909,14 +692,14 @@ endif;
 function indieweb_publisher_post_classes() {
 	global $wp_query;
 
-	if ( indieweb_publisher_show_full_content_first_post() &&
+	if ( indieweb_publisher_option( 'show_full_content_first_post' ) &&
 		( indieweb_publisher_is_very_first_standard_post() &&
 			is_home() &&
 			! is_sticky()
 		)
 	) {
 		post_class( 'show-full-content-first-post' );
-	} elseif ( indieweb_publisher_show_full_content_first_post() &&
+	} elseif ( indieweb_publisher_option( 'show_full_content_first_post' ) &&
 		( indieweb_publisher_is_very_first_standard_post() &&
 			is_home() &&
 			is_sticky()

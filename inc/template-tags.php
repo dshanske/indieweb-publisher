@@ -218,9 +218,9 @@ if ( ! function_exists( 'indieweb_publisher_posted_author' ) ) :
 		$post_author_nice_name = get_the_author_meta( 'display_name', $post_author_id );
 
 		printf(
-			'<span class="byline"><a class="u-url" href="%1$s" title="%2$s" rel="author">%3$s</a></span>',
+			'<span class="byline"><a href="%1$s" title="%2$s" rel="author">%3$s</a></span>',
 			esc_url( get_author_posts_url( get_the_author_meta( 'ID', $post_author_id ) ) ),
-			esc_attr( sprintf( __( 'View all posts by %s', 'indieweb-publisher' ), $post_author_nice_name ) ),
+			esc_attr( sprintf( __( 'View %s author page', 'indieweb-publisher' ), $post_author_nice_name ) ),
 			esc_html( $post_author_nice_name )
 		);
 	}
@@ -245,7 +245,7 @@ if ( ! function_exists( 'indieweb_publisher_posted_author_cats' ) ) :
 			$separator = '';
 		}
 
-		if ( indieweb_publisher_is_multi_author_mode() ) :
+		if ( is_multi_author() ) :
 			if ( $categories_list && indieweb_publisher_categorized_blog() ) :
 				echo '<span class="cat-links">';
 				printf(
@@ -268,7 +268,7 @@ if ( ! function_exists( 'indieweb_publisher_posted_author_cats' ) ) :
 				);
 				echo '</span>';
 			endif; // End if categories
-		else : // not Multi-Author Mode
+		else : // not Multi-Author Site
 			if ( $categories_list && indieweb_publisher_categorized_blog() ) :
 				echo '<span class="cat-links">';
 				printf(
@@ -281,7 +281,7 @@ if ( ! function_exists( 'indieweb_publisher_posted_author_cats' ) ) :
 				echo '<span class="cat-links">';
 				echo '</span>';
 			endif; // End if categories
-		endif; // End if indieweb_publisher_is_multi_author_mode()
+		endif; // End if multi author
 	}
 endif;
 
@@ -292,7 +292,7 @@ if ( ! function_exists( 'indieweb_publisher_posted_on_date' ) ) :
 	 * @since Indieweb Publisher 1.0
 	 */
 	function indieweb_publisher_posted_on_date() {
-		if ( indieweb_publisher_show_time_entry_meta() ) {
+		if ( indieweb_publisher_option( 'show_time_entry_meta' ) ) {
 			$time_string = '<time class="entry-date dt-published" itemprop="datePublished" pubdate="pubdate" datetime="%1$s">%2$s %3$s</time>';
 		} else {
 			$time_string = '<time class="entry-date dt-published" itemprop="datePublished" pubdate="pubdate" datetime="%1$s">%2$s</time>';
@@ -365,7 +365,7 @@ if ( ! function_exists( 'indieweb_publisher_categorized_blog' ) ) :
 	 * @since Indieweb Publisher 1.0
 	 */
 	function indieweb_publisher_categorized_blog() {
-		if ( indieweb_publisher_hide_category_entry_meta() ) {
+		if ( indieweb_publisher_option( 'hide_category_entry_meta' ) ) {
 			return false;
 		}
 		if ( false === ( $all_the_cool_cats = get_transient( 'all_the_cool_cats' ) ) ) {
@@ -516,7 +516,7 @@ if ( ! function_exists( 'indieweb_publisher_posted_author_bottom_card' ) ) :
 	 * @since Indieweb Publisher 1.0
 	 */
 	function indieweb_publisher_posted_author_bottom_card() {
-		if ( ! indieweb_publisher_show_author_card() ) {
+		if ( ! indieweb_publisher_option( 'show_author_card' ) ) {
 			return; // This option has been disabled
 		}
 

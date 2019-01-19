@@ -14,7 +14,7 @@
 		 * we're on the home page AND this is not a sticky post
 		 */
 		?>
-		<?php if ( indieweb_publisher_show_full_content_first_post() && ( indieweb_publisher_is_very_first_standard_post() && is_home() && ! is_sticky() ) ) : ?>
+		<?php if ( indieweb_publisher_option( 'show_full_content_first_post' ) && ( indieweb_publisher_is_very_first_standard_post() && is_home() && ! is_sticky() ) ) : ?>
 			<h2 class="entry-title-meta">
 				<span class="entry-title-meta-author"><?php indieweb_publisher_posted_author(); ?></span> <?php echo indieweb_publisher_entry_meta_category_prefix(); ?> <?php echo indieweb_publisher_post_categories(); ?>
 				<span class="entry-title-meta-post-date">
@@ -101,7 +101,7 @@ if ( ! empty( $title ) ) {
 		<?php
 		/* Show post date when show post date option enabled */
 		?>
-		<?php if ( indieweb_publisher_show_date_entry_meta() ) : ?>
+		<?php if ( indieweb_publisher_option( 'show_date_entry_meta' ) ) : ?>
 			<?php echo indieweb_publisher_get_post_date(); ?>
 		<?php endif; ?>
 
@@ -113,7 +113,8 @@ if ( ! empty( $title ) ) {
 		 * we're not showing the first post full content
 		 */
 		?>
-		<?php if ( ! post_password_required() && false === get_post_format() && indieweb_publisher_show_post_word_count() && indieweb_publisher_is_not_first_post_full_content() ) : ?>
+		<?php if ( ! post_password_required() && false === get_post_format() && indieweb_publisher_option( 'show_post_word_count' ) && indieweb_publisher_is_not_first_post_full_content() ) : ?>
+
 			<?php echo indieweb_publisher_get_post_word_count(); ?>
 		<?php endif; ?>
 
