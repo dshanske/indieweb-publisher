@@ -63,3 +63,34 @@ function indieweb_publisher_mf2_comment_class( $classes ) {
 }
 
 add_filter( 'comment_class', 'indieweb_publisher_mf2_comment_class', 11 );
+
+
+/**
+ * Wraps the_content in e-content
+ */
+function indieweb_publisher_the_content( $content ) {
+	if ( is_feed() ) {
+		return $content;
+	}
+	if ( empty( $content ) ) {
+		return $content;
+	}
+	return sprintf( '<section class="e-content">%1$s</section>', $content );
+}
+add_filter( 'the_content', 'indieweb_publisher_the_content', 1 );
+
+/**
+ * Wraps the_excerpt in p-summary
+ */
+function indieweb_publisher_the_excerpt( $content ) {
+	if ( is_feed() ) {
+		return $content;
+	}
+	if ( empty( $content ) ) {
+		return $content;
+	}
+	return sprintf( '<section class="e-summary">%1$s</section>', $content );
+}
+
+add_filter( 'the_excerpt', 'indieweb_publisher_the_excerpt', 1 );
+

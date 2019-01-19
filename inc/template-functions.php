@@ -1128,4 +1128,13 @@ if ( ! function_exists( 'indieweb_publisher_post_link_title_common' ) ) :
 	}
 endif;
 
+if ( ! function_exists( 'indieweb_publisher_get_the_title' ) ) :
+	function indieweb_publisher_get_the_title() {
+		if ( class_exists( 'Kind_Taxonomy' ) && Kind_Taxonomy::get_kind_info( get_post_kind_slug(), 'title' ) ) {
+			return get_the_title();
+		}
+		return '';
+	}
+endif;
+
 ?>

@@ -17,7 +17,7 @@
 				echo indieweb_publisher_entry_meta_author_prefix() . ' ';
 			}
 			indieweb_publisher_posted_author()
-?>
+			?>
 dddd
 		</span>
 				<?php
@@ -54,14 +54,18 @@ dddd
 			</span>
 				<?php do_action( 'indieweb_publisher_entry_title_meta', $separator = ' | ' ); ?>
 			</h2>
-			<h1 class="entry-title p-name" itemprop="name"><?php the_title(); ?></h1>
-		<?php endif; ?>
+			<?php
+				$title = indieweb_publisher_get_the_title();
+			if ( ! empty( $title ) ) {
+				?>
+				<h1 class="entry-title p-name" itemprop="name"><?php echo $title; ?></h1>
+				<?php
+			}
+		endif;
+?>
 	</header>
 	
-	<section class="entry-content e-content" itemprop="mainContentOfPage">
-		<?php the_content(); ?>
-
-	</section>
+	<?php the_content(); ?>
 
 	<?php indieweb_publisher_posted_author_bottom_card(); ?>
 

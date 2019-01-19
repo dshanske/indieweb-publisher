@@ -23,13 +23,16 @@
 				</span>
 				<?php do_action( 'indieweb_publisher_entry_title_meta', $separator = ' | ' ); ?>
 			</h2>
-		<?php endif; ?>
-		<h1 class="entry-title p-name">
-			<a href="<?php the_permalink(); ?>" title="<?php echo indieweb_publisher_post_link_title(); ?>" rel="bookmark"><?php the_title(); ?></a>
-		</h1>
+			<?php
+		endif;
+		$title = indieweb_publisher_get_the_title();
+if ( ! empty( $title ) ) {
+	?>
+			<h1 class="entry-title p-name">
+				<a class="u-url permalink" href="<?php the_permalink(); ?>" title="<?php echo indieweb_publisher_post_link_title(); ?>" rel="bookmark"><?php the_title(); ?></a>
+			</h1>
+		<?php } ?>
 	</header>
-
-	<section class="<?php echo indieweb_publisher_show_excerpt() ? 'entry-summary e-summary' : 'entry-content e-content'; ?>">
 
 		<?php if ( indieweb_publisher_show_excerpt() ) : ?>
 
@@ -70,7 +73,6 @@
 			<?php endif; ?>
 
 		<?php endif; ?>
-	</section>
 
 	<?php
 	/*

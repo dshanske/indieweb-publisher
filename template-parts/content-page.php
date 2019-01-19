@@ -17,10 +17,7 @@
 		<?php endif; ?>
 	</header>
 
-	<section class="e-content">
-		<?php the_content(); ?>
-
-	</section>
+	<?php the_content(); ?>
 
 	<footer class="entry-meta">
 

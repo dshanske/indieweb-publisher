@@ -218,7 +218,7 @@ if ( ! function_exists( 'indieweb_publisher_posted_author' ) ) :
 		$post_author_nice_name = get_the_author_meta( 'display_name', $post_author_id );
 
 		printf(
-			'<span class="byline"><span class="author p-author vcard h-card"><a class="u-url url fn n" href="%1$s" title="%2$s" rel="author">%3$s</a></span></span>',
+			'<span class="byline"><a class="u-url" href="%1$s" title="%2$s" rel="author">%3$s</a></span>',
 			esc_url( get_author_posts_url( get_the_author_meta( 'ID', $post_author_id ) ) ),
 			esc_attr( sprintf( __( 'View all posts by %s', 'indieweb-publisher' ), $post_author_nice_name ) ),
 			esc_html( $post_author_nice_name )
@@ -470,7 +470,7 @@ if ( ! function_exists( 'indieweb_publisher_posted_author_card' ) ) :
 		$post_author_id = $wp_query->post->post_author;
 		$show_avatars   = get_option( 'show_avatars' );
 		?>
-
+		<aside class="p-author h-card">
 		<?php if ( ( ! $show_avatars || $show_avatars === 0 ) && ! indieweb_publisher_is_multi_author_mode() && get_header_image() ) : ?>
 			<a class="site-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
 				<img class="no-grav" src="<?php echo esc_url( get_header_image() ); ?>" height="<?php echo absint( get_custom_header()->height ); ?>" width="<?php echo absint( get_custom_header()->width ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" />
@@ -484,8 +484,7 @@ if ( ! function_exists( 'indieweb_publisher_posted_author_card' ) ) :
 		<div class="site-title"><?php indieweb_publisher_posted_author(); ?></div>
 		<div class="site-description"><?php the_author_meta( 'description', $post_author_id ); ?></div>
 
-		<?php get_template_part( 'menu', 'social' ); ?>
-
+		</aside>
 		<div class="site-published-separator"></div>
 		<h2 class="site-published"><?php _e( 'Published', 'indieweb-publisher' ); ?></h2>
 		<h2 class="site-published-date"><?php indieweb_publisher_posted_on_date(); ?></h2>

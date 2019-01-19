@@ -27,9 +27,11 @@
 <?php // Makes the Header Image a small icon floating in the top left corner when Multi Author Mode is enabled ?>
 <?php if ( indieweb_publisher_is_multi_author_mode() && is_single() ) : ?>
 	<div class="site-master-logo">
-		<?php if ( has_custom_logo() ) :
+		<?php
+		if ( has_custom_logo() ) :
 			the_custom_logo();
-		endif; ?>
+		endif;
+		?>
 	</div>
 <?php endif; ?>
 
