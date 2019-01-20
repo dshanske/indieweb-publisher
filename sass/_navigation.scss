@@ -1,4 +1,4 @@
-.site-content .site-navigation {
+.site-content .posts-navigation {
 	overflow: hidden;
 	/* margin: 0 0 1.5em; */
 }
@@ -9,12 +9,12 @@
 }
 
 .site-content .nav-next,
-.site-navigation .next-image {
+.posts-navigation .next-image {
 	float: right;
 	text-align: right;
 }
 
-.single .site-navigation {
+.single .posts-navigation {
 	margin-top: 40px;
 }
 

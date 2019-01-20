@@ -37,7 +37,9 @@ get_header(); ?>
 
 			<?php endwhile; ?>
 
-			<?php indieweb_publisher_content_nav( 'nav-below' ); ?>
+			<?php 
+				indieweb_publisher_the_posts_navigation();
+			?>
 
 		<?php else : ?>
 

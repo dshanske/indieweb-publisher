@@ -8,70 +8,24 @@
  * @since   Indieweb Publisher 1.0
  */
 
-if ( ! function_exists( 'indieweb_publisher_content_nav' ) ) :
+if ( ! function_exists( 'indieweb_publisher_the_posts_navigation' ) ) :
 	/**
-	 * Display navigation to next/previous pages when applicable
-	 *
-	 * @since Indieweb Publisher 1.0
+	 * Customized Post Navigation
 	 */
-	function indieweb_publisher_content_nav( $nav_id ) {
-		global $wp_query, $post;
-
-		// Don't print empty markup on single pages if there's nowhere to navigate.
-		if ( is_single() ) {
-			$previous = ( is_attachment() ) ? get_post( $post->post_parent ) : get_adjacent_post( false, '', true );
-			$next     = get_adjacent_post( false, '', false );
-
-			if ( ! $next && ! $previous ) {
-				return;
-			}
+	function indieweb_publisher_the_posts_navigation() {
+		if ( function_exists( 'wp_pagenavi' ) ) { // WP-PageNavi Support
+			wp_pagenavi();
+		} else {
+			the_posts_navigation( 
+				array(
+					'mid_size' => 2,
+					'prev_text' => sprintf( '<button><span class="meta-nav">&larr;</span>%1$s</button>', __( 'Older Posts', 'indieweb-publisher' ) ),
+					'next_text' => sprintf( '<button><span class="meta-nav">&rarr;</span>%1$s</button>', __( 'Newer Posts', 'indieweb-publisher' ) )
+				)
+			);
 		}
-
-		// Don't print empty markup in archives if there's only one page.
-		if ( $wp_query->max_num_pages < 2 && ( is_home() || is_archive() || is_search() ) ) {
-			return;
-		}
-
-		$nav_class = 'site-navigation paging-navigation';
-		if ( is_single() ) {
-			$nav_class = 'site-navigation post-navigation';
-		}
-
-		?>
-		<nav role="navigation" id="<?php echo $nav_id; ?>" class="<?php echo $nav_class; ?>">
-			<h1 class="screen-reader-text"><?php _e( 'Post navigation', 'indieweb-publisher' ); ?></h1>
-
-			<?php if ( is_single() ) : // navigation links for single posts ?>
-
-				<?php wp_pagenavi(); ?>
-
-				<?php previous_post_link( '<div class="nav-previous"><button>%link</button></div>', '<span class="meta-nav">' . _x( '&larr;', 'Previous post link', 'indieweb-publisher' ) . '</span> %title' ); ?>
-				<?php next_post_link( '<div class="nav-next"><button>%link</button></div>', '%title <span class="meta-nav">' . _x( '&rarr;', 'Next post link', 'indieweb-publisher' ) . '</span>' ); ?>
-
-			<?php elseif ( $wp_query->max_num_pages > 1 && ( is_home() || is_archive() || is_search() ) ) : // navigation links for home, archive, and search pages ?>
-
-				<?php if ( function_exists( 'wp_pagenavi' ) ) : // WP-PageNavi support ?>
-
-					<?php wp_pagenavi(); ?>
-
-				<?php else : ?>
-
-					<?php if ( get_next_posts_link() ) : ?>
-						<div class="nav-previous"><?php next_posts_link( '<button>' . __( '<span class="meta-nav">&larr;</span> Older posts', 'indieweb-publisher' ) . '</button>' ); ?></div>
-					<?php endif; ?>
-
-					<?php if ( get_previous_posts_link() ) : ?>
-						<div class="nav-next"><?php previous_posts_link( '<button>' . __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'indieweb-publisher' ) . '</button>' ); ?></div>
-					<?php endif; ?>
-
-				<?php endif; ?>
-
-			<?php endif; ?>
-
-		</nav><!-- #<?php echo $nav_id; ?> -->
-		<?php
 	}
-endif; // indieweb_publisher_content_nav
+endif; // indieweb_publisher_the_posts_navigation
 
 if ( ! function_exists( 'indieweb_publisher_comment' ) ) :
 	/**

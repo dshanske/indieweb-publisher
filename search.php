@@ -18,7 +18,7 @@ get_header(); ?>
 				<header class="page-header">
 					<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'indieweb-publisher' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
 					<?php echo apply_filters( 'search_meta', '<div class="search-stats-description">' . $search_stats . '</div>' ); ?>
-					<?php indieweb_publisher_content_nav( 'nav-above' ); ?>
+					<?php indieweb_publisher_the_posts_navigation(); ?>
 				</header><!-- .page-header -->
 
 				<?php /* Start the Loop */ ?>
@@ -31,7 +31,7 @@ get_header(); ?>
 
 				<?php endwhile; ?>
 
-				<?php indieweb_publisher_content_nav( 'nav-below' ); ?>
+				<?php indieweb_publisher_the_posts_navigation(); ?>
 
 			<?php else : ?>
 
