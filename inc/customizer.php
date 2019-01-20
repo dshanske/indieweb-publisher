@@ -34,14 +34,6 @@ class IndiewebPublisher_Customize {
 		);
 
 		$wp_customize->add_section(
-			'indieweb_publisher_excerpt_options',
-			array(
-				'title'    => __( 'Excerpt Options', 'indieweb-publisher' ),
-				'priority' => 125,
-			)
-		);
-
-		$wp_customize->add_section(
 			'indieweb_publisher_general_options',
 			array(
 				'title'    => __( 'General Options', 'indieweb-publisher' ),
@@ -49,73 +41,9 @@ class IndiewebPublisher_Customize {
 			)
 		);
 
-		// Excerpt Options
-		$wp_customize->add_setting(
-			'indieweb_publisher_excerpt_options[excerpts]',
-			array(
-				'default'           => '0',
-				'type'              => 'option',
-				'capability'        => 'edit_theme_options',
-				'sanitize_callback' => 'indieweb_publisher_sanitize_select_excerpt_options',
-			)
-		);
-		$wp_customize->add_control(
-			'excerpts',
-			array(
-				'label'    => __( 'Post Excerpts', 'indieweb-publisher' ),
-				'settings' => 'indieweb_publisher_excerpt_options[excerpts]',
-				'section'  => 'indieweb_publisher_excerpt_options',
-				'type'     => 'select',
-				'choices'  => array(
-					'0' => __( 'Disabled', 'indieweb-publisher' ),
-					'1' => __( 'Enabled', 'indieweb-publisher' ),
-				),
-			)
-		);
-
-		// Generate One-Sentence Excerpts
-		$wp_customize->add_setting(
-			'indieweb_publisher_excerpt_options[generate_one_sentence_excerpts]',
-			array(
-				'default'           => false,
-				'type'              => 'option',
-				'capability'        => 'edit_theme_options',
-				'sanitize_callback' => 'indieweb_publisher_sanitize_checkbox',
-			)
-		);
-		$wp_customize->add_control(
-			'generate_one_sentence_excerpts',
-			array(
-				'settings' => 'indieweb_publisher_excerpt_options[generate_one_sentence_excerpts]',
-				'label'    => __( 'Generate One-Sentence Excerpts', 'indieweb-publisher' ),
-				'section'  => 'indieweb_publisher_excerpt_options',
-				'type'     => 'checkbox',
-			)
-		);
-
-		// Show Full Content for First Post
-		$wp_customize->add_setting(
-			'indieweb_publisher_excerpt_options[show_full_content_first_post]',
-			array(
-				'default'           => false,
-				'type'              => 'option',
-				'capability'        => 'edit_theme_options',
-				'sanitize_callback' => 'indieweb_publisher_sanitize_checkbox',
-			)
-		);
-		$wp_customize->add_control(
-			'show_full_content_first_post',
-			array(
-				'settings' => 'indieweb_publisher_excerpt_options[show_full_content_first_post]',
-				'label'    => __( 'Always Show Full Content for First Post', 'indieweb-publisher' ),
-				'section'  => 'indieweb_publisher_excerpt_options',
-				'type'     => 'checkbox',
-			)
-		);
-
 		// Show Post Thumbnails
 		$wp_customize->add_setting(
-			'indieweb_publisher_excerpt_options[show_post_thumbnails]',
+			'indieweb_publisher_general_options[show_post_thumbnails]',
 			array(
 				'default'           => false,
 				'type'              => 'option',
@@ -126,28 +54,8 @@ class IndiewebPublisher_Customize {
 		$wp_customize->add_control(
 			'show_post_thumbnails',
 			array(
-				'settings' => 'indieweb_publisher_excerpt_options[show_post_thumbnails]',
+				'settings' => 'indieweb_publisher_general_options[show_post_thumbnails]',
 				'label'    => __( 'Show Post Thumbnails', 'indieweb-publisher' ),
-				'section'  => 'indieweb_publisher_excerpt_options',
-				'type'     => 'checkbox',
-			)
-		);
-
-		// Show Post Word Count
-		$wp_customize->add_setting(
-			'indieweb_publisher_general_options[show_post_word_count]',
-			array(
-				'default'           => false,
-				'type'              => 'option',
-				'capability'        => 'edit_theme_options',
-				'sanitize_callback' => 'indieweb_publisher_sanitize_checkbox',
-			)
-		);
-		$wp_customize->add_control(
-			'show_post_word_count',
-			array(
-				'settings' => 'indieweb_publisher_general_options[show_post_word_count]',
-				'label'    => __( 'Show Post Word Count in Entry Meta', 'indieweb-publisher' ),
 				'section'  => 'indieweb_publisher_general_options',
 				'type'     => 'checkbox',
 			)
@@ -155,19 +63,19 @@ class IndiewebPublisher_Customize {
 
 		// Hide Category in Entry Meta
 		$wp_customize->add_setting(
-			'indieweb_publisher_general_options[hide_category_entry_meta]',
+			'indieweb_publisher_general_options[show_category_entry_meta]',
 			array(
-				'default'           => false,
+				'default'           => true,
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
 				'sanitize_callback' => 'indieweb_publisher_sanitize_checkbox',
 			)
 		);
 		$wp_customize->add_control(
-			'hide_category_entry_meta',
+			'show_category_entry_meta',
 			array(
-				'settings' => 'indieweb_publisher_general_options[hide_category_entry_meta]',
-				'label'    => __( 'Hide Category in Entry Meta', 'indieweb-publisher' ),
+				'settings' => 'indieweb_publisher_general_options[show_category_entry_meta]',
+				'label'    => __( 'Show Category in Entry Meta', 'indieweb-publisher' ),
 				'section'  => 'indieweb_publisher_general_options',
 				'type'     => 'checkbox',
 			)
@@ -177,7 +85,7 @@ class IndiewebPublisher_Customize {
 		$wp_customize->add_setting(
 			'indieweb_publisher_general_options[show_date_entry_meta]',
 			array(
-				'default'           => false,
+				'default'           => true,
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
 				'sanitize_callback' => 'indieweb_publisher_sanitize_checkbox',
@@ -197,7 +105,7 @@ class IndiewebPublisher_Customize {
 		$wp_customize->add_setting(
 			'indieweb_publisher_general_options[show_time_entry_meta]',
 			array(
-				'default'           => false,
+				'default'           => true,
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
 				'sanitize_callback' => 'indieweb_publisher_sanitize_checkbox',

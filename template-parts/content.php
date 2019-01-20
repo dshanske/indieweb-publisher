@@ -4,51 +4,17 @@
  * @since   Independent Publisher 1.0
  */
 ?>
-<article id="post-<?php the_ID(); ?>" <?php indieweb_publisher_post_classes(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header>
 		<?php
-		/*
-		 Show entry title meta only when
-		 * Show Full Content First Post enabled AND
-		 * this is the very first standard post AND
-		 * we're on the home page AND this is not a sticky post
-		 */
-		?>
-		<?php if ( indieweb_publisher_option( 'show_full_content_first_post' ) && ( indieweb_publisher_is_very_first_standard_post() && is_home() && ! is_sticky() ) ) : ?>
-			<h2 class="entry-title-meta">
-				<span class="entry-title-meta-author"><?php indieweb_publisher_posted_author(); ?></span> <?php echo indieweb_publisher_entry_meta_category_prefix(); ?> <?php echo indieweb_publisher_post_categories(); ?>
-				<span class="entry-title-meta-post-date">
-					<span class="sep"> <?php echo apply_filters( 'indieweb_publisher_entry_meta_separator', '|' ); ?> </span>
-					<?php indieweb_publisher_posted_on_date(); ?>
-				</span>
-				<?php do_action( 'indieweb_publisher_entry_title_meta', $separator = ' | ' ); ?>
-			</h2>
-			<?php
-		endif;
 		$title = indieweb_publisher_get_the_title();
-if ( ! empty( $title ) ) {
-	?>
+		if ( ! empty( $title ) ) {
+		?>
 			<h1 class="entry-title p-name">
 				<a class="u-url permalink" href="<?php the_permalink(); ?>" title="<?php echo indieweb_publisher_post_link_title(); ?>" rel="bookmark"><?php the_title(); ?></a>
 			</h1>
 		<?php } ?>
 	</header>
-
-		<?php if ( indieweb_publisher_show_excerpt() ) : ?>
-
-			<?php if ( indieweb_publisher_show_post_thumbnails() ) : ?>
-
-				<?php /* Only show featured image for Standard post and gallery post formats */ ?>
-				<?php if ( has_post_thumbnail() && in_array( get_post_format(), array( 'gallery', false ) ) ) : ?>
-					<a href="<?php the_permalink(); ?>" title="<?php echo indieweb_publisher_post_thumbnail_link_title(); ?>"><?php the_post_thumbnail( 'indieweb_publisher_post_thumbnail' ); ?></a>
-				<?php endif; ?>
-
-			<?php endif; ?>
-
-			<?php the_excerpt(); ?>
-
-		<?php else : ?>
-
 			<?php /* Only show featured image for Standard post and gallery post formats */ ?>
 			<?php if ( has_post_thumbnail() && in_array( get_post_format(), array( 'gallery', false ) ) ) : ?>
 				<a href="<?php the_permalink(); ?>" title="<?php echo indieweb_publisher_post_thumbnail_link_title(); ?>"><?php the_post_thumbnail( 'indieweb_publisher_post_thumbnail' ); ?></a>
@@ -72,20 +38,6 @@ if ( ! empty( $title ) ) {
 
 			<?php endif; ?>
 
-		<?php endif; ?>
-
-	<?php
-	/*
-	 Show Continue Reading link when this is a Standard post format AND
-	 * One-Sentence Excerpts options is enabled AND
-	  * we're not showing the first post full content AND
-	  * this is not a sticky post
-	  */
-	?>
-	<?php if ( false === get_post_format() && indieweb_publisher_generate_one_sentence_excerpts() && indieweb_publisher_is_not_first_post_full_content() && ! is_sticky() ) : ?>
-		<?php indieweb_publisher_continue_reading_link(); ?>
-	<?php endif; ?>
-
 	<footer class="entry-meta">
 
 		<?php
@@ -94,7 +46,7 @@ if ( ! empty( $title ) ) {
 		 * we're not showing the first post full content
 		 */
 		?>
-		<?php if ( 'post' == get_post_type() && indieweb_publisher_is_not_first_post_full_content() ) : // post type == post conditional hides category text for Pages on Search ?>
+		<?php if ( 'post' == get_post_type() ) : // post type == post conditional hides category text for Pages on Search ?>
 			<?php indieweb_publisher_posted_author_cats(); ?>
 		<?php endif; ?>
 
@@ -113,10 +65,6 @@ if ( ! empty( $title ) ) {
 		 * we're not showing the first post full content
 		 */
 		?>
-		<?php if ( ! post_password_required() && false === get_post_format() && indieweb_publisher_option( 'show_post_word_count' ) && indieweb_publisher_is_not_first_post_full_content() ) : ?>
-
-			<?php echo indieweb_publisher_get_post_word_count(); ?>
-		<?php endif; ?>
 
 		<?php $separator = apply_filters( 'indieweb_publisher_entry_meta_separator', '|' ); ?>
 

@@ -565,27 +565,6 @@ if ( ! function_exists( 'indieweb_publisher_posted_author_bottom_card' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'indieweb_publisher_get_post_word_count' ) ) :
-	/**
-	 * Returns number of words in a post formatted for display in theme
-	 *
-	 * @return string
-	 */
-	function indieweb_publisher_get_post_word_count() {
-		if ( ! post_password_required() && comments_open() && ! indieweb_publisher_hide_comments() ) {
-			$separator = ' <span class="sep"> ' . apply_filters( 'indieweb_publisher_entry_meta_separator', '|' ) . ' </span>';
-		} else {
-			$separator = '';
-		}
-		$count = indieweb_publisher_post_word_count();
-		if ( '0' === $count ) {
-			return '';
-		}
-
-		return sprintf( '<span>' . __( '%1$s Words', 'indieweb-publisher' ) . '</span>%2$s', $count, $separator );
-	}
-endif;
-
 if ( ! function_exists( 'indieweb_publisher_get_post_date' ) ) :
 	/**
 	 * Returns post date formatted for display in theme
@@ -823,29 +802,6 @@ if ( ! function_exists( '_wp_render_title_tag' ) ) :
 	}
 
 	add_action( 'wp_head', 'indieweb_publisher_render_title' );
-endif;
-
-if ( ! function_exists( 'indieweb_publisher_show_excerpt' ) ) :
-	/*
-	 * Determines if an excerpt should be shown for a given post. Used in the loop.
-	 */
-	function indieweb_publisher_show_excerpt() {
-		/*
-		 Only show excerpts for Standard post format OR Chat format,
-		 * when this is not both the very first standard post and also a Sticky post AND
-		 * when excerpts enabled or One-Sentence Excerpts enabled AND
-		 * this is not the very first standard post when Show Full Content First Post enabled
-		 */
-		if ( ( ! get_post_format() || 'chat' === get_post_format() ) &&
-			( ! ( indieweb_publisher_is_very_first_standard_post() && is_sticky() ) ) &&
-			( indieweb_publisher_use_post_excerpts() || indieweb_publisher_generate_one_sentence_excerpts() ) &&
-			( ! ( indieweb_publisher_show_full_content_first_post() && indieweb_publisher_is_very_first_standard_post() && is_home() ) )
-		) {
-			return true;
-		} else {
-			return false;
-		}
-	}
 endif;
 
 if ( ! function_exists( 'indieweb_publisher_show_related_tags' ) ) :

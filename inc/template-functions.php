@@ -275,30 +275,6 @@ if ( ! function_exists( 'indieweb_publisher_option' ) ) :
 endif;
 
 /**
- * Returns true if Post Excerpts option is enabled
- */
-function indieweb_publisher_use_post_excerpts() {
-	$indieweb_publisher_excerpt_options = get_option( 'indieweb_publisher_excerpt_options' );
-	if ( isset( $indieweb_publisher_excerpt_options['excerpts'] ) && $indieweb_publisher_excerpt_options['excerpts'] == '1' ) {
-		return true;
-	} else {
-		return false;
-	}
-}
-
-/**
- * Returns true if Generate One-Sentence Excerpts option is enabled
- */
-function indieweb_publisher_generate_one_sentence_excerpts() {
-	$indieweb_publisher_excerpt_options = get_option( 'indieweb_publisher_excerpt_options' );
-	if ( isset( $indieweb_publisher_excerpt_options['generate_one_sentence_excerpts'] ) && $indieweb_publisher_excerpt_options['generate_one_sentence_excerpts'] && indieweb_publisher_use_post_excerpts() ) {
-		return true;
-	} else {
-		return false;
-	}
-}
-
-/**
  * Returns Comments Call to Action text
  */
 function indieweb_publisher_comments_call_to_action_text() {
@@ -405,106 +381,6 @@ function indieweb_publisher_single_column_layout_body_class( $classes ) {
 }
 
 add_filter( 'body_class', 'indieweb_publisher_single_column_layout_body_class' );
-
-/**
- * Add no-post-excerpts to body class when Post Excerpts option is disabled
- */
-function indieweb_publisher_no_post_excerpts_body_class( $classes ) {
-	if (
-		! indieweb_publisher_use_post_excerpts()
-		&& ! indieweb_publisher_generate_one_sentence_excerpts()
-		&& ! is_singular()
-	) {
-		$classes[] = 'no-post-excerpts';
-	}
-
-	return $classes;
-}
-
-add_filter( 'body_class', 'indieweb_publisher_no_post_excerpts_body_class' );
-
-/**
- * Add enhanced-excerpts to body class when Use Enhanced Excerpts option enabled
- */
-function indieweb_publisher_enhanced_excerpts_body_class( $classes ) {
-	if ( indieweb_publisher_generate_one_sentence_excerpts() && ! is_singular() ) {
-		$classes[] = 'enhanced-excerpts';
-	}
-
-	return $classes;
-}
-
-add_filter( 'body_class', 'indieweb_publisher_enhanced_excerpts_body_class' );
-
-/**
- * Add post-excerpts to body class when Use Post Excerpts option enabled
- */
-function indieweb_publisher_post_excerpts_body_class( $classes ) {
-	if ( indieweb_publisher_use_post_excerpts() && ! is_singular() ) {
-		$classes[] = 'post-excerpts';
-	}
-
-	return $classes;
-}
-
-add_filter( 'body_class', 'indieweb_publisher_post_excerpts_body_class' );
-
-if ( ! function_exists( 'indieweb_publisher_post_word_count' ) ) :
-	/**
-	 * Returns number of words in a post
-	 *
-	 * @return string
-	 */
-	function indieweb_publisher_post_word_count() {
-		global $post;
-		$content = get_post_field( 'post_content', $post->ID );
-		$count   = str_word_count( strip_tags( $content ) );
-
-		return number_format( $count );
-	}
-endif;
-
-if ( ! function_exists( 'indieweb_publisher_first_sentence_excerpt' ) ) :
-	/**
-	 * Return the post excerpt. If no excerpt set, generates an excerpt using the first sentence.
-	 */
-	function indieweb_publisher_first_sentence_excerpt( $text = '' ) {
-		if ( is_admin() ) {
-			return $text;
-		}
-		global $post;
-		$content_post = get_post( $post->ID );
-
-		// Only generate a one-sentence excerpt if there is no excerpt set and One Sentence Excerpts is enabled
-		if ( ! $content_post->post_excerpt && indieweb_publisher_generate_one_sentence_excerpts() ) {
-
-			// The following mimics the functionality of wp_trim_excerpt() in wp-includes/formatting.php
-			// and ensures that no shortcodes or embed URLs are included in our generated excerpt.
-			$text           = get_the_content( '' );
-			$text           = strip_shortcodes( $text );
-			$text           = apply_filters( 'the_content', $text );
-			$text           = str_replace( ']]>', ']]&gt;', $text );
-			$excerpt_length = 150; // Something long enough that we're likely to get a full sentence.
-			$excerpt_more   = ''; // Not used, but included here for clarity
-			$text           = wp_trim_words( $text, $excerpt_length, $excerpt_more ); // See wp_trim_words() in wp-includes/formatting.php
-
-			// Get the first sentence
-			// This looks for three punctuation characters: . (period), ! (exclamation), or ? (question mark), followed by a space
-			$strings = preg_split( '/(\.|!|\?)\s/', strip_tags( $text ), 2, PREG_SPLIT_DELIM_CAPTURE );
-
-			// $strings[0] is the first sentence and $strings[1] is the punctuation character at the end
-			if ( ! empty( $strings[0] ) && ! empty( $strings[1] ) ) {
-				$text = $strings[0] . $strings[1];
-			}
-
-			$text = wpautop( $text );
-		}
-
-		return $text;
-	}
-endif;
-
-add_filter( 'the_excerpt', 'indieweb_publisher_first_sentence_excerpt' );
 
 /*
  * Add a checkbox for Post Covers to the featured image metabox
@@ -626,50 +502,6 @@ function indieweb_publisher_is_very_first_standard_post() {
 	}
 }
 
-/**
- * Return true when Show Full Content First Post option is disabled,
- * or when Show Full Content First Post is enabled but excerpts are disabled,
- * or when Show Full Content First Post is enabled and we're not on
- * the very first post
- */
-function indieweb_publisher_is_not_first_post_full_content() {
-
-	// This only works in the loop, so return false if we're not there
-	if ( ! in_the_loop() ) {
-		return false;
-	}
-
-	// If Show Full Content First Post option is not enabled,
-	// or if it's enabled by excerpts are disabled, return true
-	if (
-		! indieweb_publisher_option( 'show_full_content_first_post' )
-		|| ( ! indieweb_publisher_generate_one_sentence_excerpts() && ! indieweb_publisher_use_post_excerpts() )
-	) {
-		return true;
-	}
-
-	// If Show Full Content First Post option is enabled but this is not
-	// the very first post, return true
-	if (
-		indieweb_publisher_show_full_content_first_post()
-		&& ! indieweb_publisher_is_very_first_standard_post()
-	) {
-		return true;
-	}
-
-	// If Show Full Content First Post option is enabled and this is the
-	// very first post, return false
-	if (
-		indieweb_publisher_show_full_content_first_post()
-		&& indieweb_publisher_is_very_first_standard_post()
-	) {
-		return false;
-	}
-
-	// Default return false
-	return false;
-}
-
 if ( ! function_exists( 'indieweb_publisher_clean_content' ) ) :
 	/**
 	 * Cleans and returns the content for display as a Quote or Aside by stripping anything that might screw up formatting. This is necessary because we link Quotes and Asides to their own permalink. If the Quote or Aside contains a footnote with an anchor tag, or even just an anchor tag, then nesting anchor within anchor will break formatting.
@@ -685,37 +517,6 @@ if ( ! function_exists( 'indieweb_publisher_clean_content' ) ) :
 		return $content;
 	}
 endif;
-
-/**
- * Add classes to article based on current theme settings
- */
-function indieweb_publisher_post_classes() {
-	global $wp_query;
-
-	if ( indieweb_publisher_option( 'show_full_content_first_post' ) &&
-		( indieweb_publisher_is_very_first_standard_post() &&
-			is_home() &&
-			! is_sticky()
-		)
-	) {
-		post_class( 'show-full-content-first-post' );
-	} elseif ( indieweb_publisher_option( 'show_full_content_first_post' ) &&
-		( indieweb_publisher_is_very_first_standard_post() &&
-			is_home() &&
-			is_sticky()
-		)
-	) {
-		post_class( 'show-full-content-first-post-sticky' );
-	} elseif ( $wp_query->current_post == 0 ) {
-		if ( class_exists( 'Jetpack' ) && Jetpack::is_module_active( 'infinite-scroll' ) && get_query_var( 'paged' ) !== 0 ) {
-			post_class();
-		} else {
-			post_class( 'first-post' );
-		}
-	} else {
-		post_class();
-	}
-}
 
 /**
  * Handles Reply to Comment links properly when JavaScript is enabled
@@ -771,41 +572,6 @@ function indieweb_publisher_entry_meta_author_prefix() {
 
 	return apply_filters( 'indieweb_publisher_entry_meta_author_prefix', $prefix );
 }
-
-if ( ! function_exists( 'indieweb_publisher_maybe_linkify_the_content' ) ) :
-	/**
-	 * Returns the post content for Asides and Quotes with the content linked to the permalink, for display on non-Single pages
-	 */
-	function indieweb_publisher_maybe_linkify_the_content( $content ) {
-		if ( ! is_admin() && ! is_single() && ( 'aside' === get_post_format() || 'quote' === get_post_format() ) ) {
-
-			// Asides and Quotes might have footnotes with anchor tags, or just anchor tags, both of which would screw things up when linking the content to itself (anchors cannot have anchors inside them), so let's clean things up
-			$content = indieweb_publisher_clean_content( $content );
-
-			// Now we can link the Quote or Aside content to itself
-			$content = '<a href="' . get_permalink() . '" rel="bookmark" title="' . indieweb_publisher_post_link_title() . '">' . $content . '</a>';
-		}
-
-		return $content;
-	}
-endif;
-
-add_filter( 'the_content', 'indieweb_publisher_maybe_linkify_the_content', 100 );
-
-if ( ! function_exists( 'indieweb_publisher_maybe_linkify_the_excerpt' ) ) :
-	/**
-	 * Returns the excerpt with the excerpt linked to the permalink, for display on non-Single pages
-	 */
-	function indieweb_publisher_maybe_linkify_the_excerpt( $content ) {
-		if ( ! is_single() || ! is_admin() ) {
-			$content = '<a href="' . get_permalink() . '" rel="bookmark" title="' . indieweb_publisher_post_link_title() . '">' . $content . '</a>';
-		}
-
-		return $content;
-	}
-endif;
-
-add_filter( 'the_excerpt', 'indieweb_publisher_maybe_linkify_the_excerpt' );
 
 if ( ! function_exists( 'indieweb_publisher_cancel_comment_reply_link' ) ) :
 	/**
