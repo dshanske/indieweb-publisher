@@ -1,0 +1,29 @@
+.posts-navigation {
+	margin-top: 1.75em;
+	padding-top: 1.75em;
+	border-top: solid 1px #ddd;
+}
+
+.infinite-scroll .posts-navigation {
+	display: none;
+}
+
+.posts-navigation .nav-links a {
+	font-size: 15px;
+}
+
+.posts-navigation .nav-links .nav-previous a:before,
+.posts-navigation .nav-links .nav-next a:after {
+	position: relative;
+	top: 0;
+}
+
+.posts-navigation .nav-links .nav-previous a:before {
+	margin-right: .4375em;
+	content: "\2190";
+}
+
+.posts-navigation .nav-links .nav-next a:after {
+	margin-left: .4375em;
+	content: "\2192";
+}

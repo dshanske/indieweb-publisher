@@ -1,0 +1,44 @@
+.menu-toggle {
+	margin: 0 auto;
+	display: block;
+	padding: .4375em .875em;
+	-webkit-transition: background 200ms ease-in-out, box-shadow 200ms ease-in-out, color 200ms ease-in-out;
+			transition: background 200ms ease-in-out, box-shadow 200ms ease-in-out, color 200ms ease-in-out;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+	font-size: 17px;
+	font-weight: bold;
+	line-height: 1;
+	color: #a4a4a4;
+	border: solid 2px currentColor;
+	border-radius: 4px;
+	background: none;
+
+	-webkit-font-smoothing: antialiased;
+}
+
+.menu-toggle:hover,
+.menu-toggle:focus,
+.menu-toggle:active {
+	text-decoration: none;
+	color: #7e7f80;
+	outline: 0;
+	background: transparent;
+}
+
+.menu-toggle:focus,
+.menu-toggle:active {
+	box-shadow: 0 0 0 6px rgba(187, 199, 211, .17);
+}
+
+.toggled .menu-toggle:before {
+	top: 3px;
+	position: relative;
+	content: "\f405";
+	font-family: Genericons;
+	line-height: .65;
+	margin-right: 3px;
+	font-size: 16px;
+	-webkit-transform: scale(1.5);
+		-ms-transform: scale(1.5);
+			transform: scale(1.5);
+}

@@ -1,0 +1,21 @@
+.comment-navigation {
+	padding: 0;
+	border: none;
+}
+
+.comments-area #comment-nav-above {
+	padding-bottom: .21875em;
+}
+
+.comments-area #comment-nav-above + .comment-list > li.comment:last-child {
+	padding-bottom: 1.75em;
+	border-bottom-width: 1px;
+}
+
+.comments-area #comment-nav-above + .comment-list > li.comment:last-child .reply {
+	margin-bottom: 0;
+}
+
+#comment-nav-below {
+	padding-top: .21875em;
+}

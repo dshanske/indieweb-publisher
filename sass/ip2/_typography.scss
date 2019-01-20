@@ -1,0 +1,341 @@
+body {
+	background: #fff;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+	font-family: Georgia, "Times New Roman", serif;
+	font-size: 18px;
+	line-height: 1.75;
+	color: #383838;
+}
+
+select {
+	font-size: 13px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	clear: both;
+	margin-top: .875em;
+	margin-bottom: .875em;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+	line-height: 1.1;
+	color: #333332;
+}
+
+h1 {
+	font-size: 32px;
+	margin-bottom: .4375em;
+}
+
+h2 {
+	font-size: 24px;
+	margin-bottom: .4375em;
+}
+
+h3 {
+	font-size: 19px;
+}
+
+h4 {
+	font-size: 15px;
+}
+
+h5 {
+	font-size: 14px;
+}
+
+h6 {
+	font-size: 13px;
+}
+
+h5,
+h6 {
+	line-height: 1.3;
+}
+
+hr {
+	height: 1px;
+	margin: 1.75em 0;
+	border: 0;
+	background-color: #ccc;
+}
+
+p {
+	margin-bottom: .875em;
+}
+
+ul,
+ol {
+	margin: 0 0 1.75em 2em;
+	padding: 0;
+	list-style-position: outside;
+}
+
+ul ul,
+ol ul,
+ul ol,
+ol ol {
+	margin-bottom: 0;
+	margin-left: 2em;
+}
+
+ul li,
+ol li {
+	margin-top: .4375em;
+}
+
+ul {
+	list-style-type: disc;
+}
+
+ol {
+	list-style-type: decimal;
+}
+
+dt {
+	font-weight: 700;
+}
+
+dd {
+	margin: .4375em 1.75em 1.75em;
+}
+
+b,
+strong {
+	font-weight: 700;
+}
+
+dfn,
+cite,
+em,
+i {
+	font-style: italic;
+}
+
+blockquote {
+	margin: 1.75em .875em 1.75em -1.9em;
+	padding: 0 0 0 1.75em;
+	font-family: Georgia, "Times New Roman", serif;
+	font-style: italic;
+	border: solid #0087be;
+	border-width: 0 0 0 3px;
+}
+
+.comments-area blockquote {
+	margin-left: 0;
+}
+
+blockquote blockquote {
+	margin-left: 1.75em;
+}
+
+blockquote.aligncenter,
+blockquote.alignleft,
+blockquote.alignright {
+	padding: .875em 0;
+	font-family: Georgia, "Times New Roman", serif;
+	font-size: 20px;
+	font-style: italic;
+	text-align: center;
+	color: #a5a5a5;
+	border: 0;
+}
+blockquote.alignright,
+blockquote.alignleft {
+	max-width: 100%;
+	padding: 0;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: left;
+}
+
+blockquote cite {
+	display: block;
+	margin-top: .875em;
+	font-size: .875em;
+	font-weight: bold;
+}
+
+blockquote cite:before {
+	margin-right: .21875em;
+	margin-left: 0;
+	content: "\2014";
+	font-weight: normal;
+}
+
+blockquote h1,
+blockquote h2,
+blockquote h3,
+blockquote h4 {
+	font-family: inherit;
+	font-weight: normal;
+}
+
+address {
+	margin: 0 0 1.75em;
+}
+
+pre {
+	overflow: auto;
+	max-width: 100%;
+	padding: 1.75em;
+	font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+	line-height: 1.75;
+	background: #f5f5f5;
+}
+
+pre,
+code,
+kbd,
+tt,
+var {
+	font-size: 18px;
+}
+
+pre pre,
+pre code,
+pre kbd,
+pre tt,
+pre var {
+	background: transparent;
+}
+
+code,
+kbd,
+tt,
+var {
+	padding: 2px 5px 2px 5px;
+	font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+	background: #eee;
+}
+
+abbr,
+acronym {
+	cursor: help;
+	border-bottom: 1px dotted #666;
+}
+
+mark,
+ins {
+	text-decoration: none;
+	background: #fff9c0;
+}
+
+sup,
+sub {
+	position: relative;
+	height: 0;
+	font-size: 75%;
+	line-height: 0;
+	vertical-align: baseline;
+}
+
+sup {
+	bottom: 1ex;
+}
+
+sub {
+	top: .5ex;
+}
+
+small {
+	font-size: 75%;
+}
+
+big {
+	font-size: 125%;
+}
+
+figure {
+	margin: 0;
+}
+
+table {
+	width: 100%;
+	margin: 0 0 1.75em;
+	font-size: 90%;
+}
+
+th {
+	font-weight: 700;
+}
+
+textarea {
+	overflow: auto;
+	width: 95%;
+	padding-left: 3px;
+	vertical-align: top;
+}
+
+a {
+	text-decoration: none;
+	color: #0087be;
+}
+
+a:visited {
+	text-decoration: none;
+	color: #0087be;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:hover,
+a:focus,
+a:active {
+	color: #00aadc;
+}
+
+a:focus,
+a:active,
+button:focus,
+button:active {
+	outline: thin dotted;
+}
+
+table,
+th,
+td {
+	border: 1px solid #ddd;
+}
+
+table {
+	/* Prevents HTML tables from becoming too wide */
+	width: 100%;
+	margin: 0 0 1.75em;
+	table-layout: fixed;
+	border-spacing: 0;
+	border-collapse: separate;
+	border-width: 1px 0 0 1px;
+}
+
+caption,
+th,
+td {
+	font-weight: normal;
+	text-align: left;
+}
+
+th {
+	font-weight: 700;
+	border-width: 0 1px 1px 0;
+}
+
+td {
+	border-width: 0 1px 1px 0;
+}
+
+th,
+td {
+	padding: .4375em;
+}

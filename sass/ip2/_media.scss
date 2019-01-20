@@ -1,0 +1,53 @@
+.page-content .wp-smiley,
+.entry-content .wp-smiley,
+.comment-content .wp-smiley {
+	margin-top: 0;
+	margin-bottom: 0;
+	padding: 0;
+	border: none;
+}
+
+.wp-caption {
+	max-width: 100%;
+	margin-bottom: 1.75em;
+}
+
+.wp-caption.aligncenter,
+.wp-caption.alignleft,
+.wp-caption.alignright {
+	margin-bottom: 1.75em;
+}
+
+.wp-caption img {
+	display: block;
+	max-width: 98%;
+	margin: 5px auto 0;
+}
+
+.wp-caption-text,
+.wp-caption-dd {
+	clear: both;
+	font-size: 75%;
+	font-weight: 400;
+	font-style: italic;
+	text-align: center;
+	color: #939393;
+	width: 100%;
+}
+
+.wp-caption-text strong,
+.wp-caption-dd strong {
+	color: #454545;
+}
+
+.wp-caption .wp-caption-text,
+.wp-caption .wp-caption-dd {
+	margin: .875em 0;
+}
+
+/* Make sure embeds and iframes fit their containers */
+embed,
+iframe,
+object {
+	max-width: 100%;
+}

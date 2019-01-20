@@ -1,0 +1,87 @@
+.main-navigation {
+	display: block;
+	clear: both;
+	width: 100%;
+	margin: 0 auto;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+	font-size: 17px;
+	font-weight: 700;
+	text-align: left;
+}
+.main-navigation a {
+	display: block;
+	padding: .20875em .4375em;
+	text-decoration: none;
+	-webkit-transition: color 140ms ease-in-out;
+			transition: color 140ms ease-in-out;
+}
+.main-navigation ul {
+	display: none;
+	margin: 0;
+	padding-left: 0;
+	list-style: none;
+}
+.main-navigation li {
+	border-top: 1px solid #ccc;
+	position: relative;
+	display: inline-block;
+	margin-top: .4375em;
+	padding-top: .4375em;
+	line-height: 1.3;
+	width: 100%;
+}
+.main-navigation ul:first-child > li:first-child {
+	border-top: 0;
+}
+
+.main-navigation > div > ul > li.current-menu-item > a,
+.main-navigation > div > ul > li.current_page_item > a {
+	color: #00aadc;
+}
+
+.main-navigation > div > ul > li.current-menu-item > ul > li a,
+.main-navigation > div > ul > li.current_page_item > ul > li a {
+	color: #fff;
+}
+
+/* Small menu. */
+.menu-toggle,
+.main-navigation.toggled ul {
+	display: block;
+}
+
+.menu-toggle:before {
+	display: inline-block;
+	margin-right: 5px;
+	content: "\2630";
+}
+
+.main-navigation ul a {
+	padding-left: 1.75em;
+	padding-right: 1.75em;
+}
+
+.main-navigation ul ul a {
+	padding-left: 3.5em;
+}
+
+.main-navigation ul ul ul a {
+	padding-left: 5.25em;
+}
+
+.main-navigation ul ul ul ul a {
+	padding-left: 7em;
+}
+
+.main-navigation ul ul ul ul ul a {
+	padding-left: 8.75em;
+}
+
+.main-navigation ul ul ul ul ul ul a {
+	padding-left: 10.5em;
+}
+
+.has-header-image .menu-toggle {
+	color: white;
+	border-color: white;
+}

@@ -1,0 +1,65 @@
+.post-navigation {
+	margin-top: 2.675em;
+	padding: .4375em 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+	border-bottom: solid 1px #ddd;
+	border-top: solid 1px #ddd;
+}
+
+.post-navigation .nav-links {
+	font-size: 15px;
+}
+
+.post-navigation .nav-links a {
+	display: inline-block;
+	padding: .21875em 0;
+	-webkit-transition: color 140ms ease-in-out;
+			transition: color 140ms ease-in-out;
+	font-weight: normal;
+	vertical-align: middle;
+	color: #b6b6b4;
+}
+
+.post-navigation .nav-links a:hover,
+.post-navigation .nav-links a:focus,
+.post-navigation .nav-links a:active {
+	text-decoration: none;
+	color: #747471;
+}
+
+.post-navigation .nav-links .nav-previous a:before,
+.post-navigation .nav-links .nav-next a:after {
+	position: relative;
+	display: inline-block;
+	margin: 0;
+	font-family: "Genericons";
+	vertical-align: middle;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.post-navigation .nav-links .nav-previous {
+	clear: both;
+	margin: 0 0 0 -.21875em;
+	width: 100%;
+}
+
+.post-navigation .nav-links .nav-previous a:before {
+	margin-right: .21875em;
+	content: "\f431";
+	-webkit-transform: rotate(90deg);
+		-ms-transform: rotate(90deg);
+			transform: rotate(90deg);
+}
+
+.post-navigation .nav-links .nav-next {
+	margin: 0 -.21875em 0 0;
+}
+
+.post-navigation .nav-links .nav-next a:after {
+	margin-left: .21875em;
+	content: "\f432";
+	-webkit-transform: rotate(90deg);
+		-ms-transform: rotate(90deg);
+			transform: rotate(90deg);
+}

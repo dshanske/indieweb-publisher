@@ -1,0 +1,210 @@
+.widget-area {
+	margin-top: 3.5em;
+	font-size: 16px;
+}
+
+/* =Footer Widgets */
+.footer-widgets {
+	margin: 1.75em 0 0;
+	padding: 1.75em 0 0;
+}
+
+.footer-widgets .widget-area {
+	width: 100%;
+	margin: 0 auto 3.5em;
+}
+
+.widget:nth-child(n+2) {
+	margin-top: 3.5em;
+}
+
+.page-content > .widget {
+	margin-top: 3.5em;
+}
+
+.widget .widget-title,
+.widget .widgettitle {
+	margin: 0 0 .4375em;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+	font-weight: bold;
+	margin-bottom: .875em;
+	font-size: 17px;
+}
+
+.widget .widget-title + p,
+.widget .widgettitle + p,
+.widget .widget-title + ul,
+.widget .widgettitle + ul,
+.widget .widget-title + ol,
+.widget .widgettitle + ol {
+	margin-top: 0;
+}
+
+.widget ul,
+.widget ol {
+	margin-left: 1.75em;
+}
+
+.widget ul ul,
+.widget ol ul,
+.widget ul ol,
+.widget ol ol {
+	margin-left: .875em;
+}
+
+.widget ul ul,
+.widget ol ul,
+.widget ul ol,
+.widget ol ol {
+	margin-left: 1.75em;
+}
+
+.widget ul li,
+.widget ol li {
+	margin: .875em 0 0;
+	line-height: 1.2;
+}
+
+.widget > ul > li:first-child,
+.widget > ol > li:first-child {
+	margin-top: 0;
+}
+
+.widget ul li a:hover {
+	text-decoration: underline;
+}
+
+.widget select {
+	max-width: 100%;
+}
+
+.widget {
+	margin-top: 0;
+}
+
+.widget_search .search-submit {
+	display: none;
+}
+
+.widget_rss .rss-date,
+.widget_rss li > cite {
+	display: block;
+	font-size: 15px;
+	color: #b3b3b1;
+}
+
+.widget_goodreads div a img {
+	float: right;
+	margin-left: .875em;
+}
+.widget_goodreads > div > div > div {
+	clear: both;
+	margin-bottom: .875em;
+}
+.widget_goodreads h2 {
+	font-size: 17px;
+	margin: 0 0 .875em;
+}
+
+#flickr_badge_uber_wrapper {
+	border-color: #ddd;
+}
+
+.widget_recent_comments img.avatar {
+	border-radius: 100px;
+}
+
+.widget_calendar #next {
+	text-align: right;
+}
+
+.widget_authors a {
+	color: inherit;
+	line-height: 1.5;
+}
+.widget_authors strong {
+	clear: both;
+	display: block;
+	width: 100%;
+}
+.widget-area .widget_authors ul {
+	margin-left: 0;
+}
+
+.widget_authors a:hover {
+	text-decoration: none;
+	color: #696969;
+}
+
+.widget_authors img {
+	margin-right: .4375em;
+	border-radius: 100%;
+}
+
+.widget_authors img,
+.widget_authors a {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.widget_recent_comments table,
+.widget_recent_comments td {
+	border: none;
+}
+
+.widget_recent_comments .widget-title + table.recentcommentsavatar {
+	margin-top: -.4375em;
+}
+
+.widget_recent_entries {
+	font-size: 15px;
+	color: #939393;
+}
+
+.widget_recent_comments a,
+.widget_recent_entries a {
+	font-size: 17px;
+	font-weight: bold;
+	color: #383838;
+}
+
+.widget_recent_entries span.post-date {
+	display: block;
+	font-family: Georgia, "Times New Roman", serif;
+	font-style: italic;
+}
+
+.widget_recent_entries ul {
+	margin-top: 1.75em;
+}
+
+.widget_recent_entries ul li {
+	margin-top: 1.3125em;
+	line-height: 1.4;
+}
+
+#wp-calendar tbody td {
+	white-space: nowrap;
+}
+
+.widget.widget_text ul,
+.widget.widget_text ol {
+	margin-left: .875em;
+	padding-left: .875em;
+}
+
+.widget.widget_text ul {
+	list-style-type: disc;
+}
+
+.widget.widget_text ol {
+	list-style-type: decimal;
+}
+
+.jetpack_widget_social_icons a:hover {
+	opacity: 0.7;
+}
+
+.gist table {
+	table-layout: inherit;
+}

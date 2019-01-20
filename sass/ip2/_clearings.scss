@@ -1,0 +1,45 @@
+.entry-author:before,
+.comment-author:before,
+.site-branding:before,
+.entry-content:before,
+.entry-footer:before,
+.site-logo:before,
+.gallery:before,
+.nav-links:before,
+.post-tags:before,
+.content-wrapper:before,
+.jetpack-social-navigation:before,
+.site-content:before,
+.footer-widgets:before,
+.entry-author:after,
+.comment-author:after,
+.site-branding:after,
+.entry-content:after,
+.entry-footer:after,
+.site-logo:after,
+.gallery:after,
+.nav-links:after,
+.post-tags:after,
+.content-wrapper:after,
+.jetpack-social-navigation:after,
+.site-content:after,
+.footer-widgets:after {
+	display: table;
+	content: " ";
+}
+
+.entry-author:after,
+.comment-author:after,
+.site-branding:after,
+.entry-content:after,
+.entry-footer:after,
+.site-logo:after,
+.gallery:after,
+.nav-links:after,
+.post-tags:after,
+.content-wrapper:after,
+.jetpack-social-navigation:after,
+.site-content:after,
+.footer-widgets:after {
+	clear: both;
+}
