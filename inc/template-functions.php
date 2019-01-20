@@ -392,7 +392,7 @@ function indieweb_publisher_featured_image_meta( $content ) {
 		return $content;
 	}
 
-	global $post;
+	$post = get_post();
 
 	// Meta key
 	$meta_key = 'full_width_featured_image';
@@ -488,19 +488,6 @@ function indieweb_publisher_save_featured_image_meta( $post_id, $post ) {
 /* Save post meta on the 'save_post' hook. */
 add_action( 'save_post', 'indieweb_publisher_save_featured_image_meta', 10, 2 );
 
-
-/**
- * Return true when we're on the first page of a Blog, Archive, or Search
- * page and the current post is the first post.
- */
-function indieweb_publisher_is_very_first_standard_post() {
-	global $wp_query;
-	if ( in_the_loop() && $wp_query->current_post == 0 && ! is_paged() && get_query_var( 'paged' ) === 0 ) {
-		return true;
-	} else {
-		return false;
-	}
-}
 
 if ( ! function_exists( 'indieweb_publisher_clean_content' ) ) :
 	/**
@@ -683,6 +670,16 @@ if ( ! function_exists( 'indieweb_publisher_get_the_title' ) ) :
 			return get_the_title();
 		}
 		return '';
+	}
+endif;
+
+
+if ( ! function_exists( 'indieweb_publisher_is_multi_author' ) ) :
+	function indieweb_publisher_is_multi_author() {
+		if( class_exists( 'IndieWeb_Plugin' ) ) {
+			return ( get_option( 'iw_single_author' ) ) ? false : true;
+		}
+		return is_multi_author();
 	}
 endif;
 

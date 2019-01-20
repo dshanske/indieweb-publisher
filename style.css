@@ -506,14 +506,15 @@ img.aligncenter {
   margin: 5px auto 10px;
 }
 
-.permalink a:before {
+.permalink::before {
   font-family: "Genericons-Neue";
   content: '\f107';
-  font-size: 24px;
-  height: 24px;
   position: relative;
   top: 0;
-  width: 24px;
+}
+.permalink::before :hover {
+  text-decoration: none;
+  color: #000000;
 }
 
 /*--------------------------------------------------------------

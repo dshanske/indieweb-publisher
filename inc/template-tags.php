@@ -170,10 +170,18 @@ if ( ! function_exists( 'indieweb_publisher_posted_author' ) ) :
 		global $wp_query;
 		$post_author_id        = $wp_query->post->post_author;
 		$post_author_nice_name = get_the_author_meta( 'display_name', $post_author_id );
+		if (  1 === (int) get_option( 'iw_author_url', 0 ) ) {
+			$user_url = get_the_author_meta( 'user_url', $post_author_id );
+			if ( empty( $user_url ) ) {
+				$user_url = get_author_posts_url( $post_author_id );
+			}
+		} else {
+			$user_url = get_author_posts_url( $post_author_id );
+		}
 
 		printf(
 			'<span class="byline"><a href="%1$s" title="%2$s" rel="author">%3$s</a></span>',
-			esc_url( get_author_posts_url( get_the_author_meta( 'ID', $post_author_id ) ) ),
+			esc_url( $user_url ),
 			esc_attr( sprintf( __( 'View %s author page', 'indieweb-publisher' ), $post_author_nice_name ) ),
 			esc_html( $post_author_nice_name )
 		);
@@ -193,13 +201,13 @@ if ( ! function_exists( 'indieweb_publisher_posted_author_cats' ) ) :
 		/* translators: used between list items, there is a space after the comma */
 		$categories_list = get_the_category_list( __( ', ', 'indieweb-publisher' ) );
 
-		if ( ( ! post_password_required() && comments_open() && ! indieweb_publisher_hide_comments() ) || ( ! post_password_required() && indieweb_publisher_show_post_word_count() && ! get_post_format() ) || indieweb_publisher_show_date_entry_meta() ) {
+		if ( ( ! post_password_required() && comments_open() && ! indieweb_publisher_hide_comments() ) || ( ! post_password_required() && ! get_post_format() ) || indieweb_publisher_option( 'show_date_entry_meta' ) ) {
 			$separator = apply_filters( 'indieweb_publisher_entry_meta_separator', '|' );
 		} else {
 			$separator = '';
 		}
 
-		if ( is_multi_author() ) :
+		if ( indieweb_publisher_is_multi_author() ) :
 			if ( $categories_list && indieweb_publisher_categorized_blog() ) :
 				echo '<span class="cat-links">';
 				printf(
@@ -398,9 +406,14 @@ if ( ! function_exists( 'indieweb_publisher_site_info' ) ) :
 	 */
 	function indieweb_publisher_site_info() {
 		?>
-		<?php if ( has_custom_logo() ) : ?>
-			<?php the_custom_logo(); ?>
-		<?php endif; ?>
+		<?php 
+		if ( has_custom_logo() ) {
+			the_custom_logo(); 
+		} else if ( ! indieweb_publisher_is_multi_author() ) {
+			indieweb_publisher_author_logo();
+		}
+		?>
+		
 		<div class="site-title">
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
 		</div>
@@ -422,6 +435,16 @@ if ( ! function_exists( 'indieweb_publisher_posted_author_card' ) ) :
 		 */
 		global $wp_query;
 		$post_author_id = $wp_query->post->post_author;
+		if (  1 === (int) get_option( 'iw_author_url', 0 ) ) {
+			$user_url = get_the_author_meta( 'user_url', $post_author_id );
+			if ( empty( $user_url ) ) {
+				$user_url = get_author_posts_url( $post_author_id );
+			}
+		} else {
+			$user_url = get_author_posts_url( $post_author_id );
+		}
+		
+
 		$show_avatars   = get_option( 'show_avatars' );
 		?>
 		<aside class="p-author h-card">
@@ -430,8 +453,8 @@ if ( ! function_exists( 'indieweb_publisher_posted_author_card' ) ) :
 				<img class="no-grav" src="<?php echo esc_url( get_header_image() ); ?>" height="<?php echo absint( get_custom_header()->height ); ?>" width="<?php echo absint( get_custom_header()->width ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" />
 			</a>
 		<?php else : ?>
-			<a class="site-logo" href="<?php echo get_author_posts_url( get_the_author_meta( 'ID', $post_author_id ) ); ?>">
-				<?php echo get_avatar( get_the_author_meta( 'ID', $post_author_id ), 100 ); ?>
+			<a class="site-logo" href="<?php echo $user_url; ?>">
+				<?php echo get_avatar( $post_author_id, 100 ); ?>
 			</a>
 		<?php endif; ?>
 

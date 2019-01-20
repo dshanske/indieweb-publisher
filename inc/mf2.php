@@ -7,14 +7,13 @@
  */
 
 function indieweb_publisher_mf2_body_class( $classes ) {
-	if ( ! is_singular() ) {
-		$classes[] = 'hfeed';
+	if ( is_page_template() && 'hcard.php' === get_page_template_slug() ) {
+		return $classes;
+	} else if ( ! is_singular() ) {
 		$classes[] = 'h-feed';
 	} else {
 		// Adds a class for microformats v2
 		$classes[] = 'h-entry';
-		// add hentry to the same tag as h-entry
-		$classes[] = 'hentry';
 	}
 	return $classes;
 }
@@ -46,6 +45,9 @@ function indieweb_publisher_mf2_get_avatar_data( $args, $id_or_email ) {
 	if ( ! isset( $args['class'] ) ) {
 		$args['class'] = array( 'u-photo' );
 	} else {
+		if ( is_string( $args['class'] ) ) {
+			$args['class'] = array( $args['class'] );
+		}
 		$args['class'][] = 'u-photo';
 	}
 		return $args;
