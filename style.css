@@ -512,10 +512,6 @@ img.aligncenter {
   position: relative;
   top: 0;
 }
-.permalink::before :hover {
-  text-decoration: none;
-  color: #000000;
-}
 
 /*--------------------------------------------------------------
 # Menu
@@ -1712,6 +1708,8 @@ body {
 
 .site-published,
 .site-location,
+.post-category-title,
+.post-series-title,
 .syn-text {
   margin: 10px 0 0 0;
   color: #333332;
@@ -1723,7 +1721,9 @@ body {
 }
 
 .site-published-date,
-.site-location-detail {
+.site-location-detail,
+.post-categories,
+.post-series {
   margin: 5px 0 0 0;
   color: #929292;
   font-size: 12px;

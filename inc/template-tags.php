@@ -186,6 +186,38 @@ if ( ! function_exists( 'indieweb_publisher_posted_author_cats' ) ) :
 	}
 endif;
 
+if ( ! function_exists( 'indieweb_publisher_post_categories' ) ) :
+	function indieweb_publisher_post_categories() {
+		if ( ! indieweb_publisher_option( 'show_category_entry_meta' ) ) {
+			return;
+		}
+		/* translators: used between list items, there is a space after the comma */
+		$categories_list = get_the_category_list( __( ', ', 'indieweb-publisher' ) );
+		if ( $categories_list && indieweb_publisher_categorized_blog() ) {
+			printf( '<h3 class="post-category-title">%1$s</h3>', __( 'Categories', 'indieweb-publisher' ) );
+			printf( '<span class="post-categories">%1$s</span>', $categories_list );
+		}
+	}
+endif;
+
+add_action( 'indieweb_publisher_after_post_published_date', 'indieweb_publisher_post_categories' );
+
+if ( ! function_exists( 'indieweb_publisher_post_series' ) ) :
+	function indieweb_publisher_post_series() {
+		if ( taxonomy_exists( 'series' ) ) {
+			$series_list = get_the_term_list( get_the_ID(), 'series', '', _x( ', ', 'Used between list items, there is a space after the comma.', 'indieweb-publisher' ) );
+			if ( $series_list ) {
+				printf( '<h3 class="post-series-title">%1$s</h3>', __( 'Series', 'indieweb-publisher' ) );
+				printf( '<span class="post-series">%1$s</span>', $series_list );
+			}
+		}
+	}
+endif;
+
+add_action( 'indieweb_publisher_after_post_published_date', 'indieweb_publisher_post_series' );
+
+
+
 if ( ! function_exists( 'indieweb_publisher_posted_on_date' ) ) :
 	/**
 	 * Prints HTML with meta information for the current post-date/time.
@@ -266,7 +298,7 @@ if ( ! function_exists( 'indieweb_publisher_categorized_blog' ) ) :
 	 * @since Indieweb Publisher 1.0
 	 */
 	function indieweb_publisher_categorized_blog() {
-		if ( indieweb_publisher_option( 'hide_category_entry_meta' ) ) {
+		if ( ! indieweb_publisher_option( 'show_category_entry_meta' ) ) {
 			return false;
 		}
 		if ( false === ( $all_the_cool_cats = get_transient( 'all_the_cool_cats' ) ) ) {
@@ -412,7 +444,7 @@ if ( ! function_exists( 'indieweb_publisher_posted_author_card' ) ) :
 		?>
 		<?php
 		if ( get_the_modified_date() !== get_the_date() &&
-			indieweb_publisher_show_updated_date_on_single() &&
+			indieweb_publisher_option( 'show_updated_date_on_single' ) &&
 			! get_post_meta( get_the_ID(), 'indieweb_publisher_hide_updated_date', true )
 		) :
 			?>
@@ -488,7 +520,7 @@ if ( ! function_exists( 'indieweb_publisher_get_post_date' ) ) :
 	 * @return string
 	 */
 	function indieweb_publisher_get_post_date() {
-		if ( ( comments_open() && ! indieweb_publisher_hide_comments() ) || ( indieweb_publisher_show_post_word_count() && ! get_post_format() ) ) {
+		if ( ( comments_open() && ! indieweb_publisher_hide_comments() && ! get_post_format() ) ) {
 			$separator = ' <span class="sep"> ' . apply_filters( 'indieweb_publisher_entry_meta_separator', '|' ) . ' </span>';
 		} else {
 			$separator = '';
