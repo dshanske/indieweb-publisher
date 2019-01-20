@@ -494,7 +494,7 @@ if ( ! function_exists( 'indieweb_publisher_posted_author_bottom_card' ) ) :
 					?>
 					<?php
 					if ( get_the_modified_date() !== get_the_date() &&
-						indieweb_publisher_show_updated_date_on_single() &&
+						indieweb_publisher_option( 'show_updated_date_on_single' ) &&
 						! get_post_meta( get_the_ID(), 'indieweb_publisher_hide_updated_date', true )
 					) :
 						?>
