@@ -34,6 +34,7 @@ dddd
 				<?php do_action( 'indieweb_publisher_entry_title_meta', $separator = ' | ' ); ?>
 			</h2>
 		<?php else : ?>
+			<?php if ( ! indieweb_publisher_option( 'show_author_card' ) ) { ?>
 			<h2 class="entry-title-meta">
 			<span class="entry-title-meta-author">
 				<?php
@@ -54,7 +55,8 @@ dddd
 			</span>
 				<?php do_action( 'indieweb_publisher_entry_title_meta', $separator = ' | ' ); ?>
 			</h2>
-			<?php
+			<?php 
+			}
 				$title = indieweb_publisher_get_the_title();
 			if ( ! empty( $title ) ) {
 				?>
