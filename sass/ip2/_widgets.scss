@@ -201,10 +201,12 @@
 	list-style-type: decimal;
 }
 
-.jetpack_widget_social_icons a:hover {
-	opacity: 0.7;
-}
-
 .gist table {
 	table-layout: inherit;
+}
+
+/* Search widget */
+.widget_search .submit,
+.original_of_widget .submit {
+	display: none;
 }

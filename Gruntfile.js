@@ -20,7 +20,8 @@ module.exports = function(grunt) {
           style: 'expanded'
         },
         files: {                         // Dictionary of files
-          'css/default.css': 'sass/default.scss'       // 'destination': 'source'
+          'css/default.css': 'sass/default.scss',       // 'destination': 'source'
+  	  'css/ip2.css': 'sass/ip2.scss'
         }
       },
       dist: {                            // Target
@@ -29,6 +30,7 @@ module.exports = function(grunt) {
         },
         files: {                         // Dictionary of files
           'css/default.min.css': 'sass/default.scss',       // 'destination': 'source'
+	  'css/ip2.min.css': 'sass/ip2.scss',
 
         }
       }
