@@ -196,6 +196,17 @@ function indieweb_publisher_widgets_init() {
 
 	register_sidebar(
 		array(
+			'name'          => __( 'Footer', 'indieweb-publisher' ),
+			'id'            => 'sidebar-2',
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</aside>',
+			'before_title'  => '<h1 class="widget-title">',
+			'after_title'   => '</h1>',
+		)
+	);
+
+	register_sidebar(
+		array(
 			'name'          => __( 'Archive Page', 'indieweb-publisher' ),
 			'id'            => 'archive-page',
 			'before_widget' => '<div class="widget">',
