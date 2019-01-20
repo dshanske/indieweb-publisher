@@ -214,7 +214,6 @@ add_action( 'widgets_init', 'indieweb_publisher_widgets_init' );
 function indieweb_publisher_scripts() {
 	global $post;
 
-	// wp_enqueue_style( 'genericons', get_template_directory_uri() . '/fonts/genericons/genericons.css', array(), '3.1' );
 	wp_enqueue_style( 'genericons-neue', get_template_directory_uri() . '/fonts/genericons-neue/Genericons-Neue.min.css', array(), '4.0.5' );
 
 	wp_enqueue_script( 'indieweb-publisher-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
@@ -288,7 +287,7 @@ if ( ! function_exists( 'indieweb_publisher_stylesheet' ) ) :
 	 * Enqueue main stylesheet
 	 */
 	function indieweb_publisher_stylesheet() {
-		wp_enqueue_style( 'indieweb-publisher-style', get_stylesheet_uri() );
+		wp_enqueue_style( 'indieweb-publisher-style', get_template_directory_uri() . '/css/default.min.css' );
 	}
 endif;
 
