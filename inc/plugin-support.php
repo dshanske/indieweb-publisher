@@ -56,6 +56,11 @@ function indieweb_publisher_indieweb_plugin_support() {
 		remove_filter( 'the_content', array( 'Loc_View', 'location_content' ), 12 );
 		add_action( 'indieweb_publisher_after_post_published_date', 'indieweb_publisher_simple_location' );
 	}
+
+	if ( class_exists( 'Semantic_Linkbacks_Plugin' ) ) {
+		remove_action( 'comment_form_before', array( 'Linkbacks_Handler', 'show_mentions' ) );
+	}
+
 }
 add_action( 'init', 'indieweb_publisher_indieweb_plugin_support', 11 );
 

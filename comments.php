@@ -45,6 +45,10 @@ if ( post_password_required() ) {
 				</h2>
 			<?php endif; ?>
 
+			<?php if( class_exists( 'Linkbacks_Handler' ) ) {
+					Linkbacks_Handler::show_mentions();
+			} ?>
+
 			<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
 				<nav role="navigation" id="comment-nav-above" class="site-navigation comment-navigation">
 					<h1 class="screen-reader-text"><?php _e( 'Comment navigation', 'indieweb-publisher' ); ?></h1>
@@ -57,21 +61,11 @@ if ( post_password_required() ) {
 			<ol class="commentlist">
 				<?php
 				/*
-				 Loop through and list the comments. Tell wp_list_comments()
-				 * to use indieweb_publisher_comment() to format the comments.
-				 * If you want to overload this in a child theme then you can
-				 * define indieweb_publisher_comment() and that will be used instead.
-				 * See indieweb_publisher_comment() in inc/template-tags.php for more.
+					Loop through and list the comments. 
 				 */
-				wp_list_comments(
-					array(
-						'type'     => 'comment',
-						'callback' => 'indieweb_publisher_comment',
-					)
-				);
+				wp_list_comments();
 				?>
 			</ol><!-- .commentlist -->
-
 			<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
 				<nav role="navigation" id="comment-nav-below" class="site-navigation comment-navigation">
 					<h1 class="screen-reader-text"><?php _e( 'Comment navigation', 'indieweb-publisher' ); ?></h1>
@@ -101,13 +95,6 @@ if ( post_password_required() ) {
 			</div>
 			<div id="commentform-bottom"></div> <!-- do not remove; used by jQuery to move the comment reply form here -->
 		<?php endif; ?>
-
-		<?php if ( indieweb_publisher_comment_count_mentions() ) { // If we have mentions, let's show them ?>
-			<div id="webmentions" class="mentions-list">
-				<h3><?php echo apply_filters( 'indieweb_publisher_webmentions_title', __( 'Webmentions', 'indieweb-publisher' ) ); ?></h3>
-				<?php indieweb_publisher_mentions(); ?>
-			</div>
-		<?php } // end if ( indieweb_publisher_comment_count_mentions() ) ?>
 
 		<?php if ( comments_open() && have_comments() && get_comments_number() > 0 ) : ?>
 			<?php indieweb_publisher_replytocom(); // Handles Reply to Comment links properly when JavaScript is enabled ?>

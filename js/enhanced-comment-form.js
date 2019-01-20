@@ -18,6 +18,7 @@ jQuery(document).ready(function () {
 
 	if (identifier === "#respond") {
 		jQuery('#respond').show();
+		jQuery('#webmention-form').show();
 		jQuery('#share-comment-button-bottom').show();
 		jQuery('.comment-form-reply-title').hide();
 
@@ -28,11 +29,13 @@ jQuery(document).ready(function () {
 		} else {  // Otherwise, load the normal comment reply form
 			jQuery('#commentform-top').show();
 			jQuery('#commentform-top').append(jQuery('#respond'));
+			jQuery('#commentform-top').append(jQuery('#webmention-form'));
 			jQuery('#commentform-bottom').hide();
 		}
 
 	} else { // Set the default state (forms hidden, buttons showing)
 		jQuery('#respond').hide();
+		jQuery('#webmention-form').hide();
 		jQuery('#share-comment-button').show();
 		jQuery('#share-comment-button-bottom').show();
 		jQuery('#commentform-top').hide();
@@ -46,7 +49,9 @@ jQuery(document).ready(function () {
 		jQuery('#commentform-bottom').hide();
 		jQuery('#cancel-comment-reply-link').click();
 		jQuery('#commentform-top').append(jQuery('#respond'));
+		jQuery('#commentform-top').append(jQuery('#webmention-form'));
 		jQuery('#respond').show();
+		jQuery('#webmention-form').show();
 		jQuery('#share-comment-button').toggle('hide');
 		jQuery('#share-comment-button-bottom').show();
 		jQuery('.comment-form-reply-title').hide();
@@ -63,8 +68,10 @@ jQuery(document).ready(function () {
 		jQuery('#commentform-top').hide();
 		jQuery('#cancel-comment-reply-link').click();
 		jQuery('#commentform-bottom').append(jQuery('#respond'));
+		jQuery('#commentform-button').append(jQuery('#webmention-form'));
 		jQuery('#share-comment-button-bottom').toggle('hide');
 		jQuery('#respond').show();
+		jQuery('#webmention-form').show();
 		jQuery('#share-comment-button').show();
 		jQuery('.comment-form-reply-title').hide();
 		jQuery('#main-reply-title').show();
@@ -75,6 +82,7 @@ jQuery(document).ready(function () {
 
 	jQuery( document ).on('click', '.comment-reply-link', function (event) {
 		jQuery('#respond').show();
+		jQuery('#webmention-form').show();
 		jQuery('#share-comment-button').show();
 		jQuery('#share-comment-button-bottom').show();
 		jQuery('.comment-form-reply-title').show();
@@ -88,6 +96,7 @@ jQuery(document).ready(function () {
 
 	jQuery( document ).on('click', '#cancel-comment-reply-link', function (event) {
 		jQuery('#respond').hide();
+		jQuery('#webmention-form').hide();
 		jQuery('#share-comment-button').show();
 		if(is_replytocom())
 			jQuery('#reply-title').hide();
