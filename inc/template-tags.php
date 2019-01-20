@@ -267,7 +267,7 @@ if ( ! function_exists( 'indieweb_publisher_posted_on_date' ) ) :
 		);
 
 		printf(
-			'<a href="%1$s" title="%2$s" rel="bookmark">%3$s</a>',
+			'<a class="u-url" href="%1$s" title="%2$s" rel="bookmark">%3$s</a>',
 			esc_url( get_permalink() ),
 			esc_attr( get_the_title() ),
 			$time_string
