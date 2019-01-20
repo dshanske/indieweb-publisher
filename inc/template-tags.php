@@ -844,8 +844,8 @@ if ( ! function_exists( 'indieweb_publisher_archive_title' ) ) :
 			return __( 'Audios', 'indieweb-publisher' );
 		} elseif ( is_tax( 'post_format', 'post-format-chat' ) ) {
 			return __( 'Chats', 'indieweb-publisher' );
-		} else {
-			return __( 'Archives', 'indieweb-publisher' );
+		} elseif( is_tax() ) {
+			return single_term_title( '', false );
 		}
 		return $title;
 	}
