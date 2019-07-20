@@ -20,7 +20,7 @@
 </head>
 
 <body <?php body_class(); ?> itemscope="itemscope" itemtype="http://schema.org/WebPage">
-
+<?php wp_body_open(); ?>
 <?php // Displays full-width featured image on Single Posts if applicable ?>
 <?php indieweb_publisher_full_width_featured_image(); ?>
 
