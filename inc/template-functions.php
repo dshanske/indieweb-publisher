@@ -407,7 +407,7 @@ function indieweb_publisher_featured_image_meta( $content ) {
 	 If Auto-Set Featured Image as Post Cover enabled, this checkbox's functionality should reverse and
 	 * allow for disabling Post Covers on a post-by-post basis.
 	 */
-	if ( indieweb_publisher_auto_featured_image_post_cover() ) {
+	if ( function_exists('indieweb_publisher_auto_featured_image_post_cover') && indieweb_publisher_auto_featured_image_post_cover() ) {	
 		$meta_key    = 'full_width_featured_image_disabled';
 		$text        = __( 'Disable post cover (full-width)', 'indieweb-publisher' );
 		$option_type = 'disable';
