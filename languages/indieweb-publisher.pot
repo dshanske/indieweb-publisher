@@ -1,0 +1,542 @@
+# Copyright (C) 2020 David Shanske
+# This file is distributed under the GNU GPLv3.
+msgid ""
+msgstr ""
+"Project-Id-Version: Indieweb Publisher 1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/indieweb-publisher\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2020-06-29T00:47:20+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.4.0\n"
+"X-Domain: indieweb-publisher\n"
+
+#. Theme Name of the theme
+msgid "Indieweb Publisher"
+msgstr ""
+
+#. Theme URI of the theme
+msgid "https://github.com/dshanske/indieweb-publisher"
+msgstr ""
+
+#. Description of the theme
+msgid "Indieweb Publisher is an Indieweb fork of Independent Publisher by Raam Dev"
+msgstr ""
+
+#. Author of the theme
+msgid "David Shanske"
+msgstr ""
+
+#. Author URI of the theme
+msgid "https://david.shanske.com"
+msgstr ""
+
+#: 404.php:16
+msgid "Oops! That page can&rsquo;t be found."
+msgstr ""
+
+#: 404.php:21
+msgid "It looks like nothing was found at this location. Maybe try one of the links below or a search?"
+msgstr ""
+
+#: 404.php:35
+#: page_archive-template.php:36
+msgid "Most Used Categories"
+msgstr ""
+
+#. translators: %1$s: smilie
+#: 404.php:55
+msgid "Try looking in the monthly archives. %1$s"
+msgstr ""
+
+#: comments.php:40
+msgid "1 Comment"
+msgid_plural "%1$s Comments"
+msgstr[0] ""
+msgstr[1] ""
+
+#: comments.php:56
+#: comments.php:73
+msgid "Comment navigation"
+msgstr ""
+
+#: comments.php:58
+#: comments.php:75
+msgid "&larr; Older Comments"
+msgstr ""
+
+#: comments.php:59
+#: comments.php:76
+msgid "Newer Comments &rarr;"
+msgstr ""
+
+#: comments.php:86
+msgid "Comments are closed."
+msgstr ""
+
+#: functions.php:132
+msgid "Primary Menu"
+msgstr ""
+
+#: functions.php:133
+msgid "Single Posts Menu"
+msgstr ""
+
+#: functions.php:188
+msgid "Sidebar"
+msgstr ""
+
+#: functions.php:199
+msgid "Footer"
+msgstr ""
+
+#. Template Name of the theme
+#: functions.php:210
+msgid "Archive Page"
+msgstr ""
+
+#: functions.php:364
+msgid "%1$s empowered by %2$s"
+msgstr ""
+
+#. Template Name of the theme
+msgid "H-Card"
+msgstr ""
+
+#: hcard.php:39
+#: image.php:133
+#: page_archive-template.php:94
+#: page_one-column-template.php:67
+msgid "Edit"
+msgstr ""
+
+#: header.php:43
+msgid "Skip to content"
+msgstr ""
+
+#: image.php:26
+msgid "\"%1$s\" - <a href=\"%2$s\" title=\"Link to full-size image\">%3$s &times; %4$s</a> %5$s <a href=\"%6$s\" title=\"Return to %7$s\" rel=\"gallery\">%7$s</a>"
+msgstr ""
+
+#: image.php:113
+msgid "&larr; Previous image"
+msgstr ""
+
+#: image.php:114
+msgid "Next image &rarr;"
+msgstr ""
+
+#: inc/customizer.php:32
+msgid "Layout Options"
+msgstr ""
+
+#: inc/customizer.php:40
+msgid "General Options"
+msgstr ""
+
+#: inc/customizer.php:59
+msgid "Show Post Thumbnails"
+msgstr ""
+
+#: inc/customizer.php:79
+msgid "Show Category in Entry Meta"
+msgstr ""
+
+#: inc/customizer.php:99
+msgid "Show Post Date in Entry Meta"
+msgstr ""
+
+#: inc/customizer.php:120
+msgid "If Date is Shown Display Time in Entry Meta"
+msgstr ""
+
+#: inc/customizer.php:140
+msgid "Show Widgets on Single Posts"
+msgstr ""
+
+#: inc/customizer.php:160
+msgid "Show Nav Menu on Single Posts"
+msgstr ""
+
+#: inc/customizer.php:180
+msgid "Show Updated Date on Single Posts"
+msgstr ""
+
+#: inc/customizer.php:200
+msgid "Show Author Card on Single Posts"
+msgstr ""
+
+#: inc/customizer.php:220
+msgid "Single-Column Layout"
+msgstr ""
+
+#: inc/customizer.php:240
+msgid "Show Page Load Progress Bar"
+msgstr ""
+
+#: inc/customizer.php:260
+msgid "Auto-Set Featured Image as Post Cover"
+msgstr ""
+
+#: inc/customizer.php:280
+msgid "Overlay Post Title on Post Cover"
+msgstr ""
+
+#: inc/customizer.php:300
+msgid "Show Full Name in Comment Reply-to"
+msgstr ""
+
+#: inc/customizer.php:320
+msgid "Comments Call to Action"
+msgstr ""
+
+#: inc/customizer.php:332
+msgid "Text Color"
+msgstr ""
+
+#: inc/customizer.php:337
+msgid "Comment Form Background Color"
+msgstr ""
+
+#: inc/customizer.php:342
+msgid "Comment Form Text Color"
+msgstr ""
+
+#: inc/customizer.php:347
+msgid "Link Color"
+msgstr ""
+
+#: inc/customizer.php:352
+msgid "Title and Header Text Color"
+msgstr ""
+
+#: inc/customizer.php:357
+msgid "Primary Meta Text Color"
+msgstr ""
+
+#: inc/customizer.php:362
+msgid "Secondary Meta Text Color"
+msgstr ""
+
+#: inc/plugin-support.php:39
+msgid "Location"
+msgstr ""
+
+#: inc/template-functions.php:18
+msgid "All Posts Feed"
+msgstr ""
+
+#: inc/template-functions.php:140
+msgid "Anonymous"
+msgstr ""
+
+#: inc/template-functions.php:152
+msgid "Reply to"
+msgstr ""
+
+#: inc/template-functions.php:185
+msgid "Leave a Reply for %s"
+msgstr ""
+
+#: inc/template-functions.php:186
+msgid "Cancel Reply"
+msgstr ""
+
+#: inc/template-functions.php:187
+msgid "Submit Comment"
+msgstr ""
+
+#: inc/template-functions.php:190
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr ""
+
+#: inc/template-functions.php:195
+msgid "Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of this account\">Log out?</a>"
+msgstr ""
+
+#: inc/template-functions.php:206
+msgid "Name"
+msgstr ""
+
+#: inc/template-functions.php:211
+msgid "Email"
+msgstr ""
+
+#: inc/template-functions.php:216
+msgid "Website"
+msgstr ""
+
+#: inc/template-functions.php:245
+msgid "Comment"
+msgstr ""
+
+#: inc/template-functions.php:285
+msgid "Write a Comment"
+msgstr ""
+
+#: inc/template-functions.php:399
+msgid "Use as post cover (full-width)"
+msgstr ""
+
+#: inc/template-functions.php:410
+msgid "Disable post cover (full-width)"
+msgstr ""
+
+#: inc/template-functions.php:545
+msgid "in"
+msgstr ""
+
+#: inc/template-functions.php:554
+msgid "by"
+msgstr ""
+
+#: inc/template-functions.php:659
+msgid "Permalink to %s"
+msgstr ""
+
+#: inc/template-tags.php:22
+msgid "Older Posts"
+msgstr ""
+
+#: inc/template-tags.php:23
+msgid "Newer Posts"
+msgstr ""
+
+#: inc/template-tags.php:56
+msgid "(Edit)"
+msgstr ""
+
+#: inc/template-tags.php:124
+msgid "View %s author page"
+msgstr ""
+
+#. translators: used between list items, there is a space after the comma
+#: inc/template-tags.php:141
+#: inc/template-tags.php:195
+msgid ", "
+msgstr ""
+
+#: inc/template-tags.php:155
+#: inc/template-tags.php:167
+msgid "View all posts by %s"
+msgstr ""
+
+#: inc/template-tags.php:197
+msgid "Categories"
+msgstr ""
+
+#: inc/template-tags.php:208
+msgctxt "Used between list items, there is a space after the comma."
+msgid ", "
+msgstr ""
+
+#: inc/template-tags.php:210
+msgid "Series"
+msgstr ""
+
+#: inc/template-tags.php:273
+msgid "Continue Reading &rarr;"
+msgstr ""
+
+#: inc/template-tags.php:290
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: inc/template-tags.php:360
+msgid "View all posts in %s"
+msgstr ""
+
+#: inc/template-tags.php:436
+#: inc/template-tags.php:486
+msgid "Published"
+msgstr ""
+
+#: inc/template-tags.php:450
+#: inc/template-tags.php:500
+msgid "Updated"
+msgstr ""
+
+#: inc/template-tags.php:608
+#: inc/template-tags.php:633
+#: inc/template-tags.php:657
+msgid "this is page <strong>%1$s</strong> of <strong>%2$s</strong>"
+msgstr ""
+
+#: inc/template-tags.php:609
+msgid "Found one search result for <strong>%2$s</strong>."
+msgid_plural "Found %1$s search results for <strong>%2$s</strong> (%3$s)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/template-tags.php:636
+msgid "There is one post filed in <strong>%2$s</strong>."
+msgid_plural "There are %1$s posts filed in <strong>%2$s</strong> (%3$s)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/template-tags.php:638
+msgid "There is one post tagged <strong>%2$s</strong>."
+msgid_plural "There are %1$s posts tagged <strong>%2$s</strong> (%3$s)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/template-tags.php:664
+msgid "There was one post published in %2$s."
+msgid_plural "There were %1$s posts published in %2$s (%3$s)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/template-tags.php:666
+msgid "There is one post published in %2$s."
+msgid_plural "There are %1$s posts published in %2$s (%3$s)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/template-tags.php:669
+msgid "There was one post published on %2$s."
+msgid_plural "There were %1$s posts published on %2$s (%3$s)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/template-tags.php:678
+msgid "There was one post published in the month of %2$s."
+msgid_plural "There were %1$s posts published in %2$s (%3$s)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/template-tags.php:685
+msgid "There was one post published in %2$s %3$s."
+msgid_plural "There were %1$s posts published in %2$s %3$s (%4$s)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/template-tags.php:761
+msgid "Related Content by Tag"
+msgstr ""
+
+#: inc/template-tags.php:829
+msgid "Asides"
+msgstr ""
+
+#: inc/template-tags.php:831
+msgid "Galleries"
+msgstr ""
+
+#: inc/template-tags.php:833
+msgid "Images"
+msgstr ""
+
+#: inc/template-tags.php:835
+msgid "Videos"
+msgstr ""
+
+#: inc/template-tags.php:837
+msgid "Quotes"
+msgstr ""
+
+#: inc/template-tags.php:839
+msgid "Links"
+msgstr ""
+
+#: inc/template-tags.php:841
+msgid "Statuses"
+msgstr ""
+
+#: inc/template-tags.php:843
+msgid "Audios"
+msgstr ""
+
+#: inc/template-tags.php:845
+msgid "Chats"
+msgstr ""
+
+#: no-results.php:14
+msgid "Nothing Found"
+msgstr ""
+
+#: no-results.php:21
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: no-results.php:25
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr ""
+
+#: no-results.php:32
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr ""
+
+#: originalofform.php:9
+#: page_archive-template.php:84
+#: searchform.php:10
+#: searchform.php:12
+msgid "Search"
+msgstr ""
+
+#: originalofform.php:10
+msgid "Original Of &hellip;"
+msgstr ""
+
+#: originalofform.php:11
+msgid "Lookup Original"
+msgstr ""
+
+#: page_archive-template.php:54
+msgid "Yearly Archives"
+msgstr ""
+
+#: page_archive-template.php:56
+msgid "Select Year"
+msgstr ""
+
+#: page_archive-template.php:69
+msgid "Monthly Archives"
+msgstr ""
+
+#: page_archive-template.php:71
+msgid "Select Month"
+msgstr ""
+
+#: page_archive-template.php:88
+msgid "Explore by Tag"
+msgstr ""
+
+#. Template Name of the theme
+msgid "One-Column, No Nav Bar"
+msgstr ""
+
+#: page_one-column-template.php:50
+#: template-parts/content-page.php:35
+#: template-parts/content-single.php:87
+msgid "Next page &rarr;"
+msgstr ""
+
+#: page_one-column-template.php:51
+#: template-parts/content-page.php:36
+#: template-parts/content-single.php:88
+msgid "&larr; Previous page"
+msgstr ""
+
+#: page_one-column-template.php:59
+#: template-parts/content-page.php:44
+msgid "Pages:"
+msgstr ""
+
+#: search.php:19
+msgid "Search Results for: %s"
+msgstr ""
+
+#: searchform.php:11
+msgid "Search &hellip;"
+msgstr ""
+
+#: sidebar.php:21
+msgid "Archives"
+msgstr ""
+
+#: sidebar.php:28
+msgid "Meta"
+msgstr ""
