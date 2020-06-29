@@ -25,43 +25,43 @@ get_header(); ?>
 				<!-- .entry-header -->
 
 				<section>
-					<?php the_content(); ?>
+			<?php the_content(); ?>
 
-					<?php if ( ! dynamic_sidebar( 'archive-page' ) ) : ?>
+			<?php if ( ! dynamic_sidebar( 'archive-page' ) ) : ?>
 
-						<?php the_widget( 'WP_Widget_Recent_Posts', array( 'number' => 15 ) ); ?>
+				<?php the_widget( 'WP_Widget_Recent_Posts', array( 'number' => 15 ) ); ?>
 
-						<?php if ( indieweb_publisher_categorized_blog() ) : // Only show the widget if site has multiple categories. ?>
+				<?php if ( indieweb_publisher_categorized_blog() ) : // Only show the widget if site has multiple categories. ?>
 						<div class="widget">
 							<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'indieweb-publisher' ); ?></h2>
 							<ul>
-								<?php
-								wp_list_categories(
-									array(
-										'orderby'    => 'count',
-										'order'      => 'DESC',
-										'show_count' => 1,
-										'title_li'   => '',
-										'number'     => 10,
-									)
-								);
-								?>
+					<?php
+					wp_list_categories(
+						array(
+							'orderby'    => 'count',
+							'order'      => 'DESC',
+							'show_count' => 1,
+							'title_li'   => '',
+							'number'     => 10,
+						)
+					);
+					?>
 							</ul>
 						</div>
-						<?php endif; ?>
+				<?php endif; ?>
 
 						<div class="widget">
 							<h2 class="widget-title"><?php esc_html_e( 'Yearly Archives', 'indieweb-publisher' ); ?></h2>
 							<select name="archive-dropdown" onchange="document.location.href=this.options[this.selectedIndex].value;">
 								<option value=""><?php esc_html_e( 'Select Year', 'indieweb-publisher' ); ?></option>
-								<?php
-								wp_get_archives(
-									array(
-										'type'   => 'yearly',
-										'format' => 'option',
-									)
-								);
-								?>
+				<?php
+				wp_get_archives(
+					array(
+						'type'   => 'yearly',
+						'format' => 'option',
+					)
+				);
+				?>
 							</select>
 						</div>
 
@@ -69,29 +69,29 @@ get_header(); ?>
 							<h2 class="widget-title"><?php echo __( 'Monthly Archives', 'indieweb-publisher' ); ?></h2>
 							<select name="archive-dropdown" onchange="document.location.href=this.options[this.selectedIndex].value;">
 								<option value=""><?php esc_html_e( 'Select Month', 'indieweb-publisher' ); ?></option>
-								<?php
-								wp_get_archives(
-									array(
-										'type'   => 'monthly',
-										'format' => 'option',
-									)
-								);
-								?>
+				<?php
+				wp_get_archives(
+					array(
+						'type'   => 'monthly',
+						'format' => 'option',
+					)
+				);
+				?>
 							</select>
 						</div>
 
 						<div class="widget">
 							<h2 class="widget-title"><?php esc_html_e( 'Search', 'indieweb-publisher' ); ?></h2>
-							<?php get_search_form(); ?>
+				<?php get_search_form(); ?>
 						</div>
 
-						<?php the_widget( 'WP_Widget_Tag_Cloud', array( 'title' => __( 'Explore by Tag', 'indieweb-publisher' ) ) ); ?>
+				<?php the_widget( 'WP_Widget_Tag_Cloud', array( 'title' => __( 'Explore by Tag', 'indieweb-publisher' ) ) ); ?>
 
-					<?php endif; ?>
+			<?php endif; ?>
 
 				</section>
 
-				<?php edit_post_link( __( 'Edit', 'indieweb-publisher' ), '<footer class="entry-meta"><span class="edit-link">', '</span></footer>' ); ?>
+			<?php edit_post_link( __( 'Edit', 'indieweb-publisher' ), '<footer class="entry-meta"><span class="edit-link">', '</span></footer>' ); ?>
 			</article><!-- #post-<?php the_ID(); ?> -->
 
 		<?php endwhile; // end of the loop. ?>

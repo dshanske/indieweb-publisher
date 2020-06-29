@@ -20,21 +20,21 @@ get_header();
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 					<header class="entry-header">
 						<h2 class="entry-title-meta">
-							<?php
-							$metadata = wp_get_attachment_metadata();
-							printf(
-								__( '"%1$s" - <a href="%2$s" title="Link to full-size image">%3$s &times; %4$s</a> %5$s <a href="%6$s" title="Return to %7$s" rel="gallery">%7$s</a>', 'indieweb-publisher' ),
-								get_the_title(),
-								wp_get_attachment_url(),
-								$metadata['width'],
-								$metadata['height'],
-								indieweb_publisher_entry_meta_category_prefix(),
-								get_permalink( $post->post_parent ),
-								get_the_title( $post->post_parent )
-							);
-							?>
+				<?php
+				$metadata = wp_get_attachment_metadata();
+				printf(
+					__( '"%1$s" - <a href="%2$s" title="Link to full-size image">%3$s &times; %4$s</a> %5$s <a href="%6$s" title="Return to %7$s" rel="gallery">%7$s</a>', 'indieweb-publisher' ),
+					get_the_title(),
+					wp_get_attachment_url(),
+					$metadata['width'],
+					$metadata['height'],
+					indieweb_publisher_entry_meta_category_prefix(),
+					get_permalink( $post->post_parent ),
+					get_the_title( $post->post_parent )
+				);
+				?>
 
-							<?php do_action( 'indieweb_publisher_entry_title_meta', $separator = ' | ' ); ?>
+				<?php do_action( 'indieweb_publisher_entry_title_meta', $separator = ' | ' ); ?>
 						</h2>
 
 						<!-- .entry-meta -->
@@ -99,15 +99,15 @@ get_header();
 							</div>
 							<!-- .attachment -->
 
-							<?php if ( ! empty( $post->post_excerpt ) ) : ?>
+				<?php if ( ! empty( $post->post_excerpt ) ) : ?>
 								<div class="entry-caption">
-									<?php the_excerpt(); ?>
+					<?php the_excerpt(); ?>
 								</div><!-- .entry-caption -->
-							<?php endif; ?>
+				<?php endif; ?>
 						</div>
 						<!-- .entry-attachment -->
 
-						<?php the_content(); ?>
+				<?php the_content(); ?>
 
 						<nav id="image-navigation" class="site-navigation">
 							<span class="previous-image"><?php previous_image_link( false, __( '&larr; Previous image', 'indieweb-publisher' ) ); ?></span>
@@ -117,20 +117,20 @@ get_header();
 
 					</section>
 
-					<?php indieweb_publisher_posted_author_bottom_card(); ?>
+				<?php indieweb_publisher_posted_author_bottom_card(); ?>
 
 					<footer class="entry-meta">
-						<?php do_action( 'indieweb_publisher_entry_meta_top' ); ?>
+				<?php do_action( 'indieweb_publisher_entry_meta_top' ); ?>
 
-						<?php if ( comments_open() && ! indieweb_publisher_hide_comments() ) : ?>
+				<?php if ( comments_open() && ! indieweb_publisher_hide_comments() ) : ?>
 							<div id="share-comment-button">
 								<button>
 									<i class="share-comment-icon"></i><?php echo indieweb_publisher_comments_call_to_action_text(); ?>
 								</button>
 							</div>
-						<?php endif; ?>
+				<?php endif; ?>
 
-						<?php edit_post_link( __( 'Edit', 'indieweb-publisher' ), '<span class="edit-link">', '</span>' ); ?>
+				<?php edit_post_link( __( 'Edit', 'indieweb-publisher' ), '<span class="edit-link">', '</span>' ); ?>
 					</footer>
 
 					<!-- .entry-meta -->

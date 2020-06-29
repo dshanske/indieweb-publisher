@@ -34,20 +34,22 @@ function indieweb_publisher_custom_logo_setup() {
 
 add_action( 'after_setup_theme', 'indieweb_publisher_custom_logo_setup' );
 
-function indieweb_publisher_author_logo() { 
-	$author_id = get_option( 'iw_default_author', get_option( 'admin_email' ) );
-	printf( '<a href="%1$s" class="custom-logo-link" rel="home" itemprop="url">%2$s</a>',
-			esc_url( home_url( '/' ) ),
-			get_avatar( $author_id,
-				100,
-				'404',
-				'',
-				array(
-					'class' => array( 'custom-logo' ),
-					'extra-attr' => array(
-						'itemprop' => 'logo'
-					)
-				)
+function indieweb_publisher_author_logo() {
+	 $author_id = get_option( 'iw_default_author', get_option( 'admin_email' ) );
+	printf(
+		'<a href="%1$s" class="custom-logo-link" rel="home" itemprop="url">%2$s</a>',
+		esc_url( home_url( '/' ) ),
+		get_avatar(
+			$author_id,
+			100,
+			'404',
+			'',
+			array(
+				'class'      => array( 'custom-logo' ),
+				'extra-attr' => array(
+					'itemprop' => 'logo',
+				),
+			)
 		)
 	);
 }

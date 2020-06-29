@@ -17,12 +17,12 @@ get_header(); ?>
 
 				<?php
 				/*
-				 Queue the first post, that way we know
-				 * what author we're dealing with (if that is the case).
-				 *
-				 * We reset this later so we can run the loop
-				 * properly with a call to rewind_posts().
-				 */
+				Queue the first post, that way we know
+				* what author we're dealing with (if that is the case).
+				*
+				* We reset this later so we can run the loop
+				* properly with a call to rewind_posts().
+				*/
 				the_post();
 				?>
 
@@ -32,10 +32,10 @@ get_header(); ?>
 
 				<?php
 				/*
-				 Since we called the_post() above, we need to
-				 * rewind the loop back to the beginning that way
-				 * we can run the loop properly, in full.
-				 */
+				Since we called the_post() above, we need to
+				* rewind the loop back to the beginning that way
+				* we can run the loop properly, in full.
+				*/
 				rewind_posts();
 				?>
 
@@ -47,7 +47,7 @@ get_header(); ?>
 					the_post();
 					?>
 					<?php
-						get_template_part( 'template-parts/content', indieweb_publisher_get_post_kind() );
+					get_template_part( 'template-parts/content', indieweb_publisher_get_post_kind() );
 					?>
 				<?php endwhile; ?>
 

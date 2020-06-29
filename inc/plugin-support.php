@@ -41,16 +41,16 @@ function indieweb_publisher_simple_location( $separator ) {
 }
 
 function indieweb_publisher_indieweb_plugin_support() {
-	/*
-	 * Adds support for Syndication Links
-	 */
+	 /*
+	* Adds support for Syndication Links
+	*/
 	if ( class_exists( 'Syn_Meta' ) ) {
 		remove_filter( 'the_content', array( 'Syn_Config', 'the_content' ), 30 );
 		add_action( 'indieweb_publisher_after_post_published_date', 'indieweb_publisher_syndication_links', 11 );
 	}
 
 	/*
-	 * Adds support for Simple Location
+	* Adds support for Simple Location
 						  */
 	if ( class_exists( 'Loc_View' ) ) {
 		remove_filter( 'the_content', array( 'Loc_View', 'location_content' ), 12 );
@@ -91,8 +91,7 @@ endif;
  * When the Disqus Commenting System is active and enabled, don't load our comment form enhancements
  */
 require_once ABSPATH . 'wp-admin/includes/plugin.php'; // Required to use is_plugin_active() here
-if (
-	is_plugin_active( 'disqus-comment-system/disqus.php' )
+if ( is_plugin_active( 'disqus-comment-system/disqus.php' )
 	&& ! function_exists( 'indieweb_publisher_enhanced_comment_form' )
 ) :
 	if ( get_option( 'disqus_active' ) !== '0' ) {
@@ -105,8 +104,7 @@ endif;
 /*
  * When Jetpack Comments is enabled, don't load our comment form enhancements
  */
-if (
-	class_exists( 'Jetpack' )
+if ( class_exists( 'Jetpack' )
 	&& Jetpack::is_module_active( 'comments' )
 	&& ! function_exists( 'indieweb_publisher_enhanced_comment_form' )
 ) {

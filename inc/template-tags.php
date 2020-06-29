@@ -16,11 +16,11 @@ if ( ! function_exists( 'indieweb_publisher_the_posts_navigation' ) ) :
 		if ( function_exists( 'wp_pagenavi' ) ) { // WP-PageNavi Support
 			wp_pagenavi();
 		} else {
-			the_posts_navigation( 
+			the_posts_navigation(
 				array(
-					'mid_size' => 2,
+					'mid_size'  => 2,
 					'prev_text' => sprintf( '<button><span class="meta-nav">&larr;</span>%1$s</button>', __( 'Older Posts', 'indieweb-publisher' ) ),
-					'next_text' => sprintf( '<button><span class="meta-nav">&rarr;</span>%1$s</button>', __( 'Newer Posts', 'indieweb-publisher' ) )
+					'next_text' => sprintf( '<button><span class="meta-nav">&rarr;</span>%1$s</button>', __( 'Newer Posts', 'indieweb-publisher' ) ),
 				)
 			);
 		}
@@ -109,7 +109,7 @@ if ( ! function_exists( 'indieweb_publisher_posted_author' ) ) :
 		global $wp_query;
 		$post_author_id        = $wp_query->post->post_author;
 		$post_author_nice_name = get_the_author_meta( 'display_name', $post_author_id );
-		if (  1 === (int) get_option( 'iw_author_url', 0 ) ) {
+		if ( 1 === (int) get_option( 'iw_author_url', 0 ) ) {
 			$user_url = get_the_author_meta( 'user_url', $post_author_id );
 			if ( empty( $user_url ) ) {
 				$user_url = get_author_posts_url( $post_author_id );
@@ -377,10 +377,10 @@ if ( ! function_exists( 'indieweb_publisher_site_info' ) ) :
 	 */
 	function indieweb_publisher_site_info() {
 		?>
-		<?php 
+		<?php
 		if ( has_custom_logo() ) {
-			the_custom_logo(); 
-		} else if ( ! indieweb_publisher_is_multi_author() ) {
+			the_custom_logo();
+		} elseif ( ! indieweb_publisher_is_multi_author() ) {
 			indieweb_publisher_author_logo();
 		}
 		?>
@@ -406,7 +406,7 @@ if ( ! function_exists( 'indieweb_publisher_posted_author_card' ) ) :
 		 */
 		global $wp_query;
 		$post_author_id = $wp_query->post->post_author;
-		if (  1 === (int) get_option( 'iw_author_url', 0 ) ) {
+		if ( 1 === (int) get_option( 'iw_author_url', 0 ) ) {
 			$user_url = get_the_author_meta( 'user_url', $post_author_id );
 			if ( empty( $user_url ) ) {
 				$user_url = get_author_posts_url( $post_author_id );
@@ -414,9 +414,8 @@ if ( ! function_exists( 'indieweb_publisher_posted_author_card' ) ) :
 		} else {
 			$user_url = get_author_posts_url( $post_author_id );
 		}
-		
 
-		$show_avatars   = get_option( 'show_avatars' );
+		$show_avatars = get_option( 'show_avatars' );
 		?>
 		<aside class="p-author h-card">
 		<?php if ( ( ! $show_avatars || $show_avatars === 0 ) && ! indieweb_publisher_is_multi_author_mode() && get_header_image() ) : ?>
@@ -844,7 +843,7 @@ if ( ! function_exists( 'indieweb_publisher_archive_title' ) ) :
 			return __( 'Audios', 'indieweb-publisher' );
 		} elseif ( is_tax( 'post_format', 'post-format-chat' ) ) {
 			return __( 'Chats', 'indieweb-publisher' );
-		} elseif( is_tax() ) {
+		} elseif ( is_tax() ) {
 			return single_term_title( '', false );
 		}
 		return $title;

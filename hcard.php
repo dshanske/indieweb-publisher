@@ -3,7 +3,6 @@
  * A clean one-column page template without the navigation bar or site info
  *
  * Template Name: H-Card
- *
  */
 
 get_header(); ?>
@@ -22,22 +21,22 @@ get_header(); ?>
 				the_post();
 				?>
 
-<?php
-					if ( class_exists( 'HCard_User' ) ) {
-						echo HCard_User::hcard(
-						     get_the_author_meta( 'ID' ),
-						     array(
-							     'me' => true,
-						     )
-						);
-					} else {
-						indieweb_publisher_posted_author_card();
-					}
+				<?php
+				if ( class_exists( 'HCard_User' ) ) {
+					echo HCard_User::hcard(
+						get_the_author_meta( 'ID' ),
+						array(
+							'me' => true,
+						)
+					);
+				} else {
+					indieweb_publisher_posted_author_card();
+				}
 				?>
 				<article id="post-<?php the_ID(); ?>">
-					<?php the_content(); ?>
+				<?php the_content(); ?>
 					<footer class="entry-meta">>
-					<?php edit_post_link( __( 'Edit', 'indieweb-publisher' ), '<span class="edit-link">', '</span>' ); ?>
+				<?php edit_post_link( __( 'Edit', 'indieweb-publisher' ), '<span class="edit-link">', '</span>' ); ?>
 					</footer> <!-- .entry-meta --!>
 				</article><!-- #post-<?php the_ID(); ?> -->
 
@@ -48,7 +47,7 @@ get_header(); ?>
 		<!-- #content .site-content -->
 	</div><!-- #primary .content-area -->
 
-<?php 
+<?php
 get_sidebar();
-get_footer(); 
+get_footer();
 ?>

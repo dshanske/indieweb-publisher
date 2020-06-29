@@ -127,8 +127,8 @@ endif;
 
 if ( ! function_exists( 'indieweb_publisher_author_comment_reply_link' ) ) :
 	/*
-	 * Change the comment reply link to use 'Reply to [Author Name]'
-	 */
+	* Change the comment reply link to use 'Reply to [Author Name]'
+	*/
 	function indieweb_publisher_author_comment_reply_link( $args, $comment, $post ) {
 
 		// If no comment author is blank, use 'Anonymous'
@@ -186,33 +186,33 @@ if ( ! function_exists( 'indieweb_publisher_comment_form_args' ) ) :
 			'cancel_reply_link'    => __( 'Cancel Reply', 'indieweb-publisher' ),
 			'label_submit'         => __( 'Submit Comment', 'indieweb-publisher' ),
 			'must_log_in'          => '<p class="must-log-in">' .
-				sprintf(
-					__( 'You must be <a href="%s">logged in</a> to post a comment.', 'indieweb-publisher' ),
-					wp_login_url( apply_filters( 'the_permalink', get_permalink() ) )
-				) . '</p>',
+			sprintf(
+				__( 'You must be <a href="%s">logged in</a> to post a comment.', 'indieweb-publisher' ),
+				wp_login_url( apply_filters( 'the_permalink', get_permalink() ) )
+			) . '</p>',
 			'logged_in_as'         => '<p class="logged-in-as">' .
-				sprintf(
-					__( 'Logged in as <a href="%1$s">%2$s</a>. <a href="%3$s" title="Log out of this account">Log out?</a>', 'indieweb-publisher' ),
-					admin_url( 'profile.php' ),
-					$user->display_name,
-					wp_logout_url( apply_filters( 'the_permalink', get_permalink() ) )
-				) . '</p>',
+			sprintf(
+				__( 'Logged in as <a href="%1$s">%2$s</a>. <a href="%3$s" title="Log out of this account">Log out?</a>', 'indieweb-publisher' ),
+				admin_url( 'profile.php' ),
+				$user->display_name,
+				wp_logout_url( apply_filters( 'the_permalink', get_permalink() ) )
+			) . '</p>',
 			'comment_notes_before' => $comment_notes_before,
 			'comment_notes_after'  => $comment_notes_after,
 			'fields'               => apply_filters(
 				'comment_form_default_fields',
 				array(
 					'author' =>
-						'<p class="comment-form-author"><label for="author">' . __( 'Name', 'indieweb-publisher' ) . '</label>' .
-						( $req ? '' : '' ) .
-						'<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) .
-						'"' . $aria_req . ' /></p>',
-					'email'  =>
+							'<p class="comment-form-author"><label for="author">' . __( 'Name', 'indieweb-publisher' ) . '</label>' .
+							( $req ? '' : '' ) .
+							'<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) .
+							'"' . $aria_req . ' /></p>',
+					'email' =>
 						'<p class="comment-form-email"><label for="email">' . __( 'Email', 'indieweb-publisher' ) . '</label>' .
 						( $req ? '' : '' ) .
 						'<input id="email" name="email" type="text" value="' . esc_attr( $commenter['comment_author_email'] ) .
 						'"' . $aria_req . ' /></p>',
-					'url'    =>
+					'url' =>
 						'<p class="comment-form-url"><label for="url">' . __( 'Website', 'indieweb-publisher' ) . '</label>' .
 						'<input id="url" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) .
 						'" /></p>',
@@ -260,9 +260,9 @@ add_action( 'wp_enqueue_scripts', 'indieweb_publisher_enhanced_comment_form' );
 
 if ( ! function_exists( 'indieweb_publisher_option' ) ) :
 	/*
-	 * Returns true if enabled
-	 *
-	 */
+	* Returns true if enabled
+	*
+	*/
 	function indieweb_publisher_option( $option_name ) {
 		$indieweb_publisher_general_options = get_option( 'indieweb_publisher_general_options' );
 
@@ -295,8 +295,7 @@ function indieweb_publisher_comments_call_to_action_text() {
  * Returns false if not a Single post type or there is no Featured Image selected
  * or none of the above conditions are true.
  */
-function indieweb_publisher_has_full_width_featured_image() {
-
+function indieweb_publisher_has_full_width_featured_image() { 
 	// If this isn't a Single post type or we don't have a Featured Image set
 	if ( ! ( is_single() || is_page() ) || ! has_post_thumbnail() ) {
 		return false;
@@ -385,8 +384,7 @@ add_filter( 'body_class', 'indieweb_publisher_single_column_layout_body_class' )
 /*
  * Add a checkbox for Post Covers to the featured image metabox
  */
-function indieweb_publisher_featured_image_meta( $content ) {
-
+function indieweb_publisher_featured_image_meta( $content ) { 
 	// If we don't have a featured image, nothing to do.
 	if ( ! has_post_thumbnail() ) {
 		return $content;
@@ -404,9 +402,9 @@ function indieweb_publisher_featured_image_meta( $content ) {
 	$option_type = 'enable';
 
 	/*
-	 If Auto-Set Featured Image as Post Cover enabled, this checkbox's functionality should reverse and
-	 * allow for disabling Post Covers on a post-by-post basis.
-	 */
+	If Auto-Set Featured Image as Post Cover enabled, this checkbox's functionality should reverse and
+	* allow for disabling Post Covers on a post-by-post basis.
+	*/
 	if ( indieweb_publisher_auto_featured_image_post_cover() ) {
 		$meta_key    = 'full_width_featured_image_disabled';
 		$text        = __( 'Disable post cover (full-width)', 'indieweb-publisher' );
@@ -430,11 +428,9 @@ add_filter( 'admin_post_thumbnail_html', 'indieweb_publisher_featured_image_meta
 /*
  * Save the Featured Image meta box's post metadata for Post Cover options.
  */
-function indieweb_publisher_save_featured_image_meta( $post_id, $post ) {
-
+function indieweb_publisher_save_featured_image_meta( $post_id, $post ) { 
 	/* Verify the nonce before proceeding. */
-	if (
-		! isset( $_POST['indieweb_publisher_full_width_featured_image_meta_nonce'] )
+	if ( ! isset( $_POST['indieweb_publisher_full_width_featured_image_meta_nonce'] )
 		|| ! wp_verify_nonce( $_POST['indieweb_publisher_full_width_featured_image_meta_nonce'], basename( __FILE__ ) )
 	) {
 		return $post_id;
@@ -676,7 +672,7 @@ endif;
 
 if ( ! function_exists( 'indieweb_publisher_is_multi_author' ) ) :
 	function indieweb_publisher_is_multi_author() {
-		if( class_exists( 'IndieWeb_Plugin' ) ) {
+		if ( class_exists( 'IndieWeb_Plugin' ) ) {
 			return ( get_option( 'iw_single_author' ) ) ? false : true;
 		}
 		return is_multi_author();

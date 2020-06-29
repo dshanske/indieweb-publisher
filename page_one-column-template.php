@@ -25,20 +25,20 @@ get_header(); ?>
 				?>
 
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-					<?php if ( has_post_thumbnail() ) : ?>
-						<?php the_post_thumbnail( 'indieweb_publisher_post_thumbnail' ); ?>
-					<?php endif; ?>
+				<?php if ( has_post_thumbnail() ) : ?>
+					<?php the_post_thumbnail( 'indieweb_publisher_post_thumbnail' ); ?>
+				<?php endif; ?>
 					<header class="entry-header">
 						<h1 class="entry-title"><?php the_title(); ?></h1>
 					</header>
 					<!-- .entry-header -->
 
-					<?php the_content(); ?>
+				<?php the_content(); ?>
 					<footer class="entry-meta">>
 
-						<?php if ( function_exists( 'wp_pagenavi' ) ) : // WP-PageNavi support ?>
+				<?php if ( function_exists( 'wp_pagenavi' ) ) : // WP-PageNavi support ?>
 
-							<?php wp_pagenavi( array( 'type' => 'multipart' ) ); ?>
+					<?php wp_pagenavi( array( 'type' => 'multipart' ) ); ?>
 
 						<?php else : ?>
 
@@ -64,7 +64,7 @@ get_header(); ?>
 
 						<?php endif; ?>
 
-					<?php edit_post_link( __( 'Edit', 'indieweb-publisher' ), '<span class="edit-link">', '</span>' ); ?>
+				<?php edit_post_link( __( 'Edit', 'indieweb-publisher' ), '<span class="edit-link">', '</span>' ); ?>
 					</footer> <!-- .entry-meta --!>
 				</article><!-- #post-<?php the_ID(); ?> -->
 

@@ -5,12 +5,13 @@
  *
  * Contains methods for customizing the theme customization screen.
  *
- * @link    http://codex.wordpress.org/Theme_Customization_API
+ * @link http://codex.wordpress.org/Theme_Customization_API
  *
  * @package Indieweb Publisher
  * @since   Indieweb Publisher 1.0
  */
 class IndiewebPublisher_Customize {
+
 
 	private static $default_colors = array(
 		'text_color'                    => '#000000',
@@ -368,7 +369,7 @@ class IndiewebPublisher_Customize {
 					'default'           => $color['default'],
 					'type'              => 'theme_mod',
 					'capability'        =>
-						'edit_theme_options',
+					'edit_theme_options',
 					'sanitize_callback' => 'sanitize_hex_color',
 				)
 			);
@@ -512,7 +513,7 @@ class IndiewebPublisher_Customize {
 	 * This will generate a line of CSS for use in header output. If the setting
 	 * ($mod_name) has no defined value, the CSS will not be output.
 	 *
-	 * @uses  get_theme_mod()
+	 * @uses get_theme_mod()
 	 *
 	 * @param string $selector CSS selector
 	 * @param string $style    The name of the CSS *property* to modify
@@ -523,7 +524,7 @@ class IndiewebPublisher_Customize {
 	 * @param string $format   A sprintf() format to use when printing the style
 	 *
 	 * @return string Returns a single line of CSS with selectors and a property.
-	 * @since Indieweb Publisher 1.0
+	 * @since  Indieweb Publisher 1.0
 	 */
 	public static function generate_css( $selector, $style, $mod_name, $prefix = '', $postfix = '', $echo = true, $format = '%1$s { %2$s:%3$s; }' ) {
 		$return = '';
@@ -536,7 +537,7 @@ class IndiewebPublisher_Customize {
 				$prefix . $mod . $postfix
 			);
 			if ( $echo ) {
-				echo $return;
+				   echo $return;
 			}
 		}
 
@@ -571,16 +572,16 @@ function indieweb_publisher_sanitize_checkbox( $input ) {
  * @return string
  */
 function indieweb_publisher_sanitize_select_excerpt_options( $input ) {
-	$valid = array(
-		'0' => 'Disabled',
-		'1' => 'Enabled',
-	);
+	 $valid = array(
+		 '0' => 'Disabled',
+		 '1' => 'Enabled',
+	 );
 
-	if ( array_key_exists( $input, $valid ) ) {
-		return $input;
-	} else {
-		return '';
-	}
+	 if ( array_key_exists( $input, $valid ) ) {
+		 return $input;
+	 } else {
+		 return '';
+	 }
 }
 
 // Setup the Theme Customizer settings and controls...

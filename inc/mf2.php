@@ -9,7 +9,7 @@
 function indieweb_publisher_mf2_body_class( $classes ) {
 	if ( is_page_template() && 'hcard.php' === get_page_template_slug() ) {
 		return $classes;
-	} else if ( ! is_singular() ) {
+	} elseif ( ! is_singular() ) {
 		$classes[] = 'h-feed';
 	} else {
 		// Adds a class for microformats v2
@@ -37,8 +37,8 @@ add_filter( 'post_class', 'indieweb_publisher_mf2_post_class' );
 /**
  * Adds mf2 to avatar
  *
- * @param array             $args Arguments passed to get_avatar_data(), after processing.
- * @param int|string|object $id_or_email A user ID, email address, or comment object
+ * @param  array             $args        Arguments passed to get_avatar_data(), after processing.
+ * @param  int|string|object $id_or_email A user ID, email address, or comment object
  * @return array $args
  */
 function indieweb_publisher_mf2_get_avatar_data( $args, $id_or_email ) {
@@ -50,7 +50,7 @@ function indieweb_publisher_mf2_get_avatar_data( $args, $id_or_email ) {
 		}
 		$args['class'][] = 'u-photo';
 	}
-		return $args;
+	return $args;
 }
 
 add_filter( 'get_avatar_data', 'indieweb_publisher_mf2_get_avatar_data', 11, 2 );
@@ -59,8 +59,8 @@ add_filter( 'get_avatar_data', 'indieweb_publisher_mf2_get_avatar_data', 11, 2 )
  * Adds custom classes to the array of comment classes.
  */
 function indieweb_publisher_mf2_comment_class( $classes ) {
-	$classes[] = 'u-comment';
-	$classes[] = 'h-cite';
+	 $classes[] = 'u-comment';
+	$classes[]  = 'h-cite';
 	return array_unique( $classes );
 }
 

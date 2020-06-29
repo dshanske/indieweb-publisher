@@ -30,22 +30,22 @@ if ( ! function_exists( 'indieweb_publisher_setup' ) ) :
 		/**
 		 * Custom template tags for this theme.
 		 */
-		require get_template_directory() . '/inc/template-tags.php';
+		include get_template_directory() . '/inc/template-tags.php';
 
 		/**
 		 * Customizer additions.
 		 */
-		require get_template_directory() . '/inc/customizer.php';
+		include get_template_directory() . '/inc/customizer.php';
 
 		/**
 		 * Template Functions
 		 */
-		require get_template_directory() . '/inc/template-functions.php';
+		include get_template_directory() . '/inc/template-functions.php';
 
 		/**
 		 * MF2 Compatibility Functions
 		 */
-		require get_template_directory() . '/inc/mf2.php';
+		include get_template_directory() . '/inc/mf2.php';
 
 		/**
 		 * Make theme available for translation
@@ -94,8 +94,8 @@ if ( ! function_exists( 'indieweb_publisher_setup' ) ) :
 		add_theme_support( 'post-thumbnails' );
 
 		/*
-		 * Add custom thumbnail size for use with featured images
-		 */
+		* Add custom thumbnail size for use with featured images
+		*/
 
 		add_image_size( 'indieweb_publisher_post_thumbnail', 700, 700 );
 
@@ -223,13 +223,13 @@ add_action( 'widgets_init', 'indieweb_publisher_widgets_init' );
  * Enqueue scripts and styles
  */
 function indieweb_publisher_scripts() {
-	global $post;
+	 global $post;
 
 	wp_enqueue_style( 'genericons-neue', get_template_directory_uri() . '/fonts/genericons-neue/Genericons-Neue.min.css', array(), '4.0.5' );
 
 	wp_enqueue_script( 'indieweb-publisher-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 
-	if ( indieweb_publisher_option( 'show_page_load_progress_bar' )  ) {
+	if ( indieweb_publisher_option( 'show_page_load_progress_bar' ) ) {
 		wp_enqueue_style( 'nprogress', get_template_directory_uri() . '/css/nprogress.css', array(), '0.1.3' );
 		wp_enqueue_script( 'nprogress', get_template_directory_uri() . '/js/nprogress.js', array(), '0.1.3' );
 	}
@@ -252,8 +252,8 @@ function indieweb_publisher_scripts() {
 	indieweb_publisher_jetpack_dark_overlay_fix_css();
 
 	/*
-	 * Load WP-PageNavi CSS enhancements, if applicable.
-	 */
+	* Load WP-PageNavi CSS enhancements, if applicable.
+	*/
 	indieweb_publisher_wp_pagenavi_css();
 }
 
@@ -306,7 +306,7 @@ endif;
  * Loads the PHP file that generates the Customizer CSS for the front-end
  */
 function indieweb_publisher_customizer_css() {
-	require get_template_directory() . '/css/customizer.css.php';
+	include get_template_directory() . '/css/customizer.css.php';
 	wp_die();
 }
 

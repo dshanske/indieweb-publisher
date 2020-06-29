@@ -20,18 +20,18 @@
 			?>
 dddd
 		</span>
-				<?php
-				if ( get_post_meta( get_the_ID(), 'indieweb_publisher_primary_category', true ) ) { // check for a custom field named 'indieweb_publisher_primary_category'
-					echo indieweb_publisher_entry_meta_category_prefix() . ' ' . get_post_meta( get_the_ID(), 'indieweb_publisher_primary_category', true ); // show the primary category as set in ACF
-				} elseif ( indieweb_publisher_categorized_blog() ) {
-					echo indieweb_publisher_entry_meta_category_prefix() . ' ' . indieweb_publisher_post_categories();
-				}
-				?>
+			<?php
+			if ( get_post_meta( get_the_ID(), 'indieweb_publisher_primary_category', true ) ) { // check for a custom field named 'indieweb_publisher_primary_category'
+				echo indieweb_publisher_entry_meta_category_prefix() . ' ' . get_post_meta( get_the_ID(), 'indieweb_publisher_primary_category', true ); // show the primary category as set in ACF
+			} elseif ( indieweb_publisher_categorized_blog() ) {
+				echo indieweb_publisher_entry_meta_category_prefix() . ' ' . indieweb_publisher_post_categories();
+			}
+			?>
 				<span class="entry-title-meta-post-date">
 				<span class="sep"> <?php echo apply_filters( 'indieweb_publisher_entry_meta_separator', '|' ); ?> </span>
-					<?php indieweb_publisher_posted_on_date(); ?>
+			<?php indieweb_publisher_posted_on_date(); ?>
 			</span>
-				<?php do_action( 'indieweb_publisher_entry_title_meta', $separator = ' | ' ); ?>
+			<?php do_action( 'indieweb_publisher_entry_title_meta', $separator = ' | ' ); ?>
 			</h2>
 		<?php else : ?>
 			<?php if ( ! indieweb_publisher_option( 'show_author_card' ) ) { ?>
@@ -51,20 +51,20 @@ dddd
 				?>
 				<span class="entry-title-meta-post-date">
 				<span class="sep"> <?php echo apply_filters( 'indieweb_publisher_entry_meta_separator', '|' ); ?> </span>
-					<?php indieweb_publisher_posted_on_date(); ?>
+				<?php indieweb_publisher_posted_on_date(); ?>
 			</span>
 				<?php do_action( 'indieweb_publisher_entry_title_meta', $separator = ' | ' ); ?>
 			</h2>
-			<?php 
+				<?php
 			}
-				$title = indieweb_publisher_get_the_title();
+			$title = indieweb_publisher_get_the_title();
 			if ( ! empty( $title ) ) {
 				?>
 				<h1 class="entry-title p-name" itemprop="name"><?php echo $title; ?></h1>
 				<?php
 			}
 		endif;
-?>
+		?>
 	</header>
 	
 	<?php the_content(); ?>

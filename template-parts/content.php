@@ -9,7 +9,7 @@
 		<?php
 		$title = indieweb_publisher_get_the_title();
 		if ( ! empty( $title ) ) {
-		?>
+			?>
 			<h1 class="entry-title p-name">
 				<a class="u-url permalink" href="<?php the_permalink(); ?>" title="<?php echo indieweb_publisher_post_link_title(); ?>" rel="bookmark"><?php the_title(); ?></a>
 			</h1>
@@ -42,7 +42,7 @@
 
 		<?php
 		/*
-		 Show author name and post categories only when post type == post */
+		Show author name and post categories only when post type == post */
 		?>
 		<?php if ( 'post' == get_post_type() ) : // post type == post conditional hides category text for Pages on Search ?>
 			<?php indieweb_publisher_posted_author_cats(); ?>
@@ -51,13 +51,13 @@
 		<?php
 		/* Show post date when show post date option enabled */
 		?>
-<?php 
-		if ( indieweb_publisher_option( 'show_date_entry_meta' ) ) {
-			echo indieweb_publisher_get_post_date(); 
-		} else if ( empty( $title ) ) {
-			printf( '<a class="u-url permalink" href="%1$s" title="%2$s" rel="bookmark"></a>', get_the_permalink(), indieweb_publisher_post_link_title(), $title );
-		}
-		?>
+<?php
+if ( indieweb_publisher_option( 'show_date_entry_meta' ) ) {
+	echo indieweb_publisher_get_post_date();
+} elseif ( empty( $title ) ) {
+	printf( '<a class="u-url permalink" href="%1$s" title="%2$s" rel="bookmark"></a>', get_the_permalink(), indieweb_publisher_post_link_title(), $title );
+}
+?>
 
 		<?php $separator = apply_filters( 'indieweb_publisher_entry_meta_separator', '|' ); ?>
 
