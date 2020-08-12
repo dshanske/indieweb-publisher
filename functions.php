@@ -93,6 +93,16 @@ if ( ! function_exists( 'indieweb_publisher_setup' ) ) :
 		 */
 		add_theme_support( 'post-thumbnails' );
 
+		/**
+		 * Enable Navigation Widgets
+		 */
+		add_theme_support( 'navigation-widgets' );
+
+		/**
+		 * Enable Responsive Embeds
+		 */
+		add_theme_support( 'responsive-embeds' );
+
 		/*
 		* Add custom thumbnail size for use with featured images
 		*/
@@ -156,16 +166,6 @@ if ( ! function_exists( 'indieweb_publisher_setup' ) ) :
 	}
 endif; // indieweb_publisher_setup
 add_action( 'after_setup_theme', 'indieweb_publisher_setup' );
-
-/*
- * Add WP 4.1+ support for Title Tags.
- * See https://make.wordpress.org/core/2014/10/29/title-tags-in-4-1/
- */
-function indieweb_publisher_theme_slug_setup() {
-	add_theme_support( 'title-tag' );
-}
-
-add_action( 'after_setup_theme', 'indieweb_publisher_theme_slug_setup' );
 
 /**
  * Include additional plugin support routines
